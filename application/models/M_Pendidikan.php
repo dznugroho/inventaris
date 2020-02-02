@@ -1,11 +1,11 @@
 <?php
  
-class M_Wilayah extends CI_Model {
+class M_Pendidikan extends CI_Model {
  
-    var $table = 'tb_wilayah'; //nama tabel dari database
-    var $column_order = array(null,'desa','kecamatan','kabupaten','provinsi','kode_wilayah'); //field yang ada di table user
-    var $column_search = array('kode_wilayah','desa','kecamatan','kabupaten','provinsi'); //field yang diizin untuk pencarian 
-    var $order = array('kode_wilayah' => 'asc'); // default order 
+    var $table = 'tb_subbidang'; //nama tabel dari database
+    var $column_order = array(null,'nama_sub','kode_subbidang'); //field yang ada di table user
+    var $column_search = array('kode_subbidang','nama_sub'); //field yang diizin untuk pencarian 
+    var $order = array('kode_subbidang' => 'asc'); // default order 
  
     public function __construct(){
         parent::__construct();
@@ -69,45 +69,40 @@ class M_Wilayah extends CI_Model {
         return $this->db->count_all_results();
     }
     
-function singleWilayah(){
-    $kode_wilayah=$this->uri->segment(3);
-    $this->db->where('kode_wilayah',$kode_wilayah);
-    $data=$this->db->get('tb_wilayah');
+function singlePendidikan(){
+    $kode_subbidang=$this->uri->segment(3);
+    $this->db->where('kode_subbidang',$kode_subbidang);
+    $data=$this->db->get('tb_subbidang');
     return $data->row_array();
 
 }
     //insert data method
-  function insertWilayah(){
+  function insertPendidikan(){
     $data=array(
-        'kode_wilayah'        => $this->input->post('kode_wilayah'),
-        'desa'        => $this->input->post('desa'),
-        'kecamatan'  => $this->input->post('kecamatan'),
-        'kabupaten'  => $this->input->post('kabupaten'),
-        'provinsi'  => $this->input->post('provinsi')
+        'kode_subbidang'        => $this->input->post('kode_subbidang'),
+        'nama_sub'        => $this->input->post('nama_sub'),
 
 
     );
-    $result=$this->db->insert('tb_wilayah', $data);
+    $result=$this->db->insert('tb_subbidang', $data);
     return $result;
 }
 //update data method
-function updateWilayah(){
-    $kode_wilayah=$this->input->post('kode_wilayah');
+function updatePendidikan(){
+    $kode_subbidang=$this->input->post('kode_subbidang');
     $data=array(
-        'desa'        => $this->input->post('desa'),
-        'kecamatan'  => $this->input->post('kecamatan'),
-        'kabupaten'  => $this->input->post('kabupaten'),
-        'provinsi'  => $this->input->post('provinsi')
+        'nama_sub'        => $this->input->post('nama_sub'),
+
     );
-    $this->db->where('kode_wilayah',$kode_wilayah);
-    $result=$this->db->update('tb_wilayah', $data);
+    $this->db->where('kode_subbidang',$kode_subbidang);
+    $result=$this->db->update('tb_subbidang', $data);
     return $result;
 }
 //delete data method
-function deleteWilayah(){
-    $kode_wilayah=$this->uri->segment(3);
-    $this->db->where('kode_wilayah',$kode_wilayah);
-    $result=$this->db->delete('tb_wilayah');
+function deletePendidikan(){
+    $kode_subbidang=$this->uri->segment(3);
+    $this->db->where('kode_subbidang',$kode_subbidang);
+    $result=$this->db->delete('tb_subbidang');
     return $result;
 }
 

@@ -45,7 +45,7 @@
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="table">
+                      <table class="table table-striped table-md" id="table">
                         <thead>
                           <tr>
                             <th>Kode Wilayah</th>
@@ -99,7 +99,7 @@
             "serverSide": true, 
             "order": [], 
             "ajax": {
-                "url": "https://localhost/inventaris/berkas/databerkas",
+                "url": "<?= base_url()?>berkas/databerkas",
                 "type": "POST"
             },
  

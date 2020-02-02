@@ -12,17 +12,19 @@
                 <a href="<?php echo site_url('dashboard'); ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
               <li class="menu-header">Master Data</li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'pendidikan' || $this->uri->segment(1) == 'kesehatan'
+              || $this->uri->segment(1) == 'lingkungan' || $this->uri->segment(1) == 'pek' || $this->uri->segment(1) == 'infrastruktur' ?'active': '' ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Bidang</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="layout-default.html">Bidang Pendidikan</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'pendidikan'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('pendidikan'); ?>">Bidang Pendidikan</a></li>
                   <li><a class="nav-link" href="layout-transparent.html">Bidang Kesehatan</a></li>
                   <li><a class="nav-link" href="layout-top-navigation.html">Bidang Lingkungan</a></li>
                   <li><a class="nav-link" href="layout-transparent.html">Bidang PEK</a></li>
                   <li><a class="nav-link" href="layout-top-navigation.html">Bidang Infrastruktur</a></li>
                 </ul>
               </li>
-              <li><a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-square"></i> <span>Data Wilayah</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>"><a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-square"></i> <span>Data Wilayah</span></a></li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
                 <ul class="dropdown-menu">

@@ -46,11 +46,8 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Wilayah</th>
-                            <th>Desa</th>
-                            <th>Kecamatan</th>
-                            <th>Kabupaten</th>
-                            <th>Provinsi</th>
+                            <th>Kode Sub Bidang</th>
+                            <th>Nama Sub Bidang</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -97,7 +94,7 @@
             "serverSide": true, 
             "order": [], 
             "ajax": {
-                "url": "<?= base_url()?>wilayah/datawilayah",
+                "url": "<?= base_url()?>pendidikan/datapendidikan",
                 "type": "POST"
             },
  

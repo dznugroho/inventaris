@@ -12,9 +12,10 @@ class Wilayah extends CI_Controller {
 	{
 		$this->load->view('wilayah/daftar_wilayah');
     }
-    public function ubah()
-	{
-		$this->load->view('wilayah/ubah_wilayah');
+    public function ubah(){
+        $data=$this->M_Wilayah->singleWilayah();
+        //print_r($data);
+        $this->load->view('wilayah/ubah_wilayah',$data);
 	}
 
 	function datawilayah(){
@@ -30,7 +31,7 @@ class Wilayah extends CI_Controller {
 			$row[] = $field->kecamatan;
 			$row[] = $field->kabupaten;
 			$row[] = $field->provinsi;          
-			$row[] = '<a href="'.base_url().'/wilayah/deletewilayah/'.$field->kode_wilayah.'" class="btn btn-icon btn-danger"><i class="far fa-trash">Hapus</a> <a href="'.base_url().'/wilayah/ubah_wilayah/'.$field->kode_wilayah.'"class="btn btn-icon btn-primary"><i class="far fa-edit">Ubah</a></i>';
+			$row[] = '<a href="'.base_url().'wilayah/ubah/'.$field->kode_wilayah.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'wilayah/delete/'.$field->kode_wilayah.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
   
 			$data[] = $row;
 		}
@@ -43,6 +44,16 @@ class Wilayah extends CI_Controller {
 		);
 		//output dalam format JSON
 		echo json_encode($output);
+	}
+
+	function update(){ //update record method
+		//print_r($_POST);
+		$this->M_Wilayah->updateWilayah();
+		redirect('wilayah');
+	}
+	function delete(){ //delete record method
+		$this->M_Wilayah->deleteWilayah();
+		redirect('wilayah');
 	}
 
 }
