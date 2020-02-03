@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2020 at 02:54 AM
+-- Generation Time: Feb 03, 2020 at 08:45 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -25,12 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `berkas`
+-- (See below for the actual view)
+--
+CREATE TABLE `berkas` (
+`kode_berkas` int(11)
+,`nama_bidang` varchar(50)
+,`nama_sub` varchar(200)
+,`tahun_pengusulan` date
+,`nama_kegiatan` varchar(100)
+,`anggaran` double
+,`alamat_kegiatan` varchar(200)
+,`desa_kegiatan` varchar(50)
+,`kecamatan` varchar(50)
+,`nama_institusi` varchar(100)
+,`alamat_institusi` varchar(100)
+,`desa_institusi` varchar(100)
+,`kecamatan_institusi` varchar(100)
+,`no_telp` varchar(50)
+,`file` varchar(200)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `infrastruktur`
 -- (See below for the actual view)
 --
 CREATE TABLE `infrastruktur` (
 `kode_subbidang` varchar(15)
-,`nama_sub` varchar(100)
+,`nama_sub` varchar(200)
 );
 
 -- --------------------------------------------------------
@@ -41,7 +65,7 @@ CREATE TABLE `infrastruktur` (
 --
 CREATE TABLE `kesehatan` (
 `kode_subbidang` varchar(15)
-,`nama_sub` varchar(100)
+,`nama_sub` varchar(200)
 );
 
 -- --------------------------------------------------------
@@ -52,7 +76,7 @@ CREATE TABLE `kesehatan` (
 --
 CREATE TABLE `lingkungan` (
 `kode_subbidang` varchar(15)
-,`nama_sub` varchar(100)
+,`nama_sub` varchar(200)
 );
 
 -- --------------------------------------------------------
@@ -63,7 +87,7 @@ CREATE TABLE `lingkungan` (
 --
 CREATE TABLE `pek` (
 `kode_subbidang` varchar(15)
-,`nama_sub` varchar(100)
+,`nama_sub` varchar(200)
 );
 
 -- --------------------------------------------------------
@@ -74,7 +98,7 @@ CREATE TABLE `pek` (
 --
 CREATE TABLE `pendidikan` (
 `kode_subbidang` varchar(15)
-,`nama_sub` varchar(100)
+,`nama_sub` varchar(200)
 );
 
 -- --------------------------------------------------------
@@ -85,8 +109,19 @@ CREATE TABLE `pendidikan` (
 
 CREATE TABLE `tb_berkas` (
   `kode_berkas` int(11) NOT NULL,
-  `nama_berkas` varchar(100) NOT NULL,
-  `parent_subbidang` int(11) NOT NULL
+  `kode_subbidang` varchar(5) NOT NULL,
+  `tahun_pengusulan` date NOT NULL,
+  `nama_kegiatan` varchar(100) NOT NULL,
+  `anggaran` double NOT NULL,
+  `alamat_kegiatan` varchar(200) NOT NULL,
+  `desa_kegiatan` varchar(50) NOT NULL,
+  `kecamatan` varchar(50) NOT NULL,
+  `nama_institusi` varchar(100) NOT NULL,
+  `alamat_institusi` varchar(100) NOT NULL,
+  `desa_institusi` varchar(100) NOT NULL,
+  `kecamatan_institusi` varchar(100) NOT NULL,
+  `no_telp` varchar(50) NOT NULL,
+  `file` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -120,7 +155,7 @@ INSERT INTO `tb_bidang` (`kode_bidang`, `nama_bidang`, `keterangan`) VALUES
 
 CREATE TABLE `tb_subbidang` (
   `kode_subbidang` varchar(15) NOT NULL,
-  `nama_sub` varchar(100) NOT NULL,
+  `nama_sub` varchar(200) NOT NULL,
   `parent_bidang` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,10 +164,10 @@ CREATE TABLE `tb_subbidang` (
 --
 
 INSERT INTO `tb_subbidang` (`kode_subbidang`, `nama_sub`, `parent_bidang`) VALUES
-('0101', 'Penyedia Sarana dan Prasarana yang  Layak dan Memadai Disemua Jenjang Pendidikan Baik Formal maupun ', '01'),
+('0101', 'Penyedia Sarana dan Prasarana di Bidang Pendidikan', '01'),
 ('0102', 'Peningkatan Kualifikasi dan Kompentensi Tenaga Pendidik dan Kependidikan', '01'),
 ('0103', 'Pemberian Beasiswa', '01'),
-('0104', 'kegiatan pengembangan SDM', '01'),
+('0104', 'Kegiatan Pengembangan SDM', '01'),
 ('0201', 'Sarana dan Prasarana Puskesmas', '02'),
 ('0202', 'Sarana dan Prasarana Puskesmas Pembantu', '02'),
 ('0203', 'Sarana dan Prasarana Poliklinik Kesehatan', '02'),
@@ -370,6 +405,37 @@ INSERT INTO `tb_wilayah` (`kode_wilayah`, `desa`, `kecamatan`, `kabupaten`, `pro
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`) VALUES
+(1, 'Dimas Adi Nugroho', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 'Indra Noor', 'indra', 'indra', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `berkas`
+--
+DROP TABLE IF EXISTS `berkas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `berkas`  AS  select `tb_berkas`.`kode_berkas` AS `kode_berkas`,`tb_bidang`.`nama_bidang` AS `nama_bidang`,`tb_subbidang`.`nama_sub` AS `nama_sub`,`tb_berkas`.`tahun_pengusulan` AS `tahun_pengusulan`,`tb_berkas`.`nama_kegiatan` AS `nama_kegiatan`,`tb_berkas`.`anggaran` AS `anggaran`,`tb_berkas`.`alamat_kegiatan` AS `alamat_kegiatan`,`tb_berkas`.`desa_kegiatan` AS `desa_kegiatan`,`tb_berkas`.`kecamatan` AS `kecamatan`,`tb_berkas`.`nama_institusi` AS `nama_institusi`,`tb_berkas`.`alamat_institusi` AS `alamat_institusi`,`tb_berkas`.`desa_institusi` AS `desa_institusi`,`tb_berkas`.`kecamatan_institusi` AS `kecamatan_institusi`,`tb_berkas`.`no_telp` AS `no_telp`,`tb_berkas`.`file` AS `file` from ((`tb_subbidang` join `tb_bidang` on((`tb_subbidang`.`parent_bidang` = `tb_bidang`.`kode_bidang`))) join `tb_berkas` on((`tb_subbidang`.`kode_subbidang` = `tb_berkas`.`kode_subbidang`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `infrastruktur`
 --
 DROP TABLE IF EXISTS `infrastruktur`;
@@ -439,6 +505,28 @@ ALTER TABLE `tb_subbidang`
 --
 ALTER TABLE `tb_wilayah`
   ADD PRIMARY KEY (`kode_wilayah`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_berkas`
+--
+ALTER TABLE `tb_berkas`
+  MODIFY `kode_berkas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
