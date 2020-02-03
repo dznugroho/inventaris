@@ -84,14 +84,7 @@
                         <label>Alamat Kegiatan</label>
                         <input type="text" class="form-control" name="Alamat_kegiatan" placeholder="Alamat Kegiatan">
                       </div>
-                      <div class="form-group">
-                        <label>Provinsi</label>
-                        <input type="text" class="form-control" name="Provinsi1" placeholder="Provinsi">
-                      </div>
-                      <div class="form-group">
-                        <label>Kabupaten</label>
-                        <input type="text" class="form-control" name="Kabupaten1" placeholder="Kabupaten">
-                      </div>
+                      
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <input type="text" class="form-control" name="Kecamatan1" placeholder="Kecamatan">  
@@ -104,14 +97,6 @@
                       <div class="form-group">
                         <label>Alamat Institusi</label>
                         <input type="text" class="form-control" name="Alamat_institusi" placeholder="Alamat Institusi">
-                      </div>
-                      <div class="form-group">
-                        <label>Provinsi</label>
-                        <input type="text" class="form-control" name="Provinsi2"  placeholder="Provinsi">
-                      </div>
-                      <div class="form-group">
-                        <label>Kabupaten</label>
-                        <input type="text" class="form-control" name="Kabupaten2" placeholder="Kabupaten">  
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
