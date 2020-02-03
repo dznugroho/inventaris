@@ -3,8 +3,8 @@
 class M_Berkas extends CI_Model {
  
     var $table = 'tb_berkas'; //nama tabel dari database
-    var $column_order = array(null,'desa','kecamatan','kabupaten','provinsi','kode_berkas'); //field yang ada di table user
-    var $column_search = array('kode_berkas','desa','kecamatan','kabupaten','provinsi'); //field yang diizin untuk pencarian 
+    var $column_order = array(null,'kode_berkas','kode_subbidang','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang ada di table user
+    var $column_search = array('kode_berkas','kode_subbidang','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang diizin untuk pencarian 
     var $order = array('kode_berkas' => 'asc'); // default order 
  
     public function __construct(){
@@ -79,11 +79,21 @@ function singleBerkas(){
     //insert data method
   function insertBerkas(){
     $data=array(
-        'kode_berkas'        => $this->input->post('kode_berkas'),
-        'desa'        => $this->input->post('kota'),
-        'kecamatan'  => $this->input->post('kecamatan'),
-        'kabupaten'  => $this->input->post('pass'),
-        'provinsi'  => $this->input->post('provinsi')
+        'kode_berkas' => $this->input->post('kode_berkas'),
+        'kode_subbidang'        => $this->input->post('kode_subbidang'),
+        'tahun_pengusulan'  => $this->input->post('tahun_pengusulan'),
+        'nama_kegiatan'  => $this->input->post('nama_kegiatan'),
+        'angaran'  => $this->input->post('angaran'),
+        'alamat_kegiatan' => $this->input->post('alamat_kegiatan'),
+        'desa_kegiatan' => $this->input->post('desa_kegiatan'),
+        'kecamatan' => $this->input->post('kecamatan'),
+        'nama_institusi' => $this->input->post('nama_institusi'),
+        'alamat_institusi' => $this->input->post('alamat_institusi'),
+        'desa_institusi' => $this->input->post('desa_institusi'),
+        'kecamatan_institusi' => $this->input->post('kecamatan_institusi'),
+        'no_telp' => $this->input->post('no_telp'),
+        'file' => $this->input->post('file'),
+
 
 
     );
@@ -94,10 +104,22 @@ function singleBerkas(){
 function updateBerkas(){
     $kode_berkas=$this->input->post('kode_berkas');
     $data=array(
-        'desa'        => $this->input->post('kota'),
-        'kecamatan'  => $this->input->post('kecamatan'),
-        'kabupaten'  => $this->input->post('pass'),
-        'provinsi'  => $this->input->post('provinsi')
+        'kode_berkas' => $this->input->post('kode_berkas'),
+        'kode_subbidang'        => $this->input->post('kode_subbidang'),
+        'tahun_pengusulan'  => $this->input->post('tahun_pengusulan'),
+        'nama_kegiatan'  => $this->input->post('nama_kegiatan'),
+        'angaran'  => $this->input->post('angaran'),
+        'alamat_kegiatan' => $this->input->post('alamat_kegiatan'),
+        'desa_kegiatan' => $this->input->post('desa_kegiatan'),
+        'kecamatan' => $this->input->post('kecamatan'),
+        'nama_institusi' => $this->input->post('nama_institusi'),
+        'alamat_institusi' => $this->input->post('alamat_institusi'),
+        'desa_institusi' => $this->input->post('desa_institusi'),
+        'kecamatan_institusi' => $this->input->post('kecamatan_institusi'),
+        'no_telp' => $this->input->post('no_telp'),
+        'file' => $this->input->post('file'),
+
+
     );
     $this->db->where('kode_berkas',$kode_berkas);
     $result=$this->db->update('tb_berkas', $data);
