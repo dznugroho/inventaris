@@ -11,12 +11,12 @@ class Berkas extends CI_Controller {
     public function index()
 	{
 		$this->load->view('berkas/daftar_berkas');
-    }
-    public function tambah()
+	}
+	public function tambah()
 	{
 		$this->load->view('berkas/tambah_berkas');
 	}
-	public function ubah(){
+    public function ubah(){
         $data=$this->M_Berkas->singleBerkas();
         //print_r($data);
         $this->load->view('berkas/ubah_berkas',$data);
@@ -32,13 +32,13 @@ class Berkas extends CI_Controller {
 			$row[] = $no;
 			$row[] = $field->kode_berkas;
 			$row[] = $field->nama_bidang;
-			$row[] = $field->nama_subbidang;
+			$row[] = $field->nama_sub;
 			$row[] = $field->tahun_pengusulan;
 			$row[] = $field->nama_kegiatan;
 			$row[] = $field->anggaran;
 			$row[] = $field->alamat_kegiatan;
 			$row[] = $field->desa_kegiatan;
-			$row[] = $field->kecamatan_kegiatan;
+			$row[] = $field->kecamatan;
 			$row[] = $field->nama_institusi;
 			$row[] = $field->alamat_institusi;
 			$row[] = $field->desa_institusi;
@@ -46,7 +46,9 @@ class Berkas extends CI_Controller {
 			$row[] = $field->no_telp;
 			$row[] = $field->file;
 
-			$row[] = '<a href="'.base_url().'/berkas/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> <a href="'.base_url().'/berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash"></a></i>';
+     
+
+			$row[] = '<a href="'.base_url().'pendidikan/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'pendidikan/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
   
 			$data[] = $row;
 		}
@@ -61,18 +63,20 @@ class Berkas extends CI_Controller {
 		echo json_encode($output);
 	}
 
-	function save(){ //insert record method
-        $this->M_Berkas->insertBerkas();
-        redirect('berkas');
-    }
-   
-    function update(){ //update record method
-        //print_r($_POST);
-        $this->M_Berkas->updateBerkas();
-        redirect('berkas');
-    }
-    function delete(){ //delete record method
-        $this->M_Berkas->deleteBerkas();
-        redirect('berkas');
-    }
+	function save(){ //update record method
+		//print_r($_POST);
+		$this->M_Berkas->insertBerkas();
+		redirect('berkas');
+	}
+
+	function update(){ //update record method
+		//print_r($_POST);
+		$this->M_Berkas->updateBerkas();
+		redirect('berkas');
+	}
+	function delete(){ //delete record method
+		$this->M_Berkas->deleteBerkas();
+		redirect('berkas');
+	}
+
 }

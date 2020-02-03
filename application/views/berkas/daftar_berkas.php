@@ -51,7 +51,8 @@
                           <tr>
                             <th>No.</th>
                             <th>Kode Berkas</th>
-                            <th>Kode sub bidang</th>
+                            <th>Nama Bidang</th>
+                            <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
                             <th>Nama kegiatan</th>
                             <th>Anggaran</th>
@@ -64,6 +65,7 @@
                             <th>Kecamatan institusi</th>
                             <th>No.telp</th>
                             <th>File</th>
+                            <th>Aksi</th>
                           </tr>
                         </thead>
                       </table>

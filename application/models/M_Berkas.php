@@ -2,9 +2,9 @@
  
 class M_Berkas extends CI_Model {
  
-    var $table = 'tb_berkas'; //nama tabel dari database
-    var $column_order = array(null,'kode_berkas','kode_subbidang','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang ada di table user
-    var $column_search = array('kode_berkas','kode_subbidang','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang diizin untuk pencarian 
+    var $table = 'berkas'; //nama tabel dari database
+    var $column_order = array(null,'nama_bidang','nama_sub','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file','kode_berkas'); //field yang ada di table user
+    var $column_search = array('kode_berkas','nama_bidang','nama_sub','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang diizin untuk pencarian 
     var $order = array('kode_berkas' => 'asc'); // default order 
  
     public function __construct(){
@@ -72,7 +72,7 @@ class M_Berkas extends CI_Model {
 function singleBerkas(){
     $kode_berkas=$this->uri->segment(3);
     $this->db->where('kode_berkas',$kode_berkas);
-    $data=$this->db->get('tb_berkas');
+    $data=$this->db->get('berkas');
     return $data->row_array();
 
 }
@@ -83,7 +83,7 @@ function singleBerkas(){
         'kode_subbidang'        => $this->input->post('kode_subbidang'),
         'tahun_pengusulan'  => $this->input->post('tahun_pengusulan'),
         'nama_kegiatan'  => $this->input->post('nama_kegiatan'),
-        'angaran'  => $this->input->post('angaran'),
+        'anggaran'  => $this->input->post('angaran'),
         'alamat_kegiatan' => $this->input->post('alamat_kegiatan'),
         'desa_kegiatan' => $this->input->post('desa_kegiatan'),
         'kecamatan' => $this->input->post('kecamatan'),
@@ -92,23 +92,20 @@ function singleBerkas(){
         'desa_institusi' => $this->input->post('desa_institusi'),
         'kecamatan_institusi' => $this->input->post('kecamatan_institusi'),
         'no_telp' => $this->input->post('no_telp'),
-        'file' => $this->input->post('file'),
-
-
+        'file' => $this->input->post('file')
 
     );
-    $result=$this->db->insert('tb_berkas', $data);
+    $result=$this->db->insert('berkas', $data);
     return $result;
 }
 //update data method
 function updateBerkas(){
     $kode_berkas=$this->input->post('kode_berkas');
     $data=array(
-        'kode_berkas' => $this->input->post('kode_berkas'),
         'kode_subbidang'        => $this->input->post('kode_subbidang'),
         'tahun_pengusulan'  => $this->input->post('tahun_pengusulan'),
         'nama_kegiatan'  => $this->input->post('nama_kegiatan'),
-        'angaran'  => $this->input->post('angaran'),
+        'anggaran'  => $this->input->post('anggaran'),
         'alamat_kegiatan' => $this->input->post('alamat_kegiatan'),
         'desa_kegiatan' => $this->input->post('desa_kegiatan'),
         'kecamatan' => $this->input->post('kecamatan'),
@@ -117,19 +114,19 @@ function updateBerkas(){
         'desa_institusi' => $this->input->post('desa_institusi'),
         'kecamatan_institusi' => $this->input->post('kecamatan_institusi'),
         'no_telp' => $this->input->post('no_telp'),
-        'file' => $this->input->post('file'),
+        'file' => $this->input->post('file')
 
 
     );
     $this->db->where('kode_berkas',$kode_berkas);
-    $result=$this->db->update('tb_berkas', $data);
+    $result=$this->db->update('berkas', $data);
     return $result;
 }
 //delete data method
 function deleteBerkas(){
     $kode_berkas=$this->uri->segment(3);
     $this->db->where('kode_berkas',$kode_berkas);
-    $result=$this->db->delete('tb_berkas');
+    $result=$this->db->delete('berkas');
     return $result;
 }
 
