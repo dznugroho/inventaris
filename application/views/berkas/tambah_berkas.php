@@ -108,11 +108,11 @@
                       </div>
                       <div class="form-group">
                         <label>File</label>
-                        <input type="file" class="form-control">
+                        <input type="file" class="form-control" name="file">
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>
