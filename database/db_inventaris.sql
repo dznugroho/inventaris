@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2020 at 01:19 AM
+-- Generation Time: Feb 03, 2020 at 02:54 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -145,12 +145,12 @@ INSERT INTO `tb_subbidang` (`kode_subbidang`, `nama_sub`, `parent_bidang`) VALUE
 ('0305', 'Bantuan Korban Bencana Alam', '03'),
 ('0306', 'Pendidilan dan Latihan', '03'),
 ('0307', 'Bantuan Pelestarian Alam', '03'),
-('0401', 'Peningkatan pendapatan masyarakat khususnya sektor', '04'),
-('0501', 'pembangunan rumah layak huni', '05'),
-('0502', 'Penyediaan listrik pedesaan', '05'),
-('0503', 'penyediaan air bersih', '05'),
-('0504', 'pembangunan jalan', '05'),
-('0505', 'pembangunan jembatan', '05');
+('0401', 'Peningkatan Pendapatan Masyarakat Khususnya Sektor Usaha Mikro dan Menengah', '04'),
+('0501', 'Pembangunan Rumah Layak Huni', '05'),
+('0502', 'Penyediaan Listrik Pedesaan', '05'),
+('0503', 'Penyediaan Air Bersih', '05'),
+('0504', 'Pembangunan Jalan', '05'),
+('0505', 'Pembangunan Jembatan', '05');
 
 -- --------------------------------------------------------
 
