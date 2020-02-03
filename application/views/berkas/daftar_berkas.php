@@ -51,19 +51,19 @@
                           <tr>
                             <th>No.</th>
                             <th>Kode Berkas</th>
-                            <th>Desa</th>
+                            <th>Kode sub bidang</th>
+                            <th>Tahun pengusulan</th>
+                            <th>Nama kegiatan</th>
+                            <th>Anggaran</th>
+                            <th>Alamat kegiatan</th>
+                            <th>Desa kegiatan</th>
                             <th>Kecamatan</th>
-                            <th>Kabupaten</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Provinsi</th>
-                            <th>Aksi</th>
+                            <th>Nama institusi</th>
+                            <th>Alamat instusi</th>
+                            <th>Desa institusi</th>
+                            <th>Kecamatan institusi</th>
+                            <th>No.telp</th>
+                            <th>File</th>
                           </tr>
                         </thead>
                       </table>
