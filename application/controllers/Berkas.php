@@ -16,6 +16,11 @@ class Berkas extends CI_Controller {
 	{
 		$this->load->view('berkas/tambah_berkas');
 	}
+	public function ubah(){
+        $data=$this->M_Berkas->singleBerkas();
+        //print_r($data);
+        $this->load->view('berkas/ubah_berkas',$data);
+	}
 
 	function databerkas(){
 		$list = $this->M_Berkas->get_datatables();
@@ -30,7 +35,7 @@ class Berkas extends CI_Controller {
 			$row[] = $field->kecamatan;
 			$row[] = $field->kabupaten;
 			$row[] = $field->provinsi;          
-			$row[] = '<a href="'.base_url().'/berkas/deleteberkas/'.$field->kode_wilayah.'" class="btn btn-icon btn-danger"><i class="far fa-trash">Hapus</a> <a href="'.base_url().'/berkas/ubah_berkas/'.$field->kode_wilayah.'"class="btn btn-icon btn-primary"><i class="far fa-edit">Ubah</a></i>';
+			$row[] = '<a href="'.base_url().'/berkas/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> <a href="'.base_url().'/berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash"></a></i>';
   
 			$data[] = $row;
 		}
@@ -45,4 +50,18 @@ class Berkas extends CI_Controller {
 		echo json_encode($output);
 	}
 
+	function save(){ //insert record method
+        $this->M_Berkas->insertBerkas();
+        redirect('berkas');
+    }
+   
+    function update(){ //update record method
+        //print_r($_POST);
+        $this->M_Berkas->updateBerkas();
+        redirect('berkas');
+    }
+    function delete(){ //delete record method
+        $this->M_Berkas->deleteBerkas();
+        redirect('berkas');
+    }
 }
