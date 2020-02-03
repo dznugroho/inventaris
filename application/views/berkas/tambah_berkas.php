@@ -51,15 +51,17 @@
                     <div class="card-body">
                       <div class="form-group">
                         <label>Bidang Kegiatan</label>
-                        <select class="form-control">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
+                        <select class="form-control" name="Bidang">
+                          <option>Pendidikan</option>
+                          <option>Kesehatan</option>
+                          <option>Lingkungan</option>
+                          <option>Pemberdayaan Ekomnomi Kerakyatan</option>
+                          <option>Infrastruktur</option>
                         </select>
                       </div>
                       <div class="form-group">
                         <label>SubBidang Kegiatan</label>
-                        <select class="form-control">
+                        <select class="form-control" name="Subbidang">
                           <option>Option 1</option>
                           <option>Option 2</option>
                           <option>Option 3</option>
@@ -67,51 +69,55 @@
                       </div>
                       <div class="form-group">
                         <label>Tahun Pengusulan</label>
-                        <input type="text" class="form-control" placeholder="Tahun Pengusulan">
+                        <input type="text" class="form-control" name="Tahun" placeholder="Tahun Pengusulan">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <input type="text" class="form-control" placeholder="Nama Kegiatan">
+                        <input type="text" class="form-control" name="Nama_kegiatan" placeholder="Nama Kegiatan">
+                      </div>
+                      <div class="form-group">
+                        <label>Anggaran</label>
+                        <input type="text" class="form-control" name="Anggaran" placeholder="Anggaran">
                       </div>
                       <div class="form-group">
                         <label>Alamat Kegiatan</label>
-                        <input type="text" class="form-control" placeholder="Alamat Kegiatan">
+                        <input type="text" class="form-control" name="Alamat_kegiatan" placeholder="Alamat Kegiatan">
                       </div>
                       <div class="form-group">
                         <label>Provinsi</label>
-                        <input type="text" class="form-control" placeholder="Provinsi">
+                        <input type="text" class="form-control" name="Provinsi1" placeholder="Provinsi">
                       </div>
                       <div class="form-group">
                         <label>Kabupaten</label>
-                        <input type="text" class="form-control" placeholder="Kabupaten">
+                        <input type="text" class="form-control" name="Kabupaten1" placeholder="Kabupaten">
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" placeholder="Kecamatan">  
+                        <input type="text" class="form-control" name="Kecamatan1" placeholder="Kecamatan">  
                       </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="Institusi" placeholder="Nama Institusi">  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" placeholder="Alamat Kegiatan">
+                        <input type="text" class="form-control" name="Alamat_institusi" placeholder="Alamat Institusi">
                       </div>
                       <div class="form-group">
                         <label>Provinsi</label>
-                        <input type="text" class="form-control" placeholder="Provinsi">
+                        <input type="text" class="form-control" name="Provinsi2"  placeholder="Provinsi">
                       </div>
                       <div class="form-group">
                         <label>Kabupaten</label>
-                        <input type="text" class="form-control" placeholder="Kabupaten">  
+                        <input type="text" class="form-control" name="Kabupaten2" placeholder="Kabupaten">  
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" placeholder="Kecamatan">  
+                        <input type="text" class="form-control" name="Kecamatan2" placeholder="Kecamatan">  
                       </div>
                       <div class="form-group">
                         <label>No. Telp</label>
-                        <input type="text" class="form-control" placeholder="No. Telp">
+                        <input type="text" class="form-control" name="notelp" placeholder="No. Telp">
                       </div>
                       <div class="form-group">
                         <label>File</label>
