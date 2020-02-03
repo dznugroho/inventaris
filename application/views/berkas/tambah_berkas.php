@@ -67,10 +67,11 @@
                           <option>Option 3</option>
                         </select>
                       </div>
+  
                       <div class="form-group">
-                        <label>Tahun Pengusulan</label>
-                        <input type="text" class="form-control" name="Tahun" placeholder="Tahun Pengusulan">
-                      </div>
+                      <label>tahun pengusulan</label>
+                      <input type="text" class="form-control datepicker" name="tahun_pengusulan">
+                    </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
                         <input type="text" class="form-control" name="Nama_kegiatan" placeholder="Nama Kegiatan">
@@ -95,6 +96,7 @@
                         <label>Kecamatan</label>
                         <input type="text" class="form-control" name="Kecamatan1" placeholder="Kecamatan">  
                       </div>
+                      <div class="section-title mt-0">INSTITUSI </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
                         <input type="text" class="form-control" name="Institusi" placeholder="Nama Institusi">  
