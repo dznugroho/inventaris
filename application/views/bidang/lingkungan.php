@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Stisla</title>
+  <title>STISLA</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,10 +30,10 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Wilayah</h1>
+            <h1>Bidang Lingkungan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Berkas</div>
+              <div class="breadcrumb-item">Bidang Lingkungan</div>
             </div>
           </div>
 
@@ -46,11 +46,8 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Wilayah</th>
-                            <th>Desa</th>
-                            <th>Kecamatan</th>
-                            <th>Kabupaten</th>
-                            <th>Provinsi</th>
+                            <th>Kode Sub Bidang</th>
+                            <th>Lingkup Sub Bidang</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -97,7 +94,7 @@
             "serverSide": true, 
             "order": [], 
             "ajax": {
-                "url": "<?= base_url()?>wilayah/datawilayah",
+                "url": "<?= base_url()?>lingkungan/datalingkungan",
                 "type": "POST"
             },
  

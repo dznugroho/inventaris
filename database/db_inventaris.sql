@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2020 at 04:10 AM
+-- Generation Time: Feb 03, 2020 at 01:19 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -25,12 +25,67 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `infrastruktur`
+-- (See below for the actual view)
+--
+CREATE TABLE `infrastruktur` (
+`kode_subbidang` varchar(15)
+,`nama_sub` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `kesehatan`
+-- (See below for the actual view)
+--
+CREATE TABLE `kesehatan` (
+`kode_subbidang` varchar(15)
+,`nama_sub` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `lingkungan`
+-- (See below for the actual view)
+--
+CREATE TABLE `lingkungan` (
+`kode_subbidang` varchar(15)
+,`nama_sub` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `pek`
+-- (See below for the actual view)
+--
+CREATE TABLE `pek` (
+`kode_subbidang` varchar(15)
+,`nama_sub` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `pendidikan`
+-- (See below for the actual view)
+--
+CREATE TABLE `pendidikan` (
+`kode_subbidang` varchar(15)
+,`nama_sub` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_berkas`
 --
 
 CREATE TABLE `tb_berkas` (
-  `kode_file` int(11) NOT NULL,
-  `nama_file` varchar(100) NOT NULL,
+  `kode_berkas` int(11) NOT NULL,
+  `nama_berkas` varchar(100) NOT NULL,
   `parent_subbidang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,7 +120,7 @@ INSERT INTO `tb_bidang` (`kode_bidang`, `nama_bidang`, `keterangan`) VALUES
 
 CREATE TABLE `tb_subbidang` (
   `kode_subbidang` varchar(15) NOT NULL,
-  `nama_sub` varchar(50) NOT NULL,
+  `nama_sub` varchar(100) NOT NULL,
   `parent_bidang` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -74,28 +129,28 @@ CREATE TABLE `tb_subbidang` (
 --
 
 INSERT INTO `tb_subbidang` (`kode_subbidang`, `nama_sub`, `parent_bidang`) VALUES
-('0101', 'penyedia sarana dan prasarana yang  layak dan mema', '01'),
-('0102', 'peningkatan kualifikasi dan kompentensi tenaga pen', '01'),
-('0103', 'pemberian beasiswa', '01'),
-('0104', 'kegiatan pengembangan Sdm', '01'),
-('0201', 'Puskesmas', '02'),
-('0202', 'Puskesmas pembantu', '02'),
-('0203', 'poliklinik kesehatan', '02'),
-('0204', 'posyandu', '02'),
-('0205', 'peningkatan kualitas tenaga kesehatan', '02'),
-('0301', 'pencegahan polusi', '03'),
-('0302', 'penggunaan sumber daya yang berkelanjutan', '03'),
-('0303', 'pegembangan penyehatan lingkungan', '03'),
-('0304', 'pengembangan sarana prasarana umum', '03'),
-('0305', 'bantuan korban bencana alam', '03'),
-('0306', 'pendidilan dan latihan', '03'),
-('0307', 'bantuan pelestarian alam', '03'),
+('0101', 'Penyedia Sarana dan Prasarana yang  Layak dan Memadai Disemua Jenjang Pendidikan Baik Formal maupun ', '01'),
+('0102', 'Peningkatan Kualifikasi dan Kompentensi Tenaga Pendidik dan Kependidikan', '01'),
+('0103', 'Pemberian Beasiswa', '01'),
+('0104', 'kegiatan pengembangan SDM', '01'),
+('0201', 'Sarana dan Prasarana Puskesmas', '02'),
+('0202', 'Sarana dan Prasarana Puskesmas Pembantu', '02'),
+('0203', 'Sarana dan Prasarana Poliklinik Kesehatan', '02'),
+('0204', 'Sarana dan Prasarana Posyandu', '02'),
+('0205', 'Peningkatan Kualitas Tenaga Kesehatan', '02'),
+('0301', 'Pencegahan Polusi', '03'),
+('0302', 'Penggunaan Sumber Daya yang Berkelanjutan', '03'),
+('0303', 'Pegembangan Penyehatan Lingkungan', '03'),
+('0304', 'Pengembangan Sarana Prasarana Umum', '03'),
+('0305', 'Bantuan Korban Bencana Alam', '03'),
+('0306', 'Pendidilan dan Latihan', '03'),
+('0307', 'Bantuan Pelestarian Alam', '03'),
 ('0401', 'Peningkatan pendapatan masyarakat khususnya sektor', '04'),
-('0402', 'Penyediaan listrik pedesaan', '05'),
-('0403', 'penyediaan air bersih', '05'),
-('0404', 'pembangunan jalan', '05'),
-('0405', 'pembangunan jembatan', '05'),
-('0501', 'pembangunan rumah layak huni', '05');
+('0501', 'pembangunan rumah layak huni', '05'),
+('0502', 'Penyediaan listrik pedesaan', '05'),
+('0503', 'penyediaan air bersih', '05'),
+('0504', 'pembangunan jalan', '05'),
+('0505', 'pembangunan jembatan', '05');
 
 -- --------------------------------------------------------
 
@@ -312,6 +367,51 @@ INSERT INTO `tb_wilayah` (`kode_wilayah`, `desa`, `kecamatan`, `kabupaten`, `pro
 ('3320162007', 'Blingoh', 'Donorojo', 'Jepara', 'Jawa Tengah'),
 ('3320162008', 'Jugo', 'Donorojo', 'Jepara', 'Jawa Tengah');
 
+-- --------------------------------------------------------
+
+--
+-- Structure for view `infrastruktur`
+--
+DROP TABLE IF EXISTS `infrastruktur`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `infrastruktur`  AS  select `tb_subbidang`.`kode_subbidang` AS `kode_subbidang`,`tb_subbidang`.`nama_sub` AS `nama_sub` from `tb_subbidang` where (`tb_subbidang`.`parent_bidang` = 5) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `kesehatan`
+--
+DROP TABLE IF EXISTS `kesehatan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kesehatan`  AS  select `tb_subbidang`.`kode_subbidang` AS `kode_subbidang`,`tb_subbidang`.`nama_sub` AS `nama_sub` from `tb_subbidang` where (`tb_subbidang`.`parent_bidang` = 2) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `lingkungan`
+--
+DROP TABLE IF EXISTS `lingkungan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lingkungan`  AS  select `tb_subbidang`.`kode_subbidang` AS `kode_subbidang`,`tb_subbidang`.`nama_sub` AS `nama_sub` from `tb_subbidang` where (`tb_subbidang`.`parent_bidang` = 3) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `pek`
+--
+DROP TABLE IF EXISTS `pek`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pek`  AS  select `tb_subbidang`.`kode_subbidang` AS `kode_subbidang`,`tb_subbidang`.`nama_sub` AS `nama_sub` from `tb_subbidang` where (`tb_subbidang`.`parent_bidang` = 4) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `pendidikan`
+--
+DROP TABLE IF EXISTS `pendidikan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pendidikan`  AS  select `tb_subbidang`.`kode_subbidang` AS `kode_subbidang`,`tb_subbidang`.`nama_sub` AS `nama_sub` from `tb_subbidang` where (`tb_subbidang`.`parent_bidang` = 1) ;
+
 --
 -- Indexes for dumped tables
 --
@@ -320,7 +420,7 @@ INSERT INTO `tb_wilayah` (`kode_wilayah`, `desa`, `kecamatan`, `kabupaten`, `pro
 -- Indexes for table `tb_berkas`
 --
 ALTER TABLE `tb_berkas`
-  ADD PRIMARY KEY (`kode_file`);
+  ADD PRIMARY KEY (`kode_berkas`);
 
 --
 -- Indexes for table `tb_bidang`

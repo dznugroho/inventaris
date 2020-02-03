@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>General Dashboard &mdash; Stisla</title>
+  <title>tisla</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -68,7 +68,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" >Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -99,12 +99,13 @@
   <script src="<?= base_url()?>node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
   <script src="<?= base_url()?>node_modules/select2/dist/js/select2.full.min.js"></script>
   <script src="<?= base_url()?>node_modules/selectric/public/jquery.selectric.min.js"></script>
-
+  <script src="<?= base_url()?>node_modules/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Template JS File -->
   <script src="<?= base_url()?>assets/js/scripts.js"></script>
   <script src="<?= base_url()?>assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
+  <script src="<?= base_url()?>assets/js/page/modules-sweetalert.js"></script>
 </body>
 </html>

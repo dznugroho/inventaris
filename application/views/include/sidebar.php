@@ -18,33 +18,19 @@
                 <ul class="dropdown-menu">
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'pendidikan'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('pendidikan'); ?>">Bidang Pendidikan</a></li>
-                  <li><a class="nav-link" href="layout-transparent.html">Bidang Kesehatan</a></li>
-                  <li><a class="nav-link" href="layout-top-navigation.html">Bidang Lingkungan</a></li>
-                  <li><a class="nav-link" href="layout-transparent.html">Bidang PEK</a></li>
-                  <li><a class="nav-link" href="layout-top-navigation.html">Bidang Infrastruktur</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'kesehatan'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('kesehatan'); ?>">Bidang Kesehatan</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'lingkungan'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('lingkungan'); ?>">Bidang Lingkungan</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'pek'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('pek'); ?>">Bidang PEK</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'infrastruktur'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('infrastruktur'); ?>">Bidang Infrastruktur</a></li>
                 </ul>
               </li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>"><a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-square"></i> <span>Data Wilayah</span></a></li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
-                  <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
-                  <li><a class="nav-link" href="bootstrap-breadcrumb.html">Breadcrumb</a></li>
-                  <li><a class="nav-link" href="bootstrap-buttons.html">Buttons</a></li>
-                  <li><a class="nav-link" href="bootstrap-card.html">Card</a></li>
-                </ul>
-              </li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>"><a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
               <li class="menu-header">Berkas</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'berkas'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('berkas'); ?>"><i class="far fa-square"></i> <span>Kelola Berkas</span></a></li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Forms</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="forms-advanced-form.html">Advanced Form</a></li>
-                  <li><a class="nav-link" href="forms-editor.html">Editor</a></li>
-                  <li><a class="nav-link" href="forms-validation.html">Validation</a></li>
-                </ul>
-              </li>
+              <a class="nav-link" href="<?php echo site_url('berkas'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
         </aside>
     </div>

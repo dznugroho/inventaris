@@ -1,8 +1,8 @@
 <?php
  
-class M_Pendidikan extends CI_Model {
+class M_Lingkungan extends CI_Model {
  
-    var $table = 'pendidikan'; //nama tabel dari database
+    var $table = 'lingkungan'; //nama tabel dari database
     var $column_order = array(null,'nama_sub','kode_subbidang'); //field yang ada di table user
     var $column_search = array('kode_subbidang','nama_sub'); //field yang diizin untuk pencarian 
     var $order = array('kode_subbidang' => 'asc'); // default order 
@@ -69,40 +69,40 @@ class M_Pendidikan extends CI_Model {
         return $this->db->count_all_results();
     }
     
-function singlePendidikan(){
+function singleLingkungan(){
     $kode_subbidang=$this->uri->segment(3);
     $this->db->where('kode_subbidang',$kode_subbidang);
-    $data=$this->db->get('pendidikan');
+    $data=$this->db->get('lingkungan');
     return $data->row_array();
 
 }
     //insert data method
-  function insertPendidikan(){
+  function insertLingkungan(){
     $data=array(
         'kode_subbidang'        => $this->input->post('kode_subbidang'),
         'nama_sub'        => $this->input->post('nama_sub')
 
 
     );
-    $result=$this->db->insert('pendidikan', $data);
+    $result=$this->db->insert('lingkungan', $data);
     return $result;
 }
 //update data method
-function updatePendidikan(){
+function updateLingkungan(){
     $kode_subbidang=$this->input->post('kode_subbidang');
     $data=array(
         'nama_sub'        => $this->input->post('nama_sub')
 
     );
     $this->db->where('kode_subbidang',$kode_subbidang);
-    $result=$this->db->update('pendidikan', $data);
+    $result=$this->db->update('lingkungan', $data);
     return $result;
 }
 //delete data method
-function deletePendidikan(){
+function deleteLingkungan(){
     $kode_subbidang=$this->uri->segment(3);
     $this->db->where('kode_subbidang',$kode_subbidang);
-    $result=$this->db->delete('pendidikan');
+    $result=$this->db->delete('lingkungan');
     return $result;
 }
 

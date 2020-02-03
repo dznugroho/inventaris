@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('pendidikan/update');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('lingkungan/update');?>">
                     <div class="card-body">
                       <div class="form-group">
                         <label>Kode Sub Bidang</label>
