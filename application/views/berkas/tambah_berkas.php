@@ -55,7 +55,7 @@
                           <option>Pendidikan</option>
                           <option>Kesehatan</option>
                           <option>Lingkungan</option>
-                          <option>Pemberdayaan Ekomnomi Kerakyatan</option>
+                          <option>Pemberdayaan Ekonomi Kerakyatan</option>
                           <option>Infrastruktur</option>
                         </select>
                       </div>

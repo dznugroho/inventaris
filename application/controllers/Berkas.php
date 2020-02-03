@@ -30,11 +30,22 @@ class Berkas extends CI_Controller {
 			$no++;
 			$row = array();
 			$row[] = $no;
-			$row[] = $field->kode_wilayah;
-			$row[] = $field->desa;
-			$row[] = $field->kecamatan;
-			$row[] = $field->kabupaten;
-			$row[] = $field->provinsi;          
+			$row[] = $field->kode_berkas;
+			$row[] = $field->nama_bidang;
+			$row[] = $field->nama_subbidang;
+			$row[] = $field->tahun_pengusulan;
+			$row[] = $field->nama_kegiatan;
+			$row[] = $field->anggaran;
+			$row[] = $field->alamat_kegiatan;
+			$row[] = $field->desa_kegiatan;
+			$row[] = $field->kecamatan_kegiatan;
+			$row[] = $field->nama_institusi;
+			$row[] = $field->alamat_institusi;
+			$row[] = $field->desa_institusi;
+			$row[] = $field->kecamatan_institusi;
+			$row[] = $field->no_telp;
+			$row[] = $field->file;
+
 			$row[] = '<a href="'.base_url().'/berkas/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> <a href="'.base_url().'/berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash"></a></i>';
   
 			$data[] = $row;
