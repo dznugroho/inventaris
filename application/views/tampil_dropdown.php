@@ -7,7 +7,7 @@
 <body>
  
 <select name="bidang" id="bidang">
-	<option> - Pilih Pelanggan -</option>
+	<option> - Pilih Bidang -</option>
 	<?php
 		foreach ($dropdown->result() as $baris) {
 			echo "<option value='".$baris->kode_bidang."'>".$baris->nama_bidang."</option>";
