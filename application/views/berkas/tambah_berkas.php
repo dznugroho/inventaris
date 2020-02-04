@@ -52,16 +52,16 @@
                       <div class="form-group">
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="bidang" id="bidang">
-                          <option value="0">-PILIH-</option>
-                          <?php foreach($bidang as $row):?>
-                            <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
-                            <?php endforeach;?> 
+                        <option value="">No Selected</option>
+                          <?php foreach($category as $row):?>
+                          <option value="<?php echo $row->category_id;?>"><?php echo $row->category_name;?></option>
+                          <?php endforeach;?>
                         </select>
                       </div>
                       <div class="form-group">
                         <label>SubBidang Kegiatan</label>
                         <select class="form-control" name="subbidang" id="subbidang">
-                          <option value="0">-PILIH-</option>
+                          <option value="">No Selected</option>
                         </select>
                       </div>
   
@@ -131,6 +131,7 @@
   <script src="<?= base_url()?>assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
+  <script type="text/javascript" src="<?= base_url()?>assets/js/jquery-3.3.1.js"></script>
   <script src="<?= base_url()?>node_modules/cleave.js/dist/cleave.min.js"></script>
   <script src="<?= base_url()?>node_modules/cleave.js/dist/addons/cleave-phone.us.js"></script>
   <script src="<?= base_url()?>node_modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
@@ -147,33 +148,33 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
-
   <script type="text/javascript">
-        $(document).ready(function(){
- 
-            $('#bidang').change(function(){ 
+		$(document).ready(function(){
+
+			$('#category').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php base_url();?>berkas/get_subbidang",
+                    url : "<?php echo site_url('product/get_sub_category');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
                     dataType : 'json',
                     success: function(data){
-                         
+                        
                         var html = '';
                         var i;
                         for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
+                            html += '<option value='+data[i].subcategory_id+'>'+data[i].subcategory_name+'</option>';
                         }
-                        $('#subbidang').html(html);
- 
+                        $('#sub_category').html(html);
+
                     }
                 });
                 return false;
             }); 
-             
-        });
-    </script>
+            
+		});
+	</script>
+
 </body>
 </html>

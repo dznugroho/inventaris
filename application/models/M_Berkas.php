@@ -12,16 +12,6 @@ class M_Berkas extends CI_Model {
         $this->load->database();
     }
     
-    function get_bidang(){
-        $query = $this->db->get('tb_bidang');
-        return $query;  
-    }
- 
-    function get_subbidang($kode_bidang){
-        $query = $this->db->get_where('kode_subbidang', array('parent_bidang' => $kode_bidang));
-        return $query;
-    }
- 
     private function _get_datatables_query(){
          
         $this->db->from($this->table);
