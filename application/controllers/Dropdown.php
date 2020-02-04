@@ -23,7 +23,7 @@ class Dropdown extends CI_Controller
 		$id = $_POST['id'];
 		$dropdown_chained = $this->Model_dropdown->tampil_data_chained($id);
 		foreach ($dropdown_chained->result() as $baris) {
-			echo "<option value='".$baris->id_barang."'>".$baris->nama_barang."</option>";
+			echo "<option value='".$baris->kode_subbidang."'>".$baris->nama_sub."</option>";
 		}
 	}
  
