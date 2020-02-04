@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form>
+                  <form role="form" method="POST" action="<?php echo site_url('berkas/save');?>">
                     <div class="card-header">
                       <h4>Tambah Berkas</h4>
                     </div>
@@ -53,9 +53,12 @@
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="bidang" id="bidang">
                         <option value="">No Selected</option>
-                          <?php foreach($category as $row):?>
-                          <option value="<?php echo $row->category_id;?>"><?php echo $row->category_name;?></option>
-                          <?php endforeach;?>
+                              <?php
+                              foreach ($dropdown->result() as $baris) {
+                                echo "<option value='".$baris->kode_bidang."'>".$baris->nama_bidang."</option>";
+                              
+                              }
+                            ?>
                         </select>
                       </div>
                       <div class="form-group">
@@ -78,14 +81,29 @@
                         <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
                       </div>
                       <div class="form-group">
-                        <label>Alamat Kegiatan</label>
-                        <input type="text" class="form-control" name="alamat_kegiatan" placeholder="Alamat Kegiatan">
+                        <label>Lokasi Kegiatan</label>
+                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
+                      </div>
+                      <div class="form-group">
+                        <label>Desa</label>
+                        <select class="form-control" name="desa_kegiatan" id="desa_kegiatan">
+                        <option value="">No Selected</option>
+                              <?php
+                              foreach ($alamat->result() as $baris) {
+                                echo "<option value='".$baris->kode_wilayah."'>".$baris->desa."</option>";
+                              
+                              }
+                            ?>
+                        </select>
                       </div>
                       
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan">  
+                        <select class="form-control" name="kecamatan" id="kecamatan">
+                          <option value="">No Selected</option>
+                        </select>
                       </div>
+                      
                       <div class="section-title mt-0">INSTITUSI </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
@@ -93,12 +111,28 @@
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Alamat Institusi">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
                       <div class="form-group">
-                        <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan">  
+                        <label>Desa</label>
+                        <select class="form-control" name="desa_institusi" id="desa_institusi">
+                        <option value="">No Selected</option>
+                              <?php
+                              foreach ($alamat->result() as $baris) {
+                                echo "<option value='".$baris->kode_wilayah."'>".$baris->desa."</option>";
+                              
+                              }
+                            ?>
+                        </select>
                       </div>
+                      
+                      <div class="form-group">
+                        <label>Kecamatan</label>
+                        <select class="form-control" name="kecamatan_institusi" id="kecamatan_institusi">
+                          <option value="">No Selected</option>
+                        </select>
+                      </div>
+                      
                       <div class="form-group">
                         <label>No. Telp</label>
                         <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
@@ -131,7 +165,7 @@
   <script src="<?= base_url()?>assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
-  <script type="text/javascript" src="<?= base_url()?>assets/js/jquery-3.3.1.js"></script>
+  
   <script src="<?= base_url()?>node_modules/cleave.js/dist/cleave.min.js"></script>
   <script src="<?= base_url()?>node_modules/cleave.js/dist/addons/cleave-phone.us.js"></script>
   <script src="<?= base_url()?>node_modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
@@ -149,32 +183,52 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
   <script type="text/javascript">
-		$(document).ready(function(){
+	$(document).ready(function(){
+		$('#bidang').on('change', function(){
+			var kode_bidang = $('#bidang').val();
+			$.ajax({
+			    type: 'POST',
+			    url: '<?php echo base_url('index.php/berkas/tampil_chained') ?>',
+			    data: { 'id' : kode_bidang },
+				success: function(data){
+				    $("#subbidang").html(data);
+				}
+			})
+		})
+	})
+</script>
 
-			$('#category').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('product/get_sub_category');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].subcategory_id+'>'+data[i].subcategory_name+'</option>';
-                        }
-                        $('#sub_category').html(html);
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#desa_kegiatan').on('change', function(){
+			var kode_wilayah = $('#desa_kegiatan').val();
+			$.ajax({
+			    type: 'POST',
+			    url: '<?php echo base_url('index.php/berkas/tampil_lokasi') ?>',
+			    data: { 'id' : kode_wilayah },
+				success: function(data){
+				    $("#kecamatan").html(data);
+				}
+			})
+		})
+	})
+</script>
 
-                    }
-                });
-                return false;
-            }); 
-            
-		});
-	</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#desa_institusi').on('change', function(){
+			var kode_wilayah = $('#desa_institusi').val();
+			$.ajax({
+			    type: 'POST',
+			    url: '<?php echo base_url('index.php/berkas/tampil_lokasi') ?>',
+			    data: { 'id' : kode_wilayah },
+				success: function(data){
+				    $("#kecamatan_institusi").html(data);
+				}
+			})
+		})
+	})
+</script>
 
 </body>
 </html>

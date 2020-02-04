@@ -12,7 +12,7 @@ class Login extends CI_Controller{
     function auth(){
 		//print_r($_POST);
         $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
-        $password=MD5(htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES));
+        $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 
         $cek_admin=$this->M_Login->auth_admin($username,$password);
  
@@ -36,17 +36,23 @@ class Login extends CI_Controller{
                         //echo "Mitra";
                         redirect('dashboard');
                     }else{
-                        $url=base_url();
-                        echo $this->session->set_flashdata('msg','username atau Password Salah');
+                        $url=base_url('login');
+                        echo $this->session->set_flashdata('msg','Username atau Password Salah');
                         echo "Gagal";
+                        redirect('login');
                     }
                     
                  }
+        }else{
+            $url=base_url('login');
+            echo $this->session->set_flashdata('msg','username atau Password Salah');
+            echo "Gagal";
+            redirect('login');
         }
     }
     function exit(){
         $this->session->sess_destroy();
-        $url=base_url('/');
+        $url=base_url('login');
         redirect($url);
     }
 }
