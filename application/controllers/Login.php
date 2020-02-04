@@ -12,7 +12,7 @@ class Login extends CI_Controller{
     function auth(){
 		//print_r($_POST);
         $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
-        $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
+        $password=MD5(htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES));
 
         $cek_admin=$this->M_Login->auth_admin($username,$password);
  
@@ -44,7 +44,7 @@ class Login extends CI_Controller{
                  }
         }
     }
-    function metu_coooook(){
+    function exit(){
         $this->session->sess_destroy();
         $url=base_url('/');
         redirect($url);

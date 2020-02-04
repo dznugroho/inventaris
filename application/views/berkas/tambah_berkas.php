@@ -51,60 +51,57 @@
                     <div class="card-body">
                       <div class="form-group">
                         <label>Bidang Kegiatan</label>
-                        <select class="form-control" name="Bidang">
-                          <option>Pendidikan</option>
-                          <option>Kesehatan</option>
-                          <option>Lingkungan</option>
-                          <option>Pemberdayaan Ekonomi Kerakyatan</option>
-                          <option>Infrastruktur</option>
+                        <select class="form-control" name="bidang" id="bidang">
+                          <option value="0">-PILIH-</option>
+                          <?php foreach($bidang as $row):?>
+                            <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+                            <?php endforeach;?> 
                         </select>
                       </div>
                       <div class="form-group">
                         <label>SubBidang Kegiatan</label>
-                        <select class="form-control" name="Subbidang">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
+                        <select class="form-control" name="subbidang" id="subbidang">
+                          <option value="0">-PILIH-</option>
                         </select>
                       </div>
   
                       <div class="form-group">
-                      <label>tahun pengusulan</label>
+                      <label>Tahun Pengusulan</label>
                       <input type="text" class="form-control datepicker" name="tahun_pengusulan">
                     </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <input type="text" class="form-control" name="Nama_kegiatan" placeholder="Nama Kegiatan">
+                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan">
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
-                        <input type="text" class="form-control" name="Anggaran" placeholder="Anggaran">
+                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
                       </div>
                       <div class="form-group">
                         <label>Alamat Kegiatan</label>
-                        <input type="text" class="form-control" name="Alamat_kegiatan" placeholder="Alamat Kegiatan">
+                        <input type="text" class="form-control" name="alamat_kegiatan" placeholder="Alamat Kegiatan">
                       </div>
                       
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="Kecamatan1" placeholder="Kecamatan">  
+                        <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan">  
                       </div>
                       <div class="section-title mt-0">INSTITUSI </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="Institusi" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="Alamat_institusi" placeholder="Alamat Institusi">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Alamat Institusi">
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="Kecamatan2" placeholder="Kecamatan">  
+                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan">  
                       </div>
                       <div class="form-group">
                         <label>No. Telp</label>
-                        <input type="text" class="form-control" name="notelp" placeholder="No. Telp">
+                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
                       </div>
                       <div class="form-group">
                         <label>File</label>
@@ -150,5 +147,33 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
+
+  <script type="text/javascript">
+        $(document).ready(function(){
+ 
+            $('#bidang').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php base_url();?>berkas/get_subbidang",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                         
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
+                        }
+                        $('#subbidang').html(html);
+ 
+                    }
+                });
+                return false;
+            }); 
+             
+        });
+    </script>
 </body>
 </html>

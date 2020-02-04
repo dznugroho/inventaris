@@ -21,6 +21,16 @@ class Berkas extends CI_Controller {
         //print_r($data);
         $this->load->view('berkas/ubah_berkas',$data);
 	}
+	function databidang(){
+        $data['tb_bidang'] = $this->M_Berkas->get_bidang()->result();
+        $this->load->view('v_kategori', $data);
+    }
+ 
+    function get_subbidang(){
+        $kode_bidang = $this->input->post('id',TRUE);
+        $data = $this->M_Berkas->get_subbidang($kode_bidang)->result();
+        echo json_encode($data);
+    }
 
 	function databerkas(){
 		$list = $this->M_Berkas->get_datatables();
