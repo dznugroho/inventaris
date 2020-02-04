@@ -11,10 +11,10 @@ class Login extends CI_Controller{
  
     function auth(){
 		//print_r($_POST);
-        $email=htmlspecialchars($this->input->post('email',TRUE),ENT_QUOTES);
+        $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
         $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 
-        $cek_admin=$this->M_Login->auth_admin($email,$password);
+        $cek_admin=$this->M_Login->auth_admin($username,$password);
  
         if($cek_admin->num_rows() > 0){
                 $data=$cek_admin->row_array();
@@ -26,7 +26,7 @@ class Login extends CI_Controller{
 					redirect('dashboard');
 					//echo"Admin";
                  }else{
-                    $cek_pemimpin=$this->M_Login->auth_pemimpin($email,$password);
+                    $cek_pemimpin=$this->M_Login->auth_pemimpin($username,$password);
                     if($cek_pemimpin->num_rows() > 0){
                         $data=$cek_pemimpin->row_array();
                         $this->session->set_userdata('masuk',TRUE);
@@ -37,7 +37,7 @@ class Login extends CI_Controller{
                         redirect('dashboard');
                     }else{
                         $url=base_url();
-                        echo $this->session->set_flashdata('msg','email atau Password Salah');
+                        echo $this->session->set_flashdata('msg','username atau Password Salah');
                         echo "Gagal";
                     }
                     
