@@ -40,7 +40,7 @@ class Data_Berkas extends CI_Controller {
 			$row[] = $field->no_telp;
 			
 
-			$row[] = '<a href="'.base_url().'Ubah_Berkas/'.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'data_berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
+			$row[] = '<a href="'.base_url().'berkas/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'data_berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
   
 			$data[] = $row;
 		}

@@ -6,7 +6,8 @@ class Berkas extends CI_Controller {
 	public function __construct()
 	{
 	    parent::__construct();
-	    $this->load->model('M_Berkas');
+		$this->load->model('M_Berkas');
+		$this->load->model('M_Ubahberkas');
 	}
  
  
@@ -16,7 +17,14 @@ class Berkas extends CI_Controller {
 		$data['alamat'] = $this->M_Berkas->tampil_alamat();
 		$this->load->view('berkas/tambah_berkas', $data);
 	}
- 
+
+	public function ubah()
+	{
+		$data=$this->M_Ubahberkas->singleBerkas();
+		$data['dropdown'] = $this->M_Ubahberkas->tampil_data();
+		$data['alamat'] = $this->M_Ubahberkas->tampil_alamat();
+		$this->load->view('berkas/ubah_berkas', $data);
+	}
  
 	public function tampil_chained()
 	{
@@ -39,6 +47,12 @@ class Berkas extends CI_Controller {
 	function save(){ //update record method
 		//print_r($_POST);
 		$this->M_Berkas->insertBerkas();
+		redirect('data_berkas');
+	}
+
+	function update(){ //update record method
+		//print_r($_POST);
+		$this->M_Ubahberkas->updateBerkas();
 		redirect('data_berkas');
 	}
 
