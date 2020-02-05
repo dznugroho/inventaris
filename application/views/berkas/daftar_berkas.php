@@ -38,7 +38,7 @@
           </div>
           <div class="row">
           <div class="card-body" >
-          <a href="<?php echo site_url('berkas/tambah'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('berkas'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -50,7 +50,6 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Berkas</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
@@ -63,7 +62,7 @@
                             <th>Alamat instusi</th>
                             <th>Desa institusi</th>
                             <th>Kecamatan institusi</th>
-                            <th>No.telp</th>
+                            <th>No. Telp</th>
                             <th>File</th>
                             <th>Aksi</th>
                           </tr>
@@ -111,7 +110,7 @@
             "serverSide": true, 
             "order": [], 
             "ajax": {
-                "url": "<?= base_url()?>berkas/databerkas",
+                "url": "<?= base_url()?>data_berkas/databerkas",
                 "type": "POST"
             },
  

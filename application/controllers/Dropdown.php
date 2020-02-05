@@ -14,7 +14,7 @@ class Dropdown extends CI_Controller
 	public function index()
 	{
 		$data['dropdown'] = $this->Model_dropdown->tampil_data();
-		$this->load->view('tampil_dropdown', $data);
+		$this->load->view('berkas/tambah_berkas', $data);
 	}
  
  

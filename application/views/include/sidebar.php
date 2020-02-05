@@ -1,7 +1,7 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
     <div class="sidebar-brand ">
-				<a href="http://localhost/simpatif/index.php/welcome">
+				<a href="<?php echo site_url('dashboard'); ?>">
 				<img src="http://localhost/inventaris/assets/img/avatar/sidokufix.png" height="60" width="120" alt="">
 				</a>
 			</div>
@@ -32,7 +32,7 @@
               </li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>"><a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
               <li class="menu-header">Berkas</li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'berkas'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('berkas'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'data_berkas'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('data_berkas'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
         </aside>
     </div>
