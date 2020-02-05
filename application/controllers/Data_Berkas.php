@@ -11,12 +11,9 @@ class Data_Berkas extends CI_Controller {
     public function index()
 	{
 		$this->load->view('berkas/daftar_berkas');
+		
     }
-    public function ubah(){
-        $data=$this->M_Databerkas->singleBerkas();
-        //print_r($data);
-        $this->load->view('berkas/ubah_berkas',$data);
-	}
+
 
     function databerkas(){
 		$list = $this->M_Databerkas->get_datatables();
@@ -61,11 +58,11 @@ class Data_Berkas extends CI_Controller {
 	function update(){ //update record method
 		//print_r($_POST);
 		$this->M_Databerkas->updateBerkas();
-		redirect('berkas');
+		redirect('data_berkas');
 	}
 	function delete(){ //delete record method
 		$this->M_Databerkas->deleteBerkas();
-		redirect('berkas');
+		redirect('data_berkas');
     }
 
 }

@@ -39,7 +39,7 @@ class Berkas extends CI_Controller {
 	function save(){ //update record method
 		//print_r($_POST);
 		$this->M_Berkas->insertBerkas();
-		redirect('berkas');
+		redirect('data_berkas');
 	}
 
 	

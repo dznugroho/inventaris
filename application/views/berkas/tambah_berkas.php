@@ -63,7 +63,7 @@
                       </div>
                       <div class="form-group">
                         <label>SubBidang Kegiatan</label>
-                        <select class="form-control" name="subbidang" id="subbidang">
+                        <select class="form-control" name="kode_subbidang" id="subbidang">
                           <option value="">No Selected</option>
                         </select>
                       </div>
@@ -132,7 +132,10 @@
                           <option value="">No Selected</option>
                         </select>
                       </div>
-                      
+                      <div class="form-group">
+                        <label>Nama Contact Person</label>
+                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                      </div>
                       <div class="form-group">
                         <label>No. Telp</label>
                         <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
@@ -143,7 +146,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('data_berkas'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>

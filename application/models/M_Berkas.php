@@ -46,7 +46,7 @@ class M_Berkas extends CI_Model {
 			'file' => $this->input->post('file')
 	
 		);
-		$result=$this->db->insert('berkas', $data);
+		$result=$this->db->insert('tb_berkas', $data);
 		return $result;
 	}
 

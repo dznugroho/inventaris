@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2020 at 08:45 AM
+-- Generation Time: Feb 05, 2020 at 01:43 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -124,6 +124,14 @@ CREATE TABLE `tb_berkas` (
   `file` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_berkas`
+--
+
+INSERT INTO `tb_berkas` (`kode_berkas`, `kode_subbidang`, `tahun_pengusulan`, `nama_kegiatan`, `anggaran`, `alamat_kegiatan`, `desa_kegiatan`, `kecamatan`, `nama_institusi`, `alamat_institusi`, `desa_institusi`, `kecamatan_institusi`, `no_telp`, `file`) VALUES
+(1, '0101', '2020-02-04', 'Perbaikan Sekolah', 30000000, 'Kedungcino', 'Kedungcino', 'Jepara', 'SMK Negeri 3 Jepara', 'Jl. Kartini No 42', 'KKss', 'Jepara', '08383811812', 'daad'),
+(4, '0501', '2020-02-04', 'gg', 44555, 'd', '3320142010', '3320142010', 'fff', 'fff', '3320102002', '3320102002', '089649077889', '');
+
 -- --------------------------------------------------------
 
 --
@@ -144,7 +152,7 @@ INSERT INTO `tb_bidang` (`kode_bidang`, `nama_bidang`, `keterangan`) VALUES
 ('01', 'Bidang Pendidikan', ''),
 ('02', 'Bidang Kesehatan', ''),
 ('03', 'Bidang Lingkungan', ''),
-('04', 'Bidang Infrastruktur', ''),
+('04', 'Bidang Peningkatan Ekonomi Kerakyatan', ''),
 ('05', 'Bidang Infrastruktur', '');
 
 -- --------------------------------------------------------
@@ -186,6 +194,28 @@ INSERT INTO `tb_subbidang` (`kode_subbidang`, `nama_sub`, `parent_bidang`) VALUE
 ('0503', 'Penyediaan Air Bersih', '05'),
 ('0504', 'Pembangunan Jalan', '05'),
 ('0505', 'Pembangunan Jembatan', '05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_user`
+--
+
+CREATE TABLE `tb_user` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_user`
+--
+
+INSERT INTO `tb_user` (`id`, `nama`, `username`, `password`, `level`) VALUES
+(1, 'Dimas Adi Nugroho', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 'Indra Noor', 'indra', 'e24f6e3ce19ee0728ff1c443e4ff488d', 2);
 
 -- --------------------------------------------------------
 
@@ -405,28 +435,6 @@ INSERT INTO `tb_wilayah` (`kode_wilayah`, `desa`, `kecamatan`, `kabupaten`, `pro
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `level` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`) VALUES
-(1, 'Dimas Adi Nugroho', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(2, 'Indra Noor', 'indra', 'indra', 2);
-
--- --------------------------------------------------------
-
---
 -- Structure for view `berkas`
 --
 DROP TABLE IF EXISTS `berkas`;
@@ -498,19 +506,20 @@ ALTER TABLE `tb_bidang`
 -- Indexes for table `tb_subbidang`
 --
 ALTER TABLE `tb_subbidang`
-  ADD PRIMARY KEY (`kode_subbidang`);
+  ADD PRIMARY KEY (`kode_subbidang`),
+  ADD KEY `parent_bidang` (`parent_bidang`);
+
+--
+-- Indexes for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_wilayah`
 --
 ALTER TABLE `tb_wilayah`
   ADD PRIMARY KEY (`kode_wilayah`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -520,13 +529,23 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `tb_berkas`
 --
 ALTER TABLE `tb_berkas`
-  MODIFY `kode_berkas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kode_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `tb_user`
 --
-ALTER TABLE `user`
+ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tb_subbidang`
+--
+ALTER TABLE `tb_subbidang`
+  ADD CONSTRAINT `tb_subbidang_ibfk_1` FOREIGN KEY (`parent_bidang`) REFERENCES `tb_bidang` (`kode_bidang`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

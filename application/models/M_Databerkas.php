@@ -12,7 +12,7 @@ class M_Databerkas extends CI_Model {
         $this->load->database();
     }
     
-    
+   
     private function _get_datatables_query(){
          
         $this->db->from($this->table);
@@ -100,14 +100,14 @@ function updateBerkas(){
 
     );
     $this->db->where('kode_berkas',$kode_berkas);
-    $result=$this->db->update('berkas', $data);
+    $result=$this->db->update('tb_berkas', $data);
     return $result;
 }
 //delete data method
 function deleteBerkas(){
     $kode_berkas=$this->uri->segment(3);
     $this->db->where('kode_berkas',$kode_berkas);
-    $result=$this->db->delete('berkas');
+    $result=$this->db->delete('tb_berkas');
     return $result;
 }
 
