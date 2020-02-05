@@ -50,6 +50,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
+                            <th>Kode Berkas</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
@@ -62,9 +63,9 @@
                             <th>Alamat instusi</th>
                             <th>Desa institusi</th>
                             <th>Kecamatan institusi</th>
-                            <th>No. Telp</th>
-                            <th>File</th>
-                            <th>Aksi</th>
+                            <th>Nama Pengusul</th>
+                            <th>Contact Person</th>
+                            <th width="100%">Aksi</th>
                           </tr>
                         </thead>
                       </table>

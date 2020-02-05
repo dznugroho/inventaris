@@ -70,7 +70,7 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control datepicker" name="tahun_pengusulan">
+                      <input type="text" class="form-control" name="tahun_pengusulan">
                     </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
@@ -133,16 +133,12 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label>Nama Contact Person</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                        <label>Nama Pengusul</label>
+                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
                       </div>
                       <div class="form-group">
-                        <label>No. Telp</label>
+                        <label>Contact Person</label>
                         <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
-                      </div>
-                      <div class="form-group">
-                        <label>File</label>
-                        <input type="file" class="form-control" name="file">
                       </div>
                     </div>
                     <div class="card-footer text-right">

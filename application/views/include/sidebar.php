@@ -2,7 +2,7 @@
     <aside id="sidebar-wrapper">
     <div class="sidebar-brand ">
 				<a href="<?php echo site_url('dashboard'); ?>">
-				<img src="http://localhost/inventaris/assets/img/avatar/sidokufix.png" height="60" width="120" alt="">
+				<img src="http://localhost/inventaris/assets/img/avatar/sidoku.svg" height="60" width="120" alt="">
 				</a>
 			</div>
           <div class="sidebar-brand sidebar-brand-sm">
