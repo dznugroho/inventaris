@@ -57,7 +57,7 @@
                             <th>No Telp</th>
                             <th>Email</th>
                             <th>Anggaran CSR</th>
-                      
+
                           </tr>
                         </thead>
                       </table>
