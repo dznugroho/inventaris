@@ -29,30 +29,31 @@
           <div class="section-header">
             <h1>Dashboard</h1>
           </div>
+
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                  <i class="far fa-user"></i>
+                <div class="card-icon bg-primary" >
+                <a href= http://localhost/inventaris/wilayah><i class="fas fa-city"></i></a>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Admin</h4>
+                   <h4>Total Desa</h4>
                   </div>
                   <div class="card-body">
-                    10
+                    195
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                  <i class="far fa-newspaper"></i>
+                  <i class="far fa-folder-open"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Total Berkas</h4>
                   </div>
                   <div class="card-body">
                     42
@@ -60,7 +61,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
                   <i class="far fa-file"></i>
@@ -75,7 +76,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
                   <i class="fas fa-circle"></i>
@@ -90,12 +91,14 @@
                 </div>
               </div>
             </div>
+            
           </div>
-          <div class="row">
+          
+         <!-- <div class="row">
             <div class="col-lg-8 col-md-12 col-12 col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Statistics</h4>
+                  <h4>Statistics</h4>S
                   <div class="card-header-action">
                     <div class="btn-group">
                       <a href="#" class="btn btn-primary">Week</a>
@@ -132,8 +135,15 @@
             </div>
           </div>
         </section>
-      </div>
-    
+      </div> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
       <?php $this->load->view('include/footer.php')?>
 
     </div>

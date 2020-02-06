@@ -10,7 +10,7 @@ class Data_Berkas extends CI_Controller {
 
     public function index()
 	{
-		$this->load->view('berkas/daftar_berkas');
+		$this->load->view('berkas/daftar_perusahaan');
 		
     }
 

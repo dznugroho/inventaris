@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Stisla</title>
+  <title>STISLA</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -30,10 +30,10 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Berkas</h1>
+            <h1>Daftar Admin</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Berkas</div>
+              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item">Admin</div>
             </div>
           </div>
           <div class="row">
@@ -49,21 +49,11 @@
                       <table class="table table-striped" id="table">
                         <thead>
                           <tr>
-                            <th>No.</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
-                            <th>Tahun pengusulan</th>
-                            <th>Nama kegiatan</th>
-                            <th>Anggaran</th>
-                            <th>Alamat kegiatan</th>
-                            <th>Desa kegiatan</th>
-                            <th>Kecamatan</th>
-                            <th>Nama institusi</th>
-                            <th>Alamat instusi</th>
-                            <th>Desa institusi</th>
-                            <th>Kecamatan institusi</th>
-                            <th>No. Telp</th>
-                            <th>File</th>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Level</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -110,7 +100,7 @@
             "serverSide": true, 
             "order": [], 
             "ajax": {
-                "url": "<?= base_url()?>data_berkas/databerkas",
+                "url": "<?= base_url()?>admin/dataadmin",
                 "type": "POST"
             },
  
