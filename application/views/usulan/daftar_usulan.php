@@ -30,15 +30,16 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Berkas</h1>
+            <h1>Data usulan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Berkas</div>
+              <div class="breadcrumb-item">Data usulan</div>
             </div>
           </div>
           <div class="row">
           <div class="card-body" >
-          <a href="<?php echo site_url('berkas'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <?php echo $this->session->flashdata('msg');?>
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -46,28 +47,66 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="table">
+                      <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Berkas</th>
+                            <th>Kode usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
                             <th>Nama kegiatan</th>
+                            <th>Waktu Mulai</th>
+                            <th>Waktu Selesai</th>
                             <th>Anggaran</th>
                             <th>Alamat kegiatan</th>
-                            <th>Desa kegiatan</th>
                             <th>Kecamatan</th>
-                            <th>Nama institusi</th>
-                            <th>Alamat instusi</th>
-                            <th>Desa institusi</th>
-                            <th>Kecamatan institusi</th>
+                            <th>Desa kegiatan</th>
+                            <th>Deskripsi Kegiatan</th>
+                            <th>Nama Institusi</th>
+                            <th>Alamat Instusi</th>
+                            <th>Kecamatan Institusi</th>
+                            <th>Desa Institusi</th>
                             <th>Nama Pengusul</th>
-                            <th>Contact Person</th>
-                            <th width="100%">Aksi</th>
+                            <th>CP Pengusul</th>
+                            <th>File</th>
+                            <th>Aksi</th>
                           </tr>
                         </thead>
+                        <tbody>
+                            <?php
+                              $no = 0;
+                              foreach ($usulan->result() as $row):
+                                $no++;
+                            ?>
+                            <tr>
+                              <td><?php echo $no;?></td>
+                              <td><?php echo $row->kode_usulan;?></td>
+                              <td><?php echo $row->nama_bidang;?></td>
+                              <td><?php echo $row->nama_sub;?></td>
+                              <td><?php echo $row->tahun_pengusulan;?></td>
+                              <td><?php echo $row->nama_kegiatan;?></td>
+                              <td><?php echo $row->waktu_mulai;?></td>
+                              <td><?php echo $row->waktu_selesai;?></td>
+                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo $row->alamat_kegiatan;?></td>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              <td><?php echo $row->desa;?></td>
+                              <td><?php echo $row->deskripsi;?></td>
+                              <td><?php echo $row->nama_institusi;?></td>
+                              <td><?php echo $row->alamat_institusi;?></td>
+                              <td><?php echo $row->kecamatan_institusi;?></td>
+                              <td><?php echo $row->desa_institusi;?></td>
+                              <td><?php echo $row->nama_pengusul;?></td>
+                              <td><?php echo $row->no_telp;?></td>
+                              <td><?php echo $row->file;?></td>
+                              <td>
+                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
+                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
+                              </td>
+                            </tr>
+                            <?php endforeach;?>
+                          </tbody>
                       </table>
                     </div>
                   </div>
@@ -101,32 +140,9 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/modules-datatables.js"></script>
   <script type="text/javascript">
-    var table;
-    $(document).ready(function() {
- 
-        //datatables
-        table = $('#table').DataTable({ 
- 
-            "processing": true, 
-            "serverSide": true, 
-            "order": [], 
-            "ajax": {
-                "url": "<?= base_url()?>data_berkas/databerkas",
-                "type": "POST"
-            },
- 
-             
-            "columnDefs": [
-            { 
-                "targets": [ 0 ], 
-                "orderable": false, 
-            },
-            ],
- 
-        });
- 
-    });
- 
-</script>
+		$(document).ready(function(){
+			$('#mytable').DataTable();
+		});
+	</script>
 </body>
 </html>

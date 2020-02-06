@@ -30,19 +30,23 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Wilayah</h1>
+            <h1>Data usulan</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Berkas</div>
+              <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
+              <div class="breadcrumb-item">Data usulan</div>
             </div>
           </div>
-
+          <div class="row">
+          <div class="card-body" >
+          <?php echo $this->session->flashdata('msg');?>
+          </div>
+          </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="table">
+                      <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
                             <th>No.</th>
@@ -54,6 +58,26 @@
                             <th>Aksi</th>
                           </tr>
                         </thead>
+                        <tbody>
+                            <?php
+                              $no = 0;
+                              foreach ($wilayah->result() as $row):
+                                $no++;
+                            ?>
+                            <tr>
+                              <td><?php echo $no;?></td>
+                              <td><?php echo $row->kode_wilayah;?></td>
+                              <td><?php echo $row->desa;?></td>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              <td><?php echo $row->kabupaten;?></td>
+                              <td><?php echo $row->provinsi;?></td>
+                              <td>
+                                <a href="<?php echo site_url('wilayah/get_edit/'.$row->kode_wilayah);?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i>
+                                <a href="<?php echo site_url('wilayah/delete/'.$row->kode_wilayah);?>" class="btn btn-icon btn-danger"><i class="fas fa-trash"></a></i>
+                              </td>
+                            </tr>
+                            <?php endforeach;?>
+                          </tbody>
                       </table>
                     </div>
                   </div>
@@ -87,32 +111,9 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/modules-datatables.js"></script>
   <script type="text/javascript">
-    var table;
-    $(document).ready(function() {
- 
-        //datatables
-        table = $('#table').DataTable({ 
- 
-            "processing": true, 
-            "serverSide": true, 
-            "order": [], 
-            "ajax": {
-                "url": "<?= base_url()?>wilayah/datawilayah",
-                "type": "POST"
-            },
- 
-             
-            "columnDefs": [
-            { 
-                "targets": [ 0 ], 
-                "orderable": false, 
-            },
-            ],
- 
-        });
- 
-    });
- 
-</script>
+		$(document).ready(function(){
+			$('#mytable').DataTable();
+		});
+	</script>
 </body>
 </html>

@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('wilayah/update');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('wilayah/update_wilayah');?>">
                     <div class="card-body">
                       <div class="form-group">
                         <label>Kode Wilayah</label>
@@ -52,23 +52,23 @@
                       </div>
                       <div class="form-group">
                         <label>Desa/Kelurahan</label>
-                        <input type="text" class="form-control" name="desa" placeholder="Desa/Kelurahan" value="<?=$desa?>">
+                        <input type="text" class="form-control" name="desa" placeholder="Desa/Kelurahan" >
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan" value="<?=$kecamatan?>">
+                        <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan" >
                       </div>
                       <div class="form-group">
                         <label>Kabupaten</label>
-                        <input type="text" class="form-control" name="kabupaten" placeholder="Kabupaten" value="<?=$kabupaten?>">
+                        <input type="text" class="form-control" name="kabupaten" placeholder="Kabupaten">
                       </div>
                       <div class="form-group">
                         <label>Provinsi</label>
-                        <input type="text" class="form-control" name="provinsi" placeholder="Provinsi" value="<?=$provinsi?>">
+                        <input type="text" class="form-control" name="provinsi" placeholder="Provinsi" >
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('wilayah'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -107,5 +107,36 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
   <script src="<?= base_url()?>assets/js/page/modules-sweetalert.js"></script>
+
+  <script type="text/javascript">
+		$(document).ready(function(){
+			//call function get data edit
+			      get_data_edit();
+
+			//load data for edit
+            function get_data_edit(){
+            	var kode_wilayah = $('[name="kode_wilayah"]').val();
+            	$.ajax({
+            		url : "<?php echo site_url('wilayah/get_data_edit');?>",
+                    method : "POST",
+                    data :{kode_wilayah :kode_wilayah},
+                    async : true,
+                    dataType : 'json',
+                    success : function(data){
+                        $.each(data, function(i, item){
+                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah);
+                            $('[name="desa"]').val(data[i].desa);
+                            $('[name="kabupaten"]').val(data[i].kabupaten);
+                            $('[name="provinsi"]').val(data[i].provinsi);
+                            $('[name="kecamatan"]').val(data[i].kode_kecamatan_wilayah);
+                            
+                        });
+                    }
+
+            	});
+            }
+            
+		});
+	</script>
 </body>
 </html>

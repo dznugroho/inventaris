@@ -71,7 +71,7 @@
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
                       <input type="text" class="form-control" name="tahun_pengusulan">
-                    </div>
+                      </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
                         <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan">
