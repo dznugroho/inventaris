@@ -2,7 +2,7 @@
  
 class M_Databerkas extends CI_Model {
  
-    var $table = 'berkas'; //nama tabel dari database
+    var $table = 'databerkas'; //nama tabel dari database
     var $column_order = array(null,'nama_bidang','nama_sub','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang ada di table user
     var $column_search = array('nama_bidang','nama_sub','tahun_pengusulan','nama_kegiatan','anggaran','alamat_kegiatan','desa_kegiatan','kecamatan','nama_institusi','alamat_institusi','desa_institusi','kecamatan_institusi','no_telp','file'); //field yang diizin untuk pencarian 
     var $order = array('kode_berkas' => 'asc'); // default order 
@@ -70,39 +70,7 @@ class M_Databerkas extends CI_Model {
         return $this->db->count_all_results();
     }
     
-function singleBerkas(){
-    $kode_berkas=$this->uri->segment(3);
-    $this->db->where('kode_berkas',$kode_berkas);
-    $data=$this->db->get('berkas');
-    return $data->row_array();
 
-}
-    //insert data method
-  
-//update data method
-function updateBerkas(){
-    $kode_berkas=$this->input->post('kode_berkas');
-    $data=array(
-        'kode_subbidang'        => $this->input->post('kode_subbidang'),
-        'tahun_pengusulan'  => $this->input->post('tahun_pengusulan'),
-        'nama_kegiatan'  => $this->input->post('nama_kegiatan'),
-        'anggaran'  => $this->input->post('anggaran'),
-        'alamat_kegiatan' => $this->input->post('alamat_kegiatan'),
-        'desa_kegiatan' => $this->input->post('desa_kegiatan'),
-        'kecamatan' => $this->input->post('kecamatan'),
-        'nama_institusi' => $this->input->post('nama_institusi'),
-        'alamat_institusi' => $this->input->post('alamat_institusi'),
-        'desa_institusi' => $this->input->post('desa_institusi'),
-        'kecamatan_institusi' => $this->input->post('kecamatan_institusi'),
-        'no_telp' => $this->input->post('no_telp'),
-        'file' => $this->input->post('file')
-
-
-    );
-    $this->db->where('kode_berkas',$kode_berkas);
-    $result=$this->db->update('tb_berkas', $data);
-    return $result;
-}
 //delete data method
 function deleteBerkas(){
     $kode_berkas=$this->uri->segment(3);

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Berkas extends CI_Model {
+class M_Ubahberkas extends CI_Model {
  
    
     public function tampil_data()
@@ -26,11 +26,19 @@ class M_Berkas extends CI_Model {
 	{
 		$query = $this->db->query("SELECT * FROM tb_wilayah where kode_wilayah = '$id'");
 		return $query;
-	}
+    }
+    
+    function singleBerkas(){
+        $kode_berkas=$this->uri->segment(3);
+        $this->db->where('kode_berkas',$kode_berkas);
+        $data=$this->db->get('tb_berkas');
+        return $data->row_array();
+    
+    }
 
-	function insertBerkas(){
+	function updateBerkas(){
+        $kode_berkas=$this->input->post('kode_berkas');
 		$data=array(
-			'kode_berkas' 			=> $this->input->post('kode_berkas'),
 			'kode_subbidang'		=> $this->input->post('kode_subbidang'),
 			'tahun_pengusulan'		=> $this->input->post('tahun_pengusulan'),
 			'nama_kegiatan'			=> $this->input->post('nama_kegiatan'),
@@ -44,8 +52,9 @@ class M_Berkas extends CI_Model {
 			'no_telp'				=> $this->input->post('no_telp')
 	
 		);
-		$result=$this->db->insert('tb_berkas', $data);
-		return $result;
+		$this->db->where('kode_berkas',$kode_berkas);
+        $result=$this->db->update('tb_berkas', $data);
+        return $result;
 	}
 
 

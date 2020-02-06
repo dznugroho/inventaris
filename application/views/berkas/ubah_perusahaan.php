@@ -35,7 +35,7 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Berkas</h1>
+         <h1>Kelola Berkas</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
               <div class="breadcrumb-item">Edit Berkas</div>
@@ -44,16 +44,13 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('data_berkas/update');?>">
-                  <input type="hidden" name="kode_berkas" value="<?=$kode_berkas?>">
-                    <div class="card-header">
-                      <h4>Kelola Berkas</h4>
-                    </div>
+                  <form role="form" method="POST" action="<?php echo site_url('berkas/update');?>">
+                  <input type="hidden" class="form-control" name="kode_berkas" value="<?=$kode_berkas?>">
                     <div class="card-body">
                       <div class="form-group">
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="bidang" id="bidang">
-                        <option value="<?=$nama_bidang?>">No Selected</option>
+                        <option value=""><?=$tahun_pengusulan?></option>
                               <?php
                               foreach ($dropdown->result() as $baris) {
                                 echo "<option value='".$baris->kode_bidang."'>".$baris->nama_bidang."</option>";
@@ -64,14 +61,14 @@
                       </div>
                       <div class="form-group">
                         <label>SubBidang Kegiatan</label>
-                        <select class="form-control" name="subbidang" id="subbidang">
-                          <option value="<?=$nama_sub?>">No Selected</option>
+                        <select class="form-control" name="kode_subbidang" id="subbidang">
+                          <option value="">No Selected</option>
                         </select>
                       </div>
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control datepicker" name="tahun_pengusulan" value="<?=$tahun_pengusulan?>">
+                      <input type="text" class="form-control" name="tahun_pengusulan" value="<?=$tahun_pengusulan?>">
                     </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
@@ -79,11 +76,11 @@
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
-                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
+                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran" value="<?=$anggaran?>">
                       </div>
                       <div class="form-group">
                         <label>Lokasi Kegiatan</label>
-                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan" value="<?=$alamat_kegiatan?>">  
                       </div>
                       <div class="form-group">
                         <label>Desa</label>
@@ -108,11 +105,11 @@
                       <div class="section-title mt-0">INSTITUSI </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" value="<?=$nama_institusi?>">  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" value="<?=$alamat_institusi?>">
                       </div>
                       <div class="form-group">
                         <label>Desa</label>
@@ -133,18 +130,17 @@
                           <option value="">No Selected</option>
                         </select>
                       </div>
-                      
                       <div class="form-group">
-                        <label>No. Telp</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                        <label>Nama Pengusul</label>
+                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul" value="<?=$nama_pengusul?>">
                       </div>
                       <div class="form-group">
-                        <label>File</label>
-                        <input type="file" class="form-control" name="file">
+                        <label>Contact Person</label>
+                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp" value="<?=$no_telp?>">
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('data_berkas'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>

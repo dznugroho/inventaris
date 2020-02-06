@@ -23,24 +23,24 @@ class Data_Berkas extends CI_Controller {
 			$no++;
 			$row = array();
 			$row[] = $no;
+			$row[] = $field->kode_berkas;
 			$row[] = $field->nama_bidang;
 			$row[] = $field->nama_sub;
 			$row[] = $field->tahun_pengusulan;
 			$row[] = $field->nama_kegiatan;
 			$row[] = $field->anggaran;
 			$row[] = $field->alamat_kegiatan;
-			$row[] = $field->desa_kegiatan;
+			$row[] = $field->desa;
 			$row[] = $field->kecamatan;
 			$row[] = $field->nama_institusi;
 			$row[] = $field->alamat_institusi;
 			$row[] = $field->desa_institusi;
 			$row[] = $field->kecamatan_institusi;
+			$row[] = $field->nama_pengusul;
 			$row[] = $field->no_telp;
-			$row[] = $field->file;
+			
 
-     
-
-			$row[] = '<a href="'.base_url().'data_berkas/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'data_berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
+			$row[] = '<a href="'.base_url().'berkas/ubah/'.$field->kode_berkas.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'data_berkas/delete/'.$field->kode_berkas.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
   
 			$data[] = $row;
 		}
@@ -55,11 +55,6 @@ class Data_Berkas extends CI_Controller {
 		echo json_encode($output);
 	}
 
-	function update(){ //update record method
-		//print_r($_POST);
-		$this->M_Databerkas->updateBerkas();
-		redirect('data_berkas');
-	}
 	function delete(){ //delete record method
 		$this->M_Databerkas->deleteBerkas();
 		redirect('data_berkas');
