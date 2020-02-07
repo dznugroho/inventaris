@@ -39,7 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('admin/tambah'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -73,8 +73,8 @@
                               <td><?php echo $row->password;?></td>
                               <td><?php echo $row->level;?></td>
                               <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-sm btn-info">Edit</a>
+                                <a href="<?php echo site_url('admin/delete/'.$row->id);?>" class="btn btn-sm btn-danger">Delete</a>
                               </td>
                             </tr>
                             <?php endforeach;?>
