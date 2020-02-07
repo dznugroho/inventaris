@@ -30,16 +30,16 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Admin</h1>
+            <h1>Admin Utama</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="<?php echo site_url('admin'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Admin</div>
+              <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
+              <div class="breadcrumb-item">Admin Utama </div>
             </div>
           </div>
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('admin/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -50,41 +50,28 @@
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
-                            <th>ID</th>
+                            <th>No.</th>
+                            <th>id</th>
                             <th>Nama</th>
                             <th>Username</th>
-                            <th>Password</th>
-                            <th>Level</th>
-                            <th>Aksi</th>
+                            <th>password</th>
+                            <th>level</th>
+                          
                           </tr>
                         </thead>
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($admin->result() as $row):
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
-                              <td><?php echo $row->nama_bidang;?></td>
-                              <td><?php echo $row->nama_sub;?></td>
-                              <td><?php echo $row->tahun_pengusulan;?></td>
-                              <td><?php echo $row->nama_kegiatan;?></td>
-                              <td><?php echo $row->waktu_mulai;?></td>
-                              <td><?php echo $row->waktu_selesai;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo $row->alamat_kegiatan;?></td>
-                              <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->deskripsi;?></td>
-                              <td><?php echo $row->nama_institusi;?></td>
-                              <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->kecamatan_institusi;?></td>
-                              <td><?php echo $row->desa_institusi;?></td>
-                              <td><?php echo $row->nama_pengusul;?></td>
-                              <td><?php echo $row->no_telp;?></td>
-                              <td><?php echo $row->file;?></td>
+                              <td><?php echo $row->id;?></td>
+                              <td><?php echo $row->nama;?></td>
+                              <td><?php echo $row->username;?></td>
+                              <td><?php echo $row->password;?></td>
+                              <td><?php echo $row->level;?></td>
                               <td>
                                 <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
                                 <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
