@@ -6,8 +6,12 @@ class M_Wilayah extends CI_Model{
 	function get_kecamatan(){
 		$query = $this->db->get('tb_kecamatan');
 		return $query;	
-	}
+    }
 
+    function get_nama($kode_kecamatan){
+		$query = $this->db->get_where('tb_wilayah', array('kode_kecamatan_wilayah' => $kode_kecamatan));
+		return $query;
+	}
 	
 	function save_wilayah($kode_wilayah,$desa,$kabupaten,$provinsi,$kode_kecamatan_wilayah){
 		$data = array(
@@ -34,7 +38,7 @@ class M_Wilayah extends CI_Model{
 	function get_wilayah_by_id($kode_wilayah){
 		$query = $this->db->get_where('tb_wilayah', array('kode_wilayah' =>  $kode_wilayah));
 		return $query;
-	}
+    }
 
 	function update_wilayah($kode_wilayah,$desa,$kabupaten,$provinsi,$kode_kecamatan_wilayah){
         $this->db->set('desa' 	    			, $desa);

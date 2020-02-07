@@ -30,23 +30,16 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-<<<<<<< HEAD:application/views/usulan/daftar_usulan.php
-            <h1>Data usulan</h1>
+            <h1>Admin</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data usulan</div>
-=======
-            <h1>Daftar Admin</h1>
-            <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item active"><a href="<?php echo site_url('admin'); ?>">Dashboard</a></div>
               <div class="breadcrumb-item">Admin</div>
->>>>>>> c5f813fff13ca5dc41afaae41d9bdce4aadc1031:application/views/admin/Admin.php
             </div>
           </div>
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('admin/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -57,34 +50,11 @@
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
-<<<<<<< HEAD:application/views/usulan/daftar_usulan.php
-                            <th>No.</th>
-                            <th>Kode usulan</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
-                            <th>Tahun pengusulan</th>
-                            <th>Nama kegiatan</th>
-                            <th>Waktu Mulai</th>
-                            <th>Waktu Selesai</th>
-                            <th>Anggaran</th>
-                            <th>Alamat kegiatan</th>
-                            <th>Kecamatan</th>
-                            <th>Desa kegiatan</th>
-                            <th>Deskripsi Kegiatan</th>
-                            <th>Nama Institusi</th>
-                            <th>Alamat Instusi</th>
-                            <th>Kecamatan Institusi</th>
-                            <th>Desa Institusi</th>
-                            <th>Nama Pengusul</th>
-                            <th>CP Pengusul</th>
-                            <th>File</th>
-=======
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Username</th>
                             <th>Password</th>
                             <th>Level</th>
->>>>>>> c5f813fff13ca5dc41afaae41d9bdce4aadc1031:application/views/admin/Admin.php
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -155,39 +125,9 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/modules-datatables.js"></script>
   <script type="text/javascript">
-<<<<<<< HEAD:application/views/usulan/daftar_usulan.php
 		$(document).ready(function(){
 			$('#mytable').DataTable();
 		});
 	</script>
-=======
-    var table;
-    $(document).ready(function() {
- 
-        //datatables
-        table = $('#table').DataTable({ 
- 
-            "processing": true, 
-            "serverSide": true, 
-            "order": [], 
-            "ajax": {
-                "url": "<?= base_url()?>admin/dataadmin",
-                "type": "POST"
-            },
- 
-             
-            "columnDefs": [
-            { 
-                "targets": [ 0 ], 
-                "orderable": false, 
-            },
-            ],
- 
-        });
- 
-    });
- 
-</script>
->>>>>>> c5f813fff13ca5dc41afaae41d9bdce4aadc1031:application/views/admin/Admin.php
 </body>
 </html>

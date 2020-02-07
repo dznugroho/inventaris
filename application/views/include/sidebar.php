@@ -49,7 +49,5 @@
               <li class="menu-header">Berkas</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'data_berkas'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('data_berkas'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Profile</span></a></li>
         </aside>
     </div>

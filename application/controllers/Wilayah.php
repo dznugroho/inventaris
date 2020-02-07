@@ -20,6 +20,12 @@ class Wilayah extends CI_Controller {
 		$this->load->view('wilayah/tambah_wilayah', $data);
 	}
 
+	function get_nama(){
+		$kode_kecamatan = $this->input->post('id',TRUE);
+		$data = $this->m_usulan->get_nama($kode_kecamatan)->result();
+		echo json_encode($data);
+	}
+
 	//save wilayah to database
 	function save_wilayah(){
 		$kode_wilayah 	        = $this->input->post('kode_wilayah',TRUE);
@@ -41,8 +47,7 @@ class Wilayah extends CI_Controller {
 		$get_data = $this->m_wilayah->get_wilayah_by_id($kode_wilayah);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
-			$data['kode_wilayah'] = $row['kode_wilayah'];
-
+			
 		}
 		$this->load->view('wilayah/ubah_wilayah',$data);
 	}

@@ -56,8 +56,9 @@
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="kecamatan" placeholder="Kecamatan" >
+                        <input type="text" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Kecamatan" >
                       </div>
+
                       <div class="form-group">
                         <label>Kabupaten</label>
                         <input type="text" class="form-control" name="kabupaten" placeholder="Kabupaten">
@@ -113,6 +114,7 @@
 			//call function get data edit
 			      get_data_edit();
 
+
 			//load data for edit
             function get_data_edit(){
             	var kode_wilayah = $('[name="kode_wilayah"]').val();
@@ -128,8 +130,8 @@
                             $('[name="desa"]').val(data[i].desa);
                             $('[name="kabupaten"]').val(data[i].kabupaten);
                             $('[name="provinsi"]').val(data[i].provinsi);
-                            $('[name="kecamatan"]').val(data[i].kode_kecamatan_wilayah);
-                            
+                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan_wilayah).trigger('change');
+                              
                         });
                     }
 
