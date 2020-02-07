@@ -52,7 +52,7 @@
                       
                       <div class="form-group">
                       <label>Nama Admin</label>
-                      <input type="text" class="form-control" name="nama">
+                      <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
                       </div>
                       <div class="form-group">
                         <label>Username</label>
