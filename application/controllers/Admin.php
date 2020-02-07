@@ -51,15 +51,13 @@ class Admin extends CI_Controller {
 
 	//update admin to database
 	function update_admin(){
-		$id 	    = $this->input->post('id',TRUE);
-		$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
-		$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
-        $tahun_pengadmin 	= $this->input->post('tahun_pengadmin',TRUE);
-		$nama_kegiatan 	    = $this->input->post('nama_kegiatan',TRUE);
+		$id 	    		= $this->input->post('id',TRUE);
+		$nama 	    = $this->input->post('nama',TRUE);
+		$username     = $this->input->post('username',TRUE);
+        $password 	= $this->input->post('password',TRUE);
+		$level 	    = $this->input->post('level',TRUE);
         
-		$this->m_admin->update_admin($id,$kode_bidang,$kode_subbidang,$tahun_pengadmin,$nama_kegiatan,$waktu_mulai,
-		$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
-		$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file);
+		$this->m_admin->update_admin($id,$nama,$username,$password,$level);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">admin Updated</div>');
 		redirect('admin');
 	}

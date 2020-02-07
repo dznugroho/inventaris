@@ -15,6 +15,7 @@
               </li>
               
               <li class="menu-header">Master Data</li>
+              <?php if($this->session->userdata('akses')=='1'):?>
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'kesehatan'
               || $this->uri->segment(1) == 'lingkungan' || $this->uri->segment(1) == 'pek' || $this->uri->segment(1) == 'infrastruktur' ?'active': '' ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Pengguna</span></a>
@@ -29,6 +30,7 @@
                   <a class="nav-link" href="<?php echo site_url('pek'); ?>">Perorangan</a></li>
                 </ul>
               </li>
+              <?php elseif($this->session->userdata('akses')=='2'):?>
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'pendidikan' || $this->uri->segment(1) == 'kesehatan'
               || $this->uri->segment(1) == 'lingkungan' || $this->uri->segment(1) == 'pek' || $this->uri->segment(1) == 'infrastruktur' ?'active': '' ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Bidang</span></a>
@@ -45,10 +47,14 @@
                   <a class="nav-link" href="<?php echo site_url('infrastruktur'); ?>">Bidang Infrastruktur</a></li>
                 </ul>
               </li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>"><a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>"><a class="nav-link" href="<?php echo site_url('perusahaan'); ?>"><i class="far fa-list-alt"></i> <span>Data Perusahaan</span></a></li>
+              <?php else:?>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>"><i class="far fa-list-alt"></i> <span>Data Perusahaan</span></a></li>
               <li class="menu-header">Berkas</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
+              <?php endif;?>
         </aside>
     </div>

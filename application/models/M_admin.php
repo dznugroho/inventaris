@@ -10,7 +10,7 @@ class M_Admin extends CI_Model{
             'id' 	    => $id,
             'nama'    	=> $nama,
             'username' 	=> $username,
-            'password' 	=> $password,
+            'password' 	=> MD5($password),
             'level' 	=> $level
             
 			
@@ -32,8 +32,8 @@ class M_Admin extends CI_Model{
 
 	function update_admin($id,$nama,$username,$password,$level){
         $this->db->set('nama' 	    		, $nama);
-        $this->db->set('username'     		, $kode_subbidang);
-        $this->db->set('password' 			, $password);
+        $this->db->set('username'     		, $username);
+        $this->db->set('password' 			, MD5($password));
 		$this->db->set('level' 	    		, $level);
 		$this->db->where('id'				, $id);
 		$this->db->update('tb_user');
