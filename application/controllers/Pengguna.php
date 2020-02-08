@@ -62,7 +62,7 @@ class Pengguna extends CI_Controller {
 
 	//update usulan to database
 	function update_pengguna(){
-		$id 				= $this->input->post('id',TRUE);
+	
 		$nama 				= $this->input->post('nama',TRUE);
 		$kode_kecamatan	    = $this->input->post('kode_kecamatan',TRUE);
 		$password	   	 	= $this->input->post('password',TRUE);

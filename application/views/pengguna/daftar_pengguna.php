@@ -39,11 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-<<<<<<< HEAD:application/views/pengguna/daftar_pengguna.php
           <a href="<?php echo site_url('pengguna/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-=======
-          <a href="<?php echo site_url('admin/tambah'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/daftar_admin.php
           </div>
           </div>
             <div class="row">
@@ -55,7 +51,6 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-<<<<<<< HEAD:application/views/pengguna/daftar_pengguna.php
                             <th>ID</th>
                             <th>Nama Admin</th>
                             <th>Username/Id Kecamatan</th>
@@ -63,15 +58,6 @@
                             <th>Level</th>
                             <th>Aksi</th>
 
-=======
-                            <th>id</th>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>password</th>
-                            <th>level</th>
-                            <th>Aksi</th>
-                          
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/daftar_admin.php
                           </tr>
                         </thead>
                         <tbody>
@@ -89,13 +75,8 @@
                               <td><?php echo $row->level;?></td>
                               
                               <td>
-<<<<<<< HEAD:application/views/pengguna/daftar_pengguna.php
                                 <a href="<?php echo site_url('pengguna/get_edit/'.$row->id);?>" class="btn btn-sm btn-info" ><i class="far fa-edit"></a></i>  
                                 <a href="<?php echo site_url('pengguna/delete/'.$row->id);?>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></a></i> 
-=======
-                                <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('admin/delete/'.$row->id);?>" class="btn btn-sm btn-danger">Delete</a>
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/daftar_admin.php
                               </td>
                             </tr>
                             <?php endforeach;?>

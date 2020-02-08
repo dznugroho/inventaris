@@ -44,27 +44,18 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-<<<<<<< HEAD:application/views/pengguna/add_data_view.php
                   <form role="form" method="POST" action="<?php echo site_url('pengguna/save_pengguna');?>">
-=======
-                  <form role="form" method="POST" action="<?php echo site_url('admin/save_admin');?>">
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/tambah_admin.php
                     <div class="card-header">
                       <h4>Tambah Perusahaan</h4>
                     </div>
                     <div class="card-body">
-<<<<<<< HEAD:application/views/pengguna/add_data_view.php
                 
   
-=======
-                      
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/tambah_admin.php
                       <div class="form-group">
                       <label>Nama Admin</label>
                       <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
                       </div>
                       <div class="form-group">
-<<<<<<< HEAD:application/views/pengguna/add_data_view.php
                         <label>Username / Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
                           <option value="">No Selected</option>
@@ -86,22 +77,6 @@
 							
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('pengguna'); ?>">Submit</button>
-=======
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Username">
-                      </div>
-                      <div class="form-group">
-                        <label>Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                        <label>level</label>
-                        <input type="text" class="form-control" name="level" placeholder="Level">
-                      </div>
-                    </div>
-                    <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('admin'); ?>">Submit</button>
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/tambah_admin.php
                     </div>
                   </form>
                 </div>

@@ -39,11 +39,12 @@ class M_Pengguna extends CI_Model{
 	}
 
 	function update_pengguna($id,$nama,$kode_kecamatan,$password,$level){
-		$this->db->set('id' 	    , $id);
+
 		$this->db->set('nama' 		, $nama);
         $this->db->set('kode_kecamatan',$kode_kecamatan);
         $this->db->set('password' 	, MD5($password));
-		$this->db->set('level' 	    , $level);            
+		$this->db->set('level' 	    , $level);
+		$this->db->where('id' 	    , $id);            
 		$this->db->update('tbu_kecamatan');
 	}
 
