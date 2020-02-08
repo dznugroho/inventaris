@@ -35,58 +35,23 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Pengguna</h1>
+         <h1>Kelola Berkas</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Tambah Perushaan</div>
+              <div class="breadcrumb-item">Edit Berkas</div>
             </div>
           </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
-<<<<<<< HEAD:application/views/pengguna/add_data_view.php
-                  <form role="form" method="POST" action="<?php echo site_url('pengguna/save_pengguna');?>">
-=======
-                  <form role="form" method="POST" action="<?php echo site_url('admin/save_admin');?>">
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/tambah_admin.php
-                    <div class="card-header">
-                      <h4>Tambah Perusahaan</h4>
-                    </div>
-                    <div class="card-body">
-<<<<<<< HEAD:application/views/pengguna/add_data_view.php
-                
-  
-=======
-                      
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/tambah_admin.php
+                  <form role="form" method="POST" action="<?php echo site_url('admin/update_admin');?>">
+                  <input type="hidden" class="form-control" name="id" id="id" value="<?=$id?>">
+                  <div class="card-body">
                       <div class="form-group">
-                      <label>Nama Admin</label>
-                      <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
+                        <label>Nama Admin</label>
+                        <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
                       </div>
                       <div class="form-group">
-<<<<<<< HEAD:application/views/pengguna/add_data_view.php
-                        <label>Username / Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
-                          <option value="">No Selected</option>
-                            <?php foreach($kode_kecamatan as $row):?>
-                            <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
-                            <?php endforeach;?>
-                        </select>
-                      </div>
-                      
-                      <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
-                      </div>
-                      <div class="form-group">
-                        <label>Level</label>
-                        <input type="text" required class="form-control" name="level"  placeholder="Level Pengguna" />
-                      </div>
-                      <div class="form-group">
-							
-                    <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pengguna'); ?>">Submit</button>
-=======
                         <label>Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Username">
                       </div>
@@ -101,7 +66,6 @@
                     </div>
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('admin'); ?>">Submit</button>
->>>>>>> ea189f0edfe2d8b85a4da4c929f42c7922587c88:application/views/pengguna/tambah_admin.php
                     </div>
                   </form>
                 </div>
@@ -140,58 +104,33 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
+  
   <script type="text/javascript">
 		$(document).ready(function(){
+			//call function get data edit
+			      get_data_edit();
 
-			$('#kode_bidang').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+			//load data for edit
+            function get_data_edit(){
+            	var id = $('[name="id"]').val();
+            	$.ajax({
+            		url : "<?php echo site_url('admin/get_data_edit');?>",
                     method : "POST",
-                    data : {id: id},
+                    data :{id :id},
                     async : true,
                     dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
-                        }
-                        $('#kode_subbidang').html(html);
-
+                    success : function(data){
+                        $.each(data, function(i, item){
+                            $('[name="nama"]').val(data[i].nama);
+                            $('[name="username"]').val(data[i].username);
+                            $('[name="password"]').val(data[i].password);
+                            $('[name="level"]').val(data[i].level);
+                            
+                        });
                     }
-                });
-                return false;
-            }); 
-            
-		});
-	</script>
 
-<script type="text/javascript">
-		$(document).ready(function(){
-
-			$('#kode_kecamatan').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('pengguna/get_desa');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_wilayah+'>'+data[i].desa+'</option>';
-                        }
-                        $('#kode_wilayah').html(html);
-
-                    }
-                });
-                return false;
-            }); 
+            	});
+            }
             
 		});
 	</script>
