@@ -99,7 +99,24 @@
                               <td><?php echo $row->desa_institusi;?></td>
                               <td><?php echo $row->nama_pengusul;?></td>
                               <td><?php echo $row->no_telp;?></td>
-                              <td><?php echo $row->file;?></td>
+                              <td><?php if($row->file==""){
+							$fill = $row->file;
+							$aksi = site_url('Input/add_file');
+							$tampil = 
+<<<HEREDOCS
+			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
+								<input type="file" name="file">
+								<input type="hidden" name="kode_subbidang" value="$row->kode_subbidang">
+								<br>
+								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"><i class="icon-file-plus"></i> Tambah File</button>
+							</form>
+HEREDOCS;
+						echo $tampil;
+			            }else{?>
+			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			           	<?php } ?>
+
+                              </td>
                               <td>
                                 <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
                                 <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
