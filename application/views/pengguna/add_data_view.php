@@ -35,62 +35,28 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Usulan</h1>
+         <h1>Pengguna</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Tambah Usulan</div>
+              <div class="breadcrumb-item">Tambah Perushaan</div>
             </div>
           </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulan/save_usulan');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('pengguna/save_pengguna');?>">
                     <div class="card-header">
-                      <h4>Tambah Usulan</h4>
+                      <h4>Tambah Perusahaan</h4>
                     </div>
                     <div class="card-body">
-                      <div class="form-group">
-                        <label>Bidang Kegiatan</label>
-                        <select class="form-control" name="kode_bidang" id="kode_bidang">
-                        <option value="">No Selected</option>
-                          <?php foreach($kode_bidang as $row):?>
-                          <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
-                          <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label>Sub Bidang Kegiatan</label>
-                        <select class="form-control" name="kode_subbidang" id="kode_subbidang">
-                          <option value="">No Selected</option>
-                        </select>
-                      </div>
+                
   
                       <div class="form-group">
-                      <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control" name="tahun_pengusulan">
+                      <label>Nama Admin</label>
+                      <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
                       </div>
                       <div class="form-group">
-                        <label>Nama Kegiatan</label>
-                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan">
-                      </div>
-                      <div class="form-group">
-                        <label>Waktu Mulai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai">
-                      </div>
-                      <div class="form-group">
-                        <label>Waktu Selesai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai">
-                      </div>
-                      <div class="form-group">
-                        <label>Anggaran</label>
-                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
-                      </div>
-                      <div class="form-group">
-                        <label>Lokasi Kegiatan</label>
-                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
-                      </div>
-                      <div class="form-group">
-                        <label>Kecamatan</label>
+                        <label>Username / Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
                           <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
@@ -98,48 +64,19 @@
                             <?php endforeach;?>
                         </select>
                       </div>
+                      
                       <div class="form-group">
-                        <label>Desa</label>
-                        <select class="form-control" name="kode_wilayah" id="kode_wilayah">
-                        <option value="">No Selected</option>
-                        </select>
+                        <label>Password</label>
+                        <input type="password" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
                       </div>
                       <div class="form-group">
-                      <label>Deskripsi Kegiatan</label>
-                      <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
-                      </div>
-                      <div class="section-title mt-0">Data Institusi </div>
-                      <div class="form-group">
-                        <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                        <label>Level</label>
+                        <input type="text" required class="form-control" name="level"  placeholder="Level Pengguna" />
                       </div>
                       <div class="form-group">
-                        <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
-                      </div>
-                      <div class="form-group">
-                        <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
-                      </div>
-                      <div class="form-group">
-                        <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
-                      </div>
-                      <div class="form-group">
-                        <label>Nama Pengusul</label>
-                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
-                      </div>
-                      <div class="form-group">
-                        <label>CP Pengusul</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
-                      </div>
-                      <div class="form-group">
-                        <label>File</label>
-                        <input type="file" class="form-control" name="file">
-                      </div>
-                    </div>
+							
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pengguna'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -212,7 +149,7 @@
 			$('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_desa');?>",
+                    url : "<?php echo site_url('pengguna/get_desa');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,

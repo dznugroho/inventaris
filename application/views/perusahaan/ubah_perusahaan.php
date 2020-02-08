@@ -47,7 +47,7 @@
                   <form role="form" method="POST" action="<?php echo site_url('perusahaan/update_perusahaan');?>">
                   <input type="hidden" class="form-control" name="id" id="id" value="<?=$id?>">
                   <div class="card-body">
-                      </div>
+                    
                       <div class="form-group">
                         <label>Nama Perusahaan</label>
                         <input type="text" class="form-control" name="nama_perusahaan" placeholder="Nama Perusahaan">
@@ -76,8 +76,10 @@
                       </div>
                       <div class="form-group">
                         <label>Desa</label>
-                        <input type="text" class="form-control" name="kode_wilayah" placeholder="Desa">
-                      </div>
+                        <select class="form-control" name="kode_wilayah" id="kode_wilayah">
+                        <option value="">No Selected</option>
+                        </select>
+                    
                       <div class="form-group">
                         <label>No. Telp</label>
                         <input type="text" class="form-control" name="no_telp" placeholder="No Telp">  
@@ -133,7 +135,7 @@
 			//call function get data edit
 			      get_data_edit();
 
-            	$('#kode_kecamatan').change(function(){ 
+            $('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
                     url : "<?php echo site_url('perusahaan/get_desa');?>",
@@ -153,7 +155,7 @@
                     }
                 });
                 return false;
-            });  
+            }); 
 
 			//load data for edit
             function get_data_edit(){

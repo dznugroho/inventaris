@@ -18,6 +18,7 @@ class M_Perusahaan extends CI_Model{
 		return $query;	
 	}
 
+
 	function get_desa($kode_kecamatan){
 		$query = $this->db->get_where('tb_wilayah', array('kode_kecamatan_wilayah' => $kode_kecamatan));
 		return $query;
@@ -59,12 +60,12 @@ class M_Perusahaan extends CI_Model{
 
 	function update_perusahaan($id,$username,$password,$level,$nama_perusahaan,
 	$alamat,$kode_kecamatan,$kode_wilayah,$no_telp,$email){
-        $this->db->set('id' 	    , $kode_bidang);
-        $this->db->set('username'     , $kode_subbidang);
-        $this->db->set('password' 	, $tahun_pengusulan);
-		$this->db->set('level' 	    , $nama_kegiatan);            
-		$this->db->set('nama_perusahaan' 		, $waktu_mulai);
-		$this->db->set('alamat' 		, $waktu_selesai);
+        $this->db->set('id' 	    , $id);
+        $this->db->set('username'     , $username);
+        $this->db->set('password' 	, $password);
+		$this->db->set('level' 	    , $level);            
+		$this->db->set('nama_perusahaan' , $nama_perusahaan);
+		$this->db->set('alamat' 		, $alamat);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);
         $this->db->set('kode_wilayah' 	    , $kode_wilayah);
         $this->db->set('no_telp' 	    	, $no_telp);
