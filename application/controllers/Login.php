@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller{
     function __construct(){
         parent::__construct();
@@ -31,45 +32,14 @@ class Login extends CI_Controller{
                         $this->session->set_userdata('ses_nama',$data['nama']);
                         redirect('dashboard'); 
                  }
-
-                 $cek_kecamatan=$this->M_Login->auth_kecamatan($username,$password);
-            }else if
-                    ($cek_kecamatan->num_rows() > 0){
-                    $data=$cek_kecamatan->row_array();
-                    $this->session->set_userdata('masuk',TRUE);
-                        if($data['level']=='3'){
-                            $this->session->set_userdata('akses','3');
-                            $this->session->set_userdata('ses_id',$data['id']);
-                            $this->session->set_userdata('ses_nama',$data['nama']);
-                            redirect('dashboard');
-                
-                        }else{
-                            $cek_perusahaan=$this->M_Login->auth_perusahaan($username,$password);
-            
-                            if($cek_perusahaan->num_rows() > 0){
-                                $data=$cek_perusahaan->row_array();
-                                $this->session->set_userdata('masuk',TRUE);
-                                if($data['level']=='4'){
-                                    $this->session->set_userdata('akses','4');
-                                    $this->session->set_userdata('ses_id',$data['id']);
-                                    $this->session->set_userdata('ses_nama',$data['nama']);
-                                    redirect('dashboard'); 
-                                }else{
-
-                                $url=base_url('login');
-                                echo $this->session->set_flashdata('msg','username atau Password Salah');
-                                echo "Gagal";
-                                redirect($url);
-                                }
-                            }
-                        }
+ 
             }else{
-            
-            $url=base_url('login');
-            echo $this->session->set_flashdata('msg','username atau Password Salah');
-            echo "Gagal";
-            redirect($url);
-        }
+                $url=base_url('login');
+                echo $this->session->set_flashdata('msg','username atau Password Salah');
+                echo "Gagal";
+                redirect($url);
+
+            }
     }
     function exit(){
         $this->session->sess_destroy();
