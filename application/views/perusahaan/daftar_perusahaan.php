@@ -84,8 +84,8 @@
                               <td><?php echo $row->no_telp;?></td>
                               <td><?php echo $row->email;?></td>
                               <td>
-                                <a href="<?php echo site_url('perusahaan/get_edit/'.$row->id);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('perusahaan/delete/'.$row->id);?>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="<?php echo site_url('perusahaan/get_edit/'.$row->id);?>" class="btn btn-sm btn-info" ><i class="far fa-edit"></a></i>  
+                                <a href="<?php echo site_url('perusahaan/delete/'.$row->id);?>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>

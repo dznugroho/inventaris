@@ -23,7 +23,7 @@ class Perusahaan extends CI_Controller {
 
 	function get_desa(){
 		$kode_kecamatan = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_desa($kode_kecamatan)->result();
+		$data = $this->m_perusahaan->get_desa($kode_kecamatan)->result();
 		echo json_encode($data);
 	}
 
@@ -67,7 +67,7 @@ class Perusahaan extends CI_Controller {
 	}
 
 	//update usulan to database
-	function update_usulan(){
+	function update_perusahaan(){
 		$id 				= $this->input->post('id',TRUE);
 		$username	    	= $this->input->post('username',TRUE);
 		$password	   	 	= $this->input->post('password',TRUE);

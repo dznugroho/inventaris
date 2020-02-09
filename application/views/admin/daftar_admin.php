@@ -30,10 +30,10 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Admin Utama</h1>
+            <h1>Data Admin Kecamatan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Admin Utama </div>
+              <div class="breadcrumb-item">Data Perusahaan</div>
             </div>
           </div>
           <div class="row">
@@ -73,6 +73,7 @@
                               <td><?php echo $row->username;?></td>
                               <td><?php echo $row->password;?></td>
                               <td><?php echo $row->level;?></td>
+                              
                               <td>
                                 <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-sm btn-info">Edit</a>
                                 <a href="<?php echo site_url('admin/delete/'.$row->id);?>" class="btn btn-sm btn-danger">Delete</a>

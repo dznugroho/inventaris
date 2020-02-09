@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Usulan extends CI_Model{
+class M_Usulankec extends CI_Model{
 	
 	public function all()
 	{

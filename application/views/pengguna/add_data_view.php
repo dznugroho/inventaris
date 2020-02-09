@@ -25,7 +25,7 @@
 <body>
   <div id="app">
     <div class="main-wrapper">
-      <div class="navbar-bg"> 9
+      <div class="navbar-bg">
       </div>
 
         <?php $this->load->view('include/header.php')?>
@@ -44,31 +44,39 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('admin/save_admin');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('pengguna/save_pengguna');?>">
                     <div class="card-header">
                       <h4>Tambah Perusahaan</h4>
                     </div>
                     <div class="card-body">
-                      
+                
+  
                       <div class="form-group">
                       <label>Nama Admin</label>
                       <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
                       </div>
                       <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <label>Username / Kecamatan</label>
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                          <option value="">No Selected</option>
+                            <?php foreach($kode_kecamatan as $row):?>
+                            <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
+                            <?php endforeach;?>
+                        </select>
                       </div>
+                      
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        <input type="password" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
                       </div>
                       <div class="form-group">
-                        <label>level</label>
-                        <input type="text" class="form-control" name="level" placeholder="Level">
+                        <label>Level</label>
+                        <input type="text" required class="form-control" name="level"  placeholder="Level Pengguna" />
                       </div>
-                    </div>
+                      <div class="form-group">
+							
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('admin'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pengguna'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>

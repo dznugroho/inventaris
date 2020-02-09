@@ -30,16 +30,16 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data usulan</h1>
+            <h1>Data Admin Kecamatan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data usulan</div>
+              <div class="breadcrumb-item">Data Perusahaan</div>
             </div>
           </div>
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('pengguna/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -51,75 +51,32 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode usulan</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
-                            <th>Tahun pengusulan</th>
-                            <th>Nama kegiatan</th>
-                            <th>Waktu Mulai</th>
-                            <th>Waktu Selesai</th>
-                            <th>Anggaran</th>
-                            <th>Alamat kegiatan</th>
-                            <th>Kecamatan</th>
-                            <th>Desa kegiatan</th>
-                            <th>Deskripsi Kegiatan</th>
-                            <th>Nama Institusi</th>
-                            <th>Alamat Instusi</th>
-                            <th>Kecamatan Institusi</th>
-                            <th>Desa Institusi</th>
-                            <th>Nama Pengusul</th>
-                            <th>CP Pengusul</th>
-                            <th>File</th>
+                            <th>ID</th>
+                            <th>Nama Admin</th>
+                            <th>Username/Id Kecamatan</th>
+                            <th>Password</th>
+                            <th>Level</th>
                             <th>Aksi</th>
+
                           </tr>
                         </thead>
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($pengguna->result() as $row):
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
-                              <td><?php echo $row->nama_bidang;?></td>
-                              <td><?php echo $row->nama_sub;?></td>
-                              <td><?php echo $row->tahun_pengusulan;?></td>
-                              <td><?php echo $row->nama_kegiatan;?></td>
-                              <td><?php echo $row->waktu_mulai;?></td>
-                              <td><?php echo $row->waktu_selesai;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo $row->alamat_kegiatan;?></td>
+                              <td><?php echo $row->id;?></td>
+                              <td><?php echo $row->nama;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->deskripsi;?></td>
-                              <td><?php echo $row->nama_institusi;?></td>
-                              <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->kecamatan_institusi;?></td>
-                              <td><?php echo $row->desa_institusi;?></td>
-                              <td><?php echo $row->nama_pengusul;?></td>
-                              <td><?php echo $row->no_telp;?></td>
-                              <td><?php if($row->file==""){
-							$fill = $row->file;
-							$aksi = site_url('Input/add_file');
-							$tampil = 
-<<<HEREDOCS
-			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
-								<input type="file" name="file">
-								<input type="hidden" name="kode_subbidang" value="$row->kode_subbidang">
-								<br>
-								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"><i class="icon-file-plus"></i> Tambah File</button>
-							</form>
-HEREDOCS;
-						echo $tampil;
-			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
-			           	<?php } ?>
-
-                              </td>
+                              <td><?php echo $row->password;?></td>
+                              <td><?php echo $row->level;?></td>
+                              
                               <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="<?php echo site_url('pengguna/get_edit/'.$row->id);?>" class="btn btn-sm btn-info" ><i class="far fa-edit"></a></i>  
+                                <a href="<?php echo site_url('pengguna/delete/'.$row->id);?>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>

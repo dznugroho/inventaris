@@ -76,7 +76,7 @@
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($usulankec->result() as $row):
                                 $no++;
                             ?>
                             <tr>

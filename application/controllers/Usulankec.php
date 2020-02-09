@@ -1,36 +1,36 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usulan extends CI_Controller {
+class Usulankec extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Usulan','m_usulan');
+		$this->load->model('M_Usulankec','m_usulankec');
 		$this->load->library('session');
 	}
 
 	function index(){
-		$data['usulan'] = $this->m_usulan->get_usulan();
-		$this->load->view('usulan/daftar_usulan',$data);
+		$data['usulankec'] = $this->m_usulankec->get_usulan();
+		$this->load->view('usulankec/daftar_usulan',$data);
 	}
 
 	// add new usulan
 	function add_new(){
 		
-		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
-		$this->load->view('usulan/add_product_view', $data);
+		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
+		$data['kode_kecamatan'] = $this->m_usulankec->get_kecamatan()->result();
+		$this->load->view('usulankec/add_product_view', $data);
 	}
 
 	// get sub bidang by bidang_id
 	function get_sub_bidang(){
 		$kode_bidang = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_sub_bidang($kode_bidang)->result();
+		$data = $this->m_usulankec->get_sub_bidang($kode_bidang)->result();
 		echo json_encode($data);
 	}
 
 	function get_desa(){
 		$kode_kecamatan = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_desa($kode_kecamatan)->result();
+		$data = $this->m_usulankec->get_desa($kode_kecamatan)->result();
 		echo json_encode($data);
 	}
 
@@ -41,7 +41,7 @@ class Usulan extends CI_Controller {
     }
 
 	//save usulan to database
-	function save_usulan(){
+	function save_usulankec(){
 
 		$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
 		$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
@@ -62,7 +62,7 @@ class Usulan extends CI_Controller {
 		$no_telp         	= $this->input->post('no_telp',TRUE);
 		$file         	= $this->input->post('file',TRUE);
 
-		$this->m_usulan->save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
+		$this->m_usulan->save_usulankec($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 		$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
 		$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
@@ -104,7 +104,7 @@ class Usulan extends CI_Controller {
 			$data['kode_wilayah'] = $row['kode_wilayah'];
 
 		}
-		$this->load->view('usulan/ubah_usulan',$data);
+		$this->load->view('usulankec/ubah_usulan',$data);
 	}
 
 	function get_data_edit(){
@@ -114,7 +114,7 @@ class Usulan extends CI_Controller {
 	}
 
 	//update usulan to database
-	function update_usulan(){
+	function update_usulankec(){
 		$kode_usulan 	    = $this->input->post('kode_usulan',TRUE);
 		$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
 		$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
