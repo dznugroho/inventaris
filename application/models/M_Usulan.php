@@ -58,6 +58,7 @@ class M_Usulan extends CI_Model{
 			
 		);
 		$this->db->insert('tb_usulan',$data);
+		return $result;
 	}
 
 	function get_usulan(){

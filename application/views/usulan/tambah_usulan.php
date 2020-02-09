@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('berkas/save');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('usulan/save_usulan');?>">
                     <div class="card-header">
                       <h4>Tambah Berkas</h4>
                     </div>
@@ -212,6 +212,22 @@
 		})
 	})
 </script>
+<script type="text/javascript">
+$('#submit').submit(function(e){
+		    e.preventDefault(); 
+		         $.ajax({
+		             url:'<?php echo base_url();?>index.php/usulan/save_usulan',
+		             type:"post",
+		             data:new FormData(this),
+		             processData:false,
+		             contentType:false,
+		             cache:false,
+		             async:false,
+		              
+		         });
+		    });
+</script>
+
 
 <script type="text/javascript">
 	$(document).ready(function(){

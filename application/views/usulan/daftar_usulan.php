@@ -101,7 +101,7 @@
                               <td><?php echo $row->no_telp;?></td>
                               <td><?php if($row->file==""){
 							$fill = $row->file;
-							$aksi = site_url('Input/add_file');
+							$aksi = site_url('usulan/add_file');
 							$tampil = 
 <<<HEREDOCS
 			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
