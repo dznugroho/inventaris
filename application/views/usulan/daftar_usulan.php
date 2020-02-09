@@ -108,7 +108,7 @@
 								<input type="file" name="file">
 								<input type="hidden" name="kode_subbidang" value="$row->kode_subbidang">
 								<br>
-								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"><i class="icon-file-plus"></i> Tambah File</button>
+								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
 							</form>
 HEREDOCS;
 						echo $tampil;

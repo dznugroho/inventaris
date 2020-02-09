@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan/'.$cekid['kode_usulan']);?>" enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
                       <div class="form-group">
