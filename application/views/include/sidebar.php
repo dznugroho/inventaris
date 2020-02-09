@@ -24,7 +24,7 @@
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'kesehatan'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('pengguna'); ?>">Admin Kecamatan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'lingkungan'?'active': '' ?>">
-                  <a class="nav-link" href="<?php echo site_url('lingkungan'); ?>">Perusahaan</a></li>
+                  <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>">Perusahaan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'pek'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('pek'); ?>">Perorangan</a></li>
                 </ul>

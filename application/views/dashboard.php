@@ -27,13 +27,13 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Dashboard</h1>
+          <marquee><h1>WELCOME TO SIALAN</h1></marquee>
           </div>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary" >
-                  <i class="far fa-user" ></i>
+                  <i class="fas fa-archway" ></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -48,7 +48,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                  <i class="far fa-newspaper" ></i>
+                  <i class="far fa-angry" ></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -63,14 +63,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
+                  <i class="fas fa-align-justify"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>Total Bidang</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                  <tr><?php echo $this->db->query('SELECT * FROM tb_bidang')->num_rows(); ?></tr>
                   </div>
                 </div>
               </div>
@@ -78,14 +78,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-address-book"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>Total Subbidang</h4>
                   </div>
                   <div class="card-body">
-                    47
+                  <tr><?php echo $this->db->query('SELECT * FROM tb_subbidang')->num_rows(); ?></tr>
                   </div>
                 </div>
               </div>
