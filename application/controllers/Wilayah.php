@@ -26,6 +26,8 @@ class Wilayah extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	
+
 	//save wilayah to database
 	function save_wilayah(){
 		$kode_wilayah 	        = $this->input->post('kode_wilayah',TRUE);
