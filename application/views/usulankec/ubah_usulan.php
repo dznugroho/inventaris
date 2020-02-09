@@ -35,20 +35,18 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Usulan</h1>
+         <h1>Kelola Berkas</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Tambah Usulan</div>
+              <div class="breadcrumb-item">Edit Berkas</div>
             </div>
           </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulankec/save_usulankec');?>">
-                    <div class="card-header">
-                      <h4>Tambah Usulan</h4>
-                    </div>
-                    <div class="card-body">
+                  <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan');?>">
+                  <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
+                  <div class="card-body">
                       <div class="form-group">
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="kode_bidang" id="kode_bidang">
@@ -90,8 +88,6 @@
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
-                      <input type="text" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
-                      <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
@@ -100,7 +96,6 @@
                             <option value="<?php echo $row->kode_wilayah;?>"><?php echo $row->desa;?></option>
                             <?php endforeach;?>
                         </select>
-                      </div>
                       <div class="form-group">
                       <label>Deskripsi Kegiatan</label>
                       <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
@@ -114,7 +109,10 @@
                         <label>Alamat Institusi</label>
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
-  
+                      <div class="form-group">
+                        <label>Kecamatan Institusi</label>
+                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
+                      </div>
                       <div class="form-group">
                         <label>Desa Institusi</label>
                         <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
@@ -133,7 +131,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulankec'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -172,10 +170,13 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
+  
   <script type="text/javascript">
 		$(document).ready(function(){
+			//call function get data edit
+			      get_data_edit();
 
-			$('#kode_bidang').change(function(){ 
+            $('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
                     url : "<?php echo site_url('usulan/get_sub_bidang');?>",
@@ -195,15 +196,9 @@
                     }
                 });
                 return false;
-            }); 
-            
-		});
-	</script>
+            });
 
-<script type="text/javascript">
-		$(document).ready(function(){
-
-			$('#kode_kecamatan').change(function(){ 
+            	$('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
                     url : "<?php echo site_url('usulan/get_desa');?>",
@@ -223,7 +218,59 @@
                     }
                 });
                 return false;
-            }); 
+            });  
+
+            $('#submit').submit(function(e){
+		    e.preventDefault(); 
+		         $.ajax({
+		             url:'<?php echo base_url();?>index.php/upload/do_upload',
+		             type:"post",
+		             data:new FormData(this),
+		             processData:false,
+		             contentType:false,
+		             cache:false,
+		             async:false,
+		              success: function(data){
+		                  alert("Upload Image Berhasil.");
+		           }
+		         });
+		        });
+
+			//load data for edit
+            function get_data_edit(){
+            	var kode_usulan = $('[name="kode_usulan"]').val();
+            	$.ajax({
+            		url : "<?php echo site_url('usulan/get_data_edit');?>",
+                    method : "POST",
+                    data :{kode_usulan :kode_usulan},
+                    async : true,
+                    dataType : 'json',
+                    success : function(data){
+                        $.each(data, function(i, item){
+                            $('[name="kode_bidang"]').val(data[i].kode_bidang).trigger('change');
+                            $('[name="kode_subbidang"]').val(data[i].kode_subbidang).trigger('change');
+                            $('[name="tahun_pengusulan"]').val(data[i].tahun_pengusulan);
+                            $('[name="nama_kegiatan"]').val(data[i].nama_kegiatan);
+                            $('[name="waktu_mulai"]').val(data[i].waktu_mulai);
+                            $('[name="waktu_selesai"]').val(data[i].waktu_selesai);
+                            $('[name="anggaran"]').val(data[i].anggaran);
+                            $('[name="alamat_kegiatan"]').val(data[i].alamat_kegiatan);
+                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
+                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
+                            $('[name="deskripsi"]').val(data[i].deskripsi);
+                            $('[name="nama_institusi"]').val(data[i].nama_institusi);
+                            $('[name="alamat_institusi"]').val(data[i].alamat_institusi);
+                            $('[name="kecamatan_institusi"]').val(data[i].kecamatan_institusi);
+                            $('[name="desa_institusi"]').val(data[i].desa_institusi);
+                            $('[name="nama_pengusul"]').val(data[i].nama_pengusul);
+                            $('[name="no_telp"]').val(data[i].no_telp);
+                            $('[name="file"]').val(data[i].file);
+                            
+                        });
+                    }
+
+            	});
+            }
             
 		});
 	</script>

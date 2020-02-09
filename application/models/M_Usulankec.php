@@ -32,7 +32,7 @@ class M_Usulankec extends CI_Model{
 		return $query;
 	}
 	
-	function save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
+	function save_usulankec($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 	$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
 	$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file){
 		$data = array(
@@ -60,7 +60,7 @@ class M_Usulankec extends CI_Model{
 		$this->db->insert('tb_usulan',$data);
 	}
 
-	function get_usulan(){
+	function get_usulankec(){
 		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
 		waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
 		nama_institusi,alamat_institusi,kecamatan_institusi,desa_institusi,
@@ -74,12 +74,12 @@ class M_Usulankec extends CI_Model{
 		return $query;
 	}
 
-	function get_usulan_by_id($kode_usulan){
+	function get_usulankec_by_id($kode_usulan){
 		$query = $this->db->get_where('tb_usulan', array('kode_usulan' =>  $kode_usulan));
 		return $query;
 	}
 
-	function update_usulan($kode_usulan,$kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
+	function update_usulankec($kode_usulan,$kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 	$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
 	$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file){
         $this->db->set('kode_bidang' 	    , $kode_bidang);
@@ -105,7 +105,7 @@ class M_Usulankec extends CI_Model{
 	}
 
 	//Delete usulan
-	function delete_usulan($kode_usulan){
+	function delete_usulankec($kode_usulan){
 		$this->db->delete('tb_usulan', array('kode_usulan' => $kode_usulan));
 	}
 

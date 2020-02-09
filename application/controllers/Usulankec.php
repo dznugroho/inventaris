@@ -9,13 +9,14 @@ class Usulankec extends CI_Controller {
 	}
 
 	function index(){
-		$data['usulankec'] = $this->m_usulankec->get_usulan();
+		$data['usulankec'] = $this->m_usulankec->get_usulankec();
 		$this->load->view('usulankec/daftar_usulan',$data);
 	}
 
 	// add new usulan
 	function add_new(){
 		
+		$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
 		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulankec->get_kecamatan()->result();
 		$this->load->view('usulankec/add_product_view', $data);
@@ -28,9 +29,13 @@ class Usulankec extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	function get_desa(){
-		$kode_kecamatan = $this->input->post('id',TRUE);
+	function get_desa($session_user){
+		// $kode_kecamatan = $this->input->post('id',TRUE);
+		// $data = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
+		// $query = $this->db->get_where('tb_wilayah', array('kode_kecamatan_wilayah' => $kode_kecamatan));
+		$kode_kecamatan = $session_user;
 		$data = $this->m_usulankec->get_desa($kode_kecamatan)->result();
+		// return $data;
 		echo json_encode($data);
 	}
 
@@ -62,11 +67,11 @@ class Usulankec extends CI_Controller {
 		$no_telp         	= $this->input->post('no_telp',TRUE);
 		$file         	= $this->input->post('file',TRUE);
 
-		$this->m_usulan->save_usulankec($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
+		$this->m_usulankec->save_usulankec($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 		$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
 		$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
-		redirect('usulan');
+		redirect('usulankec');
 		
 	}
 
@@ -89,7 +94,7 @@ class Usulankec extends CI_Controller {
 		$this->db->where('kode_usulan', $kode_usulan);
 		$this->db->update('tb_usulan', $data);
 		$this->session->set_flashdata('sukses','1');
-		redirect('usulan');
+		redirect('usulankec');
 }
 
 	function get_edit(){
