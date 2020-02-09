@@ -25,7 +25,7 @@
 <body>
   <div id="app">
     <div class="main-wrapper">
-      <div class="navbar-bg">
+      <div class="navbar-bg"> 9
       </div>
 
         <?php $this->load->view('include/header.php')?>
