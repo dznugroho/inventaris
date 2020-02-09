@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulan/save_usulan');?>">
+                  <form role="form" method="POST" action="<?php echo base_url();?>usulan/save_usulan" enctype="multipart/form-data">
                     <div class="card-header">
                       <h4>Tambah Usulan</h4>
                     </div>
