@@ -90,15 +90,6 @@
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
-                        <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
-                          <option value="">No Selected</option>
-                            <?php foreach($kode_kecamatan as $row):?>
-                            <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
-                            <?php endforeach;?>
-                        </select>
-                      </div>
-                      <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
@@ -117,10 +108,7 @@
                         <label>Alamat Institusi</label>
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
-                      <div class="form-group">
-                        <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
-                      </div>
+  
                       <div class="form-group">
                         <label>Desa Institusi</label>
                         <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
