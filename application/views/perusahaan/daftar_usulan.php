@@ -46,6 +46,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+                  <form action="">
                     <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
                         <thead>
@@ -125,15 +126,13 @@ HEREDOCS;
 			           	<?php } ?>
 
                               </td>
-                              <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
-                              </td>
+                             
                             </tr>
                             <?php endforeach;?>
                           </tbody>
                       </table>
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>
