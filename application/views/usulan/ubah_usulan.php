@@ -226,6 +226,22 @@
                 return false;
             });  
 
+            $('#submit').submit(function(e){
+		    e.preventDefault(); 
+		         $.ajax({
+		             url:'<?php echo base_url();?>index.php/upload/do_upload',
+		             type:"post",
+		             data:new FormData(this),
+		             processData:false,
+		             contentType:false,
+		             cache:false,
+		             async:false,
+		              success: function(data){
+		                  alert("Upload Image Berhasil.");
+		           }
+		         });
+		        });
+
 			//load data for edit
             function get_data_edit(){
             	var kode_usulan = $('[name="kode_usulan"]').val();

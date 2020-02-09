@@ -12,7 +12,7 @@
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block"><?=$this->session->userdata('ses_nama')?> (<?php if($this->session->userdata('akses')=='1'){echo "Admin"; }else if($this->session->userdata('akses')=='2') {echo "Umum"; } else if($this->session->userdata('akses')=='3') {echo "Kecamatan"; } else{echo "Umum"; }?>)</div></a>
+            <div class="d-sm-none d-lg-inline-block"><?=$this->session->userdata('ses_nama')?> (<?php if($this->session->userdata('akses')=='1'){echo "Admin"; }else if($this->session->userdata('akses')=='2') {echo "Umum"; } else if($this->session->userdata('akses')=='3') {echo "Kecamatan"; } else{echo "Perusahaan"; }?>)</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Manajemen User

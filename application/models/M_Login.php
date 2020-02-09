@@ -7,7 +7,7 @@ class M_Login extends CI_Model{
  
     //cek nim dan password mahasiswa
     function auth_kecamatan($username,$password){
-        $query=$this->db->query("SELECT * FROM tbu_kecamatan WHERE username='$username' AND password=MD5('$password') LIMIT 1");
+        $query=$this->db->query("SELECT * FROM tbu_kecamatan WHERE kode_kecamatan='$username' AND password=MD5('$password') LIMIT 1");
         return $query;
     }
 
