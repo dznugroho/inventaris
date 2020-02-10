@@ -106,7 +106,7 @@
 <<<HEREDOCS
 			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
 								<input type="file" name="file">
-								<input type="hidden" name="kode_subbidang" value="$row->kode_subbidang">
+								<input type="hidden" name="kode_usulan" value="$row->kode_usulan">
 								<br>
 								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"><i class="icon-file-plus"></i> Tambah File</button>
 							</form>

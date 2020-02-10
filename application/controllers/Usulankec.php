@@ -124,6 +124,8 @@ class Usulankec extends CI_Controller {
 	function get_edit(){
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;
+		$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
+		$data['desass'] = $this->m_usulankec->get_dk($this->session->userdata('ses_kodekec'))->result();
 		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulankec->get_kecamatan()->result();
 		$data['kode_k'] = $this->m_usulankec->get_k()->result();
@@ -140,7 +142,7 @@ class Usulankec extends CI_Controller {
 
 	function get_data_edit(){
 		$kode_usulan = $this->input->post('kode_usulan',TRUE);
-		$data = $this->m_usulankec->get_usulan_by_id($kode_usulan)->result();
+		$data = $this->m_usulankec->get_usulankec_by_id($kode_usulan)->result();
 		echo json_encode($data);
 	}
 
@@ -160,8 +162,8 @@ class Usulankec extends CI_Controller {
 		$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
         $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
 		$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-		$kecamatan_institusi        = $this->input->post('kecamatan_institusi',TRUE);
-		$desa_institusi 	    = $this->input->post('desa_institusi',TRUE);
+		$kode_k        = $this->input->post('kode_k',TRUE);
+		$kode_w	    = $this->input->post('kode_w',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
         
@@ -204,7 +206,7 @@ class Usulankec extends CI_Controller {
 			'file'=>$file_name
 
 		);
-		$this->m_usulankec->update_usulan($data,$kode_usulan);
+		$this->m_usulankec->update_usulankec($data,$kode_usulan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
 		redirect('usulankec');
 	}

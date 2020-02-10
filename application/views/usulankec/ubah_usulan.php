@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('usulankec/update_usulankec');?>"  enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
                   <div class="form-group">
@@ -116,7 +116,7 @@
                       </div>
                       <div class="form-group">
                       <label>kecamatan Institusi</label>
-                      <input type="text" class="form-control" name="kode_k" id="kode_sk" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                      <input type="text" class="form-control" name="kode_k" id="kode_k" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
                       </div>
                       <div class="form-group">
                         <label>Desa</label>
@@ -140,9 +140,9 @@
                         <label>File</label>
                         <input type="file" class="form-control" name="file">
                       </div>
-                    </div>
+                    
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulankec'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -251,28 +251,14 @@
                 });
                 return false;
             });      
+            
 
-            $('#submit').submit(function(e){
-		    e.preventDefault(); 
-		         $.ajax({
-		             url:'<?php echo base_url();?>index.php/upload/do_upload',
-		             type:"post",
-		             data:new FormData(this),
-		             processData:false,
-		             contentType:false,
-		             cache:false,
-		             async:false,
-		              success: function(data){
-		                  alert("Upload Image Berhasil.");
-		           }
-		         });
-		        });
 
 			//load data for edit
             function get_data_edit(){
             	var kode_usulan = $('[name="kode_usulan"]').val();
             	$.ajax({
-            		url : "<?php echo site_url('usulan/get_data_edit');?>",
+            		url : "<?php echo site_url('usulankec/get_data_edit');?>",
                     method : "POST",
                     data :{kode_usulan :kode_usulan},
                     async : true,
@@ -287,13 +273,13 @@
                             $('[name="waktu_selesai"]').val(data[i].waktu_selesai);
                             $('[name="anggaran"]').val(data[i].anggaran);
                             $('[name="alamat_kegiatan"]').val(data[i].alamat_kegiatan);
-                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
-                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
+                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan);
+                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah);
                             $('[name="deskripsi"]').val(data[i].deskripsi);
                             $('[name="nama_institusi"]').val(data[i].nama_institusi);
                             $('[name="alamat_institusi"]').val(data[i].alamat_institusi);
-                            $('[name="kecamatan_institusi"]').val(data[i].kecamatan_institusi);
-                            $('[name="desa_institusi"]').val(data[i].desa_institusi);
+                            $('[name="kode_k"]').val(data[i].kode_k).trigger('change');
+                            $('[name="kode_w"]').val(data[i].kode_w).trigger('change');
                             $('[name="nama_pengusul"]').val(data[i].nama_pengusul);
                             $('[name="no_telp"]').val(data[i].no_telp);
                             $('[name="file"]').val(data[i].file);
