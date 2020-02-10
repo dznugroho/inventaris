@@ -46,7 +46,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                  <form action="">
+                  <form action="<?php echo site_url('pilihan_prs/save_pilihan'); ?>" method="post">
                     <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
                         <thead>
@@ -75,7 +75,6 @@
                             <th>Nama Pengusul</th>
                             <th>CP Pengusul</th>
                             <th>File</th>
-                            <th>Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -131,6 +130,9 @@ HEREDOCS;
                             <?php endforeach;?>
                           </tbody>
                       </table>
+                    </div>
+                    <div class="card-footer text-right">
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pilihan_prs'); ?>">Simpan</button>
                     </div>
                     </form>
                   </div>
