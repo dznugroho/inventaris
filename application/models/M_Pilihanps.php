@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Pilihanprs extends CI_Model{
+class M_Pilihanps extends CI_Model{
 	
 	function get_pilihan(){
 		$query = $this->db->get('tb_pilihan');
@@ -9,19 +9,21 @@ class M_Pilihanprs extends CI_Model{
 	}
 
 	
-	function save_pilihan($row,$kode_perusahaan){
+	function save_pilihan($kode_usulan,$kode_perusahaan,$dana){
 		$data = array(
 			
-			'kode_usulan' 	  => $row,
-			'kode_perusahaan' => $kode_perusahaan,
+			'kode_usulan'		=> $kode_usulan,
+			'kode_perusahaan'	=> $kode_perusahaan,
+			'dana' 				=> $dana,
+			
 		);
 		$this->db->insert('tb_pilihan',$data);
 	}
 
-	function get_pengguna(){
-		$this->db->select('id,nama,nama_kecamatan,password,level');
-		$this->db->from('tbu_kecamatan');
-		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tbu_kecamatan.kode_kecamatan','left');
+	function get_usulan(){
+		$this->db->select('kode_usulan,nama_bidang,nama_kegiatan,anggaran,dana,status');
+		$this->db->from('tb_pilihan');
+		$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
 		$query = $this->db->get();
 		return $query;
 	}
