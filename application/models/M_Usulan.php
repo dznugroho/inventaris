@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed'c);
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Usulan extends CI_Model{
 	

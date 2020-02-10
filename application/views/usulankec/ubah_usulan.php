@@ -47,7 +47,7 @@
                   <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan');?>">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
-                      <div class="form-group">
+                  <div class="form-group">
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="kode_bidang" id="kode_bidang">
                         <option value="">No Selected</option>
@@ -88,6 +88,10 @@
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
+                     
+                      <input type="hidden" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                      </div>
+                      <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
@@ -96,6 +100,7 @@
                             <option value="<?php echo $row->kode_wilayah;?>"><?php echo $row->desa;?></option>
                             <?php endforeach;?>
                         </select>
+                      </div>
                       <div class="form-group">
                       <label>Deskripsi Kegiatan</label>
                       <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
@@ -110,13 +115,19 @@
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
                       <div class="form-group">
-                        <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kode_k" placeholder="Kecamatan Institusi">
+                      <label>kecamatan Institusi</label>
+                      <input type="text" class="form-control" name="kode_k" id="kode_sk" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
                       </div>
                       <div class="form-group">
-                        <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="kode_w" placeholder="Nama Desa">
-                      </div>
+                        <label>Desa</label>
+                        <select class="form-control" name="kode_w" id="kode_w">
+                        <option value="">No Selected</option>
+                        <?php 
+                        foreach($desass as $row):?>
+                            <option value="<?php echo $row->kode_w;?>"><?php echo $row->nama_d;?></option>
+                            <?php endforeach;?>
+                        </select>
+                     </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
                         <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
@@ -131,7 +142,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulankec'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -179,7 +190,7 @@
             $('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+                    url : "<?php echo site_url('usulankec/get_sub_bidang');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -201,7 +212,7 @@
             	$('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_desa');?>",
+                    url : "<?php echo site_url('usulankec/get_desa');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -219,6 +230,27 @@
                 });
                 return false;
             });  
+            $('#kode_k').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulankec/get_dk');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_w+'>'+data[i].nama_d+'</option>';
+                        }
+                        $('#kode_w').html(html);
+
+                    }
+                });
+                return false;
+            });      
 
             $('#submit').submit(function(e){
 		    e.preventDefault(); 
