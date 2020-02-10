@@ -26,9 +26,10 @@ class M_Pengguna extends CI_Model{
 	}
 
 	function get_pengguna(){
-		$this->db->select('id,nama,nama_kecamatan,password,level');
+		$this->db->select('id,nama,nama_kecamatan,password,nama_akses');
 		$this->db->from('tbu_kecamatan');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tbu_kecamatan.kode_kecamatan','left');
+		$this->db->join('akses','akses.id_akses = tbu_kecamatan.level','left');
 		$query = $this->db->get();
 		return $query;
 	}
