@@ -50,10 +50,6 @@
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
-                            <td><div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                            </div></td>
                             <th>No.</th>
                             <th>Kode usulan</th>
                             <th>Nama Bidang</th>
@@ -84,10 +80,6 @@
                                 $no++;
                             ?>
                             <tr>
-                            <td><div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="<?php echo $row->kode_usulan;?>" id="<?php echo $row->kode_usulan;?>">
-                              <label for="<?php echo $row->kode_usulan;?>" class="custom-control-label">&nbsp;</label>
-                            </div></td>
                               <td><?php echo $no;?></td>
                               <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
@@ -103,8 +95,8 @@
                               <td><?php echo $row->deskripsi;?></td>
                               <td><?php echo $row->nama_institusi;?></td>
                               <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->kecamatan_institusi;?></td>
-                              <td><?php echo $row->desa_institusi;?></td>
+                              <td><?php echo $row->nama_k;?></td>
+                              <td><?php echo $row->nama_d;?></td>
                               <td><?php echo $row->nama_pengusul;?></td>
                               <td><?php echo $row->no_telp;?></td>
                               <td><?php if($row->file==""){

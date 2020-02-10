@@ -117,11 +117,18 @@
                       </div>
                       <div class="form-group">
                         <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
+                        <select class="form-control" name="kode_k" id="kode_k">
+                        <option value="">No Selected</option>
+                          <?php foreach($kode_k as $row):?>
+                          <option value="<?php echo $row->kode_k;?>"><?php echo $row->nama_k;?></option>
+                          <?php endforeach;?>
+                        </select>
                       </div>
                       <div class="form-group">
                         <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
+                        <select class="form-control" name="kode_w" id="kode_w">
+                        <option value="">No Selected</option>
+                        </select>
                       </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
@@ -226,21 +233,27 @@
                 return false;
             });  
 
-            $('#submit').submit(function(e){
-		    e.preventDefault(); 
-		         $.ajax({
-		             url:'<?php echo base_url();?>index.php/upload/do_upload',
-		             type:"post",
-		             data:new FormData(this),
-		             processData:false,
-		             contentType:false,
-		             cache:false,
-		             async:false,
-		              success: function(data){
-		                  alert("Upload Image Berhasil.");
-		           }
-		         });
-		        });
+            $('#kode_k').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulan/get_dk');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_w+'>'+data[i].nama_d+'</option>';
+                        }
+                        $('#kode_w').html(html);
+
+                    }
+                });
+                return false;
+            }); 
 
 			//load data for edit
             function get_data_edit(){
@@ -266,8 +279,8 @@
                             $('[name="deskripsi"]').val(data[i].deskripsi);
                             $('[name="nama_institusi"]').val(data[i].nama_institusi);
                             $('[name="alamat_institusi"]').val(data[i].alamat_institusi);
-                            $('[name="kecamatan_institusi"]').val(data[i].kecamatan_institusi);
-                            $('[name="desa_institusi"]').val(data[i].desa_institusi);
+                            $('[name="kode_k"]').val(data[i].kode_k).trigger('change');
+                            $('[name="kode_w"]').val(data[i].kode_w).trigger('change');
                             $('[name="nama_pengusul"]').val(data[i].nama_pengusul);
                             $('[name="no_telp"]').val(data[i].no_telp);
                             $('[name="file"]').val(data[i].file);

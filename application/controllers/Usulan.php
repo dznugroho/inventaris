@@ -19,6 +19,7 @@ class Usulan extends CI_Controller {
 		
 		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulan->get_k()->result();
 		$this->load->view('usulan/add_product_view', $data);
 	}
 
@@ -34,6 +35,13 @@ class Usulan extends CI_Controller {
 		$data = $this->m_usulan->get_desa($kode_kecamatan)->result();
 		echo json_encode($data);
 	}
+
+	function get_dk(){
+		$kode_k = $this->input->post('id',TRUE);
+		$data = $this->m_usulan->get_dk($kode_k)->result();
+		echo json_encode($data);
+	}
+
 
 	public function embed()
     {
@@ -70,8 +78,8 @@ class Usulan extends CI_Controller {
 			'deskripsi' 	   	=> $this->input->post('deskripsi',TRUE),
 			'nama_institusi' 	=> $this->input->post('nama_institusi',TRUE),
 			'alamat_institusi' 	=> $this->input->post('alamat_institusi',TRUE),
-			'kecamatan_institusi'   => $this->input->post('kecamatan_institusi',TRUE),
-			'desa_institusi'	    => $this->input->post('desa_institusi',TRUE),
+			'kode_k'   => $this->input->post('kode_k',TRUE),
+			'kode_w'	    => $this->input->post('kode_w',TRUE),
 			'nama_pengusul'   	=> $this->input->post('nama_pengusul',TRUE),
 			'no_telp'         	=> $this->input->post('no_telp',TRUE),
 			'file'=>$file_name
@@ -111,12 +119,14 @@ class Usulan extends CI_Controller {
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulan->get_k()->result();
 		$data['cekid']=$this->m_usulan->cekid($kode_usulan)->row_array();
 		$get_data = $this->m_usulan->get_usulan_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
 			$data['kode_subbidang'] = $row['kode_subbidang'];
 			$data['kode_wilayah'] = $row['kode_wilayah'];
+			$data['kode_w'] = $row['kode_w'];
 
 		}
 		$this->load->view('usulan/ubah_usulan',$data);
@@ -144,8 +154,8 @@ class Usulan extends CI_Controller {
 		$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
         $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
 		$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-		$kecamatan_institusi        = $this->input->post('kecamatan_institusi',TRUE);
-		$desa_institusi 	    = $this->input->post('desa_institusi',TRUE);
+		$kode_k        = $this->input->post('kode_k',TRUE);
+		$kode_w 	    = $this->input->post('kode_w',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
         
@@ -181,8 +191,8 @@ class Usulan extends CI_Controller {
 			'deskripsi' 	   	=> $deskripsi,
 			'nama_institusi' 	=> $nama_institusi,
 			'alamat_institusi' 	=> $alamat_institusi,
-			'kecamatan_institusi'   => $kecamatan_institusi,
-			'desa_institusi'	    => $desa_institusi,
+			'kode_k'   => $kode_k,
+			'kode_w'	    => $kode_w,
 			'nama_pengusul'   	=> $nama_pengusul,
 			'no_telp'         	=> $no_telp,
 			'file'=>$file_name
