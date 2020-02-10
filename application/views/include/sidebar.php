@@ -47,10 +47,10 @@
               </li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>"><i class="far fa-list-alt"></i> <span>Data Perusahaan</span></a></li>
-              <li class="menu-header">Berkas</li>
+              <li class="menu-header">Usulan</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Utama</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'usulankec'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('usulankec'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Kecamatan</span></a></li>
         </aside>
     </div>

@@ -30,7 +30,7 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data usulan</h1>
+            <h1>Data Perusahaan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
               <div class="breadcrumb-item">Data Perusahaan</div>
@@ -55,7 +55,7 @@
                             <th>Nama Perusahaan</th>
                             <th>Username</th>
                             <th>Password</th>
-                            <th>Level</th>
+                            <th>Akses Sebagai</th>
                             <th>Alamat</th>
                             <th>Kecamatan</th>
                             <th>Desa</th>
@@ -77,7 +77,7 @@
                               <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo $row->username;?></td>
                               <td><?php echo $row->password;?></td>
-                              <td><?php echo $row->level;?></td>
+                              <td><?php echo $row->nama_akses;?></td>
                               <td><?php echo $row->alamat;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->desa;?></td>

@@ -68,8 +68,13 @@
                         <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
-                        <label>Level</label>
-                        <input type="text" class="form-control" name="level" id="level" placeholder="Level akses">  
+                        <label>Akses sebagai</label>
+                        <select class="form-control" name="level" id="level">
+                          <option value="1">Admin</option>
+                          <option value="2">Perorangan</option>
+                          <option value="3">Kecamatan</option>
+                          <option value="4">Perusahaan</option>
+                        </select>
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>

@@ -64,6 +64,11 @@
                         <label>Alamat</label>
                         <input type="text" class="form-control" name="alamat" placeholder="Alamat">
                       </div>
+                      <div class="form-group">
+                        <label>Level</label>
+                        <input type="text" class="form-control" name="level" placeholder="Alamat">
+                      </div>
+
 
                       <div class="form-group">
                         <label>Kecamatan</label>

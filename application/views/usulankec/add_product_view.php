@@ -90,7 +90,9 @@
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
-                      <input type="text" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                     
+                      <input type="hidden" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                      </div>
                       <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
@@ -114,7 +116,10 @@
                         <label>Alamat Institusi</label>
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
-  
+                      <div class="form-group">
+                      <label>kecamatan</label>
+                      <input type="text" class="form-control" name="kecamatan_konstitusi" id="kecamatan_konstitusi" placeholder="Nama Jalan" >  
+                      </div>
                       <div class="form-group">
                         <label>Desa Institusi</label>
                         <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
