@@ -1,45 +1,36 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pengguna extends CI_Controller {
+class Pilihan_prs extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Pengguna','m_pengguna');
+		$this->load->model('M_Pilihanprs','m_pilihanprs');
+		$this->load->model('M_Usulan','m_usulan');
 		$this->load->library('session');
 	}
 
 	function index(){
-		$data['pengguna'] = $this->m_pengguna->get_pengguna();
-		$this->load->view('pengguna/daftar_pengguna',$data);
+		$data['usulan'] = $this->m_usulan->get_usulan();
+	
+		$this->load->view('perusahaan/daftar_usulan',$data);
 	}
 
-	// add new usulan
-	function add_new(){
-		$data['kode_kecamatan'] = $this->m_pengguna->get_kecamatan()->result();
-		$this->load->view('pengguna/add_data_view', $data);
-	}
-
-	// get sub bidang by bidang_id
-
-	function get_desa(){
-		$kode_kecamatan = $this->input->post('id',TRUE);
-		$data = $this->m_perusahaan->get_desa($kode_kecamatan)->result();
-		echo json_encode($data);
-	}
 
 	//save usulan to database
-	function save_pengguna(){
+	function save_pilihan(){
 	
-		$id 				= $this->input->post('id',TRUE);
-		$nama				= $this->input->post('nama',TRUE);
-		$kode_kecamatan	    = $this->input->post('kode_kecamatan',TRUE);
-		$password	   	 	= $this->input->post('password',TRUE);
-		$level	  		    = $this->input->post('level',TRUE);
+		$kode_usulan		= $this->input->post('usulan',TRUE);
+        $kode_perusahaan	= $this->session->userdata('ses_id');
+        foreach($kode_usulan as $row) {
+
+            $this->m_pilihanprs->save_pilihan($row,$kode_perusahaan);
+        }
+		
 	
              
-        $this->m_pengguna->save_pengguna($id,$nama,$kode_kecamatan,$password,$level);
+
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Saved</div>');
-		redirect('pengguna');
+		redirect('pilihan_prs');
 	}
 
 	function get_edit(){
@@ -62,7 +53,7 @@ class Pengguna extends CI_Controller {
 
 	//update usulan to database
 	function update_pengguna(){
-		$id 				= $this->input->post('id',TRUE);
+	
 		$nama 				= $this->input->post('nama',TRUE);
 		$kode_kecamatan	    = $this->input->post('kode_kecamatan',TRUE);
 		$password	   	 	= $this->input->post('password',TRUE);

@@ -70,8 +70,13 @@
                         <input type="password" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
                       </div>
                       <div class="form-group">
-                        <label>Level</label>
-                        <input type="text" required class="form-control" name="level"  placeholder="Level Pengguna" />
+                        <label>Akses sebagai</label>
+                        <select class="form-control" name="level" id="level">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
                       </div>
                       <div class="form-group">
 							

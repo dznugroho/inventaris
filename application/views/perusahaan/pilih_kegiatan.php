@@ -46,6 +46,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+                  <form action="<?php echo site_url('pilihan_prs/save_pilihan'); ?>" method="post">
                     <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
                         <thead>
@@ -74,7 +75,6 @@
                             <th>Nama Pengusul</th>
                             <th>CP Pengusul</th>
                             <th>File</th>
-                            <th>Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -125,15 +125,16 @@ HEREDOCS;
 			           	<?php } ?>
 
                               </td>
-                              <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
-                              </td>
+                             
                             </tr>
                             <?php endforeach;?>
                           </tbody>
                       </table>
                     </div>
+                    <div class="card-footer text-right">
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pilihan_prs'); ?>">Simpan</button>
+                    </div>
+                    </form>
                   </div>
                 </div>
               </div>

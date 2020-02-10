@@ -13,17 +13,17 @@
               <li class="nav-item <?php echo $this->uri->segment(1) == 'dashboard'?'active': '' ?>">
                 <a href="<?php echo site_url('dashboard'); ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
-              
+              <?php if($this->session->userdata('akses')=='1'):?>
               <li class="menu-header">Master Data</li>
-              <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'kesehatan'
-              || $this->uri->segment(1) == 'lingkungan' || $this->uri->segment(1) == 'pek' || $this->uri->segment(1) == 'infrastruktur' ?'active': '' ?>">
+              <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'pengguna'
+              || $this->uri->segment(1) == 'perusahaan' || $this->uri->segment(1) == 'pek' ?'active': '' ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'admin'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('admin'); ?>">Admin Utama</a></li>
-                  <li class="nav-item <?php echo $this->uri->segment(1) == 'kesehatan'?'active': '' ?>">
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'pengguna'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('pengguna'); ?>">Admin Kecamatan</a></li>
-                  <li class="nav-item <?php echo $this->uri->segment(1) == 'lingkungan'?'active': '' ?>">
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>">Perusahaan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'pek'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('pek'); ?>">Perorangan</a></li>
@@ -47,10 +47,34 @@
               </li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>"><i class="far fa-list-alt"></i> <span>Data Perusahaan</span></a></li>
-              <li class="menu-header">Berkas</li>
+              <li class="menu-header">Usulan Kegiatan</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Kelola Berkas</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Data Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'konfirmasi'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('konfirmasi'); ?>"><i class="far fa-list-alt"></i> <span>Konfirmasi Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'terima'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('terima'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
+              
+              <?php elseif($this->session->userdata('akses')=='2'):?>
+              <li class="menu-header">Usulan Kegiatan</li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'konfirmasi'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('Data Usulan'); ?>"><i class="far fa-list-alt"></i> <span>Data Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'terima'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('terima'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
+              
+              <?php elseif($this->session->userdata('akses')=='3'):?>
+              <li class="menu-header">Usulan Kegiatan</li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'konfirmasi'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('Data Usulan'); ?>"><i class="far fa-list-alt"></i> <span>Data Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'terima'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('terima'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
+
+              <?php else:?>
+              <li class="menu-header">Usulan Kegiatan</li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'konfirmasi'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('Data Usulan'); ?>"><i class="far fa-list-alt"></i> <span>Pilih Usulan Kegiatan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'terima'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('terima'); ?>"><i class="far fa-file-alt"></i> <span>Kegiatan Dipilih</span></a></li>
+              <?php endif;?>
         </aside>
     </div>

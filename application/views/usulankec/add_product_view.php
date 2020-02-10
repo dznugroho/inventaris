@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulan/save_usulan');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('usulankec/save_usulankec');?>">
                     <div class="card-header">
                       <h4>Tambah Usulan</h4>
                     </div>
@@ -90,9 +90,17 @@
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
+                     
+                      <input type="hidden" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                      </div>
+                      <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
+                        <?php 
+                        foreach($desas as $row):?>
+                            <option value="<?php echo $row->kode_wilayah;?>"><?php echo $row->desa;?></option>
+                            <?php endforeach;?>
                         </select>
                       </div>
                       <div class="form-group">
@@ -108,7 +116,10 @@
                         <label>Alamat Institusi</label>
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
-  
+                      <div class="form-group">
+                      <label>kecamatan</label>
+                      <input type="text" class="form-control" name="kecamatan_konstitusi" id="kecamatan_konstitusi" placeholder="Nama Jalan" >  
+                      </div>
                       <div class="form-group">
                         <label>Desa Institusi</label>
                         <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
@@ -127,7 +138,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulankec'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>

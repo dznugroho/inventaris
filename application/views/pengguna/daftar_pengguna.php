@@ -53,7 +53,7 @@
                             <th>No.</th>
                             <th>ID</th>
                             <th>Nama Admin</th>
-                            <th>Username/Id Kecamatan</th>
+                            <th>Username/Kecamatan</th>
                             <th>Password</th>
                             <th>Level</th>
                             <th>Aksi</th>
@@ -72,7 +72,7 @@
                               <td><?php echo $row->nama;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->password;?></td>
-                              <td><?php echo $row->level;?></td>
+                              <td><?php echo $row->nama_akses;?></td>
                               
                               <td>
                                 <a href="<?php echo site_url('pengguna/get_edit/'.$row->id);?>" class="btn btn-sm btn-info" ><i class="far fa-edit"></a></i>  

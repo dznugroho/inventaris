@@ -1,35 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Pengguna extends CI_Model{
+class M_Pilihanprs extends CI_Model{
 	
-	function get_kecamatan(){
-		$query = $this->db->get('tb_kecamatan');
+	function get_pilihan(){
+		$query = $this->db->get('tb_pilihan');
 		return $query;	
 	}
 
-	function get_desa($kode_kecamatan){
-		$query = $this->db->get_where('tb_wilayah', array('kode_kecamatan_wilayah' => $kode_kecamatan));
-		return $query;
-	}
 	
-	function save_pengguna($id,$nama,$kode_kecamatan,$password,$level){
+	function save_pilihan($row,$kode_perusahaan){
 		$data = array(
 			
-			'id' 	   		  => $id,
-			'nama'     		  => $nama,
-            'kode_kecamatan'  => $kode_kecamatan,
-            'password' 		  => MD5($password),
-            'level' 		  => $level,
+			'kode_usulan' 	  => $row,
+			'kode_perusahaan' => $kode_perusahaan,
 		);
-		$this->db->insert('tbu_kecamatan',$data);
+		$this->db->insert('tb_pilihan',$data);
 	}
 
 	function get_pengguna(){
-		$this->db->select('id,nama,nama_kecamatan,password,nama_akses');
+		$this->db->select('id,nama,nama_kecamatan,password,level');
 		$this->db->from('tbu_kecamatan');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tbu_kecamatan.kode_kecamatan','left');
-		$this->db->join('akses','akses.id_akses = tbu_kecamatan.level','left');
 		$query = $this->db->get();
 		return $query;
 	}

@@ -78,6 +78,7 @@ class Usulan extends CI_Controller {
 
 		);
 		$this->db->insert('tb_usulan', $data);
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Saved</div>');
 		redirect('usulan');
 		
 	}
@@ -109,6 +110,7 @@ class Usulan extends CI_Controller {
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
+		$data['cekid']=$this->m_usulan->cekid($kode_usulan)->row_array();
 		$get_data = $this->m_usulan->get_usulan_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
@@ -145,11 +147,47 @@ class Usulan extends CI_Controller {
 		$desa_institusi 	    = $this->input->post('desa_institusi',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
-		$file         		= $this->input->post('file',TRUE);
         
-		$this->m_usulan->update_usulan($kode_usulan,$kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
-		$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
-		$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file);
+        if($_FILES['file']['name'] == ""){
+            $new_name3=$this->input->post('file_lama', TRUE);
+        }else{
+            $hapus = $this->input->post('file_lama', TRUE);
+            unlink('files/'.$hapus);
+            $dokumen=$_FILES['file']['name'];
+            $dir="file/"; //tempat file foto
+            $dirs="files/"; //tempat file foto
+            $file='file'; //name pada input type file
+            $new_name3='update'.$this->input->post('kode_subbidang').'.pdf'; //name pada input type file
+            $vdir_upload = $dir;
+            $file_name=$_FILES[''.$file.'']["name"];
+            $vfile_upload = $vdir_upload . $file;
+            $tmp_name=$_FILES[''.$file.'']["tmp_name"];
+            move_uploaded_file($tmp_name, $dirs.$file_name);
+            rename($dirs.$file_name, $dirs.$new_name3);
+        }
+            $data=array(
+				'kode_usulan'=>$kode_usulan,
+			'kode_bidang' 	    => $kode_bidang,
+			'kode_subbidang'     => $kode_subbidang,
+			'tahun_pengusulan' 	=> $tahun_pengusulan,
+			'nama_kegiatan' 	=> $nama_kegiatan,
+			'waktu_mulai' 	    => $waktu_mulai,
+			'waktu_selesai'		=> $waktu_selesai,
+			'anggaran' 	        => $anggaran,
+			'alamat_kegiatan'   => $alamat_kegiatan,
+			'kode_kecamatan' 	=> $kode_kecamatan,
+			'kode_wilayah' 	    => $kode_wilayah,
+			'deskripsi' 	   	=> $deskripsi,
+			'nama_institusi' 	=> $nama_institusi,
+			'alamat_institusi' 	=> $alamat_institusi,
+			'kecamatan_institusi'   => $kecamatan_institusi,
+			'desa_institusi'	    => $desa_institusi,
+			'nama_pengusul'   	=> $nama_pengusul,
+			'no_telp'         	=> $no_telp,
+			'file'=>$new_name3
+
+		);
+		$this->m_usulan->update_usulan($data,$kode_usulan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
 		redirect('usulan');
 	}

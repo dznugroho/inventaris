@@ -67,7 +67,7 @@
                       </div>
                       <div class="form-group">
                         <label>level</label>
-                        <input type="text" class="form-control" name="level" placeholder="password">
+                        <input type="text" class="form-control" name="level" placeholder="akses sebagai">
                     </div>
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('perusahaan'); ?>">Submit</button>
