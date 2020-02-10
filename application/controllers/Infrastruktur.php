@@ -15,7 +15,7 @@ class Infrastruktur extends CI_Controller {
     public function ubah(){
         $data=$this->M_Infrastruktur->singleInfrastruktur();
         //print_r($data);
-        $this->load->view('bidang/ubah_infrastruktur',$data);
+        $this->load->view('bidang/infrastuktur',$data);
 	}
 
 	function datainfrastruktur(){

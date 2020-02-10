@@ -1,4 +1,4 @@
-<?php
+z<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Usulankec extends CI_Model{

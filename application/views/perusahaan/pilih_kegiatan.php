@@ -39,22 +39,18 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          
           </div>
           </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                  <form action="<?php echo site_url('pilihan_prs/save_pilihan'); ?>" method="post">
                     <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
-                            <td><div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                            </div></td>
+                            
                             <th>No.</th>
                             <th>Kode usulan</th>
                             <th>Nama Bidang</th>
@@ -75,6 +71,7 @@
                             <th>Nama Pengusul</th>
                             <th>CP Pengusul</th>
                             <th>File</th>
+                            <th>Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -84,10 +81,6 @@
                                 $no++;
                             ?>
                             <tr>
-                            <td><div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="<?php echo $row->kode_usulan;?>" id="<?php echo $row->kode_usulan;?>">
-                              <label for="<?php echo $row->kode_usulan;?>" class="custom-control-label">&nbsp;</label>
-                            </div></td>
                               <td><?php echo $no;?></td>
                               <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
@@ -107,34 +100,19 @@
                               <td><?php echo $row->desa_institusi;?></td>
                               <td><?php echo $row->nama_pengusul;?></td>
                               <td><?php echo $row->no_telp;?></td>
-                              <td><?php if($row->file==""){
-							$fill = $row->file;
-							$aksi = site_url('usulan/add_file');
-							$tampil = 
-<<<HEREDOCS
-			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
-								<input type="file" name="file">
-								<input type="hidden" name="kode_subbidang" value="$row->kode_subbidang">
-								<br>
-								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
-							</form>
-HEREDOCS;
-						echo $tampil;
-			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
-			           	<?php } ?>
+                              <td><?php ?>
+                                  <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+                                <?php ;?> 
 
                               </td>
-                             
+                              <td>
+                                <a href="<?php echo site_url('pilihan_ps/input/'.$row->kode_usulan);?>" class="btn btn-primary">Pilih</a>
+                              </td>
                             </tr>
                             <?php endforeach;?>
                           </tbody>
                       </table>
                     </div>
-                    <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pilihan_prs'); ?>">Simpan</button>
-                    </div>
-                    </form>
                   </div>
                 </div>
               </div>

@@ -48,14 +48,14 @@ class Usulan extends CI_Controller {
 		$dir="file/"; //tempat upload foto
 		$dirs="files/"; //tempat upload foto
 		$file='file'; //name pada input type file
-		$new_name3='update'.$this->input->post('kode_subbidang').'.pdf'; //name pada input type file
+		//name pada input type file
 		$vdir_upload = $dir;
 		$file_name=$_FILES[''.$file.'']["name"];
 		$vfile_upload = $vdir_upload . $file;
 		$tmp_name=$_FILES[''.$file.'']["tmp_name"];
 		move_uploaded_file($tmp_name, $dirs.$file_name);
 		$source_url3=$dir.$file_name;
-		rename($dirs.$file_name,$dirs.$new_name3);
+		rename($dirs.$file_name);
 		$data=array(
 			'kode_bidang' 	    => $this->input->post('kode_bidang',TRUE),
 			'kode_subbidang'     => $this->input->post('kode_subbidang',TRUE),
@@ -74,7 +74,7 @@ class Usulan extends CI_Controller {
 			'desa_institusi'	    => $this->input->post('desa_institusi',TRUE),
 			'nama_pengusul'   	=> $this->input->post('nama_pengusul',TRUE),
 			'no_telp'         	=> $this->input->post('no_telp',TRUE),
-			'file'=>$new_name3
+			'file'=>$file_name
 
 		);
 		$this->db->insert('tb_usulan', $data);
@@ -84,20 +84,21 @@ class Usulan extends CI_Controller {
 	}
 
 	public function add_file(){
+		$kode_usulan = $this->input->post('kode_usulan');
 		$dokumen=$_FILES['file']['name'];
 		$dir="file/"; //tempat upload foto
 		$dirs="files/"; //tempat upload foto
 		$file='file'; //name pada input type file
-		$new_name3='update'.$this->input->post('kode_subbidang').'.pdf'; //name pada input type file
+		 //name pada input type file
 		$vdir_upload = $dir;
 		$file_name=$_FILES[''.$file.'']["name"];
 		$vfile_upload = $vdir_upload . $file;
 		$tmp_name=$_FILES[''.$file.'']["tmp_name"];
 		move_uploaded_file($tmp_name, $dirs.$file_name);
 		$source_url3=$dir.$file_name;
-		rename($dirs.$file_name,$dirs.$new_name3);
+		rename($dirs.$file_name);
 		$data=array(
-			'file'=>$new_name3
+			'file'=>$file_name
 		);
 		$this->db->where('kode_usulan', $kode_usulan);
 		$this->db->update('tb_usulan', $data);
@@ -149,7 +150,7 @@ class Usulan extends CI_Controller {
 		$no_telp         	= $this->input->post('no_telp',TRUE);
         
         if($_FILES['file']['name'] == ""){
-            $new_name3=$this->input->post('file_lama', TRUE);
+            $file_name=$this->input->post('file_lama', TRUE);
         }else{
             $hapus = $this->input->post('file_lama', TRUE);
             unlink('files/'.$hapus);
@@ -157,13 +158,13 @@ class Usulan extends CI_Controller {
             $dir="file/"; //tempat file foto
             $dirs="files/"; //tempat file foto
             $file='file'; //name pada input type file
-            $new_name3='update'.$this->input->post('kode_subbidang').'.pdf'; //name pada input type file
+           //name pada input type file
             $vdir_upload = $dir;
             $file_name=$_FILES[''.$file.'']["name"];
             $vfile_upload = $vdir_upload . $file;
             $tmp_name=$_FILES[''.$file.'']["tmp_name"];
             move_uploaded_file($tmp_name, $dirs.$file_name);
-            rename($dirs.$file_name, $dirs.$new_name3);
+            rename($dirs.$file_name);
         }
             $data=array(
 				'kode_usulan'=>$kode_usulan,
@@ -184,7 +185,7 @@ class Usulan extends CI_Controller {
 			'desa_institusi'	    => $desa_institusi,
 			'nama_pengusul'   	=> $nama_pengusul,
 			'no_telp'         	=> $no_telp,
-			'file'=>$new_name3
+			'file'=>$file_name
 
 		);
 		$this->m_usulan->update_usulan($data,$kode_usulan);
