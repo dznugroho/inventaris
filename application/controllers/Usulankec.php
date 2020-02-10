@@ -17,8 +17,10 @@ class Usulankec extends CI_Controller {
 	function add_new(){
 		
 		$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
+		$data['desass'] = $this->m_usulankec->get_dk($this->session->userdata('ses_kodekec'))->result();
 		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulankec->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulankec->get_k()->result();
 		$this->load->view('usulankec/add_product_view', $data);
 	}
 
@@ -38,6 +40,15 @@ class Usulankec extends CI_Controller {
 		// return $data;
 		echo json_encode($data);
 	}
+	function get_dk($session_user){
+		// $kode_kecamatan = $this->input->post('id',TRUE);
+		// $data = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
+		// $query = $this->db->get_where('tb_wilayah', array('kode_kecamatan_wilayah' => $kode_kecamatan));
+		$kode_k = $session_user;
+		$data = $this->m_usulankec->get_dk($kode_k)->result();
+		// return $data;
+		echo json_encode($data);
+	}
 
 	public function embed()
     {
@@ -51,25 +62,25 @@ class Usulankec extends CI_Controller {
 		$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
 		$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
         $tahun_pengusulan 	= $this->input->post('tahun_pengusulan',TRUE);
-		$nama_kegiatan 	= $this->input->post('nama_kegiatan',TRUE);
+		$nama_kegiatan 		= $this->input->post('nama_kegiatan',TRUE);
 		$waktu_mulai 	    = $this->input->post('waktu_mulai',TRUE);
 		$waktu_selesai		= $this->input->post('waktu_selesai',TRUE);
 		$anggaran 	        = $this->input->post('anggaran',TRUE);
-		$alamat_kegiatan   = $this->input->post('alamat_kegiatan',TRUE);
+		$alamat_kegiatan    = $this->input->post('alamat_kegiatan',TRUE);
 		$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
 		$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
-		$deskripsi 	   	= $this->input->post('deskripsi',TRUE);
+		$deskripsi 	   		= $this->input->post('deskripsi',TRUE);
         $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
 		$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-		$kecamatan_institusi   = $this->input->post('kecamatan_institusi',TRUE);
-		$desa_institusi 	    = $this->input->post('desa_institusi',TRUE);
+		$kode_k			    = $this->input->post('kode_k',TRUE);
+		$kode_w				= $this->input->post('kode_w',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
 		$file         	= $this->input->post('file',TRUE);
 
 		$this->m_usulankec->save_usulankec($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 		$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
-		$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file);
+		$alamat_institusi,$kode_k,$kode_w,$nama_pengusul,$no_telp,$file);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
 		redirect('usulankec');
 		
@@ -102,11 +113,13 @@ class Usulankec extends CI_Controller {
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulan->get_k()->result();
 		$get_data = $this->m_usulan->get_usulan_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
 			$data['kode_subbidang'] = $row['kode_subbidang'];
 			$data['kode_wilayah'] = $row['kode_wilayah'];
+			$data['kode_w'] = $row['kode_w'];
 
 		}
 		$this->load->view('usulankec/ubah_usulan',$data);
@@ -134,24 +147,24 @@ class Usulankec extends CI_Controller {
 		$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
         $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
 		$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-		$kecamatan_institusi        = $this->input->post('kecamatan_institusi',TRUE);
-		$desa_institusi 	    = $this->input->post('desa_institusi',TRUE);
+		$kode_k				= $this->input->post('kode_k',TRUE);
+		$kode_w 			= $this->input->post('kode_w',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
 		$file         		= $this->input->post('file',TRUE);
         
-		$this->m_usulan->update_usulan($kode_usulan,$kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
+		$this->m_usulankec->update_usulan($kode_usulan,$kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 		$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
-		$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file);
+		$alamat_institusi,$kode_k,$kode_w,$nama_pengusul,$no_telp,$file);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
-		redirect('usulan');
+		redirect('usulankec');
 	}
 
 	//Delete usulan from Database
 	function delete(){
 		$kode_usulan = $this->uri->segment(3);
-		$this->m_usulan->delete_usulan($kode_usulan);
+		$this->m_usulankec->delete_usulankec($kode_usulan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Deleted</div>');
-		redirect('usulan');
+		redirect('usulankec');
 	}
 }

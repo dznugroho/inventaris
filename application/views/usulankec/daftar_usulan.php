@@ -95,8 +95,8 @@
                               <td><?php echo $row->deskripsi;?></td>
                               <td><?php echo $row->nama_institusi;?></td>
                               <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->kecamatan_institusi;?></td>
-                              <td><?php echo $row->desa_institusi;?></td>
+                              <td><?php echo $row->nama_k;?></td>
+                              <td><?php echo $row->nama_d;?></td>
                               <td><?php echo $row->nama_pengusul;?></td>
                               <td><?php echo $row->no_telp;?></td>
                               <td><?php if($row->file==""){
@@ -113,13 +113,13 @@
 HEREDOCS;
 						echo $tampil;
 			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			              <button onclick='open("<?php echo site_url('Usulankec/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
 			           	<?php } ?>
 
                               </td>
                               <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="<?php echo site_url('usulankec/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
+                                <a href="<?php echo site_url('usulankec/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

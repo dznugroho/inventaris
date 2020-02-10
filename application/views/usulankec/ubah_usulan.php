@@ -111,11 +111,11 @@
                       </div>
                       <div class="form-group">
                         <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
+                        <input type="text" class="form-control" name="kode_k" placeholder="Kecamatan Institusi">
                       </div>
                       <div class="form-group">
                         <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
+                        <input type="text" class="form-control" name="kode_w" placeholder="Nama Desa">
                       </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>

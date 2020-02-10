@@ -9,7 +9,9 @@ class M_Usulankec extends CI_Model{
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
 		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_kecamatan ON 
 		tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan JOIN tb_wilayah ON
-		tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah");
+		tb_wilayah.kode_wilayah 	= tb_usulan.kode_wilayah JOIN tb_k ON
+		tb_k.kode_k				 	= tb_usulan.kode_k JOIN tb_w ON
+		tb_w.kode_w 				= tb_usulan.kode_w");
 	}
 
 	function get_bidang(){
@@ -26,15 +28,23 @@ class M_Usulankec extends CI_Model{
 		$query = $this->db->get('tb_kecamatan');
 		return $query;	
 	}
+	function get_k(){
+		$query = $this->db->get('tb_k');
+		return $query;	
+	}
 
 	function get_desa($kode_kecamatan){
 		$query = $this->db->get_where('tb_wilayah', array('kode_kecamatan_wilayah' => $kode_kecamatan));
 		return $query;
 	}
+	function get_dk($kode_k){
+		$query = $this->db->get_where('tb_w', array('kode_k' => $kode_k));
+		return $query;
+	}
 	
 	function save_usulankec($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 	$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
-	$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file){
+	$alamat_institusi,$kode_k,$kode_w,$nama_pengusul,$no_telp,$file){
 		$data = array(
 			
             'kode_bidang' 	    => $kode_bidang,
@@ -50,8 +60,8 @@ class M_Usulankec extends CI_Model{
             'deskripsi' 		=> $deskripsi,
             'nama_institusi' 	=> $nama_institusi,
             'alamat_institusi' 	=> $alamat_institusi,
-            'kecamatan_institusi'  => $kecamatan_institusi,
-            'desa_institusi' 	=> $desa_institusi,
+            'kode_k'  			=> $kode_k,
+            'kode_w' 			=> $kode_w,
             'nama_pengusul'   	=> $nama_pengusul,
 			'no_telp'         	=> $no_telp,
             'file' 				=> $file
@@ -63,13 +73,15 @@ class M_Usulankec extends CI_Model{
 	function get_usulankec(){
 		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
 		waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
-		nama_institusi,alamat_institusi,kecamatan_institusi,desa_institusi,
+		nama_institusi,alamat_institusi,nama_k,nama_d,
 		nama_pengusul,no_telp,file');
 		$this->db->from('tb_usulan');
 		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+		$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+		$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
 		$query = $this->db->get();
 		return $query;
 	}
@@ -81,7 +93,7 @@ class M_Usulankec extends CI_Model{
 
 	function update_usulankec($kode_usulan,$kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,$waktu_mulai,
 	$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,
-	$alamat_institusi,$kecamatan_institusi,$desa_institusi,$nama_pengusul,$no_telp,$file){
+	$alamat_institusi,$kode_k,$kode_w,$nama_pengusul,$no_telp,$file){
         $this->db->set('kode_bidang' 	    , $kode_bidang);
         $this->db->set('kode_subbidang'     , $kode_subbidang);
         $this->db->set('tahun_pengusulan' 	, $tahun_pengusulan);
@@ -95,8 +107,8 @@ class M_Usulankec extends CI_Model{
         $this->db->set('deskripsi' 	    	, $deskripsi);
         $this->db->set('nama_institusi' 	, $nama_institusi);
         $this->db->set('alamat_institusi' 	, $alamat_institusi);
-        $this->db->set('kecamatan_institusi' 	, $kecamatan_institusi);
-        $this->db->set('desa_institusi' 	, $desa_institusi);
+        $this->db->set('kode_k' 			, $kode_k);
+        $this->db->set('kode_w' 			, $kode_w);
         $this->db->set('nama_pengusul'   	, $nama_pengusul);
         $this->db->set('no_telp'         	, $no_telp);
         $this->db->set('file' 				, $file);

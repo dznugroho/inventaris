@@ -117,13 +117,19 @@
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
                       <div class="form-group">
-                      <label>kecamatan</label>
-                      <input type="text" class="form-control" name="kecamatan_konstitusi" id="kecamatan_konstitusi" placeholder="Nama Jalan" >  
+                      <label>kecamatan Institusi</label>
+                      <input type="text" class="form-control" name="kode_k" id="kode_sk" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
                       </div>
                       <div class="form-group">
-                        <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
-                      </div>
+                        <label>Desa</label>
+                        <select class="form-control" name="kode_w" id="kode_w">
+                        <option value="">No Selected</option>
+                        <?php 
+                        foreach($desass as $row):?>
+                            <option value="<?php echo $row->kode_w;?>"><?php echo $row->nama_d;?></option>
+                            <?php endforeach;?>
+                        </select>
+                     </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
                         <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
@@ -183,7 +189,7 @@
 			$('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+                    url : "<?php echo site_url('usulankec/get_sub_bidang');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -211,7 +217,7 @@
 			$('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_desa');?>",
+                    url : "<?php echo site_url('usulankec/get_desa');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -228,7 +234,35 @@
                     }
                 });
                 return false;
-            }); 
+            });
+            
+		});
+    </script>
+
+    <script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#kode_k').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulankec/get_dk');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_w+'>'+data[i].nama_d+'</option>';
+                        }
+                        $('#kode_w').html(html);
+
+                    }
+                });
+                return false;
+            });      
             
 		});
 	</script>
