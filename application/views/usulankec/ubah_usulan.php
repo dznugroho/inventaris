@@ -44,10 +44,10 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan');?>">
+                  <form role="form" method="POST" action="<?php echo site_url('usulankec/update_usulankec');?>"  enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
-                      <div class="form-group">
+                  <div class="form-group">
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="kode_bidang" id="kode_bidang">
                         <option value="">No Selected</option>
@@ -88,6 +88,10 @@
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
+                     
+                      <input type="hidden" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                      </div>
+                      <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
@@ -96,6 +100,7 @@
                             <option value="<?php echo $row->kode_wilayah;?>"><?php echo $row->desa;?></option>
                             <?php endforeach;?>
                         </select>
+                      </div>
                       <div class="form-group">
                       <label>Deskripsi Kegiatan</label>
                       <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
@@ -110,13 +115,19 @@
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
                       </div>
                       <div class="form-group">
-                        <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kode_k" placeholder="Kecamatan Institusi">
+                      <label>kecamatan Institusi</label>
+                      <input type="text" class="form-control" name="kode_k" id="kode_k" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
                       </div>
                       <div class="form-group">
-                        <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="kode_w" placeholder="Nama Desa">
-                      </div>
+                        <label>Desa</label>
+                        <select class="form-control" name="kode_w" id="kode_w">
+                        <option value="">No Selected</option>
+                        <?php 
+                        foreach($desass as $row):?>
+                            <option value="<?php echo $row->kode_w;?>"><?php echo $row->nama_d;?></option>
+                            <?php endforeach;?>
+                        </select>
+                     </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
                         <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
@@ -129,7 +140,7 @@
                         <label>File</label>
                         <input type="file" class="form-control" name="file">
                       </div>
-                    </div>
+                    
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
                     </div>
@@ -179,7 +190,7 @@
             $('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+                    url : "<?php echo site_url('usulankec/get_sub_bidang');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -201,7 +212,7 @@
             	$('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('usulan/get_desa');?>",
+                    url : "<?php echo site_url('usulankec/get_desa');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -219,28 +230,35 @@
                 });
                 return false;
             });  
+            $('#kode_k').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulankec/get_dk');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_w+'>'+data[i].nama_d+'</option>';
+                        }
+                        $('#kode_w').html(html);
 
-            $('#submit').submit(function(e){
-		    e.preventDefault(); 
-		         $.ajax({
-		             url:'<?php echo base_url();?>index.php/upload/do_upload',
-		             type:"post",
-		             data:new FormData(this),
-		             processData:false,
-		             contentType:false,
-		             cache:false,
-		             async:false,
-		              success: function(data){
-		                  alert("Upload Image Berhasil.");
-		           }
-		         });
-		        });
+                    }
+                });
+                return false;
+            });      
+            
+
 
 			//load data for edit
             function get_data_edit(){
             	var kode_usulan = $('[name="kode_usulan"]').val();
             	$.ajax({
-            		url : "<?php echo site_url('usulan/get_data_edit');?>",
+            		url : "<?php echo site_url('usulankec/get_data_edit');?>",
                     method : "POST",
                     data :{kode_usulan :kode_usulan},
                     async : true,
@@ -255,13 +273,13 @@
                             $('[name="waktu_selesai"]').val(data[i].waktu_selesai);
                             $('[name="anggaran"]').val(data[i].anggaran);
                             $('[name="alamat_kegiatan"]').val(data[i].alamat_kegiatan);
-                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
-                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
+                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan);
+                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah);
                             $('[name="deskripsi"]').val(data[i].deskripsi);
                             $('[name="nama_institusi"]').val(data[i].nama_institusi);
                             $('[name="alamat_institusi"]').val(data[i].alamat_institusi);
-                            $('[name="kecamatan_institusi"]').val(data[i].kecamatan_institusi);
-                            $('[name="desa_institusi"]').val(data[i].desa_institusi);
+                            $('[name="kode_k"]').val(data[i].kode_k).trigger('change');
+                            $('[name="kode_w"]').val(data[i].kode_w).trigger('change');
                             $('[name="nama_pengusul"]').val(data[i].nama_pengusul);
                             $('[name="no_telp"]').val(data[i].no_telp);
                             $('[name="file"]').val(data[i].file);
