@@ -73,8 +73,8 @@
               <li class="menu-header">Usulan Kegiatan</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'pilihan_ps'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('pilihan_ps'); ?>"><i class="far fa-list-alt"></i> <span>Pilih Usulan Kegiatan</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan_acc'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>"><i class="far fa-file-alt"></i> <span>Kegiatan Dipilih</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'kegiatan'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('kegiatan'); ?>"><i class="far fa-file-alt"></i> <span>Kegiatan Dipilih</span></a></li>
               <?php endif;?>
         </aside>
     </div>

@@ -21,9 +21,12 @@ class M_Pilihanps extends CI_Model{
 	}
 
 	function get_usulan(){
-		$this->db->select('kode_usulan,nama_bidang,nama_kegiatan,anggaran,dana,status');
+		$this->db->select('tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,waktu_mulai,
+		waktu_selesai,anggaran,dana,status');
 		$this->db->from('tb_pilihan');
 		$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
+		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
 		$query = $this->db->get();
 		return $query;
 	}
