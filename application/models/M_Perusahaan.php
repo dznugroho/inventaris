@@ -30,7 +30,7 @@ class M_Perusahaan extends CI_Model{
 			
             'id' 	   		  => $id,
             'username'  	  => $username,
-            'password' 		  => $password,
+            'password' 		  => MD5($password),
             'level' 		  => $level,
             'nama_perusahaan' => $nama_perusahaan,
             'alamat' 		  => $alamat,
@@ -63,7 +63,7 @@ class M_Perusahaan extends CI_Model{
 	$alamat,$kode_kecamatan,$kode_wilayah,$no_telp,$email){
         $this->db->set('id' 	    , $id);
         $this->db->set('username'     , $username);
-        $this->db->set('password' 	, $password);
+        $this->db->set('password' 	, MD5($password));
 		$this->db->set('level' 	    , $level);            
 		$this->db->set('nama_perusahaan' , $nama_perusahaan);
 		$this->db->set('alamat' 		, $alamat);
