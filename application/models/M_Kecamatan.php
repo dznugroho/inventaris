@@ -1,9 +1,9 @@
 <?php
  
-class m_lihatinfo extends CI_Model {
+class M_Kecamatan extends CI_Model {
  
-    var $table = 'lihatinfo'; //nama tabel dari database
-    var $column_order = array(null,'nama_kecamatan','kode_kecamatab'); //field yang ada di table user
+    var $table = 'tb_kecamatan'; //nama tabel dari database
+    var $column_order = array(null,'nama_kecamatan','kode_kecamatan'); //field yang ada di table user
     var $column_search = array('kode_kecamatan','nama_kecamatan'); //field yang diizin untuk pencarian 
     var $order = array('kode_kecamatan' => 'asc'); // default order 
  
@@ -69,40 +69,40 @@ class m_lihatinfo extends CI_Model {
         return $this->db->count_all_results();
     }
     
-function singlelihatinfo(){
-    $kode_subbidang=$this->uri->segment(3);
+function singleKecamatan(){
+    $kode_kecamatan=$this->uri->segment(3);
     $this->db->where('kode_kecamatan',$kode_kecamatan);
-    $data=$this->db->get('db_kecamatan');
+    $data=$this->db->get('tb_kecamatan');
     return $data->row_array();
 
 }
     //insert data method
-  function insertlihatinfo(){
+  function insertKecamatan(){
     $data=array(
         'kode_kecamatan'        => $this->input->post('kode_kecamatan'),
         'nama_kecamatan'        => $this->input->post('nama_kecamatan')
 
 
     );
-    $result=$this->db->insert('db_kecamatan', $data);
+    $result=$this->db->insert('kecamatan', $data);
     return $result;
 }
 //update data method
-function updatelihatinfo(){
+function updateKecamatan(){
     $kode_subbidang=$this->input->post('kode_kecamatan');
     $data=array(
-        'nama_kec'        => $this->input->post('nama_kec')
+        'nama_kecamatan'        => $this->input->post('nama_kecamatan')
 
     );
     $this->db->where('kode_kecamatan',$kode_kecamatan);
-    $result=$this->db->update('lihatinfo', $data);
+    $result=$this->db->update('kecamatan', $data);
     return $result;
-} 
+}
 //delete data method
-function deletelihatinfo(){
+function deleteKecamatan(){
     $kode_kecamatan=$this->uri->segment(3);
     $this->db->where('kode_kecamatan',$kode_kecamatan);
-    $result=$this->db->delete('lihatinfo');
+    $result=$this->db->delete('kecamatan');
     return $result;
 }
 

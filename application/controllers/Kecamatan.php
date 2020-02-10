@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class lihatinfo extends CI_Controller {
+class Kecamatan extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-    $this->load->model('m_lihatinfo');
+    $this->load->model('M_Kecamatan');
   }
 
     public function index()
@@ -13,13 +13,13 @@ class lihatinfo extends CI_Controller {
 		$this->load->view('dashboard');
     }
     public function ubah(){
-        $data=$this->m_lihatinfo->singleInfrastruktur();
+        $data=$this->M_Kesehatan->singleKecamatan();
         //print_r($data);
         $this->load->view('dashboard',$data);
 	}
 
-	function datainfrastruktur(){
-		$list = $this->m_lihatinfo->get_datatables();
+	function datakecamatan(){
+		$list = $this->M_Kecamatan->get_datatables();
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $field) {
@@ -28,15 +28,15 @@ class lihatinfo extends CI_Controller {
 			$row[] = $no;
 			$row[] = $field->kode_kecamatan;
 			$row[] = $field->nama_kecamatan;       
-			$row[] = '<a href="'.base_url().'liahatinfo/ubah/'.$field->kode_kecamatan.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'lihatinfo/delete/'.$field->kode_kecamatan.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
+			$row[] = '<a href="'.base_url().'kecamatan/ubah/'.$field->kode_kecamatan.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'kesehatan/delete/'.$field->kode_kecamatan.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
   
 			$data[] = $row;
 		}
   
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->m_lihatinfo->count_all(),
-			"recordsFiltered" => $this->m_lihatinfo->count_filtered(),
+			"recordsTotal" => $this->M_Kecamatan->count_all(),
+			"recordsFiltered" => $this->M_Kecamatan->count_filtered(),
 			"data" => $data,
 		);
 		//output dalam format JSON
@@ -45,12 +45,12 @@ class lihatinfo extends CI_Controller {
 
 	function update(){ //update record method
 		//print_r($_POST);
-		$this->m_lihatinfo->updatelihatinfo();
-		redirect('lihatinfo');
+		$this->M_Kecamatan->updateKecamatan();
+		redirect('kecamatan');
 	}
 	function delete(){ //delete record method
-		$this->m_lihatinfo->deletelihatinfo();
-		redirect('lihatinfo');
+		$this->M_Kecamatan->deleteKecamatan();
+		redirect('kecamatan');
 	}
 
 }

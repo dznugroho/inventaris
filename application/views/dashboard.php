@@ -33,7 +33,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary" >
-                  <i class="" ></i>
+                  <i class="fas fa-archway" ></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -92,7 +92,7 @@
             </div>
           </div>
           <div class="row">
-              <div class="col-13">
+              <div class="col-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
@@ -100,8 +100,8 @@
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Kecamatan</th>
                             <th>Kode Kecamatan</th>
+                            <th>Kecamatan</th>
                             </tr>
                         </thead>
                       </table>
@@ -138,7 +138,7 @@
 <script src="<?= base_url()?>assets/js/stisla.js"></script>
 
 <!-- Template JS File -->
-<script src="<?= base_url()?>node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url()?>node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
   <script src="<?= base_url()?>node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="<?= base_url()?>node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js"></script>
 
@@ -156,10 +156,10 @@
         table = $('#table').DataTable({ 
  
             "processing": true, 
-            "serverSide": true, 
+            "serverSide": true,  
             "order": [], 
             "ajax": {
-                "url": "<?= base_url()?>lihatinfo/datalihatinfo",
+                "url": "<?= base_url()?>Kecamatan/datakecamatan",
                 "type": "POST"
             },
  
