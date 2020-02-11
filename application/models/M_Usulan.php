@@ -9,7 +9,7 @@ class M_Usulan extends CI_Model{
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
 		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_kecamatan ON 
 		tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan JOIN tb_wilayah ON
-		tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah");
+		tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah ");
 	}
 
 	public function cekid($kode_usulan)

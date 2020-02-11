@@ -10,7 +10,7 @@ class Pilihan_PS extends CI_Controller {
 	}
 
 	function index(){
-		$data['usulan'] = $this->m_usulan->get_usulan();
+		$data['usulan'] = $this->m_pilihanps->get_usulan();
 	
 		$this->load->view('perusahaan/pilih_kegiatan',$data);
 	}
@@ -33,37 +33,7 @@ class Pilihan_PS extends CI_Controller {
 		redirect('pilihan_ps');
 	}
 
-	function get_edit(){
-		$id = $this->uri->segment(3);
-		$data['id'] = $id;
-		$data['kode_kecamatan'] = $this->m_pengguna->get_kecamatan()->result();
-		$get_data = $this->m_pengguna->get_pengguna_by_id($id);
-		if($get_data->num_rows() > 0){
-			$row = $get_data->row_array();
-
-		}
-		$this->load->view('pengguna/ubah_pengguna',$data);
-	}
-
-	function get_data_edit(){
-		$id = $this->input->post('id',TRUE);
-		$data = $this->m_pengguna->get_pengguna_by_id($id)->result();
-		echo json_encode($data);
-	}
-
-	//update usulan to database
-	function update_pengguna(){
 	
-		$nama 				= $this->input->post('nama',TRUE);
-		$kode_kecamatan	    = $this->input->post('kode_kecamatan',TRUE);
-		$password	   	 	= $this->input->post('password',TRUE);
-		$level	  		    = $this->input->post('level',TRUE);
-	
-        
-		$this->m_pengguna->update_pengguna($id,$nama,$kode_kecamatan,$password,$level);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Pengguna Updated</div>');
-		redirect('pengguna');
-	}
 
 	//Delete usulan from Database
 	function delete(){

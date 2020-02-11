@@ -50,14 +50,8 @@
                     </div>
                     <div class="card-body">
   
-                      <div class="form-group">
-                      <label>Nama Perusahaan</label>
-                      <input type="text" class="form-control" name="kode_usulan" placeholder="Nama Perusahaan" value="<?=$kode_usulan?>">
-                      </div>
-                      <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="kode_perusahaan" placeholder="Masukan Username" value="<?=$kode_perusahaan?>">
-                      </div>
+                      <input type="hidden" class="form-control" name="kode_usulan" placeholder="Nama Perusahaan" value="<?=$kode_usulan?>">
+                        <input type="hidden" class="form-control" name="kode_perusahaan" placeholder="Masukan Username" value="<?=$kode_perusahaan?>">
                       
                       <div class="form-group">
                         <label>Jumlah Dana</label>

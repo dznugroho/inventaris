@@ -39,7 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          
+
           </div>
           </div>
             <div class="row">
