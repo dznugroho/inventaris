@@ -1,26 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usulan extends CI_Controller {
+class Registrasi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Usulan','m_usulan');
+		$this->load->model('M_Registrasi','m_registrasi');
 		$this->load->library('session');
 		
 	}
 
 	function index(){
-		$data['usulan'] = $this->m_usulan->get_usulan();
-		$this->load->view('usulan/daftar_usulan',$data);
+		$data['registrasi'] = $this->m_registrasi->get_usulan();
+		$this->load->view('registrasi/daftar_usulan',$data);
 	}
 
 	// add new usulan
 	function add_new(){
 		
-		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
-		$data['kode_k'] = $this->m_usulan->get_k()->result();
-		$this->load->view('usulan/add_product_view', $data);
+		$data['kode_bidang'] = $this->m_registrasi->get_bidang()->result();
+		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
+		$this->load->view('registrasi/add_product_view', $data);
 	}
 
 	// get sub bidang by bidang_id
@@ -35,13 +34,6 @@ class Usulan extends CI_Controller {
 		$data = $this->m_usulan->get_desa($kode_kecamatan)->result();
 		echo json_encode($data);
 	}
-
-	function get_dk(){
-		$kode_k = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_dk($kode_k)->result();
-		echo json_encode($data);
-	}
-
 
 	public function embed()
     {
@@ -119,14 +111,12 @@ class Usulan extends CI_Controller {
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
-		$data['kode_k'] = $this->m_usulan->get_k()->result();
 		$data['cekid']=$this->m_usulan->cekid($kode_usulan)->row_array();
 		$get_data = $this->m_usulan->get_usulan_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
 			$data['kode_subbidang'] = $row['kode_subbidang'];
 			$data['kode_wilayah'] = $row['kode_wilayah'];
-			$data['kode_w'] = $row['kode_w'];
 
 		}
 		$this->load->view('usulan/ubah_usulan',$data);
@@ -154,8 +144,8 @@ class Usulan extends CI_Controller {
 		$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
         $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
 		$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-		$kode_k        		= $this->input->post('kode_k',TRUE);
-		$kode_w 	  	    = $this->input->post('kode_w',TRUE);
+		$kode_k        = $this->input->post('kode_k',TRUE);
+		$kode_w	    = $this->input->post('kode_w',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
         

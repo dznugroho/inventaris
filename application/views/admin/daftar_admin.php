@@ -55,7 +55,7 @@
                             <th>Nama</th>
                             <th>Username</th>
                             <th>password</th>
-                            <th>level</th>
+                            <th>Akses Sebagai</th>
                             <th>Aksi</th>
                           
                           </tr>
@@ -72,7 +72,7 @@
                               <td><?php echo $row->nama;?></td>
                               <td><?php echo $row->username;?></td>
                               <td><?php echo $row->password;?></td>
-                              <td><?php echo $row->level;?></td>
+                              <td><?php echo $row->nama_akses;?></td>
                               
                               <td>
                                 <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-sm btn-info">Edit</a>

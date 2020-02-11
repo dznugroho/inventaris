@@ -44,36 +44,49 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('perusahaan/update_perusahaan');?>">
-                  <input type="hidden" class="form-control" name="id" id="id" value="<?=$id?>">
+                  <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan/'.$cekid['kode_usulan']);?>" enctype="multipart/form-data">
+                  <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
-                    
                       <div class="form-group">
-                        <label>Nama Perusahaan</label>
-                        <input type="text" class="form-control" name="nama_perusahaan" placeholder="Nama Perusahaan">
-                      </div>
-                      <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Masukan Username">
-                      </div>
-                      <div class="form-group">
-                        <label>Password</label>
-                        <input type="text" class="form-control" name="password" placeholder="password">
-                      </div>
-                      <div class="form-group">
-                        <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Alamat">
-                      </div>
-                      <div class="form-group">
-                        <label>Akses sebagai</label>
-                        <select class="form-control" name="level" id="level">
-                          <option value="1">Admin</option>
-                          <option value="2">Perorangan</option>
-                          <option value="3">Kecamatan</option>
-                          <option value="4">Perusahaan</option>
+                        <label>Bidang Kegiatan</label>
+                        <select class="form-control" name="kode_bidang" id="kode_bidang">
+                        <option value="">No Selected</option>
+                          <?php foreach($kode_bidang as $row):?>
+                          <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+                          <?php endforeach;?>
                         </select>
-
-
+                      </div>
+                      <div class="form-group">
+                        <label>Sub Bidang Kegiatan</label>
+                        <select class="form-control" name="kode_subbidang" id="kode_subbidang">
+                          <option value="">No Selected</option>
+                        </select>
+                      </div>
+  
+                      <div class="form-group">
+                      <label>Tahun Pengusulan</label>
+                      <input type="text" class="form-control" name="tahun_pengusulan">
+                      </div>
+                      <div class="form-group">
+                        <label>Nama Kegiatan</label>
+                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan">
+                      </div>
+                      <div class="form-group">
+                        <label>Waktu Mulai Pelaksanaan</label>
+                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai">
+                      </div>
+                      <div class="form-group">
+                        <label>Waktu Selesai Pelaksanaan</label>
+                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai">
+                      </div>
+                      <div class="form-group">
+                        <label>Anggaran</label>
+                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
+                      </div>
+                      <div class="form-group">
+                        <label>Lokasi Kegiatan</label>
+                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
+                      </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
@@ -88,18 +101,43 @@
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
                         </select>
-                    
-                      <div class="form-group">
-                        <label>No. Telp</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No Telp">  
                       </div>
                       <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Alamat Email">
+                      <label>Deskripsi Kegiatan</label>
+                      <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
+                      </div>
+                      <div class="section-title mt-0">Data Institusi </div>
+                      <div class="form-group">
+                        <label>Institusi Pengusul</label>
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                      </div>
+                      <div class="form-group">
+                        <label>Alamat Institusi</label>
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
+                      </div>
+                      <div class="form-group">
+                        <label>Kecamatan Institusi</label>
+                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
+                      </div>
+                      <div class="form-group">
+                        <label>Desa Institusi</label>
+                        <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
+                      </div>
+                      <div class="form-group">
+                        <label>Nama Pengusul</label>
+                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
+                      </div>
+                      <div class="form-group">
+                        <label>CP Pengusul</label>
+                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                      </div>
+                      <div class="form-group">
+                        <label>File</label>
+                        <input type="file" class="form-control" name="file">
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('perusahaan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -144,10 +182,32 @@
 			//call function get data edit
 			      get_data_edit();
 
-            $('#kode_kecamatan').change(function(){ 
+            $('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('perusahaan/get_desa');?>",
+                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
+                        }
+                        $('#kode_subbidang').html(html);
+
+                    }
+                });
+                return false;
+            });
+
+            	$('#kode_kecamatan').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulan/get_desa');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,
@@ -164,29 +224,53 @@
                     }
                 });
                 return false;
-            }); 
+            });  
+
+            $('#submit').submit(function(e){
+		    e.preventDefault(); 
+		         $.ajax({
+		             url:'<?php echo base_url();?>index.php/upload/do_upload',
+		             type:"post",
+		             data:new FormData(this),
+		             processData:false,
+		             contentType:false,
+		             cache:false,
+		             async:false,
+		              success: function(data){
+		                  alert("Upload Image Berhasil.");
+		           }
+		         });
+		        });
 
 			//load data for edit
             function get_data_edit(){
-            	var id = $('[name="id"]').val();
+            	var kode_usulan = $('[name="kode_usulan"]').val();
             	$.ajax({
-            		url : "<?php echo site_url('perusahaan/get_data_edit');?>",
+            		url : "<?php echo site_url('usulan/get_data_edit');?>",
                     method : "POST",
-                    data :{id :id},
+                    data :{kode_usulan :kode_usulan},
                     async : true,
                     dataType : 'json',
                     success : function(data){
                         $.each(data, function(i, item){
-                            $('[name="nama_perusahaan"]').val(data[i].nama_perusahaan);
-                            $('[name="username"]').val(data[i].username);
-                            $('[name="password"]').val(data[i].password);
-                            $('[name="level"]').val(data[i].level);
-                            $('[name="alamat"]').val(data[i].alamat);
+                            $('[name="kode_bidang"]').val(data[i].kode_bidang).trigger('change');
+                            $('[name="kode_subbidang"]').val(data[i].kode_subbidang).trigger('change');
+                            $('[name="tahun_pengusulan"]').val(data[i].tahun_pengusulan);
+                            $('[name="nama_kegiatan"]').val(data[i].nama_kegiatan);
+                            $('[name="waktu_mulai"]').val(data[i].waktu_mulai);
+                            $('[name="waktu_selesai"]').val(data[i].waktu_selesai);
+                            $('[name="anggaran"]').val(data[i].anggaran);
+                            $('[name="alamat_kegiatan"]').val(data[i].alamat_kegiatan);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
                             $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
+                            $('[name="deskripsi"]').val(data[i].deskripsi);
+                            $('[name="nama_institusi"]').val(data[i].nama_institusi);
+                            $('[name="alamat_institusi"]').val(data[i].alamat_institusi);
+                            $('[name="kecamatan_institusi"]').val(data[i].kecamatan_institusi);
+                            $('[name="desa_institusi"]').val(data[i].desa_institusi);
+                            $('[name="nama_pengusul"]').val(data[i].nama_pengusul);
                             $('[name="no_telp"]').val(data[i].no_telp);
-                            $('[name="email"]').val(data[i].email);
-
+                            $('[name="file"]').val(data[i].file);
                             
                         });
                     }
