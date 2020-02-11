@@ -119,11 +119,18 @@
                       </div>
                       <div class="form-group">
                         <label>Kecamatan Institusi</label>
-                        <input type="text" class="form-control" name="kecamatan_institusi" placeholder="Kecamatan Institusi">
+                        <select class="form-control" name="kode_k" id="kode_k">
+                        <option value="">No Selected</option>
+                          <?php foreach($kode_k as $row):?>
+                          <option value="<?php echo $row->kode_k;?>"><?php echo $row->nama_k;?></option>
+                          <?php endforeach;?>
+                        </select>
                       </div>
                       <div class="form-group">
                         <label>Desa Institusi</label>
-                        <input type="text" class="form-control" name="desa_institusi" placeholder="Nama Desa">
+                        <select class="form-control" name="kode_w" id="kode_w">
+                        <option value="">No Selected</option>
+                        </select>
                       </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
@@ -233,6 +240,35 @@
             
 		});
 	</script>
+
+<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#kode_k').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulan/get_dk');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_w+'>'+data[i].nama_d+'</option>';
+                        }
+                        $('#kode_w').html(html);
+
+                    }
+                });
+                return false;
+            }); 
+            
+		});
+	</script>
+
 
 </body>
 </html>
