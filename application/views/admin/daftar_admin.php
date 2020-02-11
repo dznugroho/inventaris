@@ -75,8 +75,8 @@
                               <td><?php echo $row->nama_akses;?></td>
                               
                               <td>
-                                <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('admin/delete/'.$row->id);?>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-primary"><i class="far fa-edit"></a></i>
+                                <a href="<?php echo site_url('admin/delete/'.$row->id);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>

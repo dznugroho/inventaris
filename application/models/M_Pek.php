@@ -1,4 +1,4 @@
- ; <?php
+<?php
  
 class M_Pek extends CI_Model {
  
@@ -45,7 +45,7 @@ class M_Pek extends CI_Model {
         } 
         else if(isset($this->order))
         {
-            $order = $  this->order;
+            $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }
