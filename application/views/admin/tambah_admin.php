@@ -63,9 +63,15 @@
                         <input type="text" class="form-control" name="password" placeholder="Password">
                       </div>
                       <div class="form-group">
-                        <label>level</label>
-                        <input type="text" class="form-control" name="level" placeholder="Level">
+                        <label>Akses sebagai</label>
+                        <select class="form-control" name="level" id="level">
+                          <option value="1">Admin</option>
+                          <option value="2">Perorangan</option>
+                          <option value="3">Kecamatan</option>
+                          <option value="4">Perusahaan</option>
+                        </select>
                       </div>
+                      <div class="form-group">
                     </div>
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('admin'); ?>">Submit</button>

@@ -54,12 +54,10 @@
                   Login
                 </button>
               </div>
-
               <div class="mt-5 text-center">
                 Don't have an account? <a href="auth-register.html">Create new one</a>
               </div>
             </form>
-
           </div>
         </div>
         <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url()?>assets/img/unsplash/kartini.jpg">

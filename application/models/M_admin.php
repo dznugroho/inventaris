@@ -19,8 +19,9 @@ class M_Admin extends CI_Model{
 	}
 
 	function get_admin(){
-		$this->db->select('id,nama,username,password,level');
+		$this->db->select('id,nama,username,password,nama_akses');
 		$this->db->from('tb_user');
+		$this->db->join('akses','akses.id_akses = tb_user.level','left');
 		$query = $this->db->get();
 		return $query;
 	}

@@ -1,25 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usulan extends CI_Controller {
+class Registrasi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Usulan','m_usulan');
+		$this->load->model('M_Registrasi','m_registrasi');
 		$this->load->library('session');
 		
 	}
 
 	function index(){
-		$data['usulan'] = $this->m_usulan->get_usulan();
-		$this->load->view('usulan/daftar_usulan',$data);
+		$data['registrasi'] = $this->m_registrasi->get_usulan();
+		$this->load->view('registrasi/daftar_usulan',$data);
 	}
 
 	// add new usulan
 	function add_new(){
 		
-		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
-		$this->load->view('usulan/add_product_view', $data);
+		$data['kode_bidang'] = $this->m_registrasi->get_bidang()->result();
+		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
+		$this->load->view('registrasi/add_product_view', $data);
 	}
 
 	// get sub bidang by bidang_id
