@@ -50,10 +50,10 @@
               <li class="menu-header">Usulan Kegiatan</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Data Usulan</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'konfirmasi'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('konfirmasi'); ?>"><i class="far fa-list-alt"></i> <span>Konfirmasi Usulan</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'terima'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('terima'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'confirm'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('confirm'); ?>"><i class="far fa-list-alt"></i> <span>Konfirmasi Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'status_usulan'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('status_usulan'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
               
               <?php elseif($this->session->userdata('akses')=='2'):?>
               <li class="menu-header">Usulan Kegiatan</li>

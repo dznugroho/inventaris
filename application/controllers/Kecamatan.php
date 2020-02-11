@@ -23,9 +23,7 @@ class Kecamatan extends CI_Controller {
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $field) {
-			$no++;
 			$row = array();
-			$row[] = $no;
 			$row[] = $field->kode_kecamatan;
 			$row[] = $field->nama_kecamatan;       
 			$row[] = '<a href="'.base_url().'kecamatan/ubah/'.$field->kode_kecamatan.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'kesehatan/delete/'.$field->kode_kecamatan.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';

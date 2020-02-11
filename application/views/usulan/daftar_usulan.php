@@ -47,7 +47,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="mytable">
+                      <table class="table table-striped" id="mytable" width="100%">
                         <thead>
                           <tr>
                             <th>No.</th>
@@ -70,7 +70,7 @@
                             <th>Nama Pengusul</th>
                             <th>CP Pengusul</th>
                             <th>File</th>
-                            <th>Aksi</th>
+                            <th width="400px">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -118,8 +118,9 @@ HEREDOCS;
 
                               </td>
                               <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
+                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
+                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>
