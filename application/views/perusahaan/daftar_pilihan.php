@@ -37,9 +37,7 @@
             </div>
           </div>
           <div class="row">
-          <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          </div>
           </div>
             <div class="row">
               <div class="col-12">
@@ -50,7 +48,6 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Nama kegiatan</th>
@@ -70,7 +67,6 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
@@ -79,11 +75,8 @@
                               <td><?php echo number_format($row->anggaran);?></td>
                               <td><?php echo number_format($row->dana);?></td>
                               <td><?php echo $row->status;?></td>
-
-
                               <td>
-                                <a href="<?php echo site_url('kegiatan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary">Edit</a>
-                               
+                              <a href="<?php echo site_url('kegiatan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

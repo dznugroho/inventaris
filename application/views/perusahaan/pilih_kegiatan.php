@@ -39,7 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          
+
           </div>
           </div>
             <div class="row">
@@ -96,8 +96,8 @@
                               <td><?php echo $row->deskripsi;?></td>
                               <td><?php echo $row->nama_institusi;?></td>
                               <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->kecamatan_institusi;?></td>
-                              <td><?php echo $row->desa_institusi;?></td>
+                              <td><?php echo $row->nama_k;?></td>
+                              <td><?php echo $row->nama_d;?></td>
                               <td><?php echo $row->nama_pengusul;?></td>
                               <td><?php echo $row->no_telp;?></td>
                               <td><?php ?>

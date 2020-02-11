@@ -3,12 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Pilihanps extends CI_Model{
 	
-	function get_pilihan(){
-		$query = $this->db->get('tb_pilihan');
-		return $query;	
-	}
-
-	
 	function save_pilihan($kode_usulan,$kode_perusahaan,$dana){
 		$data = array(
 			
@@ -20,31 +14,40 @@ class M_Pilihanps extends CI_Model{
 		$this->db->insert('tb_pilihan',$data);
 	}
 
+	function get_all(){
+		$kode_perusahaan = $this->session->userdata('ses_id');
+		return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
+		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan JOIN tb_bidang 
+		ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
+		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang  WHERE 
+		tb_pilihan.kode_perusahaan =  $kode_perusahaan");
+	}
+
 	function get_usulan(){
-		$this->db->select('tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,dana,status');
-		$this->db->from('tb_pilihan');
-		$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
+		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
+		waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
+		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,no_telp,file');
+		$this->db->from('tb_usulan');
 		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+		$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+		$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
 		$query = $this->db->get();
 		return $query;
 	}
-
-	function get_pengguna_by_id($id){
-		$query = $this->db->get_where('tbu_kecamatan', array('id' =>  $id));
-		return $query;
+	function get_pilihan(){
+		$kode_perusahaan = $this->session->userdata('ses_id');
+		return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
+		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan JOIN tb_bidang 
+		ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
+		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang  WHERE 
+		tb_pilihan.kode_perusahaan =  $kode_perusahaan");
 	}
 
-	function update_pengguna($id,$nama,$kode_kecamatan,$password,$level){
-
-		$this->db->set('nama' 		, $nama);
-        $this->db->set('kode_kecamatan',$kode_kecamatan);
-        $this->db->set('password' 	, MD5($password));
-		$this->db->set('level' 	    , $level);
-		$this->db->where('id' 	    , $id);            
-		$this->db->update('tbu_kecamatan');
-	}
 
 	//Delete usulan
 	function delete_pengguna($id){
