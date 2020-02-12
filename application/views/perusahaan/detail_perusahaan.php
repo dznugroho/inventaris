@@ -45,6 +45,10 @@
                             <?php
                               foreach ($detail_perusahaan->result() as $row):
                             ?>
+                             <tr>
+                            <th colspan="3">Kode Usulan</th>
+                              <td><?php echo $row->kode_usulan;?></td>
+                          </tr>
                           <tr>
                             <th colspan="3">Nama Bidang</th>
                               <td><?php echo $row->nama_bidang;?></td>
@@ -74,9 +78,11 @@
                             <th colspan="3">Dana Perusahaan</th>
                               <td><?php echo number_format($row->dana);?></td>
                               </tr>
+
+
                           <tr>
                             <th colspan="3">Status</th>
-                              <td><?php echo $row->status;?></td>
+                              <td><?php echo $row->status_perusahaan;?></td>
                           </tr>
                         
                           <tr>
@@ -87,7 +93,7 @@
                           <?php endforeach;?>
                       </table>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('usulankec');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('kegiatan');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

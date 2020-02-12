@@ -106,7 +106,7 @@
 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('pilihan_ps/detail/'.$row->kode_usulan);?>" class="btn btn-success">Detail</a>
+                              <a href="<?php echo site_url('pilihan_ps/detail_ps/'.$row->kode_usulan);?>" class="btn btn-success">Detail</a>
                               <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                               <i class="fa fa-plus"></i></button>
                               </td>

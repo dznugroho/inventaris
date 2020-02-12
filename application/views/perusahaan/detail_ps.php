@@ -30,58 +30,104 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data usulan</h1>
+            <h1>Detail Usulan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data usulan</div>
+              <div class="breadcrumb-item">Detail usulan</div>
             </div>
           </div>
-          <div class="row">
-          <?php echo $this->session->flashdata('msg');?>
-          </div>
+          
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                    <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
-                        <thead>
-                          <tr>
-                            <th>No.</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
-                            <th>Nama kegiatan</th>
-                            <th>Waktu Mulai</th>
-                            <th>Waktu Selesai</th>
-                            <th>Anggaran</th>
-                            <th>Dana Perusahaan</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                          </tr>
-                        </thead>
-                        <tbody>
                             <?php
-                              $no = 0;
-                              foreach ($usulan->result() as $row):
-                                $no++;
+                              foreach ($detail_ps->result() as $row):
                             ?>
-                            <tr>
-                              <td><?php echo $no;?></td>
+                          <tr>
+                            <th colspan="3">Kode Usulan</th>                             
+                              <td><?php echo $row->kode_usulan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Nama Bidang</th>
                               <td><?php echo $row->nama_bidang;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Nama Sub Bidang</th>
                               <td><?php echo $row->nama_sub;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Tahun Pengusulan</th>
+                              <td><?php echo $row->tahun_pengusulan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Nama Kegiatan</th>
                               <td><?php echo $row->nama_kegiatan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Waktu Mulai</th>
                               <td><?php echo $row->waktu_mulai;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Waktu Selesai</th>
                               <td><?php echo $row->waktu_selesai;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Anggaran</th>
                               <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo number_format($row->dana);?></td>
-                              <td><?php echo $row->status_perusahaan;?></td>
-                              <td>
-                              <a href="<?php echo site_url('kegiatan/detail_perusahaan/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Detail</a>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Alamat Kegiatan</th>
+                              <td><?php echo $row->alamat_kegiatan;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Kecamatan</th>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Desa kegiatan</th>
+                              <td><?php echo $row->desa;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Deskripsi Kegiatan</th>
+                              <td><?php echo $row->deskripsi;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Nama Institusi</th>
+                              <td><?php echo $row->nama_institusi;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Alamat Instusi</th>
+                              <td><?php echo $row->alamat_institusi;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Kecamatan Institusi</th>
+                              <td><?php echo $row->nama_k;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Desa Institusi</th>
+                              <td><?php echo $row->nama_d;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Nama Pengusul</th>
+                              <td><?php echo $row->nama_pengusul;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">CP Pengusul</th>
+                              <td><?php echo $row->no_telp;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">File</th>
+                              <td><?php ?>
+			                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			           	        <?php   ;?>
                               </td>
                             </tr>
-                            <?php endforeach;?>
-                          </tbody>
+                          <?php endforeach;?>
                       </table>
+                    <div class="card-footer text-right">
+                      <a href="<?php echo site_url('pilihan_ps');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

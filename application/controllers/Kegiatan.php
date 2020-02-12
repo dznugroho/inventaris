@@ -14,7 +14,6 @@ class Kegiatan extends CI_Controller {
 	
 		$this->load->view('perusahaan/daftar_pilihan',$data);
 	}
-			
 	function detail_perusahaan(){
 		$data['detail_perusahaan'] = $this->m_pilihanps->get_detail();
 

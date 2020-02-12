@@ -48,6 +48,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
+                           
                             <th>Kode Usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
@@ -68,7 +69,8 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-  
+                            
+                              
                               <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
@@ -79,7 +81,7 @@
                               <td><?php echo number_format($row->dana);?></td>
                               <td><?php echo $row->status_perusahaan;?></td>
                               <td>
-                              <a href="<?php echo site_url('kegiatan/detail_perusahaan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                              <a href="<?php echo site_url('kegiatan/detail_perusahaan/'.$row->kode_pilih);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>
