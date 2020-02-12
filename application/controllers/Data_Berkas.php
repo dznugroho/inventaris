@@ -14,7 +14,6 @@ class Data_Berkas extends CI_Controller {
 		
     }
 
-
     function databerkas(){
 		$list = $this->M_Databerkas->get_datatables();
 		$data = array();
