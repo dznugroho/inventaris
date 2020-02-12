@@ -62,7 +62,7 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label>Passwoy</label>
+                        <label>Password</label>
                         <input type="text" class="form-control" name="password" placeholder="password">
                       </div>
                       <div class="form-group">

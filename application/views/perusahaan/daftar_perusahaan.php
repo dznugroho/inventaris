@@ -51,7 +51,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>ID</th>
+                            <th>ID Perusahaan</th>
                             <th>Nama Perusahaan</th>
                             <th>Username</th>
                             <th>Password</th>
@@ -61,7 +61,7 @@
                             <th>Desa</th>
                             <th>No. Telp</th>
                             <th>Email</th>
-                            <th>Aksi</th>
+                            <th colspan="2">Aksi</th>
 
                           </tr>
                         </thead>
@@ -84,8 +84,10 @@
                               <td><?php echo $row->no_telp;?></td>
                               <td><?php echo $row->email;?></td>
                               <td>
-                                <a href="<?php echo site_url('perusahaan/get_edit/'.$row->id);?>" class="btn btn-sm btn-info" ><i class="far fa-edit"></a></i>  
-                                <a href="<?php echo site_url('perusahaan/delete/'.$row->id);?>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></a></i> 
+                                <a href="<?php echo site_url('perusahaan/get_edit/'.$row->id);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
+                              </td>
+                              <td>
+                              <a href="<?php echo site_url('perusahaan/delete/'.$row->id);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>

@@ -51,7 +51,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode usulan</th>
+                            <th>Kode Usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
@@ -59,18 +59,9 @@
                             <th>Waktu Mulai</th>
                             <th>Waktu Selesai</th>
                             <th>Anggaran</th>
-                            <th>Alamat kegiatan</th>
-                            <th>Kecamatan</th>
-                            <th>Desa kegiatan</th>
-                            <th>Deskripsi Kegiatan</th>
-                            <th>Nama Institusi</th>
-                            <th>Alamat Instusi</th>
-                            <th>Kecamatan Institusi</th>
-                            <th>Desa Institusi</th>
-                            <th>Nama Pengusul</th>
-                            <th>CP Pengusul</th>
                             <th>File</th>
-                            <th>Aksi</th>
+                            <th>&nbsp;</th>
+                            <th colspan="3" text-center>Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -89,16 +80,6 @@
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo $row->alamat_kegiatan;?></td>
-                              <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->deskripsi;?></td>
-                              <td><?php echo $row->nama_institusi;?></td>
-                              <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->nama_k;?></td>
-                              <td><?php echo $row->nama_d;?></td>
-                              <td><?php echo $row->nama_pengusul;?></td>
-                              <td><?php echo $row->no_telp;?></td>
                               <td><?php if($row->file==""){
 							$fill = $row->file;
 							$aksi = site_url('usulan/add_file');
@@ -118,8 +99,13 @@ HEREDOCS;
 
                               </td>
                               <td>
-                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
+                              <a href="<?php echo site_url('usulan/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                              </td>
+                              <td>
+                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
+                              </td>
+                              <td>
+                              <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>

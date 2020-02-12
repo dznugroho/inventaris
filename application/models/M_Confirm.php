@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Pilihanps extends CI_Model{
+class M_Confirm extends CI_Model{
 	
 	function save_pilihan($kode_usulan,$kode_perusahaan,$dana){
 		$data = array(
@@ -39,14 +39,14 @@ class M_Pilihanps extends CI_Model{
 		return $query;
 	}
 	function get_pilihan(){
-		$kode_perusahaan = $this->session->userdata('ses_id');
+		$kode_perusahaan = 'kode_perusahaan';
 		return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status 
-		from tb_pilihan
-		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
-		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
-		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
-		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan");
+		waktu_mulai,waktu_selesai,anggaran,nama_perusahaan,tb_pilihan.dana,tb_pilihan.status from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan JOIN tb_bidang 
+		ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
+		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_perusahaan ON 
+        tb_perusahaan.id = tb_pilihan.kode_perusahaan WHERE 
+		tb_pilihan.kode_perusahaan =  $kode_perusahaan  ORDER BY tb_pilihan.kode_usulan ASC");
 	}
 
 

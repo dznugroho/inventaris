@@ -27,7 +27,7 @@
 
         <?php $this->load->view('include/sidebar.php')?>
 
-          <div class="main-content">
+      <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Data usulan</h1>
@@ -71,7 +71,7 @@
                             <th>Nama Pengusul</th>
                             <th>CP Pengusul</th>
                             <th>File</th>
-                            <th>Aksi</th>
+                            <th colspan="2">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -106,6 +106,11 @@
 
                               </td>
                               <td>
+                              <a href="<?php echo site_url('pilihan_ps/detail/'.$row->kode_usulan);?>" class="btn btn-success">Detail</a>
+                              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              <i class="fa fa-plus"></i></button>
+                              </td>
+                              <td>
                                 <a href="<?php echo site_url('pilihan_ps/input/'.$row->kode_usulan);?>" class="btn btn-primary">Pilih</a>
                               </td>
                             </tr>
@@ -113,12 +118,74 @@
                           </tbody>
                       </table>
                     </div>
+
+                 
+
                   </div>
                 </div>
               </div>
             </div>
+            
         </section>
       </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="exampleModalLabel">Masukkan Dana</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="post" action="<?php echo base_url().'mahasiswa/tambah_aksi';?>">
+                          
+                          <div class="form-group">
+                              <label>Nama Mahasiswa</label>
+                              <input type="text" name="nama" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label>NIM</label>
+                              <input type="text" name="nim" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label>Tanggal Lahir</label>
+                              <input type="date" name="tgl_lahir" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label>Jurusan</label>
+                              <select type="text" name="jurusan" class="form-control">
+                              
+                              <option>Sistem Informasi</option>
+                              <option>Teknik Informatika</option>
+                              <option>Teknik Mesin</option>
+                              <option>Teknik Eletro</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label>Alamat</label>
+                              <input type="text" name="alamat" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label>Email</label>
+                              <input type="text" name="email" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label>NO. Telepon</label>
+                              <input type="text" name="no_telp" class="form-control">
+                          </div>
+
+
+                          <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
+                          </form>
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
     
         <?php $this->load->view('include/footer.php')?>
 

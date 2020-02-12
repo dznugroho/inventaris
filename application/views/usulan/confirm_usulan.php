@@ -30,17 +30,14 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Admin Kecamatan</h1>
+            <h1>Data usulan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Perusahaan</div>
+              <div class="breadcrumb-item">Data usulan</div>
             </div>
           </div>
           <div class="row">
-          <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('admin/tambah'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-          </div>
           </div>
             <div class="row">
               <div class="col-12">
@@ -51,32 +48,37 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>id</th>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>password</th>
-                            <th>Akses Sebagai</th>
+                            <th>Kode Usulan</th>
+                            <th>Nama Bidang</th>
+                            <th>Nama sub bidang</th>
+                            <th>Nama kegiatan</th>
+                            <th>Waktu Mulai</th>
+                            <th>Waktu Selesai</th>
+                            <th>Anggaran Minimum</th>
+                            <th>Perusahaan Pengambil</th>
+                            <th>Dana Perusahaan</th>
                             <th>Aksi</th>
-                          
                           </tr>
                         </thead>
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($admin->result() as $row):
+                              foreach ($usulan->result() as $row):
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->id;?></td>
-                              <td><?php echo $row->nama;?></td>
-                              <td><?php echo $row->username;?></td>
-                              <td><?php echo $row->password;?></td>
-                              <td><?php echo $row->nama_akses;?></td>
-                              
+                              <td><?php echo $row->kode_usulan;?></td>
+                              <td><?php echo $row->nama_bidang;?></td>
+                              <td><?php echo $row->nama_sub;?></td>
+                              <td><?php echo $row->nama_kegiatan;?></td>
+                              <td><?php echo $row->waktu_mulai;?></td>
+                              <td><?php echo $row->waktu_selesai;?></td>
+                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo $row->nama_perusahaan;?></td>
+                              <td><?php echo number_format($row->dana);?></td>
                               <td>
-                                <a href="<?php echo site_url('admin/get_edit/'.$row->id);?>" class="btn btn-primary"><i class="far fa-edit"></a></i>
-                                <a href="<?php echo site_url('admin/delete/'.$row->id);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
+                              <a href="<?php echo site_url('confirm/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Confirm</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

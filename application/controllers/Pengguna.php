@@ -38,7 +38,7 @@ class Pengguna extends CI_Controller {
 	
              
         $this->m_pengguna->save_pengguna($id,$nama,$kode_kecamatan,$password,$level);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Saved</div>');
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Kecamatan Saved</div>');
 		redirect('pengguna');
 	}
 
@@ -70,7 +70,7 @@ class Pengguna extends CI_Controller {
 	
         
 		$this->m_pengguna->update_pengguna($id,$nama,$kode_kecamatan,$password,$level);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Pengguna Updated</div>');
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Kecamatan Updated</div>');
 		redirect('pengguna');
 	}
 
@@ -78,7 +78,7 @@ class Pengguna extends CI_Controller {
 	function delete(){
 		$id = $this->uri->segment(3);
 		$this->m_pengguna->delete_pengguna($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Deleted</div>');
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Kecamatan Deleted</div>');
 		redirect('pengguna');
 	}
 }
