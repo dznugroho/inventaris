@@ -28,14 +28,14 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Register</h4></div>
+              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/save_usulan" enctype="multipart/form-data"><h4>Register</h4></div>
 
               <div class="card-body">
                 <form method="POST">
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="nama_depan">First Name</label>
-                      <input id="nama_depan" type="text" class="form-control" name="nama_jalan" autofocus>
+                      <input id="nama_depan" type="text" class="form-control" name="nama_depan" autofocus>
                     </div>
                     <div class="form-group col-6">
                       <label for="nama_belakang">Last Name</label>
@@ -43,8 +43,8 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="nik">NIK</label>
-                    <input id="nik" type="text" class="form-control" name="nik" placeholder="">
+                    <label for="NIK">NIK</label>
+                    <input id="NIK" type="text" class="form-control" name="NIK" placeholder="">
                   </div>
 
                   <div class="form-group">
@@ -96,12 +96,8 @@
                       <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
                     </div>
                   </div>
-
-
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                      Register
-                    </button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"href="<?php echo site_url('Registrasi'); ?>">Register</button>
                   </div>
                 </form>
               </div>
