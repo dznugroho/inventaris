@@ -14,7 +14,11 @@ class Pilihan_PS extends CI_Controller {
 	
 		$this->load->view('perusahaan/pilih_kegiatan',$data);
 	}
+	function detail_ps(){
+		$data['detail_ps'] = $this->m_pilihanps->get_detailps();
 
+		$this->load->view('perusahaan/detail_ps',$data);
+	}
 	function input(){
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;

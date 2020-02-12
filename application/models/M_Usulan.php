@@ -63,11 +63,12 @@ class M_Usulan extends CI_Model{
 	// }
 
 	function get_usulan(){
-		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file');
+		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
+		waktu_selesai,anggaran,file,status_usulan');
 		$this->db->from('tb_usulan');
 		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+		$this->db->where("status_usulan", 0);
 		$query = $this->db->get();
 		return $query;
 	}

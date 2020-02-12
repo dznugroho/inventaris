@@ -30,58 +30,70 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data usulan</h1>
+            <h1>Detail Pilihan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data usulan</div>
+              <div class="breadcrumb-item">Detail Pilihan</div>
             </div>
           </div>
-          <div class="row">
-          <?php echo $this->session->flashdata('msg');?>
-          </div>
+          
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                    <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
-                        <thead>
-                          <tr>
-                            <th>No.</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
-                            <th>Nama kegiatan</th>
-                            <th>Waktu Mulai</th>
-                            <th>Waktu Selesai</th>
-                            <th>Anggaran</th>
-                            <th>Dana Perusahaan</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                          </tr>
-                        </thead>
-                        <tbody>
                             <?php
-                              $no = 0;
-                              foreach ($usulan->result() as $row):
-                                $no++;
+                              foreach ($detail_perusahaan->result() as $row):
                             ?>
-                            <tr>
-                              <td><?php echo $no;?></td>
+                             <tr>
+                            <th colspan="3">Kode Usulan</th>
+                              <td><?php echo $row->kode_usulan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Nama Bidang</th>
                               <td><?php echo $row->nama_bidang;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Nama Sub Bidang</th>
                               <td><?php echo $row->nama_sub;?></td>
+                          </tr>
+                         
+                          <tr>
+                            <th colspan="3">Nama Kegiatan</th>
                               <td><?php echo $row->nama_kegiatan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Waktu Mulai</th>
                               <td><?php echo $row->waktu_mulai;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Waktu Selesai</th>
                               <td><?php echo $row->waktu_selesai;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Anggaran</th>
                               <td><?php echo number_format($row->anggaran);?></td>
+                              </tr>
+                              <tr>
+                            <th colspan="3">Dana Perusahaan</th>
                               <td><?php echo number_format($row->dana);?></td>
+                              </tr>
+
+
+                          <tr>
+                            <th colspan="3">Status</th>
                               <td><?php echo $row->status_perusahaan;?></td>
-                              <td>
-                              <a href="<?php echo site_url('kegiatan/detail_perusahaan/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Detail</a>
+                          </tr>
+                        
+                          <tr>
+                      
+			           	        <?php   ;?>
                               </td>
                             </tr>
-                            <?php endforeach;?>
-                          </tbody>
+                          <?php endforeach;?>
                       </table>
+                    <div class="card-footer text-right">
+                      <a href="<?php echo site_url('kegiatan');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

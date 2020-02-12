@@ -1,23 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kegiatan extends CI_Controller {
+class Status_usulan extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Pilihanps','m_pilihanps');
+		$this->load->model('M_Status_usulan','m_status_usulan');
+		$this->load->model('M_Usulan','m_usulan');
 		$this->load->library('session');
 	}
 
 	function index(){
-		
-		$data['usulan'] = $this->m_pilihanps->get_pilihan();
+		$data['usulan'] = $this->m_status_usulan->get_pilihan();
 	
-		$this->load->view('perusahaan/daftar_pilihan',$data);
-	}
-	function detail_perusahaan(){
-		$data['detail_perusahaan'] = $this->m_pilihanps->get_detail();
-
-		$this->load->view('perusahaan/detail_perusahaan',$data);
+		$this->load->view('usulan/status_usulan',$data);
 	}
 
 	function input(){
@@ -33,10 +28,18 @@ class Kegiatan extends CI_Controller {
 		$kode_perusahaan	= $this->input->post('kode_perusahaan',TRUE);
 		$dana	   	 		= $this->input->post('dana',TRUE);
 
-		$this->m_pilihanps->save_pilihan($kode_usulan,$kode_perusahaan,$dana);
+		$this->m_status_usulan->save_pilihan($kode_usulan,$kode_perusahaan,$dana);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Saved</div>');
 		redirect('pilihan_ps');
 	}
 
 	
+
+	//Delete usulan from Database
+	function delete(){
+		$id = $this->uri->segment(3);
+		$this->m_pengguna->delete_pengguna($id);
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Deleted</div>');
+		redirect('pengguna');
+	}
 }

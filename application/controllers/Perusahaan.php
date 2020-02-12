@@ -60,6 +60,7 @@ class Perusahaan extends CI_Controller {
 		$this->load->view('perusahaan/ubah_perusahaan',$data);
 	}
 
+
 	function get_data_edit(){
 		$id = $this->input->post('id',TRUE);
 		$data = $this->m_perusahaan->get_perusahaan_by_id($id)->result();
