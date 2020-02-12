@@ -85,14 +85,24 @@ class M_Usulankec extends CI_Model{
 	// 	$query = $this->db->get();
 	// 	return $query;
 	// }
+	// function get_usulankec(){
+	// 	$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
+	// 	waktu_selesai,anggaran,file');
+	// 	$this->db->from('tb_usulan');
+	// 	$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+	// 	$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+	// 	$query = $this->db->get();
+	// 	return $query;
+	// }
+
 	function get_usulankec(){
-		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$query = $this->db->get();
-		return $query;
+		$kode_kecamatan = $this->session->userdata('ses_kodekec');
+		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,
+		nama_kegiatan,waktu_mulai,waktu_selesai,anggaran,tb_usulan.file 
+		from tb_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
+		WHERE tb_usulan.kode_kecamatan =  $kode_kecamatan");
 	}
 
 	function get_detail(){
