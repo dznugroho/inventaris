@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Pilihanps extends CI_Model{
+class M_Status_usulan extends CI_Model{
 	
 	function save_pilihan($kode_usulan,$kode_perusahaan,$dana){
 		$data = array(
@@ -47,7 +47,7 @@ class M_Pilihanps extends CI_Model{
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
-		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan");
+		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan AND status_usulan = 1 OR status_perusahaan = 1 ");
 	}
 
 
