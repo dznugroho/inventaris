@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kegiatan extends CI_Controller {
+class Kegiatankec extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('M_Pilihanps','m_pilihanps');
@@ -10,25 +10,19 @@ class Kegiatan extends CI_Controller {
 
 	function index(){
 		
-		$data['usulan'] = $this->m_pilihanps->get_pilihan();
+		$data['usulan'] = $this->m_pilihanps->get_pilihankec();
 	
-		$this->load->view('perusahaan/daftar_pilihan',$data);
-	}
-			
-	function detail_perusahaan(){
-		$data['detail_perusahaan'] = $this->m_pilihanps->get_detail();
-
-		$this->load->view('perusahaan/detail_perusahaan',$data);
+		$this->load->view('usulankec/daftar_pilihan',$data);
 	}
 
-	function input(){
+	//function input(){
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
 		$this->load->view('perusahaan/input_dana',$data);
 	}
 	//save usulan to database
-	function save_pilihan(){
+	//function save_pilihan(){
 
 		$kode_usulan 		= $this->input->post('kode_usulan',TRUE);
 		$kode_perusahaan	= $this->input->post('kode_perusahaan',TRUE);

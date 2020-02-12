@@ -48,6 +48,17 @@ class M_Pilihanps extends CI_Model{
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
 		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan");
 	}
+	//detail perusahaan
+	function get_detail(){
+		$kode_usulan =$this->uri->segment(3);
+		return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
+		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status 
+		from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
+		WHERE tb_pilihan.kode_perusahaan =  $kode_usulan");
+	}
 
 
 	//Delete usulan
