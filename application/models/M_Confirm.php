@@ -46,7 +46,7 @@ class M_Confirm extends CI_Model{
 		ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
 		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_perusahaan ON 
         tb_perusahaan.id = tb_pilihan.kode_perusahaan WHERE 
-		tb_pilihan.kode_perusahaan =  $kode_perusahaan");
+		tb_pilihan.kode_perusahaan =  $kode_perusahaan  ORDER BY tb_pilihan.kode_usulan ASC");
 	}
 
 

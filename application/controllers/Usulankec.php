@@ -54,7 +54,13 @@ class Usulankec extends CI_Controller {
     {
         $file = $this->uri->segment(3);
         echo "<embed src='".base_url('files/'.$file)."' width='100%' height='100%'></embed>";
-    }
+	}
+	
+	function detail_usulan(){
+		$data['detail_usulan'] = $this->m_usulankec->get_detail();
+
+		$this->load->view('usulankec/detail_usulan',$data);
+	}
 
 	//save usulan to database
 	function save_usulankec(){
