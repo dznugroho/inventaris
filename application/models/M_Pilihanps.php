@@ -35,13 +35,14 @@ class M_Pilihanps extends CI_Model{
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 		$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 		$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+		$this->db->where("status_usulan", 0);
 		$query = $this->db->get();
 		return $query;
 	}
 	function get_pilihan(){
 		$kode_perusahaan = $this->session->userdata('ses_id');
 		return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status 
+		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status_perusahaan
 		from tb_pilihan
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang

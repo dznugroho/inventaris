@@ -74,7 +74,7 @@
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
                               <td><?php echo number_format($row->dana);?></td>
-                              <td><?php echo $row->status;?></td>
+                              <td><?php echo $row->status_perusahaan;?></td>
                               <td>
                               <a href="<?php echo site_url('kegiatan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Detail</a>
                               </td>

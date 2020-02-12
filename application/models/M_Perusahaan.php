@@ -81,4 +81,4 @@ class M_Perusahaan extends CI_Model{
 	}
 
 	
-}
+} 

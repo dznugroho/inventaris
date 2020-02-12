@@ -37,7 +37,10 @@
             </div>
           </div>
           <div class="row">
+          <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          </div>
           </div>
             <div class="row">
               <div class="col-12">
@@ -47,16 +50,30 @@
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
+                            <td><div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                            </div></td>
                             <th>No.</th>
-                            <th>Kode Usulan</th>
+                            <th>Kode usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
+                            <th>Tahun pengusulan</th>
                             <th>Nama kegiatan</th>
                             <th>Waktu Mulai</th>
                             <th>Waktu Selesai</th>
                             <th>Anggaran</th>
-                            <th>Dana Perusahaan</th>
-                            <th>Status</th>
+                            <th>Alamat kegiatan</th>
+                            <th>Kecamatan</th>
+                            <th>Desa kegiatan</th>
+                            <th>Deskripsi Kegiatan</th>
+                            <th>Nama Institusi</th>
+                            <th>Alamat Instusi</th>
+                            <th>Kecamatan Institusi</th>
+                            <th>Desa Institusi</th>
+                            <th>Nama Pengusul</th>
+                            <th>CP Pengusul</th>
+                            <th>File</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -67,19 +84,50 @@
                                 $no++;
                             ?>
                             <tr>
+                            <td><div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" name="<?php echo $row->kode_usulan;?>" id="<?php echo $row->kode_usulan;?>">
+                              <label for="<?php echo $row->kode_usulan;?>" class="custom-control-label">&nbsp;</label>
+                            </div></td>
                               <td><?php echo $no;?></td>
-  
                               <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
+                              <td><?php echo $row->tahun_pengusulan;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo number_format($row->dana);?></td>
-                              <td><?php echo $row->status_perusahaan;?></td>
+                              <td><?php echo $row->alamat_kegiatan;?></td>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              <td><?php echo $row->desa;?></td>
+                              <td><?php echo $row->deskripsi;?></td>
+                              <td><?php echo $row->nama_institusi;?></td>
+                              <td><?php echo $row->alamat_institusi;?></td>
+                              <td><?php echo $row->kecamatan_institusi;?></td>
+                              <td><?php echo $row->desa_institusi;?></td>
+                              <td><?php echo $row->nama_pengusul;?></td>
+                              <td><?php echo $row->no_telp;?></td>
+                              <td><?php if($row->file==""){
+							$fill = $row->file;
+							$aksi = site_url('usulan/add_file');
+							$tampil = 
+<<<HEREDOCS
+			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
+                <input type="file" name="file">             
+								<input type="hidden" name="kode_usulan" value="$row->kode_usulan">
+								<br>
+								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
+							</form>
+HEREDOCS;
+						echo $tampil;
+			            }else{?>
+			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			           	<?php } ?>
+
+                              </td>
                               <td>
-                              <a href="<?php echo site_url('kegiatan/detail_perusahaan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                                <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-info">Edit</a>
+                                <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-sm btn-danger">Delete</a>
                               </td>
                             </tr>
                             <?php endforeach;?>
