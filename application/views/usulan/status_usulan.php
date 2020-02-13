@@ -73,9 +73,15 @@
                               <td><?php echo number_format($row->anggaran);?></td>
                               <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo number_format($row->dana);?></td>
-                              <td><?php echo $row->status_perusahaan;?></td>
+                              <td><?php
+                              if($row->status_perusahaan == '1'){
+                                echo  '<div class="badge badge-success">Accepted</div>';
+                              }else{
+                                echo '<div class="badge badge-danger">Declined</div>';
+                              }
+                                ;?></td>
                               <td>
-                              <a href="<?php echo site_url('status_usulan/detail_pilihan/'.$row->kode_pilih);?>" class="btn btn-sm btn-success" >Detail</a>
+                              <a href="<?php echo site_url('status_usulan/detail_pilihan/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

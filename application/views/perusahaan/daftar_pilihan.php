@@ -79,7 +79,13 @@
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
                               <td><?php echo number_format($row->dana);?></td>
-                              <td><?php echo $row->status_perusahaan;?></td>
+                              <td><?php
+                              if($row->status_perusahaan == '1'){
+                                echo  '<div class="badge badge-success">Accepted</div>';
+                              }else{
+                                echo '<div class="badge badge-danger">Declined</div>';
+                              }
+                                ;?></td>
                               <td>
                               <a href="<?php echo site_url('kegiatan/detail_perusahaan/'.$row->kode_pilih);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
                               </td>
