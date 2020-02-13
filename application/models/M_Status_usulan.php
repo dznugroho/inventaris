@@ -43,7 +43,7 @@ class M_Status_usulan extends CI_Model{
 	function get_pilihan(){
 		$kode_perusahaan = $this->session->userdata('ses_id');
 		return $this->db->query("SELECT kode_pilih,tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-		anggaran,nama_perusahaan,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		anggaran,nama_perusahaan,alamat,email,tb_pilihan.dana,tb_pilihan.status_perusahaan
 		from tb_pilihan
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
@@ -57,7 +57,7 @@ class M_Status_usulan extends CI_Model{
 		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,
 		waktu_mulai,waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
 		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,tb_usulan.no_telp,tb_usulan.file,
-		tb_perusahaan.nama_perusahaan,dana,status_perusahaan
+		tb_perusahaan.nama_perusahaan,tb_perusahaan.alamat,tb_perusahaan.email,dana,status_perusahaan
 		FROM tb_pilihan 
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang 

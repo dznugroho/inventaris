@@ -122,6 +122,15 @@
                               <td><?php echo $row->nama_perusahaan;?></td>
                           </tr>
                           <tr>
+                            <th colspan="3">Alamat Perusahaan</th>
+                              <td><?php echo $row->alamat;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Email Perusahaan</th>
+                              <td><?php echo $row->email;?></td>
+                          </tr>
+                    
+                          <tr>
                             <th colspan="3">Dana Perusahaan</th>
                               <td><?php echo $row->dana;?></td>
                           </tr>
