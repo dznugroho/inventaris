@@ -76,7 +76,7 @@
                               
                               <td>
                                 <a href="<?php echo site_url('pengguna/get_edit/'.$row->id);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
-                                <a href="<?php echo site_url('pengguna/delete/'.$row->id);?>" class="btn btn-danger"><i class="far fa-trash"></a></i> 
+                                <a href="<?php echo site_url('pengguna/delete/'.$row->id);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>

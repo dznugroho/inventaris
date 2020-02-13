@@ -68,6 +68,7 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
+                              <?php $row->kode_pilih;?>
                               <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
@@ -78,7 +79,11 @@
                               <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo number_format($row->dana);?></td>
                               <td>
-                              <a href="<?php echo site_url('confirm/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Confirm</a>
+                              <a href="<?php echo site_url('confirm/confirm/'.$row->kode_pilih) ?>">
+                                                    <button class="btn btn-primary btn-sm" onclick="javasciprt: return confirm('Are You Sure ?')" 
+                                                    >Confirm</button></a>
+                              
+                              <a href="<?php echo site_url('confirm/cancel/'.$row->kode_pilih) ?>" ><button class="btn btn-danger btn-sm" onclick="javasciprt: return confirm('Are You Sure ?')">Cancel</button></a>
                               </td>
                             </tr>
                             <?php endforeach;?>

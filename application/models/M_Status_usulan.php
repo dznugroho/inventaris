@@ -39,17 +39,36 @@ class M_Status_usulan extends CI_Model{
 		$query = $this->db->get();
 		return $query;
 	}
+
 	function get_pilihan(){
 		$kode_perusahaan = $this->session->userdata('ses_id');
-		return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		return $this->db->query("SELECT kode_pilih,tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
+		anggaran,nama_perusahaan,tb_pilihan.dana,tb_pilihan.status_perusahaan
 		from tb_pilihan
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
-		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
 		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan AND status_usulan = 1 OR status_perusahaan = 1 ");
 	}
 
+	function get_detail(){
+		$kode_pilih = $this->uri->segment(3);
+		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,
+		waktu_mulai,waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
+		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,tb_usulan.no_telp,tb_usulan.file,
+		tb_perusahaan.nama_perusahaan,dana,status_perusahaan
+		FROM tb_pilihan 
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang 
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
+		JOIN tb_kecamatan ON tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan 
+		JOIN tb_wilayah ON tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah 
+		JOIN tb_w ON tb_w.kode_w = tb_usulan.kode_w
+		JOIN tb_k ON tb_k.kode_k = tb_usulan.kode_k
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
+		WHERE tb_pilihan.kode_pilih =  $kode_pilih");
+	}
 
 	//Delete usulan
 	function delete_pengguna($id){
