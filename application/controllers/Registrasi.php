@@ -17,12 +17,6 @@ class Registrasi extends CI_Controller {
 	}
 
 	// add new usulan
-	function add_new(){
-   		
-		$data['kode_bidang'] = $this->m_registrasi->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
-		$this->load->view('registrasi/add_product_view', $data);
-	}
 
 	
 
@@ -48,6 +42,7 @@ class Registrasi extends CI_Controller {
 			'nama_belakang' 	=> $this->input->post('nama_belakang',TRUE),
 			'NIK' 	    => $this->input->post('NIK',TRUE),
 			'email' 	=> $this->input->post('email',TRUE),
+			'username' 	    => $this->input->post('username',TRUE),
 			'password' 	    => $this->input->post('password',TRUE),
 			'kode_kecamatan'		=> $this->input->post('kode_kecamatan',TRUE),
 			'kode_wilayah' 	        => $this->input->post('kode_wilayah',TRUE)

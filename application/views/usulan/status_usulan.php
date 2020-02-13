@@ -74,8 +74,10 @@
                               <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo number_format($row->dana);?></td>
                               <td><?php
-                              if($row->status_perusahaan == '1'){
-                                echo  '<div class="badge badge-success">Accepted</div>';
+                              if($row->status_perusahaan == '0'){
+                                echo  '<div class="badge badge-warning">On Process</div>';
+                              }else if ($row->status_perusahaan == '1'){
+                                echo '<div class="badge badge-success">Accepted</div>';
                               }else{
                                 echo '<div class="badge badge-danger">Declined</div>';
                               }

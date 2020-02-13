@@ -37,7 +37,7 @@ class M_Registrasi extends CI_Model{
 		return $query;
 	}
 	
-	function save_usulan($NIK,$nama_depan,$nama_belakang,$email,$password,
+	function save_usulan($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
 	$kode_kecamatan,$kode_wilayah){
 		$data = array(
 			
@@ -45,6 +45,7 @@ class M_Registrasi extends CI_Model{
             'nama_belakang' 	=> $nama_belakang,
             'NIK' 	    => $NIK,
             'email' 	=> $email,
+            'username' 	=> $username,
             'password' 		=> $password,
 			'kode_kecamatan' 	        => $kode_kecamatan,
 			'kode_wilayah' 	=> $kode_wilayah

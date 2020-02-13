@@ -5,7 +5,7 @@ class M_Login extends CI_Model{
         return $query;
     }
     function auth_individu($username,$password){
-        $query=$this->db->query("SELECT * FROM tb_registrasi WHERE username='$username' AND password=MD5('$password') LIMIT 1");
+        $query=$this->db->query("SELECT * FROM registrasi WHERE username='$username' AND password=MD5('$password') LIMIT 1");
         return $query;
     }
  
