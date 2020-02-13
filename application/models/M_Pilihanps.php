@@ -55,11 +55,12 @@ class M_Pilihanps extends CI_Model{
 	function get_detail(){
 		$kode_pilih = $this->uri->segment(3);
 		return $this->db->query("SELECT tb_pilihan.kode_pilih,tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-		waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		waktu_mulai,waktu_selesai,anggaran,tb_perusahaan.nama_perusahaan,tb_pilihan.dana,tb_pilihan.status_perusahaan
 		from tb_pilihan
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan
 		WHERE tb_pilihan.kode_pilih =$kode_pilih");
 	}
 	function get_detailps(){

@@ -71,15 +71,18 @@
                               <td><?php echo $row->waktu_selesai;?></td>
                               </tr>
                           <tr>
-                            <th colspan="3">Anggaran</th>
+                            <th colspan="3">Anggaran Dibutuhkan</th>
                               <td><?php echo number_format($row->anggaran);?></td>
+                              </tr>
+                        
+                              <tr>
+                            <th colspan="3">Perusahaan Pengambil</th>
+                              <td><?php echo $row->nama_perusahaan;?></td>
                               </tr>
                               <tr>
                             <th colspan="3">Dana Perusahaan</th>
                               <td><?php echo number_format($row->dana);?></td>
                               </tr>
-
-
                           <tr>
                             <th colspan="3">Status</th>
                               <td><?php echo $row->status_perusahaan;?></td>
