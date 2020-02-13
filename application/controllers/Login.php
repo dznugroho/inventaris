@@ -29,20 +29,27 @@ class Login extends CI_Controller{
 					redirect('dashboard');
 					//echo"Admin";
                  }else{
-                    $this->session->set_userdata('akses','2');
-                    $this->session->set_userdata('ses_id',$data['id']);
-                    $this->session->set_userdata('ses_level',$data['level']);
-                    $this->session->set_userdata('ses_nama',$data['nama']);
-                    $this->session->set_userdata('ses_level',$data['level']);
-                    redirect('dashboard'); 
-                 }
+                     $cek_individu=$this->M_Login->auth_individu($username,$password);
+                     if($cek_individu->num_rows() > 0){
+                        $data=$cek_individu->row_array();
+                        $this->session->set_userdata('masuk',TRUE);
+                        if($data['level']=='2'){
+                            $this->session->set_userdata('akses','2');
+                            $this->session->set_userdata('ses_id',$data['id']);
+                            $this->session->set_userdata('ses_level',$data['level']);
+                            $this->session->set_userdata('ses_nama',$data['nama']);
+                            redirect('dashboard'); 
+                        }
+                    }
+                }
+                
             
             }else{
                 $cek_kecamatan=$this->M_Login->auth_kecamatan($username,$password);
                 if($cek_kecamatan->num_rows() > 0){
                     $data=$cek_kecamatan->row_array();
                     $this->session->set_userdata('masuk',TRUE);
-                     if($data['level']=='3'){
+                     if($data['level']=='2'){
                         $this->session->set_userdata('akses','3');
                         $this->session->set_userdata('ses_id',$data['id']);
                         $this->session->set_userdata('ses_nama',$data['nama']);

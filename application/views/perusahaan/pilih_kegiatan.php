@@ -60,16 +60,6 @@
                             <th>Waktu Mulai</th>
                             <th>Waktu Selesai</th>
                             <th>Anggaran</th>
-                            <th>Alamat kegiatan</th>
-                            <th>Kecamatan</th>
-                            <th>Desa kegiatan</th>
-                            <th>Deskripsi Kegiatan</th>
-                            <th>Nama Institusi</th>
-                            <th>Alamat Instusi</th>
-                            <th>Kecamatan Institusi</th>
-                            <th>Desa Institusi</th>
-                            <th>Nama Pengusul</th>
-                            <th>CP Pengusul</th>
                             <th>File</th>
                             <th colspan="2">Aksi</th>
                           </tr>
@@ -90,16 +80,6 @@
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo $row->alamat_kegiatan;?></td>
-                              <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->deskripsi;?></td>
-                              <td><?php echo $row->nama_institusi;?></td>
-                              <td><?php echo $row->alamat_institusi;?></td>
-                              <td><?php echo $row->nama_k;?></td>
-                              <td><?php echo $row->nama_d;?></td>
-                              <td><?php echo $row->nama_pengusul;?></td>
-                              <td><?php echo $row->no_telp;?></td>
                               <td><?php ?>
                                   <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
                                 <?php ;?> 
