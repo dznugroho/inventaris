@@ -30,7 +30,7 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Perusahaan</h1>
+            <h1>Data Pengguna Umum</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
               <div class="breadcrumb-item">Data Perusahaan</div>
@@ -50,6 +50,7 @@
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
+                          <th>No.</th>
                             <th>NIK.</th>
                             <th>Nama depan</th>
                             <th>Nama belakang</th>
@@ -79,10 +80,10 @@
                               <td><?php echo $row->kode_kecamatan;?></td>
                               <td><?php echo $row->level;?></td>
                               <td>
-                                <a href="<?php echo site_url('register/get_edit/'.$row->id);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
+                                <a href="<?php echo site_url('register/get_edit/'.$row->NIK);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
                               </td>
                               <td>
-                              <a href="<?php echo site_url('register/delete/'.$row->id);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
+                              <a href="<?php echo site_url('register/delete/'.$row->NIK);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>

@@ -14,7 +14,7 @@ class M_regis extends CI_Model{
 	}
 
 	function get_kecamatan(){
-		$query = $this->db->get('tb_kecamatan');
+		$query = $this->db->get('registrasi');
 		return $query;	
 	}
 
@@ -44,31 +44,28 @@ class M_regis extends CI_Model{
 	}
 
 	function get_regis(){
-		$this->db->select('NIK','nama_depan','nama_belakang','password','email','kode_wilayah','kode_kecamatan','leve');
+		$this->db->select('NIK,nama_depan,nama_belakang,password,email,kode_wilayah,kode_kecamatan,level');
 		$this->db->from('registrasi');
 		$query = $this->db->get();
 		return $query;
 	}
 
-	function get_perusahaan_by_id($id){
-		$query = $this->db->get_where('tb_perusahaan', array('id' =>  $id));
+	function get_register_by_id($NIK){
+		$query = $this->db->get_where('registrasi', array('NIK' =>  $NIK));
 		return $query;
 	}
 
-	function update_perusahaan($id,$username,$password,$level,$nama_perusahaan,
-	$alamat,$kode_kecamatan,$kode_wilayah,$no_telp,$email){
-        $this->db->set('id' 	    , $id);
-        $this->db->set('username'     , $username);
-        $this->db->set('password' 	, MD5($password));
-		$this->db->set('level' 	    , $level);            
-		$this->db->set('nama_perusahaan' , $nama_perusahaan);
-		$this->db->set('alamat' 		, $alamat);
+	function update_perusahaan($NIK,$nama_depan,$nama_belakang,$password,$email,$kode_kecamatan,$kode_wilayah,$level){
+        $this->db->set('NIK' 	    , $NIK);
+        $this->db->set('nama_depan'     , $nama_depan);
+        $this->db->set('nama_belakang' 	, $nama_belakang);
+		$this->db->set('password' 	    , md5($password));            
+		$this->db->set('email' , $email);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);
         $this->db->set('kode_wilayah' 	    , $kode_wilayah);
-        $this->db->set('no_telp' 	    	, $no_telp);
-        $this->db->set('email' 	, $email);
+        $this->db->set('level' 	    	, $level);
        
-		$this->db->update('tb_perusahaan');
+		$this->db->update('registrasi');
 	}
 
 	//Delete usulan
