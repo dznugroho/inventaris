@@ -46,7 +46,7 @@ class M_Registrasi extends CI_Model{
             'NIK' 	    => $NIK,
             'email' 	=> $email,
             'username' 	=> $username,
-            'password' 		=> $password,
+            'password' 		=> MD5($password),
 			'kode_kecamatan' 	        => $kode_kecamatan,
 			'kode_wilayah' 	=> $kode_wilayah
             

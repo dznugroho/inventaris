@@ -52,6 +52,20 @@ class M_Status_usulan extends CI_Model{
 		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan AND status_usulan = 1 OR status_perusahaan = 1 ");
 	}
 
+
+	function get_declined(){
+		$kode_perusahaan = $this->session->userdata('ses_id');
+		return $this->db->query("SELECT kode_pilih,tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
+		anggaran,nama_perusahaan,alamat,email,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
+		WHERE tb_pilihan.kode_perusahaan =  $kode_perusahaan AND status_usulan = 1 OR status_perusahaan = 2 ");
+	}
+
+
 	function get_detail(){
 		$kode_pilih = $this->uri->segment(3);
 		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,
