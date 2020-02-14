@@ -31,23 +31,19 @@ class Registrasi extends CI_Controller {
     }
 
 	//save usulan to database
-	function save_usulan(){
-
-	
-		$data=array(
-
-			'nama_depan'     => $this->input->post('nama_depan',TRUE),
-			'nama_belakang' 	=> $this->input->post('nama_belakang',TRUE),
-			'NIK' 	    => $this->input->post('NIK',TRUE),
-			'email' 	=> $this->input->post('email',TRUE),
-			'username' 	    => $this->input->post('username',TRUE),
-			'password' 	    => $this->input->post('password',TRUE),
-			'kode_kecamatan'		=> $this->input->post('kode_kecamatan',TRUE),
-			'kode_wilayah' 	        => $this->input->post('kode_wilayah',TRUE),
-			'level'			=>$this->input->post('level',TRUE)
-		);
-		$this->db->insert('registrasi', $data);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">registrasi Saved</div>');
+	function regist(){
+			
+			$NIK 	    		= $this->input->post('NIK',TRUE);
+			$nama_depan     	= $this->input->post('nama_depan',TRUE);
+			$nama_belakang 		= $this->input->post('nama_belakang',TRUE);
+			$email 				= $this->input->post('email',TRUE);
+			$username 	    	= $this->input->post('username',TRUE);
+			$password 	    	= $this->input->post('password',TRUE);
+			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);
+			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
+			
+		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
+		$kode_kecamatan,$kode_wilayah);
 		redirect('login');
 		
 	}

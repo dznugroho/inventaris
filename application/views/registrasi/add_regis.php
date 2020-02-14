@@ -28,7 +28,7 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/save_usulan" enctype="multipart/form-data"><h4>Register</h4></div>
+              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/regist" enctype="multipart/form-data"><h4>Register</h4></div>
 
               <div class="card-body">
                 <form method="POST">
@@ -69,7 +69,7 @@
                     ALAMAT 
                   </div>
                   <div class="row">
-                  <div class="form-group col-6">
+                    <div class="form-group col-6">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
                           <option value="">No Selected</option>
@@ -84,16 +84,7 @@
                         <option value="">No Selected</option>
                         </select>
                       </div>
-                      <div class="form-group col-6">
-                        <label>Level</label>
-                        <select class="form-control" name="level" id="level">
-                        <option value="2">Perorangan</option>
-                        </select>
-                      </div>
-                      </div>
-                      <input type="hidden" class="form-control" name="level" id="level" placeholder="level" value="2">
-
-
+                    </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" name="agree" class="custom-control-input" id="agree">
