@@ -71,8 +71,8 @@
               <li class="menu-header">Usulan Kegiatan</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulankec'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('usulankec'); ?>"><i class="far fa-list-alt"></i> <span>Data Usulan</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'status_usulan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('status_usulan'); ?>"><i class="far fa-file-alt"></i> <span>Status Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'status_usulankec'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('status_usulankec'); ?>"><i class="far fa-file-alt"></i> <span>Status Usulan</span></a></li>
 
               <?php else:?>
               <li class="menu-header">Usulan Kegiatan</li>

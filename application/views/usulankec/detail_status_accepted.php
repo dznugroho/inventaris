@@ -156,7 +156,7 @@
                           <?php endforeach;?>
                       </table>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('status_accepted');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('status_usulankec');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>
