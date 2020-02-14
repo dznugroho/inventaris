@@ -133,11 +133,14 @@
                         </select>
                       </div>
                       <div class="form-group">
-                     
+                      <label>Nama Pengusul</label><div class="form-group">
                      <input type="text" class="form-control" name="nama_pengusul" id="nama_pengusul" placeholder="Nama Pengusul" value="<?= $this->session->userdata('ses_nama')?>">  
                      </div>
                       <div class="form-group">
-                        <label>CP Pengusul</label>
+                        <label>CP Pengusul</label><div class="form-group">
+                     
+                     <input type="hidden" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
+                     </div>
                         <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
                       </div>
                       <div class="form-group">
