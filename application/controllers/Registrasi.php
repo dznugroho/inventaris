@@ -10,8 +10,6 @@ class Registrasi extends CI_Controller {
 	}
 
 	function index(){
-		$data['registrasi'] = $this->m_registrasi->get_usulan();
-		$data['kode_bidang'] = $this->m_registrasi->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
 		$this->load->view('registrasi/add_regis',$data);
 	}

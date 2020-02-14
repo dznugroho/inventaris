@@ -43,7 +43,7 @@
                   <div class="card-body">
                       <table class="table table-striped" id="mytable">
                             <?php
-                              foreach ($detail_pilihan->result() as $row):
+                              foreach ($detail_accepted->result() as $row):
                             ?>
                           <tr>
                             <th colspan="3">Kode Usulan</th>                             
