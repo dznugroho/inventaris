@@ -51,9 +51,8 @@
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Nama kegiatan</th>
-                            <th>Waktu Mulai</th>
-                            <th>Waktu Selesai</th>
-                            <th>Anggaran</th>
+                            <th>Anggaran Dibutuhkan</th>
+                            <th>Perusahaan Pengambil</th>
                             <th>Dana Perusahaan</th>
                             <th>Status</th>
                             <th>Aksi</th>
@@ -67,22 +66,24 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
+                              <?php $row->kode_pilih;?>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
-                              <td><?php echo $row->waktu_mulai;?></td>
-                              <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo number_format($row->dana);?></td>
                               <td><?php
-                              if($row->status_perusahaan == '1'){
-                                echo  '<div class="badge badge-success">Accepted</div>';
+                              if($row->status_perusahaan == '0'){
+                                echo  '<div class="badge badge-warning">On Process</div>';
+                              }else if ($row->status_perusahaan == '1'){
+                                echo '<div class="badge badge-success">Accepted</div>';
                               }else{
                                 echo '<div class="badge badge-danger">Declined</div>';
                               }
                                 ;?></td>
                               <td>
-                              <a href="<?php echo site_url('kegiatan/get_edit/'.$row->kode_usulan);?>" class="btn btn-sm btn-success" >Detail</a>
+                              <a href="<?php echo site_url('status_usulan/detail_pilihan/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

@@ -30,10 +30,10 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Detail Pilihan</h1>
+            <h1>Detail Usulan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Detail Pilihan</div>
+              <div class="breadcrumb-item">Detail usulan</div>
             </div>
           </div>
           
@@ -43,10 +43,10 @@
                   <div class="card-body">
                       <table class="table table-striped" id="mytable">
                             <?php
-                              foreach ($detail_perusahaan->result() as $row):
+                              foreach ($detail_pilihan->result() as $row):
                             ?>
-                             <tr>
-                            <th colspan="3">Kode Usulan</th>
+                          <tr>
+                            <th colspan="3">Kode Usulan</th>                             
                               <td><?php echo $row->kode_usulan;?></td>
                           </tr>
                           <tr>
@@ -57,7 +57,10 @@
                             <th colspan="3">Nama Sub Bidang</th>
                               <td><?php echo $row->nama_sub;?></td>
                           </tr>
-                         
+                          <tr>
+                            <th colspan="3">Tahun Pengusulan</th>
+                              <td><?php echo $row->tahun_pengusulan;?></td>
+                          </tr>
                           <tr>
                             <th colspan="3">Nama Kegiatan</th>
                               <td><?php echo $row->nama_kegiatan;?></td>
@@ -71,18 +74,66 @@
                               <td><?php echo $row->waktu_selesai;?></td>
                               </tr>
                           <tr>
-                            <th colspan="3">Anggaran Dibutuhkan</th>
+                            <th colspan="3">Anggaran</th>
                               <td><?php echo number_format($row->anggaran);?></td>
                               </tr>
-                        
-                              <tr>
-                            <th colspan="3">Perusahaan Pengambil</th>
+                          <tr>
+                            <th colspan="3">Alamat Kegiatan</th>
+                              <td><?php echo $row->alamat_kegiatan;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Kecamatan</th>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Desa kegiatan</th>
+                              <td><?php echo $row->desa;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Deskripsi Kegiatan</th>
+                              <td><?php echo $row->deskripsi;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Nama Institusi</th>
+                              <td><?php echo $row->nama_institusi;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Alamat Instusi</th>
+                              <td><?php echo $row->alamat_institusi;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Kecamatan Institusi</th>
+                              <td><?php echo $row->nama_k;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Desa Institusi</th>
+                              <td><?php echo $row->nama_d;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">Nama Pengusul</th>
+                              <td><?php echo $row->nama_pengusul;?></td>
+                              </tr>
+                          <tr>
+                            <th colspan="3">CP Pengusul</th>
+                              <td><?php echo $row->no_telp;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Perusahan Pengambil</th>
                               <td><?php echo $row->nama_perusahaan;?></td>
-                              </tr>
-                              <tr>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Alamat Perusahaan</th>
+                              <td><?php echo $row->alamat;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Email Perusahaan</th>
+                              <td><?php echo $row->email;?></td>
+                          </tr>
+                    
+                          <tr>
                             <th colspan="3">Dana Perusahaan</th>
-                              <td><?php echo number_format($row->dana);?></td>
-                              </tr>
+                              <td><?php echo $row->dana;?></td>
+                          </tr>
                           <tr>
                             <th colspan="3">Status</th>
                               <td><?php
@@ -95,12 +146,17 @@
                               }
                                 ;?></td>
                           </tr>
-                        
-                         
+                          <tr>
+                            <th colspan="3">File</th>
+                              <td><?php ?>
+			                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			           	        <?php   ;?>
+                              </td>
+                            </tr>
                           <?php endforeach;?>
                       </table>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('kegiatan');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('status_usulan');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

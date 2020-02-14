@@ -54,6 +54,11 @@
                     </div>
                   </div>
 
+                  <div class="form-group">
+                    <label for="Username">Username</label>
+                    <input id="username" type="text" class="form-control" name="username" placeholder="">
+                  </div>
+
                     <div class="form-group">
                     <label for="password">Pasword</label>
                     <input id="password" type="password" class="form-control" name="password">

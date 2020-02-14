@@ -32,6 +32,18 @@ class Confirm extends CI_Controller {
 		redirect('pilihan_ps');
 	}
 
+	public function cancel($id){
+        $data["status_perusahaan"]=2;
+        $kode=$this->m_confirm->cancel($data,$id);
+        redirect(site_url('confirm'));
+    }
+    
+    public function confirm($id){
+        $data["status_perusahaan"]=1;
+        $kode=$this->m_confirm->confirm($data,$id);
+        redirect(site_url('confirm'));
+    }
+
 	
 
 	//Delete usulan from Database
