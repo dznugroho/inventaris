@@ -14,14 +14,11 @@ class Status_declined extends CI_Controller {
 		$this->load->view('usulan/usulan_declined',$data);
 	}
 
-	function detail_status(){
-		$data['detail_status'] = $this->m_status_usulan->get_detail();
+	function detail_declined(){
+		$data['detail_declined'] = $this->m_status_usulan->get_detail();
 
 		$this->load->view('usulan/detail_status_declined',$data);
 	}
-
-	
-
 
 	//Delete usulan from Database
 	function delete(){

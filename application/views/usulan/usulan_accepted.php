@@ -61,7 +61,7 @@
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($accepted->result() as $row):
                                 $no++;
                             ?>
                             <tr>
