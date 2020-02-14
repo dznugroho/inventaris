@@ -36,7 +36,7 @@ class Login extends CI_Controller{
                     $this->session->set_userdata('masuk',TRUE);
                         if($data['level']=='2'){
                             $this->session->set_userdata('akses','2');
-                            $this->session->set_userdata('ses_id',$data['nik']);
+                            $this->session->set_userdata('ses_id',$data['NIK']);
                             $this->session->set_userdata('ses_level',$data['level']);
                             $this->session->set_userdata('ses_nama',$data['nama_depan']);
                             redirect('dashboard'); 

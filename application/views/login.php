@@ -42,7 +42,7 @@
               <div class="form-group">
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                  <label class="custom-control-label" for="remember-me">Remember Me</label>
+                  <label class="custom-control-label" for="remember-me">Show Password</label>
                 </div>
               </div>
 
@@ -81,5 +81,16 @@
   <script src="<?= base_url()?>assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
+  <script type="text/javascript">
+	$(document).ready(function(){		
+		$('.custom-control-input').click(function(){
+			if($(this).is(':checked')){
+				$('.form-control').attr('type','text');
+			}else{
+				$('.form-control').attr('type','password');
+			}
+		});
+	});
+</script>
 </body>
 </html>

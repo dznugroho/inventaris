@@ -1,26 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usulan extends CI_Controller {
+class Usulanumum extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this->load->model('M_Usulan','m_usulan');
 		$this->load->model('M_Usulanumum','m_usulanumum');
 		$this->load->library('session');
 		
 	}
 
 	function index(){
-		$data['usulan'] = $this->m_usulan->get_usulan();
-		$this->load->view('usulan/daftar_usulan',$data);
+		$data['usulanumum'] = $this->m_usulanumum->get_usulan();
+		$this->load->view('usulanumum/daftar_usulan',$data);
 	}
 
 	// add new usulan
 	function add_new(){
-		
-		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
-		$data['kode_k'] = $this->m_usulan->get_k()->result();
-		$this->load->view('usulan/add_product_view', $data);
+		$data['namau'] = $this->m_usulanumum->get_pengusul($this->session->userdata('ses_nama'))->result();
+		$data['kode_bidang'] = $this->m_usulanumum->get_bidang()->result();
+		$data['kode_kecamatan'] = $this->m_usulanumum->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulanumum->get_k()->result();
+		$this->load->view('usulanumum/add_product_view', $data);
 	}
 
 	// get sub bidang by bidang_id
