@@ -13,7 +13,7 @@ class Registrasi extends CI_Controller {
 		$data['registrasi'] = $this->m_registrasi->get_usulan();
 		$data['kode_bidang'] = $this->m_registrasi->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
-		$this->load->view('registrasi/add_product_view',$data);
+		$this->load->view('registrasi/add_regis',$data);
 	}
 
 	// add new usulan
@@ -21,7 +21,7 @@ class Registrasi extends CI_Controller {
    		
 		$data['kode_bidang'] = $this->m_registrasi->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
-		$this->load->view('registrasi/add_product_view', $data);
+		$this->load->view('registrasi/add_regis', $data);
 	}
 
 	
@@ -50,8 +50,8 @@ class Registrasi extends CI_Controller {
 			'email' 	=> $this->input->post('email',TRUE),
 			'password' 	    => $this->input->post('password',TRUE),
 			'kode_kecamatan'		=> $this->input->post('kode_kecamatan',TRUE),
-			'kode_wilayah' 	        => $this->input->post('kode_wilayah',TRUE)
-
+			'kode_wilayah' 	        => $this->input->post('kode_wilayah',TRUE),
+			'level'			=>$this->input->post('level',TRUE)
 		);
 		$this->db->insert('registrasi', $data);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">registrasi Saved</div>');
@@ -64,6 +64,6 @@ class Registrasi extends CI_Controller {
 		$kode_usulan = $this->uri->segment(3);
 		$this->m_usulan->delete_usulan($kode_usulan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Deleted</div>');
-		redirect('usulan');
+		redirect('registrasi');
 	}
 }

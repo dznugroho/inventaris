@@ -80,6 +80,7 @@
                         </select>
                       </div>
                       </div>
+                      <input type="hidden" class="form-control" name="level" id="level" placeholder="level" value="2">
 
 
                   <div class="form-group">

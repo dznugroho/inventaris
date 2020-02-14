@@ -25,8 +25,8 @@
                   <a class="nav-link" href="<?php echo site_url('pengguna'); ?>">Admin Kecamatan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>">Perusahaan</a></li>
-                  <li class="nav-item <?php echo $this->uri->segment(1) == 'pek'?'active': '' ?>">
-                  <a class="nav-link" href="<?php echo site_url('pek'); ?>">Perorangan</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'register'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('register'); ?>">Perorangan</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'pendidikan' || $this->uri->segment(1) == 'kesehatan'
