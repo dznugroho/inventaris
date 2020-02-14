@@ -56,6 +56,8 @@
               <a class="nav-link" href="<?php echo site_url('status_usulan'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'status_declined'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('status_declined'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Ditolak</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'riwayat'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('riwayat'); ?>"><i class="far fa-file-alt"></i> <span>Riwayat Pilihan</span></a></li>
               
               <?php elseif($this->session->userdata('akses')=='2'):?>
               <li class="menu-header">Usulan Kegiatan</li>
