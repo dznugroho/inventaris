@@ -99,7 +99,7 @@ class Usulankec extends CI_Controller {
 
 		);
 		$this->db->insert('tb_usulan', $data);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Saved</div>');
 		redirect('usulankec');
 		
 	}

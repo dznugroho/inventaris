@@ -83,7 +83,7 @@
                               }
                                 ;?></td>
                               <td>
-                              <a href="<?php echo site_url('status_declined/detail_status/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
+                              <a href="<?php echo site_url('status_declined/detail_declined/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

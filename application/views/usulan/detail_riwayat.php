@@ -43,7 +43,7 @@
                   <div class="card-body">
                       <table class="table table-striped" id="mytable">
                             <?php
-                              foreach ($detail_accepted->result() as $row):
+                              foreach ($detail_riwayat->result() as $row):
                             ?>
                           <tr>
                             <th colspan="3">Kode Usulan</th>                             
@@ -118,24 +118,49 @@
                               <td><?php echo $row->no_telp;?></td>
                           </tr>
                           <tr>
-                            <th colspan="3">Perusahan Pengambil</th>
-                              <td><?php echo $row->nama_perusahaan;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Alamat Perusahaan</th>
-                              <td><?php echo $row->alamat;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Email Perusahaan</th>
-                              <td><?php echo $row->email;?></td>
-                          </tr>
+                            <th colspan="3">File</th>
+                              <td><?php ?>
+			                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			           	        <?php   ;?>
+                              </td>
+                            </tr>
                     
+                          <?php endforeach;?>
+                      </table>
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="mytable">
+                      <thead>
                           <tr>
-                            <th colspan="3">Dana Perusahaan</th>
-                              <td><?php echo $row->dana;?></td>
+                            <th>No.</th>
+                            <th>Kode Pilih</th>
+                            <th>Nama Perusahaan</th>
+                            <th>Alamat</th>
+                            <th>Kecamatan</th>
+                            <th>Desa</th>
+                            <th>No. Telp</th>
+                            <th>Email</th>
+                            <th>Dana Perusahaan</th>
+                            <th>Status</th>
+                            <th colspan="2">Aksi</th>
+
                           </tr>
-                          <tr>
-                            <th colspan="3">Status</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                              $no = 0;
+                              foreach ($riwayat_perusahaan->result() as $row):
+                                $no++;
+                            ?>
+                            <tr>
+                              <td><?php echo $no;?></td>
+                              <td><?php echo $row->kode_pilih;?></td>
+                              <td><?php echo $row->nama_perusahaan;?></td>
+                              <td><?php echo $row->alamat;?></td>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              <td><?php echo $row->desa;?></td>
+                              <td><?php echo $row->no_telp;?></td>
+                              <td><?php echo $row->email;?></td>
+                              <td><?php echo number_format($row->dana);?></td>
                               <td><?php
                               if($row->status_perusahaan == '0'){
                                 echo  '<div class="badge badge-warning">On Process</div>';
@@ -144,19 +169,21 @@
                               }else{
                                 echo '<div class="badge badge-danger">Declined</div>';
                               }
-                                ;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">File</th>
-                              <td><?php ?>
-			                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
-			           	        <?php   ;?>
+                                ;?>
+                              </td>
+                              <td>
+                                <a href="<?php echo site_url('riwayat_pilihan/get_edit/'.$row->kode_pilih);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
+                              </td>
+                              <td>
+                              <a href="<?php echo site_url('riwayat_pilihan/delete/'.$row->kode_pilih);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
                               </td>
                             </tr>
-                          <?php endforeach;?>
+                            <?php endforeach;?>
+                          </tbody>
                       </table>
+                    </div>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('status_accepted');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('riwayat_pilihan');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

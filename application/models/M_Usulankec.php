@@ -102,7 +102,7 @@ class M_Usulankec extends CI_Model{
 		from tb_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
-		WHERE tb_usulan.kode_kecamatan =  $kode_kecamatan");
+		WHERE tb_usulan.kode_kecamatan =  $kode_kecamatan AND status_usulan=0");
 	}
 
 	function get_detail(){

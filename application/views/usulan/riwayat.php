@@ -37,27 +37,7 @@
             </div>
           </div>
           <div class="row">
-          <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-          
-          <div class="dropdown text-right">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
-        <div class="dropdown-menu">
-
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2016'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2016');?>">2016</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2017'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2017');?>">2017</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2018'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2018');?>">2018</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2019'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2019');?>">2019</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2020'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2020');?>">2020</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2021'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2021');?>">2021</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2022'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2022');?>">2022</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2023'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2023');?>">2023</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2024'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2024');?>">2024</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2025'?'active': '' ?>dsiabled" href="<?php echo site_url('dashboard/tahun2025');?>">2025</a>
-        </div>
-
-          </div>
           </div>
             <div class="row">
               <div class="col-12">
@@ -71,20 +51,17 @@
                             <th>Kode Usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
-                            <th>Tahun pengusulan</th>
                             <th>Nama kegiatan</th>
                             <th>Waktu Mulai</th>
                             <th>Waktu Selesai</th>
                             <th>Anggaran</th>
-                            <th>File</th>
-                            <th>&nbsp;</th>
-                            <th colspan="3" text-center>Aksi</th>
+                            <th>Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($riwayat->result() as $row):
                                 $no++;
                             ?>
                             <tr>
@@ -92,37 +69,13 @@
                               <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
-                              <td><?php echo $row->tahun_pengusulan;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php if($row->file==""){
-							$fill = $row->file;
-							$aksi = site_url('usulan/add_file');
-							$tampil = 
-<<<HEREDOCS
-			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
-                <input type="file" name="file">             
-								<input type="hidden" name="kode_usulan" value="$row->kode_usulan">
-								<br>
-								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
-							</form>
-HEREDOCS;
-						echo $tampil;
-			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
-			           	<?php } ?>
-
-                              </td>
+                              
                               <td>
-                              <a href="<?php echo site_url('usulan/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
-                              </td>
-                              <td>
-                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
-                              </td>
-                              <td>
-                              <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
+                              <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>
