@@ -44,7 +44,7 @@
                   </div>
                   <div class="form-group">
                     <label for="NIK">NIK</label>
-                    <input id="NIK" type="text" class="form-control" name="NIK" placeholder="">
+                    <input id="NIK" type="number" class="form-control" name="NIK" placeholder="">
                   </div>
 
                   <div class="form-group">
@@ -82,6 +82,12 @@
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-6">
+                        <label>Level</label>
+                        <select class="form-control" name="level" id="level">
+                        <option value="2">Perorangan</option>
                         </select>
                       </div>
                       </div>
