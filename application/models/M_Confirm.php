@@ -14,16 +14,6 @@ class M_Confirm extends CI_Model{
 		$this->db->insert('tb_pilihan',$data);
 	}
 
-	// function get_all(){
-	// 	$kode_perusahaan = $this->session->userdata('ses_id');
-	// 	return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-	// 	waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status from tb_pilihan
-	// 	JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan JOIN tb_bidang 
-	// 	ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
-	// 	tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang  WHERE 
-	// 	tb_pilihan.kode_perusahaan =  $kode_perusahaan");
-	// }
-
 	function cancel($data,$id){
 		$pilihan=$this->db->select("kode_usulan,kode_perusahaan,kode_pilih")->from('tb_pilihan')->where("kode_pilih",$id)->get()->row();
 		
@@ -38,11 +28,8 @@ class M_Confirm extends CI_Model{
 		$this->db->query("Update tb_usulan set status_usulan=1 where kode_usulan='".$pilihan->kode_usulan."'",FALSE);
 		$this->db->where("kode_pilih",$id);
         $this->db->update('tb_pilihan',$data);
-        return $pilihan->kode_pilih;  
-		
+        return $pilihan->kode_pilih;  		
     }
-
-
 
 	function get_usulan(){
 		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
@@ -58,6 +45,7 @@ class M_Confirm extends CI_Model{
 		$query = $this->db->get();
 		return $query;
 	}
+
 	function get_pilihan(){
 		$kode_perusahaan = 'kode_perusahaan';
 		return $this->db->query("SELECT tb_pilihan.kode_pilih,tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
@@ -69,12 +57,6 @@ class M_Confirm extends CI_Model{
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
 		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
 		WHERE status_perusahaan = 0 ORDER BY tb_pilihan.kode_usulan ASC");
-	}
-
-
-	//Delete usulan
-	function delete_pengguna($id){
-		$this->db->delete('tbu_kecamatan', array('id' => $id));
 	}
 
 	

@@ -39,8 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-          
+
           <div class="dropdown text-right">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
         <div class="dropdown-menu">
@@ -56,7 +55,11 @@
           <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2024'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2024');?>">2024</a>
           <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2025'?'active': '' ?>dsiabled" href="<?php echo site_url('dashboard/tahun2025');?>">2025</a>
         </div>
-
+        </div>
+        
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          
+        
           </div>
           </div>
             <div class="row">

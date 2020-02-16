@@ -13,6 +13,14 @@ class M_Status_usulan extends CI_Model{
 		);
 		$this->db->insert('tb_pilihan',$data);
 	}
+
+	function edit_status($status_perusahaan,$kode_pilih){
+		
+		$this->db->set('status_perusahaan' 		, $status_perusahaan);
+		$this->db->where('kode_pilih' 		, $kode_pilih);
+        $this->db->update('tb_pilihan');		
+    }
+
 	// PUNYANYA CONTROLLER RIWAYAT_PILIHAN
 	function get_riwayat(){
 		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
@@ -142,7 +150,7 @@ class M_Status_usulan extends CI_Model{
 	}
 	//Delete usulan
 	function delete_riwayat_pilihan($id){
-		$this->db->delete('tbu_kecamatan', array('id' => $id));
+		$this->db->delete('tb_pilihan', array('kode_pilih' => $id));
 	}
 
 	

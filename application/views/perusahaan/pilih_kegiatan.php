@@ -67,31 +67,37 @@
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($usulan->result_array() as $row):
+                                $kode_usulan=$row['kode_usulan'];
+                                $nama_bidang=$row['nama_bidang'];
+                                $nama_sub=$row['nama_sub'];
+                                $tahun_pengusulan=$row['tahun_pengusulan'];
+                                $nama_kegiatan=$row['nama_kegiatan'];
+                                $waktu_mulai=$row['waktu_mulai'];
+                                $waktu_selesai=$row['waktu_selesai'];
+                                $anggaran=$row['anggaran'];
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
-                              <td><?php echo $row->nama_bidang;?></td>
-                              <td><?php echo $row->nama_sub;?></td>
-                              <td><?php echo $row->tahun_pengusulan;?></td>
-                              <td><?php echo $row->nama_kegiatan;?></td>
-                              <td><?php echo $row->waktu_mulai;?></td>
-                              <td><?php echo $row->waktu_selesai;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo $kode_usulan;?></td>
+                              <td><?php echo $nama_bidang;?></td>
+                              <td><?php echo $nama_sub;?></td>
+                              <td><?php echo $tahun_pengusulan;?></td>
+                              <td><?php echo $nama_kegiatan;?></td>
+                              <td><?php echo $waktu_mulai;?></td>
+                              <td><?php echo $waktu_selesai;?></td>
+                              <td><?php echo number_format($anggaran);?></td>
                               <td><?php ?>
-                                  <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+                                  <button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
                                 <?php ;?> 
 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('pilihan_ps/detail_ps/'.$row->kode_usulan);?>" class="btn btn-success">Detail</a>
-                              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                              <i class="fa fa-plus"></i></button>
+                              <a href="<?php echo site_url('pilihan_ps/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
                               </td>
                               <td>
-                                <a href="<?php echo site_url('pilihan_ps/input/'.$row->kode_usulan);?>" class="btn btn-primary">Pilih</a>
+                              <button data-toggle="modal" data-target="#modal_tambah<?php echo $kode_usulan;?>"  class="btn btn-primary">Pilih</button>
                               </td>
                             </tr>
                             <?php endforeach;?>
@@ -108,64 +114,51 @@
             
         </section>
       </div>
+      <?php
+          $no = 0;
+          
+          foreach ($usulan->result_array() as $row):
+          $kode_usulan=$row['kode_usulan'];
+          
+          ?>
+      <div class="modal fade" id="modal_tambah<?php echo $kode_usulan;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal_edit">Masukkan Dana</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'pilihan_ps/save_pilihan'?>">
+                <div class="modal-body">
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="exampleModalLabel">Masukkan Dana</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Kode Pilih</label>
+                        <div class="col-xs-8">
+                            <input name="kode_usulan" value="<?php echo $kode_usulan;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
                         </div>
-                        <div class="modal-body">
-                          <form method="post" action="<?php echo base_url().'mahasiswa/tambah_aksi';?>">
-                          
-                          <div class="form-group">
-                              <label>Nama Mahasiswa</label>
-                              <input type="text" name="nama" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label>NIM</label>
-                              <input type="text" name="nim" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label>Tanggal Lahir</label>
-                              <input type="date" name="tgl_lahir" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label>Jurusan</label>
-                              <select type="text" name="jurusan" class="form-control">
-                              
-                              <option>Sistem Informasi</option>
-                              <option>Teknik Informatika</option>
-                              <option>Teknik Mesin</option>
-                              <option>Teknik Eletro</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label>Alamat</label>
-                              <input type="text" name="alamat" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label>Email</label>
-                              <input type="text" name="email" class="form-control">
-                          </div>
-                          <div class="form-group">
-                              <label>NO. Telepon</label>
-                              <input type="text" name="no_telp" class="form-control">
-                          </div>
-
-
-                          <button type="reset" class="btn btn-danger" data-dismiss="modal">Reset</button>
-                          <button type="submit" class="btn btn-primary">Simpan</button>
-                          </form>
-                          
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                    <input name="kode_perusahaan" class="form-control" type="hidden" value="<?php echo $kode_perusahaan;?>">
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Dana Perusahaan</label>
+                        <div class="col-xs-8">
+                            <input name="dana" class="form-control" type="text" placeholder="Jumlah Dana">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <?php endforeach;?>
+
     
         <?php $this->load->view('include/footer.php')?>
 
@@ -193,7 +186,23 @@
   <script type="text/javascript">
 		$(document).ready(function(){
 			$('#mytable').DataTable();
+
 		});
+    
 	</script>
+<!-- <script type="text/javascript">
+$(document).ready(function() {
+	        // Untuk sunting
+	        $('#tambah-data').on('show.bs.modal', function (event) {
+	            var button  = $(event.relatedTarget); // Tombol dimana modal di tampilkan
+	            var kode_usulan    = button.data("kode_usulan");
+              var modal   = $(this);
+
+	            // Isi nilai pada field
+	            modal.find('#kode_usulan').val(kode_usulan);
+	            modal.find('#nama').attr("value",button.data('nama'));
+	        });
+	    });
+</script> -->
 </body>
 </html>

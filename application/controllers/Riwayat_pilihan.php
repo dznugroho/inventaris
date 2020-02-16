@@ -19,14 +19,22 @@ class Riwayat_pilihan extends CI_Controller {
 		$data['riwayat_perusahaan'] = $this->m_status_usulan->get_riwayat_perusahaan();
 
 		$this->load->view('usulan/detail_riwayat',$data);
-    }
+	}
+	
 
+	public function edit_status(){
+		$kode_pilih				= $this->input->post('kode_pilih',TRUE);
+		$status_perusahaan	    = $this->input->post('status_perusahaan',TRUE);
+		$kode=$this->m_status_usulan->edit_status($status_perusahaan,$kode_pilih);
+		
+        redirect(site_url('riwayat_pilihan'));
+    }
 
 	//Delete usulan from Database
 	function delete(){
 		$id = $this->uri->segment(3);
 		$this->m_status_usulan->delete_riwayat_pilihan($id);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Deleted</div>');
-		redirect('pengguna');
+		redirect('riwayat_pilihan');
 	}
 }

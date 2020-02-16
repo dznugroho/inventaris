@@ -38,17 +38,20 @@ class M_Registrasi extends CI_Model{
 	}
 	
 	function regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
-	$kode_kecamatan,$kode_wilayah){
+	$alamat,$kode_kecamatan,$kode_wilayah,$foto){
+		
 		$data = array(
 			
             'NIK' 	    		=> $NIK,
             'nama_depan'    	=> $nama_depan,
             'nama_belakang' 	=> $nama_belakang,
-            'email' 			=> $email,
             'username' 			=> $username,
             'password' 			=> MD5($password),
+			'alamat' 			=> $alamat,
 			'kode_kecamatan' 	=> $kode_kecamatan,
-			'kode_wilayah' 		=> $kode_wilayah
+			'kode_wilayah' 		=> $kode_wilayah,
+            'email' 			=> $email,
+			'foto' 				=> $foto
 			
 		);
 		$this->db->insert('registrasi',$data);

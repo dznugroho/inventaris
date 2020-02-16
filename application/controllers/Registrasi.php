@@ -14,10 +14,6 @@ class Registrasi extends CI_Controller {
 		$this->load->view('registrasi/add_regis',$data);
 	}
 
-	// add new usulan
-
-	
-
 	function get_desa(){
 		$kode_kecamatan = $this->input->post('id',TRUE);
 		$data = $this->m_registrasi->get_desa($kode_kecamatan)->result();
@@ -36,23 +32,19 @@ class Registrasi extends CI_Controller {
 			$NIK 	    		= $this->input->post('NIK',TRUE);
 			$nama_depan     	= $this->input->post('nama_depan',TRUE);
 			$nama_belakang 		= $this->input->post('nama_belakang',TRUE);
-			$email 				= $this->input->post('email',TRUE);
 			$username 	    	= $this->input->post('username',TRUE);
 			$password 	    	= $this->input->post('password',TRUE);
+			$alamat 	    	= $this->input->post('alamat',TRUE);
 			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);
 			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
+			$email 				= $this->input->post('email',TRUE);
+			$foto 	    		= $this->input->post('foto',TRUE);
 			
 		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
-		$kode_kecamatan,$kode_wilayah);
+		$alamat,$kode_kecamatan,$kode_wilayah,$foto);
 		redirect('login');
 		
 	}
 
-	//Delete usulan from Database
-	function delete(){
-		$kode_usulan = $this->uri->segment(3);
-		$this->m_usulan->delete_usulan($kode_usulan);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Deleted</div>');
-		redirect('registrasi');
-	}
+
 }

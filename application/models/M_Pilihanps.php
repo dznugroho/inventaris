@@ -15,16 +15,6 @@ class M_Pilihanps extends CI_Model{
 		$this->db->insert('tb_pilihan',$data);
 	}
 
-	// function get_all(){
-	// 	$kode_perusahaan = $this->session->userdata('ses_id');
-	// 	return $this->db->query("SELECT tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
-	// 	waktu_mulai,waktu_selesai,anggaran,tb_pilihan.dana,tb_pilihan.status from tb_pilihan
-	// 	JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan JOIN tb_bidang 
-	// 	ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
-	// 	tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang  WHERE 
-	// 	tb_pilihan.kode_perusahaan =  $kode_perusahaan");
-	// }
-
 	function get_usulan(){
 		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
 		waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
@@ -77,12 +67,5 @@ class M_Pilihanps extends CI_Model{
 		JOIN tb_k ON tb_k.kode_k = tb_usulan.kode_k
 		WHERE tb_usulan.kode_usulan =  $kode_usulan");
 	}
-
-
-	//Delete usulan
-	function delete_pengguna($id){
-		$this->db->delete('tbu_kecamatan', array('id' => $id));
-	}
-
 	
 }

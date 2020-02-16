@@ -148,23 +148,32 @@
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($riwayat_perusahaan->result() as $row):
+                              foreach ($riwayat_perusahaan->result_array() as $row):
+                                $kode_pilih=$row['kode_pilih'];
+                                $nama_perusahaan=$row['nama_perusahaan'];
+                                $alamat=$row['alamat'];
+                                $nama_kecamatan=$row['nama_kecamatan'];
+                                $desa=$row['desa'];
+                                $no_telp=$row['no_telp'];
+                                $email=$row['email'];
+                                $dana=$row['dana'];
+                                $status_perusahaan=$row['status_perusahaan'];
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_pilih;?></td>
-                              <td><?php echo $row->nama_perusahaan;?></td>
-                              <td><?php echo $row->alamat;?></td>
-                              <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->no_telp;?></td>
-                              <td><?php echo $row->email;?></td>
-                              <td><?php echo number_format($row->dana);?></td>
+                              <td><?php echo $kode_pilih;?></td>
+                              <td><?php echo $nama_perusahaan;?></td>
+                              <td><?php echo $alamat;?></td>
+                              <td><?php echo $nama_kecamatan;?></td>
+                              <td><?php echo $desa;?></td>
+                              <td><?php echo $no_telp;?></td>
+                              <td><?php echo $email;?></td>
+                              <td><?php echo 'Rp '.number_format($dana);?></td>
                               <td><?php
-                              if($row->status_perusahaan == '0'){
+                              if($status_perusahaan == '0'){
                                 echo  '<div class="badge badge-warning">On Process</div>';
-                              }else if ($row->status_perusahaan == '1'){
+                              }else if ($status_perusahaan == '1'){
                                 echo '<div class="badge badge-success">Accepted</div>';
                               }else{
                                 echo '<div class="badge badge-danger">Declined</div>';
@@ -172,10 +181,10 @@
                                 ;?>
                               </td>
                               <td>
-                                <a href="<?php echo site_url('riwayat_pilihan/get_edit/'.$row->kode_pilih);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal_edit<?php echo $kode_pilih;?>"><i class="far fa-edit"></button></i>  
                               </td>
                               <td>
-                              <a href="<?php echo site_url('riwayat_pilihan/delete/'.$row->kode_pilih);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
+                              <a href="<?php echo site_url('riwayat_pilihan/delete/'.$kode_pilih);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>
@@ -191,6 +200,54 @@
             </div>
         </section>
       </div>
+
+      <?php 
+        foreach($riwayat_perusahaan->result_array() as $i):
+            $kode_pilih=$i['kode_pilih'];
+
+        ?>
+        <div class="modal fade" id="modal_edit<?php echo $kode_pilih;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal_edit">Edit Status Perusahaan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'riwayat_pilihan/edit_status'?>">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Kode Pilih</label>
+                        <div class="col-xs-8">
+                            <input name="kode_pilih" value="<?php echo $kode_pilih;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Status Perusahaan</label>
+                        <div class="col-xs-8">
+                             <select name="status_perusahaan" class="form-control" required>
+                                <option value="1">Accepted</option>
+                                <option value="2">Declined</option>
+                             </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+
+    <?php endforeach;?>
+
+
     
         <?php $this->load->view('include/footer.php')?>
 

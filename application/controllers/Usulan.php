@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usulan extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Usulanumum','m_usulanumum');
+		$this->load->model('M_Usulan','m_usulan');
 		$this->load->library('session');
 		
 	}
