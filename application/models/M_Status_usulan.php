@@ -97,6 +97,18 @@ class M_Status_usulan extends CI_Model{
 		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
 		WHERE tb_usulan.kode_kecamatan = $kode_kecamatan AND status_usulan=1 AND status_perusahaan=1 ");
 	}
+	// PUNYANYA CONTROLLER STATUS_USULAN_UMUM
+	function get_umum_accepted(){
+		$NIK = $this->session->userdata('ses_id');
+		return $this->db->query("SELECT kode_pilih,tb_pilihan.kode_usulan,nama_bidang,nama_sub,nama_kegiatan,
+		anggaran,nama_perusahaan,alamat,email,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
+		WHERE tb_usulan.NIK =  $NIK  AND status_usulan=1 AND status_perusahaan=1 ");
+	}
 
 	// PUNYANYA CONTROLLER STATUS_DECLINED
 	function get_declined(){

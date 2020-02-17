@@ -43,7 +43,7 @@
                   <div class="card-body">
                       <table class="table table-striped" id="mytable">
                             <?php
-                              foreach ($detail_declined->result() as $row):
+                              foreach ($detail_usulan->result() as $row):
                             ?>
                           <tr>
                             <th colspan="3">Kode Usulan</th>                             
@@ -116,36 +116,7 @@
                           <tr>
                             <th colspan="3">CP Pengusul</th>
                               <td><?php echo $row->no_telp;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Perusahan Pengambil</th>
-                              <td><?php echo $row->nama_perusahaan;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Alamat Perusahaan</th>
-                              <td><?php echo $row->alamat;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Email Perusahaan</th>
-                              <td><?php echo $row->email;?></td>
-                          </tr>
-                    
-                          <tr>
-                            <th colspan="3">Dana Perusahaan</th>
-                              <td><?php echo $row->dana;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Status</th>
-                              <td><?php
-                              if($row->status_perusahaan == '0'){
-                                echo  '<div class="badge badge-warning">On Process</div>';
-                              }else if ($row->status_perusahaan == '1'){
-                                echo '<div class="badge badge-success">Accepted</div>';
-                              }else{
-                                echo '<div class="badge badge-danger">Declined</div>';
-                              }
-                                ;?></td>
-                          </tr>
+                              </tr>
                           <tr>
                             <th colspan="3">File</th>
                               <td><?php ?>
@@ -156,7 +127,7 @@
                           <?php endforeach;?>
                       </table>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('status_declined');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('usulan_umum');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

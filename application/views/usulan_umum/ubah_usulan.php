@@ -135,6 +135,9 @@
                         <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
                       </div>
                       <div class="form-group">
+                     <input type="hidden" class="form-control" name="NIK" id="NIK" placeholder="NIK" value="<?= $this->session->userdata('ses_id')?>">  
+                   </div>
+                      <div class="form-group">
                         <label>CP Pengusul</label>
                         <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
                       </div>
@@ -144,7 +147,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan_umum'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
