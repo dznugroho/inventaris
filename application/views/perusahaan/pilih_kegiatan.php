@@ -61,7 +61,8 @@
                             <th>Waktu Selesai</th>
                             <th>Anggaran</th>
                             <th>File</th>
-                            <th colspan="2">Aksi</th>
+                            <th>Aksi</th>
+                            <th>&nbsp;</th>
                           </tr>
                         </thead>
                         <tbody>

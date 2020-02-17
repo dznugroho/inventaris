@@ -61,7 +61,8 @@
                             <th>Anggaran</th>
                             <th>File</th>
                             <th>&nbsp;</th>
-                            <th colspan="3" text-center>Aksi</th>
+                            <th>Aksi</th>
+                            <th>&nbsp;</th>
                           </tr>
                         </thead>
                         <tbody>

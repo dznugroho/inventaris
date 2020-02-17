@@ -30,7 +30,7 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Pengguna Umum</h1>
+            <h1>Data Admin Kecamatan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
               <div class="breadcrumb-item">Data Perusahaan</div>
@@ -39,7 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('upload/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('admin/tambah'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -51,47 +51,26 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>NIK.</th>
-                            <th>Nama depan</th>
-                            <th>Nama belakang</th>
-                            <th>Alamat</th>                            
-                            <th>Kecamatan</th>
-                            <th>Desa</th>
+                            <th>id</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>password</th>
                             <th>Akses Sebagai</th>
-                            <th>Foto</th>
-                            <th>&nbsp;</th>
                             <th>Aksi</th>
-                            <th>&nbsp;</th>
-
+                          
                           </tr>
                         </thead>
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($umum->result() as $row):
+                              foreach ($usulan->result_array() as $row):
+                                $kode_usulan=$row['kode_usulan'];
                                 $no++;
                             ?>
                             <tr>
-                              <td><?php echo $no;?></td>
-                              <td><?php echo $row->NIK;?></td>
-                              <td><?php echo $row->nama_depan;?></td>
-                              <td><?php echo $row->nama_belakang;?></td>
-                              <td><?php echo $row->alamat;?></td>
-                              <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->nama_akses;?></td>
-                              <?php echo "<td> 
-                              <img src='".base_url("images/".$row->foto)."' width='100' height='70'>
-                             </td>" ;?>
-                              <td>
-                                <a href="<?php echo site_url('upload/get_detail/'.$row->NIK);?>" class="btn btn-success" ><i class="fas fa-search-plus"></a></i>  
-                              </td>
-                              <td>
-                                <a href="<?php echo site_url('upload/get_edit/'.$row->NIK);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
-                              </td>
-                              <td>
-                              <a href="<?php echo site_url('upload/delete/'.$row->NIK);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
-                              </td>
+                              <td><?php echo $kode_usulan;?></td>
+                              
+                              
                             </tr>
                             <?php endforeach;?>
                           </tbody>
@@ -128,9 +107,9 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/modules-datatables.js"></script>
   <script type="text/javascript">
-		$(document).ready(function(){
-			$('#mytable').DataTable();
-		});
-	</script>
+    $(document).ready(function(){
+      $('#mytable').DataTable();
+    });
+  </script>
 </body>
 </html>
