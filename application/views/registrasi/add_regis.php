@@ -65,8 +65,9 @@
                     <div class="invalid-feedback">
                       </div>
                   </div>
-                  <div class="form-divider">
-                    ALAMAT 
+                  <div class="form-group">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
                   </div>
                   <div class="row">
                     <div class="form-group col-6">
@@ -83,12 +84,10 @@
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
                         </select>
-                      </div>
-                    </div>
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree">
-                      <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
+                      </div> 
+                      <div class="form-group col-6">
+                        <label>Foto</label>
+                        <input type="file" class="form-control" name="file">
                     </div>
                   </div>
                   <div class="form-group">

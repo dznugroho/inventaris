@@ -27,6 +27,7 @@ class Upload extends CI_Controller {
 		echo json_encode($data);
 	}
 
+
 	function do_upload(){
         $config['upload_path']="./images";
 		$config['allowed_types']='jpeg|jpg|png';		
@@ -109,7 +110,7 @@ class Upload extends CI_Controller {
 	}
 
 	public function get_detail(){
-		$data['detail_umum'] = $this->m_upload->get_umum();
+		$data['detail_umum'] = $this->m_upload->get_detail();
 		$this->load->view('umum/detail_umum',$data);
 	}
 

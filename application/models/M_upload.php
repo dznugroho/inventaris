@@ -34,7 +34,19 @@ class M_upload extends CI_Model{
 		$query = $this->db->get();
 		return $query;
 	}
-
+	function get_detail(){
+		$NIK = $this->uri->segment(3);
+		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
+		nama_kecamatan,desa,email,nama_akses,foto');
+		$this->db->from('registrasi');
+		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
+		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = registrasi.kode_wilayah','left');
+		$this->db->join('akses','akses.id_akses = registrasi.level','left');
+		$this->db->where('registrasi.NIK',$NIK);
+		$this->db->order_by('registrasi.NIK','ASC');
+		$query = $this->db->get();
+		return $query;
+	}
 	function get_regist(){
 		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
 		nama_kecamatan,desa,email,nama_akses,foto');
