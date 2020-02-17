@@ -61,7 +61,8 @@
                             <th>Desa</th>
                             <th>No. Telp</th>
                             <th>Email</th>
-                            <th colspan="2">Aksi</th>
+                            <th>Aksi</th>
+                            <th>&nbsp;</th>
 
                           </tr>
                         </thead>
