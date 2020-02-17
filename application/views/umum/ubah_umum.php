@@ -35,32 +35,72 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Perusahaan</h1>
+         <h1>Tambah User Umum</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Tambah Perushaan</div>
+              <div class="breadcrumb-item">Tambah User Umum</div>
             </div>
           </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('pilihan_ps/save_pilihan');?>">
-                    <div class="card-header">
-                      <h4>Tambah Perusahaan</h4>
-                    </div>
+                  <form role="form" method="POST" action="<?php echo site_url('upload/update');?>" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="NIK" id="NIK" value="<?= $NIK?>">
                     <div class="card-body">
-  
-                      <input type="hidden" class="form-control" name="kode_usulan" placeholder="Nama Perusahaan" value="<?=$kode_usulan?>">
-                        <input type="hidden" class="form-control" name="kode_perusahaan" placeholder="Masukan Username" value="<?=$kode_perusahaan?>">
+                     
+                      <div class="form-group">
+                        <label>Nama Depan</label>
+                        <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama Depan">
+                      </div>
+                      <div class="form-group">
+                        <label>Nama Belakang</label>
+                        <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang">
+                      </div>
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" placeholder="Masukan Username">
+                      </div>
                       
                       <div class="form-group">
-                        <label>Jumlah Dana</label>
-                        <input type="text" class="form-control" name="dana" placeholder="Jumlah Dana">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
                       </div>
-                     
-                    <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('perusahaan'); ?>">Submit</button>
-                    </div>
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                      </div>
+                      <div class="form-group">
+                        <label>Kecamatan</label>
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                          <option value="">No Selected</option>
+                            <?php foreach($kode_kecamatan as $row):?>
+                            <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
+                            <?php endforeach;?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Desa</label>
+                        <select class="form-control" name="kode_wilayah" id="kode_wilayah">
+                        <option value="">No Selected</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label>Akses Sebagai</label>
+                        <select class="form-control" name="level">
+                        <option value=2>Umum</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Foto</label>
+                        <input type="file" class="form-control" name="file">
+                      </div>
+                      <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
                   </form>
                 </div>
               </div>
@@ -98,38 +138,11 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
-  <script type="text/javascript">
-		$(document).ready(function(){
-
-			$('#kode_bidang').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
-                        }
-                        $('#kode_subbidang').html(html);
-
-                    }
-                });
-                return false;
-            }); 
-            
-		});
-	</script>
 
 <script type="text/javascript">
-		$(document).ready(function(){
+    $(document).ready(function(){
 
-			$('#kode_kecamatan').change(function(){ 
+      $('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
                     url : "<?php echo site_url('perusahaan/get_desa');?>",
@@ -150,6 +163,41 @@
                 });
                 return false;
             }); 
+            
+    });
+  </script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+			//call function get data edit
+			      get_data_edit();
+           
+			//load data for edit
+            function get_data_edit(){
+            	var NIK = $('[name="NIK"]').val();
+            	$.ajax({
+            		url : "<?php echo site_url('upload/get_data_edit');?>",
+                    method : "POST",
+                    data :{NIK :NIK},
+                    async : true,
+                    dataType : 'json',
+                    success : function(data){
+                        $.each(data, function(i, item){
+                            $('[name="nama_depan"]').val(data[i].nama_depan);
+                            $('[name="nama_belakang"]').val(data[i].nama_belakang);
+                            $('[name="username"]').val(data[i].username);
+                            $('[name="passord"]').val(data[i].password);
+                            $('[name="alamat"]').val(data[i].alamat);
+                            $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
+                            $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
+                            $('[name="password"]').val(data[i].password);
+                            $('[name="email"]').val(data[i].email);
+                            $('[name="level"]').val(data[i].level);
+  
+                        });
+                    }
+
+            	});
+            }
             
 		});
 	</script>

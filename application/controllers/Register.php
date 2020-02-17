@@ -73,10 +73,10 @@ class Register extends CI_Controller {
 		$nama_depan	    	= $this->input->post('nama_depan',TRUE);
 		$nama_belakang	   	 	= $this->input->post('nama_belakang',TRUE);
 		$password	  		    = $this->input->post('password',TRUE);
-		$email 	= $this->input->post('email',TRUE);
-		$kode_wilayah    			= $this->input->post('kode_wilayah',TRUE);
+		$email 				= $this->input->post('email',TRUE);
+		$kode_wilayah    	= $this->input->post('kode_wilayah',TRUE);
 		$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
-		$level 	    = $this->input->post('level',TRUE);
+		$level 	    		= $this->input->post('level',TRUE);
 
 		$this->m_register->update_register($NIK,$nama_depan,$nama_belakang,$password,$email,
 		$kode_wilayah,$kode_kecamatan,$level);

@@ -15,14 +15,14 @@ class Kegiatankec extends CI_Controller {
 		$this->load->view('usulankec/daftar_pilihan',$data);
 	}
 
-	//function input(){
+	function input(){
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
 		$this->load->view('perusahaan/input_dana',$data);
 	}
-	//save usulan to database
-	//function save_pilihan(){
+
+	function save_pilihan(){
 
 		$kode_usulan 		= $this->input->post('kode_usulan',TRUE);
 		$kode_perusahaan	= $this->input->post('kode_perusahaan',TRUE);
