@@ -6,9 +6,14 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Admin','m_admin');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['admin'] = $this->m_admin->get_admin();
 		$this->load->view('admin/daftar_admin',$data);
 	}
@@ -16,6 +21,8 @@ class Admin extends CI_Controller {
 	// add new admin
 	function tambah(){
 		
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+
 		$this->load->view('admin/tambah_admin');
 	}
 
@@ -33,6 +40,8 @@ class Admin extends CI_Controller {
 	}
 
 	function get_edit(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+
 		$id = $this->uri->segment(3);
 		$data['id'] = $id;
 		$get_data = $this->m_admin->get_admin_by_id($id);

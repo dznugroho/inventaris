@@ -6,9 +6,14 @@ class Wilayah extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Wilayah','m_wilayah');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['wilayah'] = $this->m_wilayah->get_wilayah();
 		$this->load->view('wilayah/daftar_wilayah',$data);
 	}

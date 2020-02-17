@@ -6,9 +6,15 @@ class Usulankec extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Usulankec','m_usulankec');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='3') redirect('dashboard');
+
 		$data['usulankec'] = $this->m_usulankec->get_usulankec();
 		$this->load->view('usulankec/daftar_usulan',$data);
 	}
