@@ -62,10 +62,10 @@
               
               <?php elseif($this->session->userdata('akses')=='2'):?>
               <li class="menu-header">Usulan Kegiatan</li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'usulanumum'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('usulanumum'); ?>"><i class="far fa-list-alt"></i> <span>Data Usulan</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'status_accepted'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('status_accepted'); ?>"><i class="far fa-file-alt"></i> <span>Status Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan_umum'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('usulan_umum'); ?>"><i class="far fa-list-alt"></i> <span>Data Usulan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'status_usulan_umum'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('status_usulan_umum'); ?>"><i class="far fa-file-alt"></i> <span>Status Usulan</span></a></li>
               
               <?php elseif($this->session->userdata('akses')=='3'):?>
               <li class="menu-header">Usulan Kegiatan</li>

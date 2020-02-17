@@ -1,45 +1,44 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usulanumum extends CI_Controller {
+class Usulan_umum extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('M_Usulan','m_usulan');
-		$this->load->model('M_Usulanumum','m_usulanumum');
+		$this->load->model('M_Usulan_umum','m_usulan_umum');
 		$this->load->library('session');
 		
 	}
 
 	function index(){
-		$data['usulanumum'] = $this->m_usulanumum->get_usulan();
-		$this->load->view('usulanumum/daftar_usulan',$data);
+		$data['usulan'] = $this->m_usulan_umum->get_usulan();
+		$this->load->view('usulan_umum/daftar_usulan',$data);
 	}
 
 	// add new usulan
 	function add_new(){
-		$data['namau'] = $this->m_usulanumum->get_pengusul($this->session->userdata('ses_nama'))->result();
-		$data['kode_bidang'] = $this->m_usulanumum->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_usulanumum->get_kecamatan()->result();
-		$data['kode_k'] = $this->m_usulanumum->get_k()->result();
-		$this->load->view('usulanumum/add_product_view', $data);
+		$data['NIKK'] = $this->m_usulan_umum->get_NIK($this->session->userdata('ses_id'))->result();
+		$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
+		$data['kode_kecamatan'] = $this->m_usulan_umum->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulan_umum->get_k()->result();
+		$this->load->view('usulan_umum/add_product_view', $data);
 	}
 
 	// get sub bidang by bidang_id
 	function get_sub_bidang(){
 		$kode_bidang = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_sub_bidang($kode_bidang)->result();
+		$data = $this->m_usulan_umum->get_sub_bidang($kode_bidang)->result();
 		echo json_encode($data);
 	}
 
 	function get_desa(){
 		$kode_kecamatan = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_desa($kode_kecamatan)->result();
+		$data = $this->m_usulan_umum->get_desa($kode_kecamatan)->result();
 		echo json_encode($data);
 	}
 
 	function get_dk(){
 		$kode_k = $this->input->post('id',TRUE);
-		$data = $this->m_usulan->get_dk($kode_k)->result();
+		$data = $this->m_usulan_umum->get_dk($kode_k)->result();
 		echo json_encode($data);
 	}
 
@@ -51,9 +50,9 @@ class Usulanumum extends CI_Controller {
 	}
 	
 	function detail_usulan(){
-		$data['detail_usulan'] = $this->m_usulan->get_detail();
+		$data['detail_usulan'] = $this->m_usulan_umum->get_detail();
 
-		$this->load->view('usulan/detail_usulan',$data);
+		$this->load->view('usulan_umum/detail_usulan',$data);
 	}
 
 	//save usulan to database
@@ -88,13 +87,14 @@ class Usulanumum extends CI_Controller {
 			'kode_k'   => $this->input->post('kode_k',TRUE),
 			'kode_w'	    => $this->input->post('kode_w',TRUE),
 			'nama_pengusul'   	=> $this->input->post('nama_pengusul',TRUE),
+			'NIK'   	=> $this->input->post('NIK',TRUE),
 			'no_telp'         	=> $this->input->post('no_telp',TRUE),
 			'file'=>$file_name
 
 		);
 		$this->db->insert('tb_usulan', $data);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Saved</div>');
-		redirect('usulan');
+		redirect('usulan_umum');
 		
 	}
 
@@ -118,17 +118,17 @@ class Usulanumum extends CI_Controller {
 		$this->db->where('kode_usulan', $kode_usulan);
 		$this->db->update('tb_usulan', $data);
 		$this->session->set_flashdata('sukses','1');
-		redirect('usulan');
+		redirect('usulan_umum');
 }
 
 	function get_edit(){
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;
-		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
-		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
-		$data['kode_k'] = $this->m_usulan->get_k()->result();
-		$data['cekid']=$this->m_usulan->cekid($kode_usulan)->row_array();
-		$get_data = $this->m_usulan->get_usulan_by_id($kode_usulan);
+		$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
+		$data['kode_kecamatan'] = $this->m_usulan_umum->get_kecamatan()->result();
+		$data['kode_k'] = $this->m_usulan_umum->get_k()->result();
+		$data['cekid']=$this->m_usulan_umum->cekid($kode_usulan)->row_array();
+		$get_data = $this->m_usulan_umum->get_usulan_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
 			$data['kode_subbidang'] = $row['kode_subbidang'];
@@ -136,12 +136,12 @@ class Usulanumum extends CI_Controller {
 			$data['kode_w'] = $row['kode_w'];
 
 		}
-		$this->load->view('usulan/ubah_usulan',$data);
+		$this->load->view('usulan_umum/ubah_usulan',$data);
 	}
 
 	function get_data_edit(){
 		$kode_usulan = $this->input->post('kode_usulan',TRUE);
-		$data = $this->m_usulan->get_usulan_by_id($kode_usulan)->result();
+		$data = $this->m_usulan_umum->get_usulan_by_id($kode_usulan)->result();
 		echo json_encode($data);
 	}
 
@@ -164,6 +164,7 @@ class Usulanumum extends CI_Controller {
 		$kode_k        		= $this->input->post('kode_k',TRUE);
 		$kode_w 	  	    = $this->input->post('kode_w',TRUE);
 		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
+		$NIK  				= $this->input->post('NIK',TRUE);
 		$no_telp         	= $this->input->post('no_telp',TRUE);
         
         if($_FILES['file']['name'] == ""){
@@ -198,23 +199,24 @@ class Usulanumum extends CI_Controller {
 			'deskripsi' 	   	=> $deskripsi,
 			'nama_institusi' 	=> $nama_institusi,
 			'alamat_institusi' 	=> $alamat_institusi,
-			'kode_k'   => $kode_k,
-			'kode_w'	    => $kode_w,
+			'kode_k'   			=> $kode_k,
+			'kode_w'	   		=> $kode_w,
 			'nama_pengusul'   	=> $nama_pengusul,
+			'NIK'   			=> $NIK,
 			'no_telp'         	=> $no_telp,
 			'file'=>$file_name
 
 		);
-		$this->m_usulan->update_usulan($data,$kode_usulan);
+		$this->m_usulan_umum->update_usulan($data,$kode_usulan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
-		redirect('usulan');
+		redirect('usulan_umum');
 	}
 
 	//Delete usulan from Database
 	function delete(){
 		$kode_usulan = $this->uri->segment(3);
-		$this->m_usulan->delete_usulan($kode_usulan);
+		$this->m_usulan_umum->delete_usulan($kode_usulan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Deleted</div>');
-		redirect('usulan');
+		redirect('usulan_umum');
 	}
 }

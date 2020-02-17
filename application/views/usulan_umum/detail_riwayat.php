@@ -43,7 +43,7 @@
                   <div class="card-body">
                       <table class="table table-striped" id="mytable">
                             <?php
-                              foreach ($detail_usulan->result() as $row):
+                              foreach ($detail_riwayat->result() as $row):
                             ?>
                           <tr>
                             <th colspan="3">Kode Usulan</th>                             
@@ -116,7 +116,7 @@
                           <tr>
                             <th colspan="3">CP Pengusul</th>
                               <td><?php echo $row->no_telp;?></td>
-                              </tr>
+                          </tr>
                           <tr>
                             <th colspan="3">File</th>
                               <td><?php ?>
@@ -124,10 +124,66 @@
 			           	        <?php   ;?>
                               </td>
                             </tr>
+                    
                           <?php endforeach;?>
                       </table>
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="mytable">
+                      <thead>
+                          <tr>
+                            <th>No.</th>
+                            <th>Kode Pilih</th>
+                            <th>Nama Perusahaan</th>
+                            <th>Alamat</th>
+                            <th>Kecamatan</th>
+                            <th>Desa</th>
+                            <th>No. Telp</th>
+                            <th>Email</th>
+                            <th>Dana Perusahaan</th>
+                            <th>Status</th>
+                            <th colspan="2">Aksi</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                              $no = 0;
+                              foreach ($riwayat_perusahaan->result() as $row):
+                                $no++;
+                            ?>
+                            <tr>
+                              <td><?php echo $no;?></td>
+                              <td><?php echo $row->kode_pilih;?></td>
+                              <td><?php echo $row->nama_perusahaan;?></td>
+                              <td><?php echo $row->alamat;?></td>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                              <td><?php echo $row->desa;?></td>
+                              <td><?php echo $row->no_telp;?></td>
+                              <td><?php echo $row->email;?></td>
+                              <td><?php echo number_format($row->dana);?></td>
+                              <td><?php
+                              if($row->status_perusahaan == '0'){
+                                echo  '<div class="badge badge-warning">On Process</div>';
+                              }else if ($row->status_perusahaan == '1'){
+                                echo '<div class="badge badge-success">Accepted</div>';
+                              }else{
+                                echo '<div class="badge badge-danger">Declined</div>';
+                              }
+                                ;?>
+                              </td>
+                              <td>
+                                <a href="<?php echo site_url('riwayat_pilihan/get_edit/'.$row->kode_pilih);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
+                              </td>
+                              <td>
+                              <a href="<?php echo site_url('riwayat_pilihan/delete/'.$row->kode_pilih);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
+                              </td>
+                            </tr>
+                            <?php endforeach;?>
+                          </tbody>
+                      </table>
+                    </div>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('usulan');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('riwayat_pilihan');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

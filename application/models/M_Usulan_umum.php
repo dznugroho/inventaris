@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Usulanumum extends CI_Model{
+class M_Usulan_umum extends CI_Model{
 	
 	public function all()
 	{
@@ -15,7 +15,8 @@ class M_Usulanumum extends CI_Model{
 	public function cekid($kode_usulan)
     {
         return $this->db->where('kode_usulan', $kode_usulan)->get('tb_usulan');
-    }
+	}
+	
 
 	function get_bidang(){
 		$query = $this->db->get('tb_bidang');
@@ -29,10 +30,6 @@ class M_Usulanumum extends CI_Model{
 
 	function get_kecamatan(){
 		$query = $this->db->get('tb_kecamatan');
-		return $query;	
-	}
-	function get_pengusul(){
-		$query = $this->db->get('registrasi');
 		return $query;	
 	}
 
@@ -50,6 +47,11 @@ class M_Usulanumum extends CI_Model{
 		$query = $this->db->get_where('tb_w', array('kode_k' => $kode_k));
 		return $query;
 	}
+	function get_NIK(){
+		$query = $this->db->get('registrasi');
+		return $query;	
+	}
+	
 
 	// function get_usulan(){
 	// 	$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
@@ -67,14 +69,15 @@ class M_Usulanumum extends CI_Model{
 	// }
 
 	function get_usulan(){
-		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$this->db->where("status_usulan", 0);
-		$query = $this->db->get();
-		return $query;
+		$NIK = $this->session->userdata('ses_id');
+		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,
+		nama_kegiatan,waktu_mulai,waktu_selesai,anggaran,tb_usulan.file 
+		from tb_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
+		JOIN registrasi ON registrasi.NIK = tb_usulan.NIK
+		WHERE tb_usulan.NIK =  $NIK AND status_usulan=0");
+	
 	}
 
 	function get_detail(){
