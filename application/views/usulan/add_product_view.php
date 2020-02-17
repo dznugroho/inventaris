@@ -75,11 +75,11 @@
                       </div>
                       <div class="form-group">
                         <label>Waktu Mulai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai">
+                        <input type="text" class="form-control datepicker" name="waktu_mulai" id="waktu_mulai" placeholder="Waktu Mulai">
                       </div>
                       <div class="form-group">
                         <label>Waktu Selesai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai">
+                        <input type="text" class="form-control datepicker" name="waktu_selesai" id="waktu_selesai" placeholder="Waktu Selesai">
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
@@ -268,7 +268,6 @@
             
 		});
 	</script>
-
 
 </body>
 </html>

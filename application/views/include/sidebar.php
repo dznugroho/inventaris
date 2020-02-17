@@ -16,7 +16,8 @@
               <?php if($this->session->userdata('akses')=='1'):?>
               <li class="menu-header">Master Data</li>
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'pengguna'
-              || $this->uri->segment(1) == 'perusahaan' || $this->uri->segment(1) == 'upload' ?'active': '' ?>">
+              || $this->uri->segment(1) == 'perusahaan' || $this->uri->segment(1) == 'upload' || 
+              $this->uri->segment(1) == 'register' ?'active': '' ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'admin'?'active': '' ?>">
@@ -27,6 +28,8 @@
                   <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>">Perusahaan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'upload'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('upload'); ?>">Umum</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'register'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('register'); ?>">Konfirmasi Pendaftar</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'pendidikan' || $this->uri->segment(1) == 'kesehatan'

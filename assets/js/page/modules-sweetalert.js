@@ -17,20 +17,20 @@ $("#swal-4").click(function() {
 });
 
 $("#swal-5").click(function() {
-	swal('Good Job', 'You clicked the button!', 'error');
+	swal('ERROR', 'Data Gagal Di Simpan', 'error');
 });
 
 $("#swal-6").click(function() {
   swal({
       title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      text: 'Once deleted, you will not be able to recover this file!',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
     })
     .then((willDelete) => {
       if (willDelete) {
-      swal('Poof! Your imaginary file has been deleted!', {
+      swal('Poof! Your file has been deleted!', {
         icon: 'success',
       });
       } else {

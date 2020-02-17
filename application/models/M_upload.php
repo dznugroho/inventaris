@@ -34,6 +34,19 @@ class M_upload extends CI_Model{
 		$query = $this->db->get();
 		return $query;
 	}
+
+	function get_regist(){
+		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
+		nama_kecamatan,desa,email,nama_akses,foto');
+		$this->db->from('registrasi');
+		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
+		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = registrasi.kode_wilayah','left');
+		$this->db->join('akses','akses.id_akses = registrasi.level','left');
+		$array = array('level' => 0);
+		$this->db->where($array);
+		$query = $this->db->get();
+		return $query;
+	}
 	
 
 	function simpan_upload($NIK,$nama_depan,$nama_belakang,$username,$password,
@@ -80,7 +93,22 @@ class M_upload extends CI_Model{
 		$this->db->update('registrasi');
 	}
 
-	
+	function cancel($data,$NIK){
+		$pilihan=$this->db->select("NIK")->from('registrasi')->where("NIK",$NIK)->get()->row();
+		
+		$this->db->where("NIK",$NIK);
+        $this->db->update('registrasi',$data);
+        return $pilihan->NIK;  
+    }
+
+    function confirm($data,$NIK){
+		$pilihan=$this->db->select("NIK")->from('registrasi')->where("NIK",$NIK)->get()->row();
+		
+		$this->db->where("NIK",$NIK);
+        $this->db->update('registrasi',$data);
+        return $pilihan->NIK;  		
+    }
+
 
 	//Delete usulan
 	function delete_umum($NIK){

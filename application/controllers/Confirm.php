@@ -45,12 +45,4 @@ class Confirm extends CI_Controller {
     }
 
 	
-
-	//Delete usulan from Database
-	function delete(){
-		$id = $this->uri->segment(3);
-		$this->m_pengguna->delete_pengguna($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Deleted</div>');
-		redirect('pengguna');
-	}
 }

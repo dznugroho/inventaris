@@ -41,7 +41,7 @@
 
               <div class="form-group">
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                  <input type="checkbox" onclick="myFunction()" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
                   <label class="custom-control-label" for="remember-me">Show Password</label>
                 </div>
               </div>
@@ -82,15 +82,14 @@
 
   <!-- Page Specific JS File -->
   <script type="text/javascript">
-	$(document).ready(function(){		
-		$('.custom-control-input').click(function(){
-			if($(this).is(':checked')){
-				$('.form-control').attr('type','text');
-			}else{
-				$('.form-control').attr('type','password');
-			}
-		});
-	});
+function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 </script>
 </body>
 </html>
