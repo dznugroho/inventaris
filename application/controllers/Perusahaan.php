@@ -6,9 +6,14 @@ class Perusahaan extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Perusahaan','m_perusahaan');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['perusahaan'] = $this->m_perusahaan->get_perusahaan();
 		$this->load->view('perusahaan/daftar_perusahaan',$data);
 	}

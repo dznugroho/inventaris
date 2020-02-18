@@ -6,9 +6,15 @@ class Confirm extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Confirm','m_confirm');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['usulan'] = $this->m_confirm->get_pilihan();
 	
 		$this->load->view('usulan/confirm_usulan',$data);

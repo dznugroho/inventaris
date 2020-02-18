@@ -6,10 +6,15 @@ class Usulan_umum extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Usulan_umum','m_usulan_umum');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 		
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='2') redirect('dashboard');
 		$data['usulan'] = $this->m_usulan_umum->get_usulan();
 		$this->load->view('usulan_umum/daftar_usulan',$data);
 	}

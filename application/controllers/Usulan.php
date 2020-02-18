@@ -6,10 +6,16 @@ class Usulan extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Usulan','m_usulan');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
+		
 		
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['usulan'] = $this->m_usulan->get_usulan();
 		$this->load->view('usulan/daftar_usulan',$data);
 	}
@@ -228,6 +234,8 @@ class Usulan extends CI_Controller {
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
 		redirect('usulan');
 	}
+
+
 
 	//Delete usulan from Database
 	function delete(){

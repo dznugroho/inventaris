@@ -6,9 +6,14 @@ class Upload extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_upload','m_upload');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['umum'] = $this->m_upload->get_umum();
 		$this->load->view('umum/daftar_umum',$data);
 	}

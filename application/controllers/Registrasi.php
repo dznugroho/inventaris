@@ -6,6 +6,10 @@ class Registrasi extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Registrasi','m_registrasi');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 		
 	}
 

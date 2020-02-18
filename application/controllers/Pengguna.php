@@ -6,9 +6,14 @@ class Pengguna extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Pengguna','m_pengguna');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['pengguna'] = $this->m_pengguna->get_pengguna();
 		$this->load->view('pengguna/daftar_pengguna',$data);
 	}

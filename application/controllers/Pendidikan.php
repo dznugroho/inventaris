@@ -5,11 +5,17 @@ class Pendidikan extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-    $this->load->model('M_Pendidikan');
+    		$this->load->model('M_Pendidikan');
+    		$this->load->library('session');
+			if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
   }
 
     public function index()
 	{
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$this->load->view('bidang/pendidikan');
     }
     public function ubah(){

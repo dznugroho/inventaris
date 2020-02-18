@@ -6,9 +6,14 @@ class Status_usulan_umum extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Status_usulan','m_status_usulan');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='2') redirect('dashboard');
 		$data['accepted'] = $this->m_status_usulan->get_umum_accepted();
 	
 		$this->load->view('usulan_umum/usulan_accepted',$data);

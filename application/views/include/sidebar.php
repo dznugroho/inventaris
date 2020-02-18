@@ -18,7 +18,7 @@
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'pengguna'
               || $this->uri->segment(1) == 'perusahaan' || $this->uri->segment(1) == 'upload' || 
               $this->uri->segment(1) == 'register' ?'active': '' ?>">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Pengguna</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-address-card"></i> <span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'admin'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('admin'); ?>">Admin Utama</a></li>
@@ -34,7 +34,7 @@
               </li>
               <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'pendidikan' || $this->uri->segment(1) == 'kesehatan'
               || $this->uri->segment(1) == 'lingkungan' || $this->uri->segment(1) == 'pek' || $this->uri->segment(1) == 'infrastruktur' ?'active': '' ?>">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Bidang</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dice-d6"></i> <span>Data Bidang</span></a>
                 <ul class="dropdown-menu">
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'pendidikan'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('pendidikan'); ?>">Bidang Pendidikan</a></li>
@@ -49,18 +49,18 @@
                 </ul>
               </li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'wilayah'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="far fa-list-alt"></i> <span>Data Wilayah</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('wilayah'); ?>"><i class="fas fa-chart-pie"></i> <span>Data Wilayah</span></a></li>
               <li class="menu-header">Usulan Kegiatan</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'usulan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="far fa-file-alt"></i> <span>Data Usulan</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('usulan'); ?>"><i class="fas fa-comment-alt"></i> <span>Data Usulan</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'confirm'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('confirm'); ?>"><i class="far fa-list-alt"></i> <span>Konfirmasi Usulan</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('confirm'); ?>"><i class="fas fa-check-double"></i> <span>Konfirmasi Usulan</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'status_accepted'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('status_accepted'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Diterima</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('status_accepted'); ?>"><i class="fas fa-file-import"></i> <span>Usulan Diterima</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'status_declined'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('status_declined'); ?>"><i class="far fa-file-alt"></i> <span>Usulan Ditolak</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('status_declined'); ?>"><i class="fas fa-file-excel"></i> <span>Usulan Ditolak</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'riwayat_pilihan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('riwayat_pilihan'); ?>"><i class="far fa-file-alt"></i> <span>Riwayat Pilihan</span></a></li>
+              <a class="nav-link" href="<?php echo site_url('riwayat_pilihan'); ?>"><i class="fas fa-list-alt"></i> <span>Riwayat Pilihan</span></a></li>
               <li class="menu-header">&nbsp;</li>
               
               <?php elseif($this->session->userdata('akses')=='2'):?>
