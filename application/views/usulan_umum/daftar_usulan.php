@@ -39,8 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('usulan_umum/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-          
+
           <div class="dropdown text-right">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
         <div class="dropdown-menu">
@@ -56,7 +55,11 @@
           <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2024'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2024');?>">2024</a>
           <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2025'?'active': '' ?>dsiabled" href="<?php echo site_url('dashboard/tahun2025');?>">2025</a>
         </div>
-
+        </div>
+        
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          
+        
           </div>
           </div>
             <div class="row">
@@ -99,31 +102,31 @@
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
                               <td><?php if($row->file==""){
-							$fill = $row->file;
-							$aksi = site_url('usulan_umum/add_file');
-							$tampil = 
+              $fill = $row->file;
+              $aksi = site_url('usulan/add_file');
+              $tampil = 
 <<<HEREDOCS
-			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
+                      <form action="$aksi" method="post" enctype="multipart/form-data" >
                 <input type="file" name="file">             
-								<input type="hidden" name="kode_usulan" value="$row->kode_usulan">
-								<br>
-								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
-							</form>
+                <input type="hidden" name="kode_usulan" value="$row->kode_usulan">
+                <br>
+                <button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
+              </form>
 HEREDOCS;
-						echo $tampil;
-			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
-			           	<?php } ?>
+            echo $tampil;
+                  }else{?>
+                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+                  <?php } ?>
 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan_umum/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                              <a href="<?php echo site_url('usulan/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan_umum/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
+                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan_umum/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
+                              <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>
@@ -161,9 +164,9 @@ HEREDOCS;
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/modules-datatables.js"></script>
   <script type="text/javascript">
-		$(document).ready(function(){
-			$('#mytable').DataTable();
-		});
-	</script>
+    $(document).ready(function(){
+      $('#mytable').DataTable();
+    });
+  </script>
 </body>
 </html>
