@@ -18,6 +18,10 @@ class M_Usulankec extends CI_Model{
 		$query = $this->db->get('tb_bidang');
 		return $query;	
 	}
+	function get_sub(){
+		$query = $this->db->get('tb_subbidang');
+		return $query;	
+	}
 
 	function get_sub_bidang($kode_bidang){
 		$query = $this->db->get_where('tb_subbidang', array('parent_bidang' => $kode_bidang));

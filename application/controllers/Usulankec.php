@@ -10,6 +10,7 @@ class Usulankec extends CI_Controller {
 
 	function index(){
 		$data['usulankec'] = $this->m_usulankec->get_usulankec();
+		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 		$this->load->view('usulankec/daftar_usulan',$data);
 	}
 

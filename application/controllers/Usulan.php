@@ -13,6 +13,26 @@ class Usulan extends CI_Controller {
 		$data['usulan'] = $this->m_usulan->get_usulan();
 		$this->load->view('usulan/daftar_usulan',$data);
 	}
+	public function pendidikan(){
+		$data['usulan'] = $this->m_usulan->get_pendidikan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function kesehatan(){
+		$data['usulan'] = $this->m_usulan->get_kesehatan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function lingkungan(){
+		$data['usulan'] = $this->m_usulan->get_lingkungan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function ekonomi(){
+		$data['usulan'] = $this->m_usulan->get_ekonomi();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function infrastruktur(){
+		$data['usulan'] = $this->m_usulan->get_Infrastruktur();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
 
 	// add new usulan
 	function add_new(){
