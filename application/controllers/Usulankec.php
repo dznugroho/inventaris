@@ -30,7 +30,6 @@ class Usulankec extends CI_Controller {
 		$data['kode_k'] = $this->m_usulankec->get_k()->result();
 		$this->load->view('usulankec/add_product_view', $data);
 	}
-
 	// get sub bidang by bidang_id
 	function get_sub_bidang(){
 		$kode_bidang = $this->input->post('id',TRUE);
@@ -231,4 +230,7 @@ class Usulankec extends CI_Controller {
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Deleted</div>');
 		redirect('usulankec');
 	}
+	//serch
+
+	
 }

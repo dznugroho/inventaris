@@ -12,7 +12,7 @@
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="<?= base_url()?>node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url()?>node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css">  
-
+  
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url()?>assets/css/style.css">
   <link rel="stylesheet" href="<?= base_url()?>assets/css/components.css">
@@ -53,26 +53,30 @@
                         </select>
                     
                     </div>
+
                       <div class="form-group col-3">
-                       
-                        <select class="form-control" name="kode_subbidang" id="kode_subbidang">
+                        <select class="form-control" type="text" name="keyword" id="keyword">
                         <option value="">Pilih Nama Sub Bidang</option>
                         </select>
                        </div> 
                        <div class="form-group col-3">
-                      <button class="btn btn-icon icon-left btn-primary"><i class="fa fa-search"></i> Cari</a></button>
+                      <button class="btn btn-icon icon-left btn-primary" type="button" name="btn-serch" id="btn-serch" value="keyword"><i class="fa fa-search"></i></a></button>
+                      <button class="btn btn-icon icon-left btn-danger" name=""><i class="fa fa-search"></i> Reset</a></button>
                     </div>
+                   
+                  <div class="form-group col-3"></div>
+                    <div class="form-group col-3">
+                    <a href="<?php echo site_url('usulankec/add_new'); ?>"
+                      class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
+                    </div>
+                   
            </div>
-            <div class="row">
-          <div class="card-body  text-right" >
-          <a href="<?php echo site_url('usulankec/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-          </div>
-          </div>
+          
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                    <div class="table-responsive">
+                  <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
                         <thead>
                           <tr>
@@ -169,11 +173,15 @@ HEREDOCS;
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/modules-datatables.js"></script>
+
+  
   <script type="text/javascript">
 		$(document).ready(function(){
 			$('#mytable').DataTable();
 		});
 	</script>
+
+
    <script type="text/javascript">
 		$(document).ready(function(){
 
@@ -192,7 +200,7 @@ HEREDOCS;
                         for(i=0; i<data.length; i++){
                             html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
                         }
-                        $('#kode_subbidang').html(html);
+                        $('#keyword').html(html);
 
                     }
                 });
@@ -201,5 +209,6 @@ HEREDOCS;
             
 		});
 	</script>
+  
 </body>
 </html>

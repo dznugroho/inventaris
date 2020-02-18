@@ -13,7 +13,12 @@ class M_Usulankec extends CI_Model{
 		tb_k.kode_k				 	= tb_usulan.kode_k JOIN tb_w ON
 		tb_w.kode_w 				= tb_usulan.kode_w");
 	}
-
+	function caridata(){
+		$c = $this->input->POST ('keyword');
+		$this->db->like('kode_subbidang', $c);
+		$query = $this->db->get ('tb_usulan');
+		return $query->result(); 
+		 }
 	function get_bidang(){
 		$query = $this->db->get('tb_bidang');
 		return $query;	
