@@ -41,7 +41,7 @@
           <?php echo $this->session->flashdata('msg');?>
 
           <div class="dropdown text-right">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
         <div class="dropdown-menu">
 
           <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2016'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2016');?>">2016</a>
@@ -57,7 +57,7 @@
         </div>
         </div>
         
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Tambah</a>
           
         
           </div>
