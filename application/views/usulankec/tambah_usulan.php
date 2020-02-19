@@ -70,7 +70,7 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control" name="tahun_pengusulan">
+                      <input type="number" minlength="4" maxlength="4" class="form-control" name="tahun_pengusulan">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
