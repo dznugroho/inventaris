@@ -39,31 +39,33 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-
-          <div class="dropdown text-right">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
-        <div class="dropdown-menu">
-
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2016'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2016');?>">2016</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2017'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2017');?>">2017</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2018'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2018');?>">2018</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2019'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2019');?>">2019</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2020'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2020');?>">2020</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2021'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2021');?>">2021</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2022'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2022');?>">2022</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2023'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2023');?>">2023</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2024'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2024');?>">2024</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2025'?'active': '' ?>dsiabled" href="<?php echo site_url('dashboard/tahun2025');?>">2025</a>
-        </div>
-        </div>
-        
-        <div class="dropdown text-right">
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-          
-        </div>
-
           </div>
           </div>
+          <div class="row"> 
+          <div class="form-group col-3">
+            <select class="form-control" name="kode_bidang" id="kode_bidang">
+              <option value="">Pilih Nama Bidang</option>
+              <?php foreach($kode_bidang as $row):?>
+              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+              <?php endforeach;?>
+            </select>
+          </div>
+          <div class="form-group col-3">
+            <form action="<?php echo site_url('usulan_umum/cari'); ?>" method=POST>
+              <select class="form-control" type="text" name="keyword" id="keyword">
+                <option value="">Pilih Nama Sub Bidang</option>
+              </select>
+              </div> 
+              <div class="form-group col-3">
+                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                  <a href="<?php echo site_url('usulan_umum'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+            </form>
+          </div>
+          <div class="form-group col-3"></div>
+          <div class="form-group col-3">
+              <a href="<?php echo site_url('usulan_umum/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
+          </div>
+       </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -170,5 +172,32 @@ HEREDOCS;
       $('#mytable').DataTable();
     });
   </script>
+     <script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#kode_bidang').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulan_umum/get_sub_bidang');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
+                        }
+                        $('#keyword').html(html);
+
+                    }
+                });
+                return false;
+            }); 
+            
+		});
+	</script>
 </body>
 </html>

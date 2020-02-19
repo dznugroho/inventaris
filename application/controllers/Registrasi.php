@@ -41,7 +41,6 @@ class Registrasi extends CI_Controller {
 			$NIK 	    		= $this->input->post('NIK',TRUE);
 			$nama_depan     	= $this->input->post('nama_depan',TRUE);
 			$nama_belakang 		= $this->input->post('nama_belakang',TRUE);
-			$username 	    	= $this->input->post('username',TRUE);
 			$password 	    	= $this->input->post('password',TRUE);
 			$alamat 	    	= $this->input->post('alamat',TRUE);
 			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);

@@ -79,7 +79,23 @@ class M_Usulan_umum extends CI_Model{
 		WHERE tb_usulan.NIK =  $NIK AND status_usulan=0");
 	
 	}
+	function caridata(){
+		$NIK = $this->session->userdata('ses_id');
+		$c = $this->input->POST ('keyword');
+		$this->db->like('tb_usulan.kode_subbidang', $c);
+		$this->db->from('tb_usulan');
+			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+			$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->where('tb_usulan.NIK',$NIK);
+			$this->db->where('status_usulan',0);
 
+		$query = $this->db->get();
+		return $query; 
+	}
 	function get_detail(){
 		$kode_usulan = $this->uri->segment(3);
 		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,

@@ -59,14 +59,9 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="Username">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
-                  </div>
-
                     <div class="form-group">
                     <label for="password">Pasword</label>
-                    <input id="password" type="password" class="form-control" name="password" required>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukkan Password" required>
                     <div class="invalid-feedback">
                       </div>
                   </div>

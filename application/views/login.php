@@ -28,15 +28,15 @@
             
             <form method="post" action="<?= base_url()?>login/auth">
               <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" type="text" class="form-control" name="username" tabindex="1" required autofocus>
+                <label for="username">Username / NIK</label>
+                <input id="username" type="text" class="form-control" name="username" tabindex="1" placeholder="Masukan Username/NIK " required autofocus>
               </div>
 
               <div class="form-group">
                 <div class="d-block">
                   <label for="password" class="control-label">Password</label>
                 </div>
-                <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                <input id="password" type="password" class="form-control" name="password" tabindex="2"  placeholder="Masukan Password" required>
               </div>
 
               <div class="form-group">

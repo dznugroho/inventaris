@@ -22,7 +22,6 @@ class M_Pilihanps extends CI_Model{
 			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
-			$this->db->where('status_usulan',0);
 		$query = $this->db->get();
 		return $query; 
 	}
