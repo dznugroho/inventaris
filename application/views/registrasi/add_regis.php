@@ -36,44 +36,44 @@
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="nama_depan">First Name</label>
-                      <input id="nama_depan" type="text" class="form-control" name="nama_depan" autofocus require>
+                      <input id="nama_depan" type="text" class="form-control" name="nama_depan" autofocus required>
                     </div>
                     <div class="form-group col-6">
                       <label for="nama_belakang">Last Name</label>
-                      <input id="nama_belakang" type="text" class="form-control" name="nama_belakang" require>
+                      <input id="nama_belakang" type="text" class="form-control" name="nama_belakang" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="NIK">NIK</label>
-                    <input id="NIK" type="number" class="form-control" name="NIK" placeholder="Masukkan NIK" require>
+                    <input id="NIK" type="number" class="form-control" name="NIK" placeholder="Masukkan NIK" required>
                   </div>
 
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" require>
+                    <input id="email" type="email" class="form-control" name="email" placeholder="Masukkan Email" required >
                     <div class="invalid-feedback">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="Username">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" placeholder="Masukkan Username" require>
+                    <input id="username" type="text" class="form-control" name="username" placeholder="Masukkan Username" required>
                   </div>
 
                     <div class="form-group">
                     <label for="password">Pasword</label>
-                    <input id="password" type="password" class="form-control" name="password" require>
+                    <input id="password" type="password" class="form-control" name="password" required>
                     <div class="invalid-feedback">
                       </div>
                   </div>
                   <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan" require>  
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan" required>  
                   </div>
                   <div class="row">
                     <div class="form-group col-6">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" require>
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" required>
                           <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
@@ -82,13 +82,13 @@
                       </div>
                       <div class="form-group col-6">
                         <label>Desa</label>
-                        <select class="form-control" name="kode_wilayah" id="kode_wilayah" require>
+                        <select class="form-control" name="kode_wilayah" id="kode_wilayah" required>
                         <option value="">No Selected</option>
                         </select>
                       </div> 
                       <div class="form-group col-6">
                         <label>Foto</label>
-                        <input type="file" class="form-control" name="file" require>
+                        <input type="file" class="form-control" name="file" required>
                     </div>
                   </div>
                   <div class="form-group">
