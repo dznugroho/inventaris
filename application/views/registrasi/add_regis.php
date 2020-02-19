@@ -26,7 +26,11 @@
             <div class="login-brand">
               <img src="<?= base_url()?>assets/img/stisla-fill.svg" alt="logo" width="100" >
             </div>
-
+            <div class="row">
+          <div class="card-body" >
+          <?php echo $this->session->flashdata('msg');?>
+          </div>
+          </div>
             <div class="card card-primary">
               <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/regist" enctype="multipart/form-data">
               <h4>Register</h4></div>
@@ -92,9 +96,11 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"href="<?php echo site_url('registrasi/index'); ?>">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                   </div>
+                  
                 </form>
+                <a href="<?php echo site_url('login');?>" class="btn btn-primary">Kembali</a>
               </div>
             </div>
             <div class="simple-footer">
