@@ -58,10 +58,6 @@
                         <label>Nama Belakang</label>
                         <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang">
                       </div>
-                      <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Masukan Username">
-                      </div>
                       
                       <div class="form-group">
                         <label>Password</label>

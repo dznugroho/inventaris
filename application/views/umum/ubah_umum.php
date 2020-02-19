@@ -184,7 +184,6 @@
                         $.each(data, function(i, item){
                             $('[name="nama_depan"]').val(data[i].nama_depan);
                             $('[name="nama_belakang"]').val(data[i].nama_belakang);
-                            $('[name="username"]').val(data[i].username);
                             $('[name="passord"]').val(data[i].password);
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');

@@ -58,10 +58,6 @@
                               <td><?php echo $row->nama_belakang;?></td>
                           </tr>
                           <tr>
-                            <th colspan="3">Username</th>
-                              <td><?php echo $row->username;?></td>
-                          </tr>
-                          <tr>
                             <th colspan="3">Password</th>
                               <td><?php echo $row->password;?></td>
                           </tr>

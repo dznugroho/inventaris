@@ -63,14 +63,13 @@ class M_upload extends CI_Model{
 	}
 	
 
-	function simpan_upload($NIK,$nama_depan,$nama_belakang,$username,$password,
+	function simpan_upload($NIK,$nama_depan,$nama_belakang,$password,
     $alamat,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
 		$data = array(
 			
             'NIK' 	    		=> $NIK,
             'nama_depan'    	=> $nama_depan,
             'nama_belakang' 	=> $nama_belakang,
-            'username' 			=> $username,
             'password' 			=> MD5($password),
 			'alamat' 			=> $alamat,
 			'kode_kecamatan' 	=> $kode_kecamatan,
@@ -94,7 +93,6 @@ class M_upload extends CI_Model{
 
         $this->db->set('nama_depan'     , $nama_depan);
         $this->db->set('nama_belakang'     , $nama_belakang);
-        $this->db->set('username'     , $username);
         $this->db->set('password' 	, MD5($password));        
 		$this->db->set('alamat' 		, $alamat);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);

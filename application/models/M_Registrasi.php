@@ -29,7 +29,7 @@ class M_Registrasi extends CI_Model{
 		return $query;
 	}
 	
-	function regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
+	function regist($NIK,$nama_depan,$nama_belakang,$email,$password,
 	$alamat,$kode_kecamatan,$kode_wilayah,$image){
 		
 		$data = array(

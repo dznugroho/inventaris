@@ -48,7 +48,7 @@ class Registrasi extends CI_Controller {
 			$email 				= $this->input->post('email',TRUE);
 			$image = $data['upload_data']['file_name']; 
 			
-		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
+		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$password,
 		$alamat,$kode_kecamatan,$kode_wilayah,$image);
 		
 		}
