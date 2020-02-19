@@ -26,7 +26,7 @@ class Registrasi extends CI_Controller {
 	// add new usulan
 	function add_new(){
 		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
-		$this->load->view('umum/add_regis', $data);
+		$this->load->view('registrasi/add_regis', $data);
 	}
 
 	public function embed()
