@@ -80,6 +80,7 @@ class M_Usulan_umum extends CI_Model{
 	
 	}
 	function caridata(){
+		$NIK = $this->session->userdata('ses_id');
 		$c = $this->input->POST ('keyword');
 		$this->db->like('tb_usulan.kode_subbidang', $c);
 		$this->db->from('tb_usulan');
@@ -89,6 +90,9 @@ class M_Usulan_umum extends CI_Model{
 			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->where('tb_usulan.NIK',$NIK);
+			$this->db->where('status_usulan',0);
+
 		$query = $this->db->get();
 		return $query; 
 	}
