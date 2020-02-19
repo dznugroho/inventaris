@@ -51,8 +51,11 @@ class Registrasi extends CI_Controller {
 			
 		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
 		$alamat,$kode_kecamatan,$kode_wilayah,$image);
+		
 		}
-		redirect('login');
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Berhasil Mendaftar</div>');
+
+		redirect('registrasi');
 		
 	}
 

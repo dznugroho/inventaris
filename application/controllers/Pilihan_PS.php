@@ -29,7 +29,8 @@ class Pilihan_PS extends CI_Controller {
 		$this->load->view('perusahaan/detail_ps',$data);
 	}
 	function cari() {
-		$data['pilihan_ps']=$this->m_pilihanps->caridata();
+		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
+		$data['usulan']=$this->m_pilihanps->caridata();
 		//jika data yang dicari tidak ada maka akan keluar informasi 
 		//bahwa data yang dicari tidak ada
 			$data['kode_bidang'] = $this->m_pilihanps->get_bidang()->result();
