@@ -28,51 +28,52 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/regist" enctype="multipart/form-data"><h4>Register</h4></div>
+              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/regist" enctype="multipart/form-data">
+              <h4>Register</h4></div>
 
               <div class="card-body">
                 <form method="POST">
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="nama_depan">First Name</label>
-                      <input id="nama_depan" type="text" class="form-control" name="nama_depan" autofocus>
+                      <input id="nama_depan" type="text" class="form-control" name="nama_depan" autofocus require>
                     </div>
                     <div class="form-group col-6">
                       <label for="nama_belakang">Last Name</label>
-                      <input id="nama_belakang" type="text" class="form-control" name="nama_belakang">
+                      <input id="nama_belakang" type="text" class="form-control" name="nama_belakang" require>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="NIK">NIK</label>
-                    <input id="NIK" type="number" class="form-control" name="NIK" placeholder="">
+                    <input id="NIK" type="number" class="form-control" name="NIK" placeholder="Masukkan NIK" require>
                   </div>
 
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email">
+                    <input id="email" type="email" class="form-control" name="email" require>
                     <div class="invalid-feedback">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="Username">Username</label>
-                    <input id="username" type="text" class="form-control" name="username" placeholder="">
+                    <input id="username" type="text" class="form-control" name="username" placeholder="Masukkan Username" require>
                   </div>
 
                     <div class="form-group">
                     <label for="password">Pasword</label>
-                    <input id="password" type="password" class="form-control" name="password">
+                    <input id="password" type="password" class="form-control" name="password" require>
                     <div class="invalid-feedback">
                       </div>
                   </div>
                   <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan" require>  
                   </div>
                   <div class="row">
                     <div class="form-group col-6">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" require>
                           <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
@@ -81,17 +82,17 @@
                       </div>
                       <div class="form-group col-6">
                         <label>Desa</label>
-                        <select class="form-control" name="kode_wilayah" id="kode_wilayah">
+                        <select class="form-control" name="kode_wilayah" id="kode_wilayah" require>
                         <option value="">No Selected</option>
                         </select>
                       </div> 
                       <div class="form-group col-6">
                         <label>Foto</label>
-                        <input type="file" class="form-control" name="file">
+                        <input type="file" class="form-control" name="file" require>
                     </div>
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"href="<?php echo site_url('Registrasi'); ?>">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"href="<?php echo site_url('registrasi/index'); ?>">Register</button>
                   </div>
                 </form>
               </div>
@@ -131,7 +132,7 @@
 			$('#kode_kecamatan').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('perusahaan/get_desa');?>",
+                    url : "<?php echo site_url('registrasi/get_desa');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,

@@ -19,10 +19,6 @@ class Registrasi extends CI_Controller {
 		echo json_encode($data);
 	}
 	// add new usulan
-	function add_new(){
-		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
-		$this->load->view('umum/add_regis', $data);
-	}
 
 	public function embed()
     {
@@ -51,7 +47,7 @@ class Registrasi extends CI_Controller {
 			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);
 			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
 			$email 				= $this->input->post('email',TRUE);
-			$image= $data['upload_data']['file_name']; 
+			$image = $data['upload_data']['file_name']; 
 			
 		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
 		$alamat,$kode_kecamatan,$kode_wilayah,$image);

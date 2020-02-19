@@ -39,7 +39,6 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('upload/add_new'); ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -60,7 +59,8 @@
                             <th>Akses Sebagai</th>
                             <th>Foto</th>
                             <th>&nbsp;</th>
-                            <th colspan="3">Aksi</th>
+                            <th>Aksi</th>
+                            <th>&nbsp;</th>
 
                           </tr>
                         </thead>
@@ -78,7 +78,7 @@
                               <td><?php echo $row->alamat;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->nama_akses;?></td>
+                              <td><?php echo $row->level;?></td>
                               <?php echo "<td> 
                               <img src='".base_url("images/".$row->foto)."' width='100' height='70'>
                              </td>" ;?>

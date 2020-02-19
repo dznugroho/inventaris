@@ -38,7 +38,7 @@ class M_Registrasi extends CI_Model{
 	}
 	
 	function regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
-	$alamat,$kode_kecamatan,$kode_wilayah,$foto){
+	$alamat,$kode_kecamatan,$kode_wilayah,$image){
 		
 		$data = array(
 			
@@ -51,7 +51,7 @@ class M_Registrasi extends CI_Model{
 			'kode_kecamatan' 	=> $kode_kecamatan,
 			'kode_wilayah' 		=> $kode_wilayah,
             'email' 			=> $email,
-			'foto' 				=> $foto
+			'foto' 				=> $image
 			
 		);
 		$this->db->insert('registrasi',$data);
@@ -61,16 +61,6 @@ class M_Registrasi extends CI_Model{
 	function get_usulan_by_id($kode_usulan){
 		$query = $this->db->get_where('tb_usulan', array('kode_usulan' =>  $kode_usulan));
 		return $query;
-	}
-
-	function update_usulan($data,$kode_usulan){
-		$this->db->where('kode_usulan'      , $kode_usulan);
-		$this->db->update('tb_usulan',$data);
-	}
-
-	//Delete usulan
-	function delete_usulan($kode_usulan){
-		$this->db->delete('tb_usulan', array('kode_usulan' => $kode_usulan));
 	}
 
 	
