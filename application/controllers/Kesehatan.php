@@ -5,11 +5,18 @@ class Kesehatan extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-    $this->load->model('M_Kesehatan');
+	    $this->load->model('M_Kesehatan');
+		$this->load->library('session');
+	    if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
   }
 
     public function index()
 	{
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+
 		$this->load->view('bidang/kesehatan');
     }
     public function ubah(){

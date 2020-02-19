@@ -6,13 +6,22 @@ class Infrastruktur extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
     $this->load->model('M_Infrastruktur');
+    if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
   }
 
     public function index()
 	{
+		
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+
 		$this->load->view('bidang/infrastruktur');
     }
     public function ubah(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+    	
         $data=$this->M_Infrastruktur->singleInfrastruktur();
         //print_r($data);
         $this->load->view('bidang/infrastuktur',$data);

@@ -135,7 +135,7 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label class="control-label col-xs-3">Kode Pilih</label>
+                        <label class="control-label col-xs-3">Kode Usulan</label>
                         <div class="col-xs-8">
                             <input name="kode_usulan" value="<?php echo $kode_usulan;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
                         </div>

@@ -7,9 +7,16 @@ class Pilihan_PS extends CI_Controller {
 		$this->load->model('M_Pilihanps','m_pilihanps');
 		$this->load->model('M_Usulan','m_usulan');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+
+		if($this->session->userdata('akses')!='4') redirect('dashboard');
+
 		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
 		$data['usulan'] = $this->m_pilihanps->get_usulan();
 	

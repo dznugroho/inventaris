@@ -11,7 +11,7 @@
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'dashboard'?'active': '' ?>">
-                <a href="<?php echo site_url('dashboard'); ?>" class="nav-link"><i class="fab fa-mailchimp"></i><span>Dashboard</span></a>
+                <a href="<?php echo site_url('dashboard'); ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
               <?php if($this->session->userdata('akses')=='1'):?>
               <li class="menu-header">Master Data</li>

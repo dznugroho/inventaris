@@ -6,10 +6,17 @@ class Usulankec extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Usulankec','m_usulankec');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='3') redirect('dashboard');
+
 		$data['usulankec'] = $this->m_usulankec->get_usulankec();
+		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 		$this->load->view('usulankec/daftar_usulan',$data);
 	}
 
@@ -23,7 +30,6 @@ class Usulankec extends CI_Controller {
 		$data['kode_k'] = $this->m_usulankec->get_k()->result();
 		$this->load->view('usulankec/add_product_view', $data);
 	}
-
 	// get sub bidang by bidang_id
 	function get_sub_bidang(){
 		$kode_bidang = $this->input->post('id',TRUE);
@@ -224,4 +230,7 @@ class Usulankec extends CI_Controller {
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Deleted</div>');
 		redirect('usulankec');
 	}
+	//serch
+
+	
 }

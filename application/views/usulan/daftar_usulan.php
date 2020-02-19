@@ -44,22 +44,14 @@
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
         <div class="dropdown-menu">
 
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2016'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2016');?>">2016</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2017'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2017');?>">2017</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2018'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2018');?>">2018</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2019'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2019');?>">2019</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2020'?'active': '' ?>" href="<?php echo site_url('dashboard/tahun2020');?>">2020</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2021'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2021');?>">2021</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2022'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2022');?>">2022</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2023'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2023');?>">2023</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2024'?'active': '' ?>disabled" href="<?php echo site_url('dashboard/tahun2024');?>">2024</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'tahun2025'?'active': '' ?>dsiabled" href="<?php echo site_url('dashboard/tahun2025');?>">2025</a>
+          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'pendidikan'?'active': '' ?>" href="<?php echo site_url('usulan/pendidikan');?>">pendidikan</a>
+          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'kesehatan'?'active': '' ?>" href="<?php echo site_url('usulan/kesehatan');?>">kesehatan</a>
+          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'lingkungan'?'active': '' ?>" href="<?php echo site_url('usulan/lingkungan');?>">lingkungan</a>
+          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'ekonomi'?'active': '' ?>" href="<?php echo site_url('usulan/ekonomi');?>">ekonomi</a>
+          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'infrastruktur'?'active': '' ?>" href="<?php echo site_url('usulan/infrastruktur');?>">infrastruktur</a>
         </div>
         </div>
-        
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Tambah</a>
-          
-        
+          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">

@@ -6,11 +6,37 @@ class Usulan extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Usulan','m_usulan');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
+		
 		
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['usulan'] = $this->m_usulan->get_usulan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function pendidikan(){
+		$data['usulan'] = $this->m_usulan->get_pendidikan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function kesehatan(){
+		$data['usulan'] = $this->m_usulan->get_kesehatan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function lingkungan(){
+		$data['usulan'] = $this->m_usulan->get_lingkungan();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function ekonomi(){
+		$data['usulan'] = $this->m_usulan->get_ekonomi();
+		$this->load->view('usulan/daftar_usulan',$data);
+	}
+	public function infrastruktur(){
+		$data['usulan'] = $this->m_usulan->get_Infrastruktur();
 		$this->load->view('usulan/daftar_usulan',$data);
 	}
 
@@ -208,6 +234,8 @@ class Usulan extends CI_Controller {
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
 		redirect('usulan');
 	}
+
+
 
 	//Delete usulan from Database
 	function delete(){

@@ -6,10 +6,16 @@ class Kegiatankec extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Pilihanps','m_pilihanps');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
 		
+		if($this->session->userdata('akses')!='3') redirect('dashboard');
+
 		$data['usulan'] = $this->m_pilihanps->get_pilihankec();
 	
 		$this->load->view('usulankec/daftar_pilihan',$data);

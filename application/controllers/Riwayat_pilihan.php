@@ -6,9 +6,14 @@ class Riwayat_pilihan extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Status_usulan','m_status_usulan');
 		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
 	}
 
 	function index(){
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['riwayat'] = $this->m_status_usulan->get_riwayat();
 	
 		$this->load->view('usulan/riwayat',$data);
