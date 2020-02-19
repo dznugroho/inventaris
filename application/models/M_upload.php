@@ -25,7 +25,7 @@ class M_upload extends CI_Model{
 	}
 	
 	function get_umum(){
-		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
+		$this->db->select('NIK,nama_depan,nama_belakang,password,alamat,
 		nama_kecamatan,desa,email,nama_akses,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -38,7 +38,7 @@ class M_upload extends CI_Model{
 	}
 	function get_detail(){
 		$NIK = $this->uri->segment(3);
-		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
+		$this->db->select('NIK,nama_depan,nama_belakang,password,alamat,
 		nama_kecamatan,desa,email,nama_akses,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -51,7 +51,7 @@ class M_upload extends CI_Model{
 	}
 
 	function get_regist(){
-		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
+		$this->db->select('NIK,nama_depan,nama_belakang,password,alamat,
 		nama_kecamatan,desa,email,level,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
