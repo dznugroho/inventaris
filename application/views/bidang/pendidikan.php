@@ -35,8 +35,7 @@
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item">Bidang Pendidikan</div>
             </div>
-          </div>
-
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">

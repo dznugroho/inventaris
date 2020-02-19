@@ -20,6 +20,17 @@ class Usulankec extends CI_Controller {
 		$this->load->view('usulankec/daftar_usulan',$data);
 	}
 
+	function cari() {
+		$data['usulankec']=$this->m_usulankec->caridata();
+		//jika data yang dicari tidak ada maka akan keluar informasi 
+		//bahwa data yang dicari tidak ada
+			$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
+
+			$this->load->view('usulankec/daftar_usulan',$data); 
+ 
+		  
+	   }
+
 	// add new usulan
 	function add_new(){
 		
