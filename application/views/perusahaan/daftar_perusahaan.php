@@ -51,10 +51,8 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>ID Perusahaan</th>
                             <th>Nama Perusahaan</th>
                             <th>Username</th>
-                            <th>Password</th>
                             <th>Akses Sebagai</th>
                             <th>Alamat</th>
                             <th>Kecamatan</th>
@@ -74,10 +72,8 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->id;?></td>
                               <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo $row->username;?></td>
-                              <td><?php echo $row->password;?></td>
                               <td><?php echo $row->nama_akses;?></td>
                               <td><?php echo $row->alamat;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>

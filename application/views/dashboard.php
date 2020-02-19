@@ -36,14 +36,14 @@
               <a href="<?php echo site_url('wilayah'); ?>">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary" >
-                  <i class="fas fa-archway" ></i>
+                  <i class="fas fa-graduation-cap" ></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Desa</h4>
+                    <h4>Usulan Bidang Pendidikan</h4>
                   </div>
                   <div class="card-body">
-                  <tr><?php echo $this->db->query('SELECT * FROM tb_wilayah')->num_rows(); ?></tr>
+                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "01"')->num_rows(); ?></tr>
                   </div>
                 </div>
               </div>
@@ -52,40 +52,8 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <a href="<?php echo site_url('wilayah'); ?>">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-map-marked-alt" ></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Total Kecamatan</h4>
-                  </div>
-                  <div class="card-body">
-                  <tr><?php echo $this->db->query('SELECT * FROM tb_kecamatan')->num_rows(); ?></tr>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-            <a href="<?php echo site_url('wilayah'); ?>">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-info">
-                  <i class="fas fa-box"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Total Bidang</h4>
-                  </div>
-                  <div class="card-body">
-                  <tr><?php echo $this->db->query('SELECT * FROM tb_bidang')->num_rows(); ?></tr>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-            <a href="<?php echo site_url('wilayah'); ?>">
-              <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                  <i class="fas fa-book-medical"></i>
+                  <i class="fas fa-book-medical" ></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -99,16 +67,16 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <a href="<?php echo site_url('wilayah'); ?>">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="fas fa-graduation-cap"></i>
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-leaf"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Usulan Bidang Pendidikan</h4>
+                    <h4>Usulan Lingkungan</h4>
                   </div>
-                  <div class="card-body">
-                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "01"')->num_rows(); ?></tr>
+                  <div class="card-body">                  
+                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "03"')->num_rows(); ?></tr>
                   </div>
                 </div>
               </div>
@@ -116,12 +84,12 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <a href="<?php echo site_url('wilayah'); ?>">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
+                <div class="card-icon bg-dark">
                   <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Usulan Bidang PEK</h4>
+                    <h4>Usulan PEK</h4>
                   </div>
                   <div class="card-body">
                   <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "04"')->num_rows(); ?></tr>
@@ -131,16 +99,16 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <a href="<?php echo site_url('wilayah'); ?>">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-leaf"></i>
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-info">
+                  <i class="fas fa-road"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Usulan Bidang Lingkungan</h4>
+                    <h4>Usulan Infrastruktur</h4>
                   </div>
                   <div class="card-body">
-                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "03"')->num_rows(); ?></tr>
+                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "05"')->num_rows(); ?></tr>
                   </div>
                 </div>
               </div>
@@ -148,15 +116,47 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
             <a href="<?php echo site_url('wilayah'); ?>">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-primary ">
-                  <i class="fas fa-road"></i>
+                <div class="card-icon bg-warning">
+                  <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Usulan Bidang Infrastuktur</h4>
+                    <h4>Total Usulan</h4>
                   </div>
                   <div class="card-body">
-                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_bidang = "05"')->num_rows(); ?></tr>
+                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan ')->num_rows(); ?></tr>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <a href="<?php echo site_url('wilayah'); ?>">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                  <i class="fas fa-paper-plane"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Usulan Diterima</h4>
+                  </div>
+                  <div class="card-body">
+                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where status_usulan = "01"')->num_rows(); ?></tr>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <a href="<?php echo site_url('wilayah'); ?>">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                  <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Usulan Ditolak</h4>
+                  </div>
+                  <div class="card-body">
+                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_pilihan Where status_perusahaan = "2"')->num_rows(); ?></tr>
                   </div>
                 </div>
               </div>

@@ -90,18 +90,20 @@
                         <option value="">No Selected</option>
                         </select>
                       </div> 
-                      <div class="form-group col-6">
+                      <div class="form-group col-12">
                         <label>Foto</label>
                         <input type="file" class="form-control" name="file" required>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="row">
+                  <div class="form-group col-6">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                   </div>
-                  
-                </form>
-                <a href="<?php echo site_url('login');?>" class="btn btn-primary">Kembali</a>
+                  <div class="form-group col-6">
+                <a href="<?php echo site_url('login');?>" class="btn btn-danger btn-lg btn-block">Kembali</a>
               </div>
+                </form>
+            </div>
             </div>
             <div class="simple-footer">
               Copyright &copy; Stisla 2018
