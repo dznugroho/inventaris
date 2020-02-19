@@ -11,6 +11,25 @@ class M_Pendidikan extends CI_Model {
         parent::__construct();
         $this->load->database();
     }
+
+    // function count_pendidikan(){
+    //     $select =   array('tb_subbidang.nama_sub','count(tb_usulan.kode_subbidang) as Total');  
+    //     $this->db->select($select);
+    //     $this->db->from('tb_subbidang');
+    //     $this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_subbidang.parent_bidang','left');
+    //     $this->db->get();
+    //     $this->db->result_array();
+      
+    // }
+
+    // function get_pendidikan(){
+    //     $this->db->select('nama_bidang,kode_subbidang,nama_sub');
+    //     $this->db->from('tb_subbidang');
+    //     $this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_subbidang.parent_bidang','left');
+    //     $this->db->where('parent_bidang',01);
+    //     $query = $this->db->get();
+    //     return $query;
+    // }
  
     private function _get_datatables_query(){
          

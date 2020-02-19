@@ -188,20 +188,6 @@
   <script type="text/javascript">
 		$(document).ready(function(){
 
-      $(".datepicker").datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true,
-    });
-    $("#tgl_mulai").on('changeDate', function(selected) {
-        var startDate = new Date(selected.date.valueOf());
-        $("#tgl_akhir").datepicker('setStartDate', startDate);
-        if($("#tgl_mulai").val() > $("#tgl_akhir").val()){
-          $("#tgl_akhir").val($("#tgl_mulai").val());
-        }
-    });
-
-
 			$('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({

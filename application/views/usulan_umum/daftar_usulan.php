@@ -57,9 +57,11 @@
         </div>
         </div>
         
+        <div class="dropdown text-right">
           <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           
-        
+        </div>
+
           </div>
           </div>
             <div class="row">
