@@ -39,21 +39,33 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-
-          <div class="dropdown text-right">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilih Tahun</button>
-        <div class="dropdown-menu">
-
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'pendidikan'?'active': '' ?>" href="<?php echo site_url('usulan/pendidikan');?>">pendidikan</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'kesehatan'?'active': '' ?>" href="<?php echo site_url('usulan/kesehatan');?>">kesehatan</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'lingkungan'?'active': '' ?>" href="<?php echo site_url('usulan/lingkungan');?>">lingkungan</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'ekonomi'?'active': '' ?>" href="<?php echo site_url('usulan/ekonomi');?>">ekonomi</a>
-          <a class="dropdown-item <?php echo $this->uri->segment(2) == 'infrastruktur'?'active': '' ?>" href="<?php echo site_url('usulan/infrastruktur');?>">infrastruktur</a>
-        </div>
-        </div>
-          <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
+          <div class="row"> 
+          <div class="form-group col-3">
+            <select class="form-control" name="kode_bidang" id="kode_bidang">
+              <option value="">Pilih Nama Bidang</option>
+              <?php foreach($kode_bidang as $row):?>
+              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+              <?php endforeach;?>
+            </select>
+          </div>
+          <div class="form-group col-3">
+            <form action="<?php echo site_url('usulan/cari'); ?>" method=POST>
+              <select class="form-control" type="text" name="keyword" id="keyword">
+                <option value="">Pilih Nama Sub Bidang</option>
+              </select>
+              </div> 
+              <div class="form-group col-3">
+                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                  <a href="<?php echo site_url('usulan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+            </form>
+          </div>
+          <div class="form-group col-3"></div>
+          <div class="form-group col-3">
+              <a href="<?php echo site_url('usulankec/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
+          </div>
+       </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -158,6 +170,33 @@ HEREDOCS;
   <script type="text/javascript">
 		$(document).ready(function(){
 			$('#mytable').DataTable();
+		});
+	</script>
+  <script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#kode_bidang').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
+                        }
+                        $('#keyword').html(html);
+
+                    }
+                });
+                return false;
+            }); 
+            
 		});
 	</script>
 </body>

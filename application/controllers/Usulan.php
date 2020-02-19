@@ -17,8 +17,20 @@ class Usulan extends CI_Controller {
 	function index(){
 		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['usulan'] = $this->m_usulan->get_usulan();
+		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$this->load->view('usulan/daftar_usulan',$data);
+		
 	}
+	function cari() {
+		$data['usulan']=$this->m_usulan->caridata();
+		//jika data yang dicari tidak ada maka akan keluar informasi 
+		//bahwa data yang dicari tidak ada
+			$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
+
+			$this->load->view('usulan/daftar_usulan',$data); 
+ 
+		  
+	   }
 	public function pendidikan(){
 		$data['usulan'] = $this->m_usulan->get_pendidikan();
 		$this->load->view('usulan/daftar_usulan',$data);
