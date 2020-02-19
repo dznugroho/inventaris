@@ -16,6 +16,8 @@ class Pendidikan extends CI_Controller {
     public function index()
 	{
 		if($this->session->userdata('akses')!='1') redirect('dashboard');
+		// $data['pendidikan'] = $this->M_Pendidikan->get_pendidikan();
+		// $data['hitung'] = $this->M_Pendidikan->count_pendidikan();
 		$this->load->view('bidang/pendidikan');
     }
     public function ubah(){

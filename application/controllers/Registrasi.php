@@ -5,11 +5,6 @@ class Registrasi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('M_Registrasi','m_registrasi');
-		$this->load->library('session');
-		if($this->session->userdata('masuk') != TRUE){
-			$url=base_url('login');
-			redirect($url);
-		}
 		
 	}
 
@@ -56,7 +51,7 @@ class Registrasi extends CI_Controller {
 			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);
 			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
 			$email 				= $this->input->post('email',TRUE);
-			$image= $data['upload_data']['file_name']; 
+			$image = $data['upload_data']['file_name']; 
 			
 		$this->m_registrasi->regist($NIK,$nama_depan,$nama_belakang,$email,$username,$password,
 		$alamat,$kode_kecamatan,$kode_wilayah,$image);
