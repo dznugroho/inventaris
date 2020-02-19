@@ -72,10 +72,7 @@
                       <div class="form-group">
                         <label>Akses sebagai</label>
                         <select class="form-control" name="level" id="level">
-                          <option value="1">Admin</option>
-                          <option value="2">Perorangan</option>
                           <option value="3">Kecamatan</option>
-                          <option value="4">Perusahaan</option>
                         </select>
                       </div>
                       <div class="form-group">

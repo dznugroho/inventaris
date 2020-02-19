@@ -31,6 +31,8 @@ class M_upload extends CI_Model{
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = registrasi.kode_wilayah','left');
 		$this->db->join('akses','akses.id_akses = registrasi.level','left');
+		$array = array('level' => 2);
+		$this->db->where($array);
 		$query = $this->db->get();
 		return $query;
 	}
@@ -47,13 +49,13 @@ class M_upload extends CI_Model{
 		$query = $this->db->get();
 		return $query;
 	}
+
 	function get_regist(){
 		$this->db->select('NIK,nama_depan,nama_belakang,username,password,alamat,
-		nama_kecamatan,desa,email,nama_akses,foto');
+		nama_kecamatan,desa,email,level,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = registrasi.kode_wilayah','left');
-		$this->db->join('akses','akses.id_akses = registrasi.level','left');
 		$array = array('level' => 0);
 		$this->db->where($array);
 		$query = $this->db->get();

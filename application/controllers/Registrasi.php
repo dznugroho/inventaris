@@ -19,10 +19,6 @@ class Registrasi extends CI_Controller {
 		echo json_encode($data);
 	}
 	// add new usulan
-	function add_new(){
-		$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
-		$this->load->view('registrasi/add_regis', $data);
-	}
 
 	public function embed()
     {
