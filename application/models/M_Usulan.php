@@ -13,6 +13,20 @@ class M_Usulan extends CI_Model{
 		tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan JOIN tb_wilayah ON
 		tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah ");
 	}
+	function caridata(){
+		
+		$c = $this->input->POST ('keyword');
+		$this->db->like('tb_usulan.kode_subbidang', $c);
+		$this->db->from('tb_usulan');
+			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+			$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+		$query = $this->db->get();
+		return $query; 
+	}
 	function get_pendidikan(){
 		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
 		waktu_selesai,anggaran,file,status_usulan');

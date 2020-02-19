@@ -3,22 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Usulankec extends CI_Model{
 	
-	public function all()
-	{
-		return $this->db->query("SELECT * from tb_usulan
-		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
-		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_kecamatan ON 
-		tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan JOIN tb_wilayah ON
-		tb_wilayah.kode_wilayah 	= tb_usulan.kode_wilayah JOIN tb_k ON
-		tb_k.kode_k				 	= tb_usulan.kode_k JOIN tb_w ON
-		tb_w.kode_w 				= tb_usulan.kode_w");
-	}
+
 	function caridata(){
+		$kode_kecamatan = $this->session->userdata('ses_kodekec');
 		$c = $this->input->POST ('keyword');
-		$this->db->like('kode_subbidang', $c);
-		$query = $this->db->get ('tb_usulan');
-		return $query->result(); 
-		 }
+		$this->db->like('tb_usulan.kode_subbidang', $c);
+		$this->db->from('tb_usulan');
+			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+			$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->where('tb_usulan.kode_kecamatan',$kode_kecamatan);
+			$this->db->where('status_usulan',0);
+		$query = $this->db->get();
+		return $query; 
+	}
 	function get_bidang(){
 		$query = $this->db->get('tb_bidang');
 		return $query;	
