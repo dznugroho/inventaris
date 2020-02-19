@@ -35,21 +35,6 @@
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item">Bidang Pendidikan</div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-address-book"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>File Sarpras Bidang Pendidikan</h4>
-                  </div>
-                  <div class="card-body">
-                  <tr><?php echo $this->db->query( 'SELECT * FROM tb_usulan Where kode_subbidang = "0101"')->num_rows(); ?></tr>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="row">
               <div class="col-12">
