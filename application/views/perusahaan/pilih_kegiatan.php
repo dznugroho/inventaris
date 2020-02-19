@@ -39,9 +39,29 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-
           </div>
           </div>
+          <div class="row"> 
+          <div class="form-group col-3">
+            <select class="form-control" name="kode_bidang" id="kode_bidang">
+              <option value="">Pilih Nama Bidang</option>
+              <?php foreach($kode_bidang as $row):?>
+              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+              <?php endforeach;?>
+            </select>
+          </div>
+          <div class="form-group col-3">
+            <form action="<?php echo site_url('pilihan_ps/cari'); ?>" method=POST>
+              <select class="form-control" type="text" name="keyword" id="keyword">
+                <option value="">Pilih Nama Sub Bidang</option>
+              </select>
+              </div> 
+              <div class="form-group col-3">
+                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                  <a href="<?php echo site_url('pilihan_ps'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+            </form>
+          </div>
+       </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -205,5 +225,32 @@ $(document).ready(function() {
 	        });
 	    });
 </script> -->
+<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#kode_bidang').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('pilihan_ps/get_sub_bidang');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
+                        }
+                        $('#keyword').html(html);
+
+                    }
+                });
+                return false;
+            }); 
+            
+		});
+	</script>
 </body>
 </html>

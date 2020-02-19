@@ -2,7 +2,30 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Pilihanps extends CI_Model{
-	
+
+	function get_bidang(){
+		$query = $this->db->get('tb_bidang');
+		return $query;	
+	}
+
+	function get_sub_bidang($kode_bidang){
+		$query = $this->db->get_where('tb_subbidang', array('parent_bidang' => $kode_bidang));
+		return $query;
+	}
+	function caridata(){
+		$c = $this->input->POST ('keyword');
+		$this->db->like('tb_usulan.kode_subbidang', $c);
+		$this->db->from('tb_usulan');
+			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+			$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->where('status_usulan',0);
+		$query = $this->db->get();
+		return $query; 
+	}
 	function save_pilihan($kode_usulan,$kode_perusahaan,$dana){
 		$data = array(
 			
