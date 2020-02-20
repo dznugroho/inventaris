@@ -4,20 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Registrasi extends CI_Model{
 	
 
-	public function cekid($kode_usulan)
-    {
-        return $this->db->where('kode_usulan', $kode_usulan)->get('tb_usulan');
-    }
-
-	function get_bidang(){
-		$query = $this->db->get('tb_bidang');
-		return $query;	
-	}
-
-	function get_sub_bidang($kode_bidang){
-		$query = $this->db->get_where('tb_subbidang', array('parent_bidang' => $kode_bidang));
-		return $query;
-	}
+	
 
 	function get_kecamatan(){
 		$query = $this->db->get('tb_kecamatan');
@@ -29,16 +16,17 @@ class M_Registrasi extends CI_Model{
 		return $query;
 	}
 	
-	function regist($NIK,$nama_depan,$nama_belakang,$email,$password,
-	$alamat,$kode_kecamatan,$kode_wilayah,$image){
+	function regist($NIK,$nama_depan,$username,$password,
+	$alamat,$no_telpp,$email, $kode_kecamatan,$kode_wilayah,$image){
 		
 		$data = array(
 			
             'NIK' 	    		=> $NIK,
             'nama_depan'    	=> $nama_depan,
-            'nama_belakang' 	=> $nama_belakang,
+            'username' 			=> $username,
             'password' 			=> MD5($password),
 			'alamat' 			=> $alamat,
+			'no_telpp' 			=> $no_telpp,
 			'kode_kecamatan' 	=> $kode_kecamatan,
 			'kode_wilayah' 		=> $kode_wilayah,
             'email' 			=> $email,

@@ -28,58 +28,61 @@
             </div>
             <div class="row">
           <div class="card-body" >
-          <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+          <?php echo $this->session->flashdata('msg');?>
           </div>
           </div>
             <div class="card card-primary">
-              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>registrasi/regist" enctype="multipart/form-data">
+              <div class="card-header"> <form role="form" method="POST" action="<?php echo base_url();?>coba/regist" enctype="multipart/form-data">
               <h4>Register</h4></div>
-
+              <div class="row">
+              <div class="card-body">
+              <?php echo validation_errors(); ?>
+              </div>
+              </div>
               <div class="card-body">
                 <form method="POST">
                   <div class="row">
                     <div class="form-group col-6">
-                      <label for="nama_depan">Nama</label>
-                      <input id="nama_depan" type="text" class="form-control" name="nama_depan"  autocomplete="off" value="<?php echo set_value('nama_depan'); ?>"  autofocus >
+                      <label for="nama">Nama</label>
+                      <input id="nama" type="text" class="form-control" name="nama" autocomplete="off" value="<?php echo set_value('nama'); ?>" autofocus  >
                     </div>
                     <div class="form-group col-6">
-                      <label for="username">Username</label>
-                      <input id="username" type="text" class="form-control" name="username"  autocomplete="off" value="<?php echo set_value('username'); ?>"  >
+                      <label for="nama_belakang">username</label>
+                      <input id="username" type="text" class="form-control" name="username"  value="<?php echo set_value('username'); ?>" >
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="NIK">NIK</label>
-                    <input id="NIK" type="number" class="form-control" name="NIK" placeholder="Masukkan NIK"  autocomplete="off" value="<?php echo set_value('NIK'); ?>" >
+                    <input id="NIK" type="text" class="form-control" name="NIK" placeholder="Masukkan NIK"  value="<?php echo set_value('NIK'); ?>" >
                   </div>
 
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" placeholder="Masukkan Email"  autocomplete="off" value="<?php echo set_value('email'); ?>"  >
+                    <input id="email" type="email" class="form-control" name="email" placeholder="Masukkan Email" >
                     <div class="invalid-feedback">
                     </div>
                   </div>
-             <div class="row">
-    
-                <div class="form-group col-6">
+                  <div class="row">
+                    <div class="form-group col-lg-6">
                     <label for="password">Pasword</label>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukkan Password"  value="<?php echo set_value('password'); ?>" >
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukkan Password">
                     <div class="invalid-feedback">
                       </div>
                   </div>
-                  <div class="form-group col-6">
-                    <label for="password">Konfigurasi Password</label>
-                    <input id="passconf" type="password" class="form-control" name="passconf" placeholder="Masukkan Password Lagi" value="<?php echo set_value('passconf'); ?>" >
+                  <div class="form-group col-lg-6">
+                    <label for="password">Pasword konfirmasi</label>
+                    <input id="password" type="password" class="form-control" name="passconf" placeholder="Masukkan Password">
+                      </div>
                   </div>
-               
-           </div>
+                  
                   <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan" >  
                   </div>
                   <div class="row">
                     <div class="form-group col-6">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" >
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
                           <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
@@ -92,10 +95,7 @@
                         <option value="">No Selected</option>
                         </select>
                       </div> 
-                      <div class="form-group col-12">
-                        <label>Foto</label>
-                        <input type="file" class="form-control" name="file">
-                    </div>
+                    
                   </div>
                   <div class="row">
                   <div class="form-group col-6">
@@ -105,6 +105,7 @@
                 <a href="<?php echo site_url('login');?>" class="btn btn-danger btn-lg btn-block">Kembali</a>
               </div>
                 </form>
+
             </div>
             </div>
             <div class="simple-footer">
