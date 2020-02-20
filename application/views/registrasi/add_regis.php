@@ -40,24 +40,26 @@
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="nama_depan">Nama</label>
-                      <input id="nama_depan" type="text" class="form-control" name="nama_depan"  autocomplete="off" value="<?php echo set_value('nama_depan'); ?>"  autofocus >
+                      <input id="nama_depan" type="text" class="form-control" name="nama_depan"  autocomplete="off" value="<?php echo set_value('nama_depan'); ?>" placeholder="Masukan Nama" autofocus >
                     </div>
                     <div class="form-group col-6">
                       <label for="username">Username</label>
-                      <input id="username" type="text" class="form-control" name="username"  autocomplete="off" value="<?php echo set_value('username'); ?>"  >
+                      <input id="username" type="text" class="form-control" name="username"  autocomplete="off" value="<?php echo set_value('username'); ?>" placeholder="Masukan Username"  >
                     </div>
                   </div>
-                  <div class="form-group">
+              <div class="row">
+                  <div class="form-group col-6">
                     <label for="NIK">NIK</label>
                     <input id="NIK" type="number" class="form-control" name="NIK" placeholder="Masukkan NIK"  autocomplete="off" value="<?php echo set_value('NIK'); ?>" >
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group col-6">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" placeholder="Masukkan Email"  autocomplete="off" value="<?php echo set_value('email'); ?>"  >
                     <div class="invalid-feedback">
                     </div>
                   </div>
+             </div>
              <div class="row">
     
                 <div class="form-group col-6">
@@ -70,11 +72,16 @@
                     <label for="password">Konfigurasi Password</label>
                     <input id="passconf" type="password" class="form-control" name="passconf" placeholder="Masukkan Password Lagi" value="<?php echo set_value('passconf'); ?>" >
                   </div>
-               
            </div>
-                  <div class="form-group">
+           <div class="row">
+                  <div class="form-group col-6 ">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan" value="<?php echo set_value('alamat'); ?>" autocomplete="off">  
+                  </div>
+                  <div class="form-group col-6">
+                        <label>No Telp</label>
+                        <input type="number" class="form-control" name="no_telpp" id="no_telpp" placeholder="No HP/Telpon" value="<?php echo set_value('no_telpp'); ?>"  autocomplete="off">  
+                  </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-6">
@@ -93,8 +100,8 @@
                         </select>
                       </div> 
                       <div class="form-group col-12">
-                        <label>Foto</label>
-                        <input type="file" class="form-control" name="file">
+                        <label>Foto KTP</label>
+                        <input type="file" class="form-control" name="file"   autocomplete="off">
                     </div>
                   </div>
                   <div class="row">
