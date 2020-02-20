@@ -53,21 +53,21 @@
                         <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama Depan">
                       </div>
                       <div class="form-group">
-                        <label>Nama Belakang</label>
-                        <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang">
-                      </div>
-                      <div class="form-group">
                         <label>Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Masukan Username">
                       </div>
                       
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="text" class="form-control" name="password" placeholder="Password">
                       </div>
                       <div class="form-group">
                         <label>Alamat</label>
                         <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                      </div>
+                      <div class="form-group">
+                        <label>No Telp</label>
+                        <input type="text" class="form-control" name="no_telpp" id="no_telpp" placeholder="No Telp">  
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
