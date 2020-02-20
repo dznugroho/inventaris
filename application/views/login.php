@@ -24,8 +24,12 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <img src="<?= base_url()?>assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle mb-5 mt-2">
+            <div class="row">
+            <div class="card-body">
+            <?php echo $this->session->flashdata('msg');?>
+            </div>
+            </div>
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">SIDOKU</span></h4>
-            
             <form method="post" action="<?= base_url()?>login/auth">
               <div class="form-group">
                 <label for="username">Username / NIK</label>

@@ -28,16 +28,26 @@ class Registrasi extends CI_Controller {
 
 	//save usulan to database
 	function regist(){
-
+		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('NIK', 'NIK', 'required|min_length[16]');
-		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|is_unique[registrasi.username]',
+		array(
+			'required'      => 'You have not provided %s.',
+			'is_unique'     => 'This %s Gone wong cok dang ganti.'
+	)
+);
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('passconf', 'Passconf', 'required|matches[password]');
-		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[registrasi.email]');
+		if (empty($_FILES['file']['name']))
+			{
+				$this->form_validation->set_rules('file', 'Document', 'required');
+			}
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('registrasi/add_regis');
+			$data['kode_kecamatan'] = $this->m_registrasi->get_kecamatan()->result();
+			$this->load->view('registrasi/add_regis',$data);
 		}
 		else
 		{
@@ -67,7 +77,8 @@ class Registrasi extends CI_Controller {
 			$alamat,$no_telpp,$email,$kode_kecamatan,$kode_wilayah,$image);
 			
 			}
-			$this->session->set_flashdata('msg','<div class="alert alert-success">Berhasil Mendaftar</div>');
+			$this->session->set_flashdata('msg','<div class="alert alert-success">Berhasil Mendaftar silahkan menunggu
+			konfirmasi Lewat Email</div>');
 	
 			redirect('login');
 				
