@@ -74,41 +74,42 @@ class Usulan_umum extends CI_Controller {
 	//save usulan to database
 	function save_usulan(){
 
-		$dokumen=$_FILES['file']['name'];
-		$dir="file/"; //tempat upload foto
-		$dirs="files/"; //tempat upload foto
-		$file='file'; //name pada input type file
-		//name pada input type file
-		$vdir_upload = $dir;
-		$file_name=$_FILES[''.$file.'']["name"];
-		$vfile_upload = $vdir_upload . $file;
-		$tmp_name=$_FILES[''.$file.'']["tmp_name"];
-		move_uploaded_file($tmp_name, $dirs.$file_name);
-		$source_url3=$dir.$file_name;
-		rename($dirs.$file_name);
-		$data=array(
-			'kode_bidang' 	    => $this->input->post('kode_bidang',TRUE),
-			'kode_subbidang'     => $this->input->post('kode_subbidang',TRUE),
-			'tahun_pengusulan' 	=> $this->input->post('tahun_pengusulan',TRUE),
-			'nama_kegiatan' 	=> $this->input->post('nama_kegiatan',TRUE),
-			'waktu_mulai' 	    => $this->input->post('waktu_mulai',TRUE),
-			'waktu_selesai'		=> $this->input->post('waktu_selesai',TRUE),
-			'anggaran' 	        => $this->input->post('anggaran',TRUE),
-			'alamat_kegiatan'   => $this->input->post('alamat_kegiatan',TRUE),
-			'kode_kecamatan' 	=> $this->input->post('kode_kecamatan',TRUE),
-			'kode_wilayah' 	    => $this->input->post('kode_wilayah',TRUE),
-			'deskripsi' 	   	=> $this->input->post('deskripsi',TRUE),
-			'nama_institusi' 	=> $this->input->post('nama_institusi',TRUE),
-			'alamat_institusi' 	=> $this->input->post('alamat_institusi',TRUE),
-			'kode_k'   => $this->input->post('kode_k',TRUE),
-			'kode_w'	    => $this->input->post('kode_w',TRUE),
-			'nama_pengusul'   	=> $this->input->post('nama_pengusul',TRUE),
-			'NIK'   	=> $this->input->post('NIK',TRUE),
-			'no_telp'         	=> $this->input->post('no_telp',TRUE),
-			'file'=>$file_name
+		$config['upload_path']="./files";
+		$config['allowed_types']='pdf';		
+		$config['max_size']	= '4096';
+		$config['remove_space'] = TRUE;
+        
+        $this->load->library('upload',$config);
+	    if($this->upload->do_upload("file")){
+			$data = array('upload_data' => $this->upload->data());
+			
+			$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
+			$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
+			$tahun_pengusulan 	= $this->input->post('tahun_pengusulan',TRUE);
+			$nama_kegiatan 		= $this->input->post('nama_kegiatan',TRUE);
+			$waktu_mulai 	    = $this->input->post('waktu_mulai',TRUE);
+			$waktu_selesai		= $this->input->post('waktu_selesai',TRUE);
+			$anggaran 	        = $this->input->post('anggaran',TRUE);
+			$alamat_kegiatan   	= $this->input->post('alamat_kegiatan',TRUE);
+			$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
+			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
+			$deskripsi 	   		= $this->input->post('deskripsi',TRUE);
+			$nama_institusi 	= $this->input->post('nama_institusi',TRUE);
+			$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
+			$kode_k 			= $this->input->post('kode_k',TRUE);
+			$kode_w				= $this->input->post('kode_w',TRUE);
+			$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
+			$no_telp         	= $this->input->post('no_telp',TRUE);
+			$file 				= $data['upload_data']['file_name'];
+			$NIK   				= $this->input->post('NIK',TRUE);
 
-		);
-		$this->db->insert('tb_usulan', $data);
+			$this->m_usulan_umum->save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,
+				$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
+				$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
+				$kode_w,$nama_pengusul,$no_telp,$file,$NIK);
+
+		}
+
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Saved</div>');
 		redirect('usulan_umum');
 		

@@ -2,15 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Usulan_umum extends CI_Model{
-	
-	public function all()
-	{
-		return $this->db->query("SELECT * from tb_usulan
-		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
-		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_kecamatan ON 
-		tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan JOIN tb_wilayah ON
-		tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah ");
-	}
 
 	public function cekid($kode_usulan)
     {
@@ -52,6 +43,35 @@ class M_Usulan_umum extends CI_Model{
 		return $query;	
 	}
 	
+	function save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,
+				$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
+				$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
+				$kode_w,$nama_pengusul,$no_telp,$file,$NIK){
+		$data = array(
+			
+            'kode_bidang' 	    => $kode_bidang,
+			'kode_subbidang'    => $kode_subbidang,
+			'tahun_pengusulan' 	=> $tahun_pengusulan,
+			'nama_kegiatan' 	=> $nama_kegiatan,
+			'waktu_mulai' 	    => $waktu_mulai,
+			'waktu_selesai'		=> $waktu_selesai,
+			'anggaran' 	        => $anggaran,
+			'alamat_kegiatan'   => $alamat_kegiatan,
+			'kode_kecamatan' 	=> $kode_kecamatan,
+			'kode_wilayah' 	    => $kode_wilayah,
+			'deskripsi' 	   	=> $deskripsi,
+			'nama_institusi' 	=> $nama_institusi,
+			'alamat_institusi' 	=> $alamat_institusi,
+			'kode_k'   			=> $kode_k,
+			'kode_w'	    	=> $kode_w,
+			'nama_pengusul'   	=> $nama_pengusul,
+			'no_telp'         	=> $no_telp,
+			'file'				=> $file,
+			'NIK'				=> $NIK
+		
+		);
+		$this->db->insert('tb_usulan',$data);
+	}
 
 	// function get_usulan(){
 	// 	$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
