@@ -104,7 +104,7 @@ class Upload extends CI_Controller {
 			$level 				= $this->input->post('level',TRUE);
 	        $image= $data['upload_data']['file_name']; 
 	        
-	        $this->m_upload->update($NIK,$nama_depan,$nama_belakang,$username,$password,
+	        $this->m_upload->update($NIK,$nama_depan,$nama_belakang,$password,
 			$alamat,$kode_kecamatan,$kode_wilayah,$email,$level,$image);
 
         }

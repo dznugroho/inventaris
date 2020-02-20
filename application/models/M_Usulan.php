@@ -4,15 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Usulan extends CI_Model{
 	
 
-
-	public function all()
-	{
-		return $this->db->query("SELECT * from tb_usulan
-		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang JOIN tb_subbidang ON 
-		tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang JOIN tb_kecamatan ON 
-		tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan JOIN tb_wilayah ON
-		tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah ");
-	}
 	function caridata(){
 		
 		$c = $this->input->POST ('keyword');
@@ -27,57 +18,6 @@ class M_Usulan extends CI_Model{
 		$query = $this->db->get();
 		return $query; 
 	}
-	function get_pendidikan(){
-		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$this->db->where("nama_bidang", "Bidang Pendidikan");
-		$query = $this->db->get();
-		return $query;
-	}
-	function get_kesehatan(){
-		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$this->db->where("nama_bidang", "Bidang Kesehatan");
-		$query = $this->db->get();
-		return $query;
-	}
-	function get_ekonomi(){
-		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$this->db->where("nama_bidang", "Bidang Peningkatan Ekonomi Kerakyatan");
-		$query = $this->db->get();
-		return $query;
-	}
-	function get_Infrastruktur(){
-		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$this->db->where("nama_bidang", "Bidang Infrastruktur");
-		$query = $this->db->get();
-		return $query;
-	}
-	function get_lingkungan(){
-		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
-		$this->db->from('tb_usulan');
-		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-		$this->db->where("nama_bidang", "Bidang Lingkungan");
-		$query = $this->db->get();
-		return $query;
-	}
-
 
 	public function cekid($kode_usulan)
     {
