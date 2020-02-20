@@ -172,13 +172,13 @@ class Usulan_umum extends CI_Controller {
 		$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan_umum->get_kecamatan()->result();
 		$data['kode_k'] = $this->m_usulan_umum->get_k()->result();
+		$data['kode_w'] = $this->m_usulan_umum->get_d()->result();
 		$data['cekid']=$this->m_usulan_umum->cekid($kode_usulan)->row_array();
 		$get_data = $this->m_usulan_umum->get_usulan_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
 			$data['kode_subbidang'] = $row['kode_subbidang'];
 			$data['kode_wilayah'] = $row['kode_wilayah'];
-			$data['kode_w'] = $row['kode_w'];
 
 		}
 		$this->load->view('usulan_umum/ubah_usulan',$data);
@@ -192,69 +192,98 @@ class Usulan_umum extends CI_Controller {
 
 	//update usulan to database
 	function update_usulan(){
-		$kode_usulan 	    = $this->input->post('kode_usulan',TRUE);
-		$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
-		$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
-        $tahun_pengusulan 	= $this->input->post('tahun_pengusulan',TRUE);
-		$nama_kegiatan 	    = $this->input->post('nama_kegiatan',TRUE);
-		$waktu_mulai 	    = $this->input->post('waktu_mulai',TRUE);
-		$waktu_selesai 	    = $this->input->post('waktu_selesai',TRUE);
-		$anggaran 	        = $this->input->post('anggaran',TRUE);
-		$alamat_kegiatan    = $this->input->post('alamat_kegiatan',TRUE);
-		$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
-		$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
-		$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
-        $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
-		$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-		$kode_k        		= $this->input->post('kode_k',TRUE);
-		$kode_w 	  	    = $this->input->post('kode_w',TRUE);
-		$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
-		$NIK  				= $this->input->post('NIK',TRUE);
-		$no_telp         	= $this->input->post('no_telp',TRUE);
-        
-        if($_FILES['file']['name'] == ""){
-            $file_name=$this->input->post('file_lama', TRUE);
-        }else{
-            $hapus = $this->input->post('file_lama', TRUE);
-            unlink('files/'.$hapus);
-            $dokumen=$_FILES['file']['name'];
-            $dir="file/"; //tempat file foto
-            $dirs="files/"; //tempat file foto
-            $file='file'; //name pada input type file
-           //name pada input type file
-            $vdir_upload = $dir;
-            $file_name=$_FILES[''.$file.'']["name"];
-            $vfile_upload = $vdir_upload . $file;
-            $tmp_name=$_FILES[''.$file.'']["tmp_name"];
-            move_uploaded_file($tmp_name, $dirs.$file_name);
-            rename($dirs.$file_name);
-        }
-            $data=array(
-				'kode_usulan'=>$kode_usulan,
-			'kode_bidang' 	    => $kode_bidang,
-			'kode_subbidang'     => $kode_subbidang,
-			'tahun_pengusulan' 	=> $tahun_pengusulan,
-			'nama_kegiatan' 	=> $nama_kegiatan,
-			'waktu_mulai' 	    => $waktu_mulai,
-			'waktu_selesai'		=> $waktu_selesai,
-			'anggaran' 	        => $anggaran,
-			'alamat_kegiatan'   => $alamat_kegiatan,
-			'kode_kecamatan' 	=> $kode_kecamatan,
-			'kode_wilayah' 	    => $kode_wilayah,
-			'deskripsi' 	   	=> $deskripsi,
-			'nama_institusi' 	=> $nama_institusi,
-			'alamat_institusi' 	=> $alamat_institusi,
-			'kode_k'   			=> $kode_k,
-			'kode_w'	   		=> $kode_w,
-			'nama_pengusul'   	=> $nama_pengusul,
-			'NIK'   			=> $NIK,
-			'no_telp'         	=> $no_telp,
-			'file'=>$file_name
+	
+	$this->load->library('form_validation');
 
-		);
-		$this->m_usulan_umum->update_usulan($data,$kode_usulan);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
-		redirect('usulan_umum');
+	$this->form_validation->set_rules('kode_bidang', 'Nama Bidang', 'required');
+	$this->form_validation->set_rules('kode_subbidang', 'Nama Subbidang', 'required');
+	$this->form_validation->set_rules('kode_kecamatan', 'Kecamatan', 'required');
+	$this->form_validation->set_rules('kode_wilayah', 'Desa', 'required');
+	$this->form_validation->set_rules('tahun_pengusulan', 'Tahun Pengusulan', 'required|numeric|min_length[4]|max_length[4]');
+	$this->form_validation->set_rules('anggaran', 'Anggaran', 'required|numeric');
+
+		if (empty($_FILES['file']['name'])){
+
+			$this->form_validation->set_rules('file', 'Document', 'required');
+
+			}
+
+		if ($this->form_validation->run() == FALSE)
+		{	
+			$data['NIK'] = $this->m_usulan_umum->get_NIK($this->session->userdata('ses_id'))->result();
+			$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
+			$data['kode_kecamatan'] = $this->m_usulan_umum->get_kecamatan()->result();
+			$data['kode_k'] = $this->m_usulan_umum->get_k()->result();
+			$data['kode_w'] = $this->m_usulan_umum->get_d()->result();
+			$this->load->view('usulan_umum/add_product_view',$data);
+		}
+		else
+		{
+
+			$kode_usulan 	    = $this->input->post('kode_usulan',TRUE);
+			$kode_bidang 	    = $this->input->post('kode_bidang',TRUE);
+			$kode_subbidang     = $this->input->post('kode_subbidang',TRUE);
+	        $tahun_pengusulan 	= $this->input->post('tahun_pengusulan',TRUE);
+			$nama_kegiatan 	    = $this->input->post('nama_kegiatan',TRUE);
+			$waktu_mulai 	    = $this->input->post('waktu_mulai',TRUE);
+			$waktu_selesai 	    = $this->input->post('waktu_selesai',TRUE);
+			$anggaran 	        = $this->input->post('anggaran',TRUE);
+			$alamat_kegiatan    = $this->input->post('alamat_kegiatan',TRUE);
+			$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
+			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
+			$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
+	        $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
+			$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
+			$kode_k        		= $this->input->post('kode_k',TRUE);
+			$kode_w 	  	    = $this->input->post('kode_w',TRUE);
+			$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
+			$NIK  				= $this->input->post('NIK',TRUE);
+			$no_telp         	= $this->input->post('no_telp',TRUE);
+	        
+	        if($_FILES['file']['name'] == ""){
+	            $file_name=$this->input->post('file_lama', TRUE);
+	        }else{
+	            $hapus = $this->input->post('file_lama', TRUE);
+	            unlink('files/'.$hapus);
+	            $dokumen=$_FILES['file']['name'];
+	            $dir="file/"; //tempat file foto
+	            $dirs="files/"; //tempat file foto
+	            $file='file'; //name pada input type file
+	           //name pada input type file
+	            $vdir_upload = $dir;
+	            $file_name=$_FILES[''.$file.'']["name"];
+	            $vfile_upload = $vdir_upload . $file;
+	            $tmp_name=$_FILES[''.$file.'']["tmp_name"];
+	            move_uploaded_file($tmp_name, $dirs.$file_name);
+	            rename($dirs.$file_name);
+	        }
+	            $data=array(
+					'kode_usulan'=>$kode_usulan,
+				'kode_bidang' 	    => $kode_bidang,
+				'kode_subbidang'     => $kode_subbidang,
+				'tahun_pengusulan' 	=> $tahun_pengusulan,
+				'nama_kegiatan' 	=> $nama_kegiatan,
+				'waktu_mulai' 	    => $waktu_mulai,
+				'waktu_selesai'		=> $waktu_selesai,
+				'anggaran' 	        => $anggaran,
+				'alamat_kegiatan'   => $alamat_kegiatan,
+				'kode_kecamatan' 	=> $kode_kecamatan,
+				'kode_wilayah' 	    => $kode_wilayah,
+				'deskripsi' 	   	=> $deskripsi,
+				'nama_institusi' 	=> $nama_institusi,
+				'alamat_institusi' 	=> $alamat_institusi,
+				'kode_k'   			=> $kode_k,
+				'kode_w'	   		=> $kode_w,
+				'nama_pengusul'   	=> $nama_pengusul,
+				'NIK'   			=> $NIK,
+				'no_telp'         	=> $no_telp,
+				'file'=>$file_name
+
+			);
+			$this->m_usulan_umum->update_usulan($data,$kode_usulan);
+			$this->session->set_flashdata('msg','<div class="alert alert-success">Usulan Updated</div>');
+			redirect('usulan_umum');
+		}
 	}
 
 	//Delete usulan from Database

@@ -133,7 +133,7 @@
                       <div class="form-group">
                         <label>Desa Pengusul</label>
                         <select class="form-control" name="kode_w" id="kode_w" readonly>
-                        <<?php foreach($kode_w as $row):?>
+                        <?php foreach($kode_w as $row):?>
                           <option value="<?echo $row->kode_w ;?>"><?php echo $row->nama_d;?></option>
                           <?php endforeach;?>
                         </select>
