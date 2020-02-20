@@ -67,7 +67,7 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input pattern=".{4,}" type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan">
+                      <input type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
@@ -142,7 +142,7 @@
                       </div>
                       <div class="form-group">
                         <label>File</label>
-                        <input type="file" class="form-control" name="file">
+                        <input type="file" class="form-control" name="file" required>
                       </div>
                     </div>
                     <div class="card-footer text-right">

@@ -124,13 +124,13 @@ HEREDOCS;
 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                              <a href="<?php echo site_url('usulan_umum/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
+                              <a href="<?php echo site_url('usulan_umum/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
+                              <a href="<?php echo site_url('usulan_umum/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>
