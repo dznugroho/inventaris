@@ -30,12 +30,18 @@ class M_Usulan_umum extends CI_Model{
 	}
 	
 	function get_k(){
-		$query = $this->db->get('tb_k');
+		$kode_k = $this->session->userdata('ses_kecamatan');
+		$query = $this->db->get_where('tb_k', array('kode_k' => $kode_k ));
 		return $query;	
 	}
 
 	function get_dk($kode_k){
 		$query = $this->db->get_where('tb_w', array('kode_k' => $kode_k));
+		return $query;
+	}
+	function get_d(){
+		$kode_w = $this->session->userdata('ses_desa');
+		$query = $this->db->get_where('tb_w', array('kode_w' => $kode_w));
 		return $query;
 	}
 	function get_NIK(){
@@ -71,6 +77,14 @@ class M_Usulan_umum extends CI_Model{
 		
 		);
 		$this->db->insert('tb_usulan',$data);
+	}
+
+	function add_file($kode_usulan,$file){
+
+        $this->db->set('file' 	, $file);
+	   
+		$this->db->where('kode_usulan' 	, $kode_usulan);
+		$this->db->update('tb_usulan');
 	}
 
 	// function get_usulan(){

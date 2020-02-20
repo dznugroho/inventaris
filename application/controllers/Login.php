@@ -39,6 +39,9 @@ class Login extends CI_Controller{
                             $this->session->set_userdata('ses_id',$data['NIK']);
                             $this->session->set_userdata('ses_level',$data['level']);
                             $this->session->set_userdata('ses_nama',$data['nama_depan']);
+                            $this->session->set_userdata('ses_alamat',$data['alamat']);
+                            $this->session->set_userdata('ses_kecamatan',$data['kode_kecamatan']);
+                            $this->session->set_userdata('ses_desa',$data['kode_wilayah']);
                             redirect('dashboard'); 
                         }
                     
