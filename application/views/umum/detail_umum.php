@@ -54,8 +54,8 @@
                               <td><?php echo $row->nama_depan;?></td>
                           </tr>
                           <tr>
-                            <th colspan="3">Nama Belakang</th>
-                              <td><?php echo $row->nama_belakang;?></td>
+                            <th colspan="3">Username</th>
+                              <td><?php echo $row->username;?></td>
                           </tr>
                           <tr>
                             <th colspan="3">Password</th>
@@ -64,6 +64,10 @@
                           <tr>
                             <th colspan="3">Alamat</th>
                               <td><?php echo $row->alamat;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">No Telp</th>
+                              <td><?php echo $row->no_telpp;?></td>
                           </tr>
                           <tr>
                             <th colspan="3">Kecamatan</th>
