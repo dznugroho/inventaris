@@ -54,20 +54,34 @@ class M_Usulan extends CI_Model{
 		return $query;
 	}
 
-	// function get_usulan(){
-	// 	$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-	// 	waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
-	// 	nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,no_telp,file');
-	// 	$this->db->from('tb_usulan');
-	// 	$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
-	// 	$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
-	// 	$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
-	// 	$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
-	// 	$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
-	// 	$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
-	// 	$query = $this->db->get();
-	// 	return $query;
-	// }
+	function save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,
+				$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,
+				$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
+				$kode_w,$nama_pengusul,$no_telp,$file){
+		$data = array(
+			
+            'kode_bidang' 	    => $kode_bidang,
+			'kode_subbidang'    => $kode_subbidang,
+			'tahun_pengusulan' 	=> $tahun_pengusulan,
+			'nama_kegiatan' 	=> $nama_kegiatan,
+			'waktu_mulai' 	    => $waktu_mulai,
+			'waktu_selesai'		=> $waktu_selesai,
+			'anggaran' 	        => $anggaran,
+			'alamat_kegiatan'   => $alamat_kegiatan,
+			'kode_kecamatan' 	=> $kode_kecamatan,
+			'kode_wilayah' 	    => $kode_wilayah,
+			'deskripsi' 	   	=> $deskripsi,
+			'nama_institusi' 	=> $nama_institusi,
+			'alamat_institusi' 	=> $alamat_institusi,
+			'kode_k'   			=> $kode_k,
+			'kode_w'	    	=> $kode_w,
+			'nama_pengusul'   	=> $nama_pengusul,
+			'no_telp'         	=> $no_telp,
+			'file'				=> $file
+		
+		);
+		$this->db->insert('tb_usulan',$data);
+	}
 
 	function get_usulan(){
 		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
@@ -76,6 +90,7 @@ class M_Usulan extends CI_Model{
 		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
 		$this->db->where("status_usulan", 0);
+		$this->db->order_by("kode_usulan", "DESC");
 		$query = $this->db->get();
 		return $query;
 	}

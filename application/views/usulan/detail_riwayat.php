@@ -132,7 +132,6 @@
                       <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Pilih</th>
                             <th>Nama Perusahaan</th>
                             <th>Alamat</th>
                             <th>Kecamatan</th>
@@ -162,7 +161,6 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $kode_pilih;?></td>
                               <td><?php echo $nama_perusahaan;?></td>
                               <td><?php echo $alamat;?></td>
                               <td><?php echo $nama_kecamatan;?></td>
@@ -204,6 +202,7 @@
       <?php 
         foreach($riwayat_perusahaan->result_array() as $i):
             $kode_pilih=$i['kode_pilih'];
+            $nama_perusahaan=$i['nama_perusahaan'];
 
         ?>
         <div class="modal fade" id="modal_edit<?php echo $kode_pilih;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
@@ -218,13 +217,15 @@
             <form class="form-horizontal" method="post" action="<?php echo base_url().'riwayat_pilihan/edit_status'?>">
                 <div class="modal-body">
 
+                    
+                  <input name="kode_pilih" value="<?php echo $kode_pilih;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+  
                     <div class="form-group">
-                        <label class="control-label col-xs-3">Kode Pilih</label>
+                        <label class="control-label col-xs-3">Nama Perusahaan</label>
                         <div class="col-xs-8">
-                            <input name="kode_pilih" value="<?php echo $kode_pilih;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+                            <input name="nama_perusahaan" value="<?php echo $nama_perusahaan;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Status Perusahaan</label>
                         <div class="col-xs-8">

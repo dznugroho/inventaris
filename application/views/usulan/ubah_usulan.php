@@ -44,6 +44,9 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
+                  <div class="card-body" >
+                  <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+                  </div>
                   <form role="form" method="POST" action="<?php echo site_url('usulan/update_usulan/'.$cekid['kode_usulan']);?>" enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
@@ -65,7 +68,7 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control" name="tahun_pengusulan">
+                      <input type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
@@ -81,7 +84,7 @@
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
-                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
+                        <input type="number" class="form-control" name="anggaran" placeholder="Anggaran">
                       </div>
                       <div class="form-group">
                         <label>Lokasi Kegiatan</label>
@@ -136,7 +139,7 @@
                       </div>
                       <div class="form-group">
                         <label>CP Pengusul</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                        <input type="number" class="form-control" name="no_telp" placeholder="No. Telp">
                       </div>
                       <div class="form-group">
                         <label>File</label>
@@ -144,7 +147,7 @@
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>

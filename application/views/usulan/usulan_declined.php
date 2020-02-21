@@ -66,7 +66,7 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <?php $row->kode_pilih;?>
+                              <?php $row->kode_usulan;?>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
@@ -83,7 +83,7 @@
                               }
                                 ;?></td>
                               <td>
-                              <a href="<?php echo site_url('status_declined/detail_declined/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
+                              <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

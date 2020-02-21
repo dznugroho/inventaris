@@ -75,7 +75,6 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
@@ -97,7 +96,6 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->tahun_pengusulan;?></td>

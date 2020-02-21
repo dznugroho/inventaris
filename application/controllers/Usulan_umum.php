@@ -133,8 +133,8 @@ class Usulan_umum extends CI_Controller {
 
 				$this->m_usulan_umum->save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 					$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
-					$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
-					$kode_w,$nama_pengusul,$no_telp,$file,$NIK);
+					$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,
+					$kode_k,$kode_w,$nama_pengusul,$no_telp,$file,$NIK);
 
 			}
 

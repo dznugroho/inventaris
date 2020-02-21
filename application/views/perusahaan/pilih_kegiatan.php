@@ -72,7 +72,6 @@
                           <tr>
                             
                             <th>No.</th>
-                            <th>Kode usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
@@ -97,11 +96,11 @@
                                 $waktu_mulai=$row['waktu_mulai'];
                                 $waktu_selesai=$row['waktu_selesai'];
                                 $anggaran=$row['anggaran'];
+                                $file=$row['file'];
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $kode_usulan;?></td>
                               <td><?php echo $nama_bidang;?></td>
                               <td><?php echo $nama_sub;?></td>
                               <td><?php echo $tahun_pengusulan;?></td>
@@ -140,6 +139,8 @@
           
           foreach ($usulan->result_array() as $row):
           $kode_usulan=$row['kode_usulan'];
+          $nama_bidang=$row['nama_bidang'];
+          $nama_sub=$row['nama_sub'];
           
           ?>
       <div class="modal fade" id="modal_tambah<?php echo $kode_usulan;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
@@ -154,10 +155,19 @@
             <form class="form-horizontal" method="post" action="<?php echo base_url().'pilihan_ps/save_pilihan'?>">
                 <div class="modal-body">
 
+                    
+                    <input name="kode_usulan" value="<?php echo $kode_usulan;?>" class="form-control" type="hidden" placeholder="Kode Barang..." readonly>
+                        
                     <div class="form-group">
-                        <label class="control-label col-xs-3">Kode Usulan</label>
+                        <label class="control-label col-xs-3">Nama Bidang</label>
                         <div class="col-xs-8">
-                            <input name="kode_usulan" value="<?php echo $kode_usulan;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+                            <input name="nama_bidang" value="<?php echo $nama_bidang;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Nama Sub Bidang</label>
+                        <div class="col-xs-8">
+                            <input name="nama_sub" value="<?php echo $nama_sub;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
                         </div>
                     </div>
                     <input name="kode_perusahaan" class="form-control" type="hidden" value="<?php echo $kode_perusahaan;?>">

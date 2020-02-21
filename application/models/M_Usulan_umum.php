@@ -110,7 +110,8 @@ class M_Usulan_umum extends CI_Model{
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
 		JOIN registrasi ON registrasi.NIK = tb_usulan.NIK
-		WHERE tb_usulan.NIK =  $NIK AND status_usulan=0");
+		WHERE tb_usulan.NIK =  $NIK AND status_usulan=0
+		ORDER BY kode_usulan DESC");
 	
 	}
 	function caridata(){

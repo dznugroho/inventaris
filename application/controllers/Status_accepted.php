@@ -20,9 +20,10 @@ class Status_accepted extends CI_Controller {
 	}
 
 	function detail_accepted(){
-		$data['detail_accepted'] = $this->m_status_usulan->get_detail();
+		$data['detail_riwayat'] = $this->m_status_usulan->get_detail_riwayat();
+		$data['riwayat_perusahaan'] = $this->m_status_usulan->get_riwayat_perusahaan();
 
-		$this->load->view('usulan/detail_status_accepted',$data);
+		$this->load->view('usulan/detail_riwayat',$data);
 	}
 
 	//Delete usulan from Database

@@ -44,11 +44,11 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                              <div class="row">
-          <div class="card-body" >
-          <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
-          </div>
-          </div>
+                <div class="row">
+                  <div class="card-body" >
+                  <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+                  </div>
+                  </div>
                   <form role="form" method="POST" action="<?php echo base_url();?>usulan_umum/save_usulan" enctype="multipart/form-data">
                     <div class="card-header">
                       <h4>Tambah Usulan</h4>

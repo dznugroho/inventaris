@@ -20,9 +20,10 @@ class Status_declined extends CI_Controller {
 	}
 
 	function detail_declined(){
-		$data['detail_declined'] = $this->m_status_usulan->get_detail();
+		$data['detail_riwayat'] = $this->m_status_usulan->get_detail_riwayat();
+		$data['riwayat_perusahaan'] = $this->m_status_usulan->get_riwayat_perusahaan();
 
-		$this->load->view('usulan/detail_status_declined',$data);
+		$this->load->view('usulan/detail_riwayat',$data);
 	}
 
 	//Delete usulan from Database

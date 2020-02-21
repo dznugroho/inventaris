@@ -66,7 +66,7 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <?php $row->kode_pilih;?>
+                              <?php $row->kode_usulan;?>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
@@ -77,13 +77,13 @@
                               if($row->status_perusahaan == '0'){
                                 echo  '<div class="badge badge-warning">On Process</div>';
                               }else if ($row->status_perusahaan == '1'){
-                                echo '<div class="badge badge-info">Accepted</div>';
+                                echo '<div class="badge badge-success">Accepted</div>';
                               }else{
                                 echo '<div class="badge badge-danger">Declined</div>';
                               }
                                 ;?></td>
                               <td>
-                              <a href="<?php echo site_url('status_accepted/detail_accepted/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
+                              <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

@@ -34,7 +34,7 @@ class Registrasi extends CI_Controller {
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|is_unique[registrasi.username]',
 		array(
 			'required'      => 'You have not provided %s.',
-			'is_unique'     => 'This %s Gone wong cok dang ganti.'
+			'is_unique'     => 'Username Sudah Digunakan.'
 	)
 );
 		$this->form_validation->set_rules('password', 'Password', 'required');
