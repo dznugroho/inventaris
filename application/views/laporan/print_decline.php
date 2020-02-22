@@ -7,7 +7,7 @@
 <body id="page-top">
  
 <div class="card-header text-center"><strong>
-        Data Semua Usulan dan Perusahaan yang Diterima<hr>
+        Data Semua Usulan dan Perusahaan yang Ditolak<hr>
       </strong></div>
       </div>
         <div class="card-body">
@@ -39,7 +39,7 @@
               <tbody>
               <?php
                     $no = 0;
-                foreach ($accepted as $row):
+                foreach ($decline as $row):
                     $no++;
                 ?> 
                   <tr>

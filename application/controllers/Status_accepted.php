@@ -33,23 +33,6 @@ class Status_accepted extends CI_Controller {
         $this->load->view('laporan/print_accept',$data);
     }
 
-	 public function pdf(){
-
-        $this->load->library('dompdf_gen');
-		$data['accepted'] = $this->m_status_usulan->get_excel_accept()->result(); 
-        $this->load->view('laporan/pdf_accept',$data);
-
-        $paper_size ='Legal';
-        $orientation = 'landscape';
-        $html = $this->output->get_output();
-        $this->dompdf->set_paper($paper_size, $orientation);
-
-        $this->dompdf->load_HTML($html);
-        $this->dompdf->render();
-        $this->dompdf->stream("laporan_Usulan_Diterima.pdf",array ('Attachment'=>0));
-        
-    }
-
 	public function excel(){
 
 		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
@@ -59,8 +42,8 @@ class Status_accepted extends CI_Controller {
 
 		// Settingan awal fil excel
 		$excel->getProperties()->setCreator('DAN')
-							   ->setTitle("Data Usulan")
-							   ->setSubject("Data Usulan")
+							   ->setTitle("Data Usulan Diterima")
+							   ->setSubject("Data Usulan Diterima")
 							   ->setDescription("Laporan Semua Data Usulan yang Diterima")
 							   ->setKeywords("Data Usulan");
 
@@ -92,7 +75,7 @@ class Status_accepted extends CI_Controller {
 			)
 		);
 
-		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA USULAN YANG DITERIMA");
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA SEMUA USULAN DAN PERUSAHAAN YANG DITERIMA");
 		$excel->getActiveSheet()->mergeCells('A1:V1');
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE);
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15);
@@ -263,7 +246,7 @@ class Status_accepted extends CI_Controller {
 
 		// Proses file excel
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment; filename="Data Usulan.xlsx"'); // Set nama file excel nya
+		header('Content-Disposition: attachment; filename="Data perusahaan diterima.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
