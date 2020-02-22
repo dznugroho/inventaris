@@ -59,7 +59,7 @@
                         <select class="form-control" name="kode_bidang" id="kode_bidang">
                         <option value="">No Selected</option>
                           <?php foreach($kode_bidang as $row):?>
-                          <option value="<?php echo set_value('kode_bidang'); ?><?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+                          <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
                           <?php endforeach;?>
                         </select>
                       </div>

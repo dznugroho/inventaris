@@ -20,6 +20,13 @@ class M_Usulankec extends CI_Model{
 		$query = $this->db->get();
 		return $query; 
 	}
+	public function get_sessionkec(){
+		$query = $this->db->get('tb_k');
+		return $query;	
+	}
+	public function cekid($kode_usulan){
+        return $this->db->where('kode_usulan', $kode_usulan)->get('tb_usulan');
+    }
 	function get_bidang(){
 		$query = $this->db->get('tb_bidang');
 		return $query;	

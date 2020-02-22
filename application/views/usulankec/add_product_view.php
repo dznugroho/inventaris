@@ -113,11 +113,11 @@
                       <div class="section-title mt-0">Data Institusi </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" value="<?= $this->session->userdata('ses_nama')?>">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" value="<?= 'Kecamatan '.$this->session->userdata('ses_nama')?>" readonly>  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" value="<?php echo set_value('alamat_institusi'); ?>">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_alamat')?>" readonly>
                       </div>
                       <div class="form-group">
                     

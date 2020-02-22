@@ -47,7 +47,7 @@
                   <div class="card-body" >
                   <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
                   </div>
-                  <form role="form" method="POST" action="<?php echo site_url('usulankec/update_usulankec');?>"  enctype="multipart/form-data">
+                  <form role="form" method="POST" action="<?php echo site_url('usulankec/update_usulankec/'.$cekid['kode_usulan']);?>"  enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
                   <div class="form-group">
@@ -111,16 +111,13 @@
                       <div class="section-title mt-0">Data Institusi </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" readonly>  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" readonly>
                       </div>
-                      <div class="form-group">
-                      <label>kecamatan Institusi</label>
-                      <input type="hidden" class="form-control" name="kode_k" id="kode_k" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
-                      </div>
+                      <input type="hidden" class="form-control" name="kode_k" id="kode_k" value="<?= $this->session->userdata('ses_kodekec')?>">  
                       <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_w" id="kode_w">

@@ -37,12 +37,24 @@
             </div>
           </div>
           <div class="row">
-          <?php echo $this->session->flashdata('msg');?>
+            <div class="card-body">
+            <div class="dropdown d-inline mr-2">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Easy Dropdown
+                      </button>
+                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 29px, 0px);">
+                        <a class="dropdown-item" href="<?php echo base_url('status_accepted/excel')?>">Excel</a>
+                        <a class="dropdown-item" href="#">PDF</a>
+                      </div>
+                    </div>
           </div>
+            </div>
             <div class="row">
+
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+
                     <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
                         <thead>

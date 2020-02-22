@@ -34,6 +34,7 @@ class Usulankec extends CI_Controller {
 	// add new usulan
 	function add_new(){
 		
+		$data['id_kec'] = $this->m_usulankec->get_sessionkec($this->session->userdata('ses_id'))->result();
 		$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
 		$data['desass'] = $this->m_usulankec->get_dk($this->session->userdata('ses_kodekec'))->result();
 		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
@@ -98,6 +99,7 @@ class Usulankec extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{	
+			$data['id_kec'] = $this->m_usulankec->get_sessionkec($this->session->userdata('ses_id'))->result();
 			$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
 			$data['desass'] = $this->m_usulankec->get_dk($this->session->userdata('ses_kodekec'))->result();
 			$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
@@ -174,6 +176,7 @@ class Usulankec extends CI_Controller {
 }
 
 	function get_edit(){
+		$data['id_kec'] = $this->m_usulankec->get_sessionkec($this->session->userdata('ses_id'))->result();
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;
 		$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
@@ -181,6 +184,7 @@ class Usulankec extends CI_Controller {
 		$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulankec->get_kecamatan()->result();
 		$data['kode_k'] = $this->m_usulankec->get_k()->result();
+		$data['cekid']=$this->m_usulankec->cekid($kode_usulan)->row_array();
 		$get_data = $this->m_usulankec->get_usulankec_by_id($kode_usulan);
 		if($get_data->num_rows() > 0){
 			$row = $get_data->row_array();
@@ -218,12 +222,24 @@ class Usulankec extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{	
+			$data['id_kec'] = $this->m_usulankec->get_sessionkec($this->session->userdata('ses_id'))->result();
+			$kode_usulan = $this->uri->segment(3);
+			$data['kode_usulan'] = $kode_usulan;
 			$data['desas'] = $this->m_usulankec->get_desa($this->session->userdata('ses_kodekec'))->result();
 			$data['desass'] = $this->m_usulankec->get_dk($this->session->userdata('ses_kodekec'))->result();
 			$data['kode_bidang'] = $this->m_usulankec->get_bidang()->result();
 			$data['kode_kecamatan'] = $this->m_usulankec->get_kecamatan()->result();
 			$data['kode_k'] = $this->m_usulankec->get_k()->result();
-			$this->load->view('usulankec/add_product_view',$data);
+			$data['cekid']=$this->m_usulankec->cekid($kode_usulan)->row_array();
+			$get_data = $this->m_usulankec->get_usulankec_by_id($kode_usulan);
+			if($get_data->num_rows() > 0){
+				$row = $get_data->row_array();
+				$data['kode_subbidang'] = $row['kode_subbidang'];
+				$data['kode_wilayah'] = $row['kode_wilayah'];
+				$data['kode_w'] = $row['kode_w'];
+
+			}
+			$this->load->view('usulankec/ubah_usulan',$data);
 		}
 		else
 		{

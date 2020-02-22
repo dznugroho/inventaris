@@ -33,6 +33,7 @@ class M_Status_usulan extends CI_Model{
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 		$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 		$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+		$this->db->where('status_usulan', 1);
 		$this->db->order_by('tb_usulan.kode_usulan','ASC');
 		$query = $this->db->get();
 		return $query;
@@ -63,7 +64,7 @@ class M_Status_usulan extends CI_Model{
 		$kode_usulan = $this->uri->segment(3);
 
 		return $this->db->query("SELECT kode_pilih,tb_pilihan.kode_usulan,nama_perusahaan,alamat,
-		nama_kecamatan,desa,tb_perusahaan.no_telp,email,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		nama_kecamatan,desa,tb_perusahaan.no_telp_perusahaan,email,tb_pilihan.dana,tb_pilihan.status_perusahaan
 		from tb_pilihan
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan
@@ -126,10 +127,10 @@ class M_Status_usulan extends CI_Model{
 	// PUNYANYA CONTROLLER STATUS_ACCEPTED AND STATUS_DECLINED
 	function get_detail(){
 		$kode_pilih = $this->uri->segment(3);
-		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,
-		waktu_mulai,waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
-		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,tb_usulan.no_telp,tb_usulan.file,
-		tb_perusahaan.nama_perusahaan,tb_perusahaan.alamat,tb_perusahaan.email,dana,status_perusahaan
+		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan, nama_kegiatan,waktu_mulai,waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,
+			deskripsi,nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,tb_usulan.no_telp,
+			tb_usulan.file,tb_perusahaan.nama_perusahaan,tb_perusahaan.alamat,tb_perusahaan.email
+			,dana,status_perusahaan
 		FROM tb_pilihan 
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang 
@@ -141,6 +142,24 @@ class M_Status_usulan extends CI_Model{
 		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
 		WHERE tb_pilihan.kode_pilih =  $kode_pilih");
 	}
+
+	function get_excel_accept(){
+		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan, nama_kegiatan,waktu_mulai,waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,
+			deskripsi,nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,tb_usulan.no_telp,
+			tb_perusahaan.nama_perusahaan,tb_perusahaan.alamat,tb_perusahaan.email, 
+			dana,status_perusahaan,no_telp_perusahaan
+		FROM tb_pilihan 
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
+		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang 
+		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
+		JOIN tb_kecamatan ON tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan 
+		JOIN tb_wilayah ON tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah 
+		JOIN tb_w ON tb_w.kode_w = tb_usulan.kode_w
+		JOIN tb_k ON tb_k.kode_k = tb_usulan.kode_k
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
+		WHERE tb_pilihan.status_perusahaan = 1");
+	}
+
 
 	// PUNYANYA CONTROLLER STATUS_USULANKEC
 	function get_kec_detail(){

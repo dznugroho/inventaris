@@ -208,10 +208,21 @@ class Usulan extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{	
+			$kode_usulan = $this->uri->segment(3);
+			$data['kode_usulan'] = $kode_usulan;
 			$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 			$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
 			$data['kode_k'] = $this->m_usulan->get_k()->result();
-			$this->load->view('usulan/add_product_view',$data);
+			$data['cekid']=$this->m_usulan->cekid($kode_usulan)->row_array();
+			$get_data = $this->m_usulan->get_usulan_by_id($kode_usulan);
+			if($get_data->num_rows() > 0){
+				$row = $get_data->row_array();
+				$data['kode_subbidang'] = $row['kode_subbidang'];
+				$data['kode_wilayah'] = $row['kode_wilayah'];
+				$data['kode_w'] = $row['kode_w'];
+	
+			}
+			$this->load->view('usulan/ubah_usulan',$data);
 		}
 		else
 		{

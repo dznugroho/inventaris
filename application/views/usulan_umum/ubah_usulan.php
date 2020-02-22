@@ -68,27 +68,27 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan">
+                      <input type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan"  value="<?php echo set_value('tahun_pengusulan'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan">
+                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan"  value="<?php echo set_value('nama_kegiatan'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Waktu Mulai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai">
+                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai" value="<?php echo set_value('waktu_mulai'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Waktu Selesai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai">
+                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai"  value="<?php echo set_value('waktu_selesai'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
-                        <input type="number" class="form-control" name="anggaran" placeholder="Anggaran">
+                        <input type="number" class="form-control" name="anggaran" placeholder="Anggaran"  value="<?php echo set_value('anggaran'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Lokasi Kegiatan</label>
-                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan"  value="<?php echo set_value('alamat_kegiatan'); ?>">  
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
@@ -107,19 +107,19 @@
                       </div>
                       <div class="form-group">
                       <label>Deskripsi Kegiatan</label>
-                      <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
+                      <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"><?php echo set_value('deskripsi'); ?></textarea>
                       </div>
                       <div class="section-title mt-0">Data Institusi </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" value="<?php echo set_value('nama_institusi'); ?>">  
                       </div>
                       <div class="form-group">
-                        <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
+                        <label>Alamat Pengusul</label>
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan"  value="<?php echo set_value('alamat_institusi'); ?>">
                       </div>
                       <div class="form-group">
-                        <label>Kecamatan Institusi</label>
+                        <label>Kecamatan Pengusul</label>
                         <select class="form-control" name="kode_k" id="kode_k" readonly>
                           <?php foreach($kode_k as $row):?>
                           <option value="<?php echo $row->kode_k;?>"><?php echo $row->nama_k;?></option>
@@ -136,7 +136,7 @@
                       </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
-                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
+                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul" readonly>
                       </div>
                       <div class="form-group">
                      <input type="hidden" class="form-control" name="NIK" id="NIK" placeholder="NIK" value="<?= $this->session->userdata('ses_id')?>">  

@@ -140,7 +140,8 @@
                             <th>Email</th>
                             <th>Dana Perusahaan</th>
                             <th>Status</th>
-                            <th colspan="2">Aksi</th>
+                            <th>Aksi</th>
+                            <th>&nbsp;</th>
 
                           </tr>
                         </thead>
@@ -153,7 +154,7 @@
                                 $alamat=$row['alamat'];
                                 $nama_kecamatan=$row['nama_kecamatan'];
                                 $desa=$row['desa'];
-                                $no_telp=$row['no_telp'];
+                                $no_telp_perusahaan=$row['no_telp_perusahaan'];
                                 $email=$row['email'];
                                 $dana=$row['dana'];
                                 $status_perusahaan=$row['status_perusahaan'];
@@ -165,7 +166,7 @@
                               <td><?php echo $alamat;?></td>
                               <td><?php echo $nama_kecamatan;?></td>
                               <td><?php echo $desa;?></td>
-                              <td><?php echo $no_telp;?></td>
+                              <td><?php echo $no_telp_perusahaan;?></td>
                               <td><?php echo $email;?></td>
                               <td><?php echo 'Rp '.number_format($dana);?></td>
                               <td><?php

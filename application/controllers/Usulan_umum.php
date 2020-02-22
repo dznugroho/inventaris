@@ -167,6 +167,7 @@ class Usulan_umum extends CI_Controller {
 }
 
 	function get_edit(){
+		$data['NIK'] = $this->m_usulan_umum->get_NIK($this->session->userdata('ses_id'))->result();
 		$kode_usulan = $this->uri->segment(3);
 		$data['kode_usulan'] = $kode_usulan;
 		$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
@@ -211,11 +212,21 @@ class Usulan_umum extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{	
 			$data['NIK'] = $this->m_usulan_umum->get_NIK($this->session->userdata('ses_id'))->result();
+			$kode_usulan = $this->uri->segment(3);
+			$data['kode_usulan'] = $kode_usulan;
 			$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
 			$data['kode_kecamatan'] = $this->m_usulan_umum->get_kecamatan()->result();
 			$data['kode_k'] = $this->m_usulan_umum->get_k()->result();
 			$data['kode_w'] = $this->m_usulan_umum->get_d()->result();
-			$this->load->view('usulan_umum/add_product_view',$data);
+			$data['cekid']=$this->m_usulan_umum->cekid($kode_usulan)->row_array();
+			$get_data = $this->m_usulan_umum->get_usulan_by_id($kode_usulan);
+			if($get_data->num_rows() > 0){
+				$row = $get_data->row_array();
+				$data['kode_subbidang'] = $row['kode_subbidang'];
+				$data['kode_wilayah'] = $row['kode_wilayah'];
+
+			}
+			$this->load->view('usulan_umum/ubah_usulan',$data);
 		}
 		else
 		{

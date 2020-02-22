@@ -97,7 +97,6 @@
                 "url": "<?= base_url()?>kesehatan/datakesehatan",
                 "type": "POST"
             },
- 
              
             "columnDefs": [
             { 
