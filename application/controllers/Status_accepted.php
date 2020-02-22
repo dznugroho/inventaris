@@ -6,6 +6,7 @@ class Status_accepted extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_Status_usulan','m_status_usulan');
 		$this->load->library('session');
+
 		if($this->session->userdata('masuk') != TRUE){
 			$url=base_url('login');
 			redirect($url);
@@ -25,6 +26,29 @@ class Status_accepted extends CI_Controller {
 
 		$this->load->view('usulan/detail_riwayat',$data);
 	}
+	public function print(){
+		
+		$data['accepted'] = $this->m_status_usulan->get_excel_accept()->result(); 
+        
+        $this->load->view('laporan/print_accept',$data);
+    }
+
+	 public function pdf(){
+
+        $this->load->library('dompdf_gen');
+		$data['accepted'] = $this->m_status_usulan->get_excel_accept()->result(); 
+        $this->load->view('laporan/pdf_accept',$data);
+
+        $paper_size ='Legal';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_HTML($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_Usulan_Diterima.pdf",array ('Attachment'=>0));
+        
+    }
 
 	public function excel(){
 

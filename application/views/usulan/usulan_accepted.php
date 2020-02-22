@@ -38,15 +38,19 @@
           </div>
           <div class="row">
             <div class="card-body">
+              <a target="_blank" class="btn btn-success" href="<?php echo base_url('status_accepted/print')?>"><i class="fa fa-print"></i> Print</a>
             <div class="dropdown d-inline mr-2">
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Easy Dropdown
+               <div class="btn-group dropdown">
+                  <button type="button" class="btn btn-primary">
+                  <i class="fa fa-download"></i>
+                  </button>
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export
                       </button>
                       <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 29px, 0px);">
                         <a class="dropdown-item" href="<?php echo base_url('status_accepted/excel')?>">Excel</a>
-                        <a class="dropdown-item" href="#">PDF</a>
                       </div>
                     </div>
+                  </div>
           </div>
             </div>
             <div class="row">
