@@ -61,10 +61,21 @@
                   <a href="<?php echo site_url('usulan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
             </form>
           </div>
-          <div class="form-group col-3"></div>
+          <div class="form-group col-lg-3"></div>      
+          <div class="dropdown d-inline mr-2">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        EXPORT
+                      </button>
+                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 29px, 0px);">
+                        <a class="dropdown-item" href="<?php echo base_url('usulan/excel')?>">Excel</a>
+                        <a class="dropdown-item" href="#">PDF</a>
+                      </div>
+                    </div>
           <div class="form-group col-3">
               <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
           </div>
+          
+          
        </div>
             <div class="row">
               <div class="col-12">
