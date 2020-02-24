@@ -179,6 +179,20 @@ class M_Status_usulan extends CI_Model{
 		ORDER BY kode_usulan ASC");
 	}
 
+	function get_print_riwayat(){
+		$kode_usulan = $this->uri->segment(3);
+
+		return $this->db->query("SELECT kode_pilih,tb_pilihan.kode_usulan,nama_perusahaan,alamat,
+		nama_kecamatan,desa,tb_perusahaan.no_telp_perusahaan,email,tb_pilihan.dana,tb_pilihan.status_perusahaan
+		from tb_pilihan
+		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
+		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan
+		JOIN tb_kecamatan ON tb_kecamatan.kode_kecamatan = tb_perusahaan.kode_kecamatan 
+		JOIN tb_wilayah ON tb_wilayah.kode_wilayah = tb_perusahaan.kode_wilayah 
+		WHERE tb_pilihan.kode_usulan = $kode_usulan ");
+	}
+
+
 	// PUNYANYA CONTROLLER STATUS_USULANKEC
 	function get_kec_detail(){
 		$kode_pilih = $this->uri->segment(3);
