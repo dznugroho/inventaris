@@ -107,9 +107,9 @@
                               <td><?php echo $nama_kegiatan;?></td>
                               <td><?php echo $waktu_mulai;?></td>
                               <td><?php echo $waktu_selesai;?></td>
-                              <td><?php echo number_format($anggaran);?></td>
+                              <td><?php echo 'Rp.'.number_format($anggaran);?></td>
                               <td><?php ?>
-                                  <button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+                                  <button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
                                 <?php ;?> 
 
                               </td>

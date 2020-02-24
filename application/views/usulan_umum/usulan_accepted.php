@@ -45,11 +45,11 @@
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-striped" id="mytable">
-                        <thead>
+                        <thead class="text-center">
                           <tr>
                             <th>No.</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
+                            <th>Bidang</th>
+                            <th>Subbidang</th>
                             <th>Nama kegiatan</th>
                             <th>Anggaran Dibutuhkan</th>
                             <th>Perusahaan Pengambil</th>
@@ -70,9 +70,9 @@
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td width="150"><?php echo 'Rp. '.number_format($row->anggaran);?></td>
                               <td><?php echo $row->nama_perusahaan;?></td>
-                              <td><?php echo number_format($row->dana);?></td>
+                              <td width="150"><?php echo 'Rp. '.number_format($row->dana);?></td>
                               <td><?php
                               if($row->status_perusahaan == '0'){
                                 echo  '<div class="badge badge-warning">On Process</div>';
@@ -83,7 +83,7 @@
                               }
                                 ;?></td>
                               <td>
-                              <a href="<?php echo site_url('status_usulankec/detail_accepted/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
+                              <a href="<?php echo site_url('status_usulan_umum/detail_accepted/'.$row->kode_pilih);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>

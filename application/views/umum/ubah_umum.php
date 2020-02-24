@@ -183,9 +183,10 @@
                     success : function(data){
                         $.each(data, function(i, item){
                             $('[name="nama_depan"]').val(data[i].nama_depan);
-                            $('[name="nama_belakang"]').val(data[i].nama_belakang);
+                            $('[name="username"]').val(data[i].username);
                             $('[name="passord"]').val(data[i].password);
                             $('[name="alamat"]').val(data[i].alamat);
+                            $('[name="no_telpp"]').val(data[i].no_telpp);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
                             $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
                             $('[name="password"]').val(data[i].password);

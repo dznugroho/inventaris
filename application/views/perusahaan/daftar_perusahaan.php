@@ -39,7 +39,7 @@
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('perusahaan/add_new'); ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('perusahaan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -47,14 +47,14 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="mytable">
+                      <table class="table table-striped" width="100%" id="mytable">
                         <thead>
                           <tr>
                             <th>No.</th>
                             <th>Nama Perusahaan</th>
                             <th>Username</th>
                             <th>Akses Sebagai</th>
-                            <th>Alamat</th>
+                            <th width="150">Alamat</th>
                             <th>Kecamatan</th>
                             <th>Desa</th>
                             <th>No. Telp</th>
@@ -75,10 +75,10 @@
                               <td><?php echo $row->nama_perusahaan;?></td>
                               <td><?php echo $row->username;?></td>
                               <td><?php echo $row->nama_akses;?></td>
-                              <td><?php echo $row->alamat;?></td>
+                              <td width="150"><?php echo $row->alamat;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->no_telp;?></td>
+                              <td><?php echo $row->no_telp_perusahaan;?></td>
                               <td><?php echo $row->email;?></td>
                               <td>
                                 <a href="<?php echo site_url('perusahaan/get_edit/'.$row->id);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
@@ -103,7 +103,7 @@
 </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="<?= base_url()?>assets/js/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>

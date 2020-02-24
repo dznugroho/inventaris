@@ -45,10 +45,7 @@
                             <?php
                               foreach ($detail_perusahaan->result() as $row):
                             ?>
-                             <tr>
-                            <th colspan="3">Kode Usulan</th>
-                              <td><?php echo $row->kode_usulan;?></td>
-                          </tr>
+                            
                           <tr>
                             <th colspan="3">Nama Bidang</th>
                               <td><?php echo $row->nama_bidang;?></td>
@@ -57,7 +54,10 @@
                             <th colspan="3">Nama Sub Bidang</th>
                               <td><?php echo $row->nama_sub;?></td>
                           </tr>
-                         
+                         <tr>
+                            <th colspan="3">Tahun Pengusulan</th>
+                              <td><?php echo $row->tahun_pengusulan;?></td>
+                          </tr>
                           <tr>
                             <th colspan="3">Nama Kegiatan</th>
                               <td><?php echo $row->nama_kegiatan;?></td>
@@ -69,20 +69,72 @@
                           <tr>
                             <th colspan="3">Waktu Selesai</th>
                               <td><?php echo $row->waktu_selesai;?></td>
-                              </tr>
+                          </tr>
                           <tr>
                             <th colspan="3">Anggaran Dibutuhkan</th>
-                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo 'Rp. '.number_format($row->anggaran);?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Alamat Kegiatan</th>
+                              <td><?php echo $row->alamat_kegiatan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Kecamatan Kegiatan</th>
+                              <td><?php echo $row->nama_kecamatan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Desa Kegiatan</th>
+                              <td><?php echo $row->desa;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Deskripsi Kegiatan</th>
+                              <td><?php echo $row->deskripsi;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Institusi Pengusul</th>
+                              <td><?php echo $row->nama_institusi;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Alamat Institusi</th>
+                              <td><?php echo $row->alamat_institusi;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Kecamatan Institusi</th>
+                              <td><?php echo $row->nama_k;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Desa Institusi</th>
+                            <td><?php echo $row->nama_d;?></td>
+                          </tr>
+                             <tr>
+                            <th colspan="3">Nama Pengusul</th>
+                              <td><?php echo $row->nama_pengusul;?></td>
                               </tr>
-                        
-                              <tr>
-                            <th colspan="3">Perusahaan Pengambil</th>
+                          <tr>
+                            <th colspan="3">CP Pengusul</th>
+                              <td><?php echo $row->no_telp;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Perusahan Pengambil</th>
                               <td><?php echo $row->nama_perusahaan;?></td>
-                              </tr>
-                              <tr>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Alamat Perusahaan</th>
+                              <td><?php echo $row->alamat;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">No.Telp Perusahaan</th>
+                              <td><?php echo $row->no_telp_perusahaan;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">Email Perusahaan</th>
+                              <td><?php echo $row->email;?></td>
+                          </tr>
+                    
+                          <tr>
                             <th colspan="3">Dana Perusahaan</th>
-                              <td><?php echo number_format($row->dana);?></td>
-                              </tr>
+                              <td><?php echo 'Rp. '.number_format($row->dana);?></td>
+                          </tr>
                           <tr>
                             <th colspan="3">Status</th>
                               <td><?php

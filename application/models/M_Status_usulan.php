@@ -157,7 +157,8 @@ class M_Status_usulan extends CI_Model{
 		JOIN tb_w ON tb_w.kode_w = tb_usulan.kode_w
 		JOIN tb_k ON tb_k.kode_k = tb_usulan.kode_k
 		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
-		WHERE tb_pilihan.status_perusahaan = 1");
+		WHERE tb_pilihan.status_perusahaan = 1
+		ORDER BY kode_usulan ASC");
 	}
 
 	function get_excel_decline(){
@@ -174,7 +175,8 @@ class M_Status_usulan extends CI_Model{
 		JOIN tb_w ON tb_w.kode_w = tb_usulan.kode_w
 		JOIN tb_k ON tb_k.kode_k = tb_usulan.kode_k
 		JOIN tb_perusahaan ON tb_perusahaan.id = tb_pilihan.kode_perusahaan 
-		WHERE tb_pilihan.status_perusahaan = 2");
+		WHERE tb_pilihan.status_perusahaan = 2
+		ORDER BY kode_usulan ASC");
 	}
 
 	// PUNYANYA CONTROLLER STATUS_USULANKEC
@@ -183,7 +185,7 @@ class M_Status_usulan extends CI_Model{
 		return $this->db->query("SELECT tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,
 		waktu_mulai,waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
 		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,tb_usulan.no_telp,tb_usulan.file,
-		tb_perusahaan.nama_perusahaan,tb_perusahaan.alamat,tb_perusahaan.email,dana,status_perusahaan
+		tb_perusahaan.nama_perusahaan,tb_perusahaan.alamat,no_telp_perusahaan,tb_perusahaan.email,dana,status_perusahaan
 		FROM tb_pilihan 
 		JOIN tb_usulan ON tb_usulan.kode_usulan = tb_pilihan.kode_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang 

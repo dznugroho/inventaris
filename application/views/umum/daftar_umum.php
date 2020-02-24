@@ -52,8 +52,7 @@
                           <tr>
                             <th>No.</th>
                             <th>NIK.</th>
-                            <th>Nama depan</th>
-                            <th>Username</th>
+                            <th>Nama</th>
                             <th>Alamat</th> 
                             <th>No Telp</th> 
                             <th>Kecamatan</th>
@@ -76,7 +75,6 @@
                               <td><?php echo $no;?></td>
                               <td><?php echo $row->NIK;?></td>
                               <td><?php echo $row->nama_depan;?></td>
-                              <td><?php echo $row->username;?></td>
                               <td><?php echo $row->alamat;?></td>
                               <td><?php echo $row->no_telpp;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>

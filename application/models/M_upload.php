@@ -33,6 +33,7 @@ class M_upload extends CI_Model{
 		$this->db->join('akses','akses.id_akses = registrasi.level','left');
 		$array = array('level' => 2);
 		$this->db->where($array);
+		$this->db->order_by('NIK','ASC');
 		$query = $this->db->get();
 		return $query;
 	}

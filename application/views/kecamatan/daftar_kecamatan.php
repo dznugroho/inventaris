@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <div id="app">
+  <div kode_k="app">
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
 
@@ -33,13 +33,13 @@
             <h1>Data Admin Kecamatan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Perusahaan</div>
+              <div class="breadcrumb-item">Data Admin Kecamatan</div>
             </div>
           </div>
           <div class="row">
           <div class="card-body" >
           <?php echo $this->session->flashdata('msg');?>
-          <a href="<?php echo site_url('pengguna/add_new'); ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Tambah</a>
+          <a href="<?php echo site_url('kecamatan/add_new'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah</a>
           </div>
           </div>
             <div class="row">
@@ -47,14 +47,14 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="mytable">
+                      <table class="table table-striped" width="100%" id="mytable">
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>ID</th>
-                            <th>Nama Admin</th>
-                            <th>Username/Kecamatan</th>
-                            <th>Password</th>
+                            <th>Nama Kecamatan</th>
+                            <th>Alamat</th>
+                            <th>No.Telp</th>
+                            <th>Email</th>
                             <th>Akses Sebagai</th>
                             <th>Aksi</th>
 
@@ -63,20 +63,20 @@
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($pengguna->result() as $row):
+                              foreach ($kecamatan->result() as $row):
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->id;?></td>
-                              <td><?php echo $row->nama;?></td>
-                              <td><?php echo $row->nama_kecamatan;?></td>
-                              <td><?php echo $row->password;?></td>
+                              <?php $row->kode_k;?>
+                              <td><?php echo $row->nama_k;?></td>
+                              <td><?php echo $row->alamat;?></td>
+                              <td><?php echo $row->no_telp_kec;?></td>
+                              <td><?php echo $row->email_kec;?></td>
                               <td><?php echo $row->nama_akses;?></td>
                               
                               <td>
-                                <a href="<?php echo site_url('pengguna/get_edit/'.$row->id);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
-                                <a href="<?php echo site_url('pengguna/delete/'.$row->id);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
+                                <a href="<?php echo site_url('kecamatan/get_edit/'.$row->kode_k);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>
