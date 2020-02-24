@@ -35,7 +35,7 @@ class Kesehatan extends CI_Controller {
 			$row[] = $no;
 			$row[] = $field->kode_subbidang;
 			$row[] = $field->nama_sub;       
-			$row[] = '<a href="'.base_url().'kesehatan/ubah/'.$field->kode_subbidang.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'kesehatan/delete/'.$field->kode_subbidang.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
+			$row[] = '<a href="'.base_url().'kesehatan/ubah/'.$field->kode_subbidang.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> ';
   
 			$data[] = $row;
 		}

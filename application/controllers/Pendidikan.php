@@ -36,7 +36,7 @@ class Pendidikan extends CI_Controller {
 			$row[] = $no;
 			$row[] = $field->kode_subbidang;
 			$row[] = $field->nama_sub;       
-			$row[] = '<a href="'.base_url().'pendidikan/ubah/'.$field->kode_subbidang.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i> &nbsp;<a href="'.base_url().'pendidikan/delete/'.$field->kode_subbidang.'" class="btn btn-icon btn-danger"><i class="far fa-trash-alt"></a></i> ';
+			$row[] = '<a href="'.base_url().'pendidikan/ubah/'.$field->kode_subbidang.'"class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i>';
   
 			$data[] = $row;
 		}
@@ -56,9 +56,6 @@ class Pendidikan extends CI_Controller {
 		$this->M_Pendidikan->updatePendidikan();
 		redirect('pendidikan');
 	}
-	function delete(){ //delete record method
-		$this->M_Pendidikan->deletePendidikan();
-		redirect('pendidikan');
-	}
+	
 
 }

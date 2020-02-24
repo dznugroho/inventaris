@@ -117,13 +117,6 @@ function updatePendidikan(){
     $result=$this->db->update('pendidikan', $data);
     return $result;
 }
-//delete data method
-function deletePendidikan(){
-    $kode_subbidang=$this->uri->segment(3);
-    $this->db->where('kode_subbidang',$kode_subbidang);
-    $result=$this->db->delete('pendidikan');
-    return $result;
-}
 
 
 }

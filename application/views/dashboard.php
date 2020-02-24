@@ -33,7 +33,7 @@
           </div>
           <h1 class="section-title">Wellcome to Si DOKU</h1>
                   <div class="alert alert-primary">
-                      <div class="alert-title">Founder</div>
+                      <div class="alert-title">Developer</div>
                       Si Doku Corporation.
                     </div>
                   <div class="card-body">
