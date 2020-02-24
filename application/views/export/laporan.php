@@ -70,50 +70,62 @@
           </div>
             </div>
             <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="mytable">
-                        <thead>
-                          <tr>
-                            <th>No.</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
-                            <th>Nama kegiatan</th>
-                            <th>Waktu Mulai</th>
-                            <th>Waktu Selesai</th>
-                            <th>Anggaran</th>
-                            <th>Aksi</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                              $no = 0;
-                              foreach ($laporan->result() as $row):
-                                $no++;
-                            ?>
-                            <tr>
-                              <td><?php echo $no;?></td>
-                              <td><?php echo $row->nama_bidang;?></td>
-                              <td><?php echo $row->nama_sub;?></td>
-                              <td><?php echo $row->nama_kegiatan;?></td>
-                              <td><?php echo $row->waktu_mulai;?></td>
-                              <td><?php echo $row->waktu_selesai;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
-                              
-                              <td>
-                              <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
-                              </td>
-                            </tr>
-                            <?php endforeach;?>
-                          </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+
+      <div class="table-responsive">
+        <table class="table table-striped" id="mytable">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama Bidang</th>
+              <th>Nama sub bidang</th>
+              <th>Nama kegiatan</th>
+              <th>Anggaran Dibutuhkan</th>
+              <th>Perusahaan Pengambil</th>
+              <th>Dana Perusahaan</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+              <?php
+                $no = 0;
+                foreach ($laporan->result() as $row):
+                  $no++;
+              ?>
+              <tr>
+                <td><?php echo $no;?></td>
+                <?php $row->kode_usulan;?>
+                <td><?php echo $row->nama_bidang;?></td>
+                <td><?php echo $row->nama_sub;?></td>
+                <td><?php echo $row->nama_kegiatan;?></td>
+                <td><?php echo number_format($row->anggaran);?></td>
+                <td><?php echo $row->nama_perusahaan;?></td>
+                <td><?php echo number_format($row->dana);?></td>
+                <td><?php
+                if($row->status_perusahaan == '0'){
+                  echo  '<div class="badge badge-warning">On Process</div>';
+                }else if ($row->status_perusahaan == '1'){
+                  echo '<div class="badge badge-success">Accepted</div>';
+                }else{
+                  echo '<div class="badge badge-danger">Declined</div>';
+                }
+                  ;?></td>
+                <td>
+                <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
+                </td>
+              </tr>
+              <?php endforeach;?>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
         </section>
       </div>
     

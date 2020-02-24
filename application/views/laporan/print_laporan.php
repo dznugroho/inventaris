@@ -7,7 +7,7 @@
 <body id="page-top">
  
 <div class="card-header text-center"><strong>
-        Data Usulan<hr>
+        Data Semua Usulan dan Perusahaan yang Diterima<hr>
       </strong></div>
       </div>
         <div class="card-body">
@@ -29,7 +29,10 @@
                     <th>Institusi Pengusul</th>
                     <th rowspan="3">Nama Pengusul</th>
                     <th rowspan="3">No.Telp Pengusul</th>
-                    
+                    <th rowspan="3">Perusahaan Pengambil</th>
+                    <th rowspan="3">Alamat Perusahaan</th>
+                    <th rowspan="3">No. Telp Perusahaan</th>
+                    <th rowspan="3">Dana</th>
                 </tr>
               </thead>
 
@@ -56,7 +59,10 @@
                     <td><?php echo $row->nama_institusi;?></td>
                     <td><?php echo $row->nama_pengusul;?></td>
                     <td><?php echo $row->no_telp;?></td>
-                  
+                    <td><?php echo $row->nama_perusahaan;?></td>
+                    <td><?php echo $row->alamat;?></td>
+                    <td><?php echo $row->no_telp_perusahaan;?></td>
+                    <td><?php echo 'Rp. '.number_format($row->dana);?></td>
   
                   </tr>
                 <?php endforeach; ?>

@@ -14,7 +14,8 @@ class Laporan extends CI_Controller {
 	}
 
 	function index(){
-        $data['laporan'] = $this->m_laporan->get_usulan();
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+		$data['laporan'] = $this->m_laporan->get_accepted();
         $data['keyword'] = $this->m_laporan->get_bidang()->result();
 		$this->load->view('export/laporan',$data);
     }
@@ -30,11 +31,12 @@ class Laporan extends CI_Controller {
 	   }
 	public function print(){
 		
-		$data['laporan'] = $this->m_laporan->get_excel()->result(); 
+		$data['laporan'] = $this->m_laporan->caridata()->result(); 
        
 
         $this->load->view('laporan/print_laporan',$data);
     }
+
 
 	public function excel(){
 
@@ -45,9 +47,9 @@ class Laporan extends CI_Controller {
 
 		// Settingan awal fil excel
 		$excel->getProperties()->setCreator('DAN')
-							   ->setTitle("Data Usulan ")
-							   ->setSubject("Data Usulan ")
-							   ->setDescription("Laporan  Data Usulan ")
+							   ->setTitle("Data Usulan Diterima")
+							   ->setSubject("Data Usulan Diterima")
+							   ->setDescription("Laporan  Data Usulan yang Diterima")
 							   ->setKeywords("Data Usulan");
 
 		// Buat sebuah variabel untuk menampung pengaturan style dari header tabel
@@ -78,7 +80,7 @@ class Laporan extends CI_Controller {
 			)
 		);
 
-		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA USULAN");
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA SEMUA USULAN DAN PERUSAHAAN YANG DITERIMA");
 		$excel->getActiveSheet()->mergeCells('A1:V1');
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE);
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15);
@@ -102,6 +104,11 @@ class Laporan extends CI_Controller {
 		$excel->setActiveSheetIndex(0)->setCellValue('O3', "Desa");
 		$excel->setActiveSheetIndex(0)->setCellValue('P3', "Nama Pengusul");
 		$excel->setActiveSheetIndex(0)->setCellValue('Q3', "No_Telp Pengusul");
+		$excel->setActiveSheetIndex(0)->setCellValue('R3', "Perusahaan Pengambil");
+		$excel->setActiveSheetIndex(0)->setCellValue('S3', "Alamat");
+		$excel->setActiveSheetIndex(0)->setCellValue('T3', "No_Telp Perusahaan");
+		$excel->setActiveSheetIndex(0)->setCellValue('U3', "Email");
+		$excel->setActiveSheetIndex(0)->setCellValue('V3', "Dana");
 
 		// Apply style header yang telah kita buat tadi ke masing-masing kolom header
 		$excel->getActiveSheet()->getStyle('A3')->applyFromArray($style_col);
@@ -120,10 +127,16 @@ class Laporan extends CI_Controller {
 		$excel->getActiveSheet()->getStyle('N3')->applyFromArray($style_col);
 		$excel->getActiveSheet()->getStyle('O3')->applyFromArray($style_col);
 		$excel->getActiveSheet()->getStyle('P3')->applyFromArray($style_col);
-		
+		$excel->getActiveSheet()->getStyle('Q3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('R3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('S3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('T3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('U3')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('V3')->applyFromArray($style_col);
+
 		// Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
 		
-		$laporan = $this->m_laporan->get_excel();
+		$accepted = $this->m_status_usulan->get_excel_accept();
 
 		$no = 1; // Untuk penomoran tabel, di awal set dengan 1
 		$numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
@@ -144,7 +157,12 @@ class Laporan extends CI_Controller {
             $nama_d=$row['nama_d'];
             $nama_pengusul=$row['nama_pengusul'];
             $no_telp=$row['no_telp'];
-           
+            $nama_perusahaan=$row['nama_perusahaan'];
+            $alamat=$row['alamat'];
+            $no_telp_perusahaan=$row['no_telp_perusahaan'];
+            $email=$row['email'];
+            $dana=$row['dana'];
+            $status_perusahaan=$row['status_perusahaan'];
 
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $nama_bidang);
@@ -163,7 +181,12 @@ class Laporan extends CI_Controller {
 			$excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $nama_d);
 			$excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow, $nama_pengusul);
 			$excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $no_telp);
-		
+			$excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $nama_perusahaan);
+			$excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow, $alamat);
+			$excel->setActiveSheetIndex(0)->setCellValue('T'.$numrow, $no_telp_perusahaan);
+			$excel->setActiveSheetIndex(0)->setCellValue('U'.$numrow, $email);
+			$excel->setActiveSheetIndex(0)->setCellValue('V'.$numrow, $dana);
+			
 			// Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
 			$excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
 			$excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
@@ -182,7 +205,12 @@ class Laporan extends CI_Controller {
 			$excel->getActiveSheet()->getStyle('O'.$numrow)->applyFromArray($style_row);
 			$excel->getActiveSheet()->getStyle('P'.$numrow)->applyFromArray($style_row);
 			$excel->getActiveSheet()->getStyle('Q'.$numrow)->applyFromArray($style_row);
-		
+			$excel->getActiveSheet()->getStyle('R'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('S'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('T'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('U'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('V'.$numrow)->applyFromArray($style_row);
+			
 			$no++; // Tambah 1 setiap kali looping
 			$numrow++; // Tambah 1 setiap kali looping
 		}
@@ -205,7 +233,11 @@ class Laporan extends CI_Controller {
 		$excel->getActiveSheet()->getColumnDimension('O')->setWidth(15); // Set width kolom E
 		$excel->getActiveSheet()->getColumnDimension('P')->setWidth(15); // Set width kolom E
 		$excel->getActiveSheet()->getColumnDimension('Q')->setWidth(15); // Set width kolom E
-	
+		$excel->getActiveSheet()->getColumnDimension('R')->setWidth(15); // Set width kolom E
+		$excel->getActiveSheet()->getColumnDimension('S')->setWidth(15); // Set width kolom E
+		$excel->getActiveSheet()->getColumnDimension('T')->setWidth(15); // Set width kolom E
+		$excel->getActiveSheet()->getColumnDimension('U')->setWidth(15); // Set width kolom E
+		$excel->getActiveSheet()->getColumnDimension('V')->setWidth(15); // Set width kolom E
 		
 		// Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
 		$excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
