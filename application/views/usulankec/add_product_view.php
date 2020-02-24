@@ -44,6 +44,9 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
+                  <div class="card-body" >
+                  <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+                  </div>
                   <form role="form" method="POST" action="<?php echo site_url('usulankec/save_usulankec');?>" enctype="multipart/form-data">
                     <div class="card-header">
                       <h4>Tambah Usulan</h4>
@@ -67,27 +70,27 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan">
+                      <input type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan" value="<?php echo set_value('tahun_pengusulan'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan">
+                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan" value="<?php echo set_value('nama_kegiatan'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Waktu Mulai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai">
+                        <input type="text" class="form-control datepicker" name="waktu_mulai" placeholder="Waktu Mulai" value="<?php echo set_value('waktu_mulai'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Waktu Selesai Pelaksanaan</label>
-                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai">
+                        <input type="text" class="form-control datepicker" name="waktu_selesai" placeholder="Waktu Selesai" value="<?php echo set_value('waktu_selesai'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
-                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
+                        <input type="number" class="form-control" name="anggaran" placeholder="Anggaran" value="<?php echo set_value('anggaran'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Lokasi Kegiatan</label>
-                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan" value="<?php echo set_value('alamat_kegiatan'); ?>">  
                       </div>
                       <div class="form-group">
                      
@@ -105,16 +108,16 @@
                       </div>
                       <div class="form-group">
                       <label>Deskripsi Kegiatan</label>
-                      <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"></textarea>
+                      <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"><?php echo set_value('deskripsi'); ?></textarea>
                       </div>
                       <div class="section-title mt-0">Data Institusi </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" value="<?= 'Kecamatan '.$this->session->userdata('ses_nama')?>" readonly>  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_alamat')?>" readonly>
                       </div>
                       <div class="form-group">
                     
@@ -132,19 +135,19 @@
                      </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
-                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul">
+                        <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul" value="<?php echo set_value('nama_pengusul'); ?>">
                       </div>
                       <div class="form-group">
                         <label>CP Pengusul</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                        <input type="number" class="form-control" name="no_telp" placeholder="No. Telp"value="<?php echo set_value('no_telp'); ?>">
                       </div>
                       <div class="form-group">
                         <label>File</label>
-                        <input type="file" class="form-control" name="file">
+                        <input type="file" class="form-control" name="file" required>
                       </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulankec'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>

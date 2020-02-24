@@ -25,7 +25,7 @@ class M_upload extends CI_Model{
 	}
 	
 	function get_umum(){
-		$this->db->select('NIK,nama_depan,nama_belakang,password,alamat,
+		$this->db->select('NIK,nama_depan,username,password,alamat,no_telpp,
 		nama_kecamatan,desa,email,nama_akses,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -33,12 +33,13 @@ class M_upload extends CI_Model{
 		$this->db->join('akses','akses.id_akses = registrasi.level','left');
 		$array = array('level' => 2);
 		$this->db->where($array);
+		$this->db->order_by('NIK','ASC');
 		$query = $this->db->get();
 		return $query;
 	}
 	function get_detail(){
 		$NIK = $this->uri->segment(3);
-		$this->db->select('NIK,nama_depan,nama_belakang,password,alamat,
+		$this->db->select('NIK,nama_depan,username,password,alamat,no_telpp,
 		nama_kecamatan,desa,email,nama_akses,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -51,7 +52,7 @@ class M_upload extends CI_Model{
 	}
 
 	function get_regist(){
-		$this->db->select('NIK,nama_depan,nama_belakang,password,alamat,
+		$this->db->select('NIK,nama_depan,username,password,alamat,no_telpp,
 		nama_kecamatan,desa,email,level,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -63,15 +64,16 @@ class M_upload extends CI_Model{
 	}
 	
 
-	function simpan_upload($NIK,$nama_depan,$nama_belakang,$password,
-    $alamat,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
+	function simpan_upload($NIK,$nama_depan,$username,$password,
+    $alamat,$no_telpp,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
 		$data = array(
 			
             'NIK' 	    		=> $NIK,
             'nama_depan'    	=> $nama_depan,
-            'nama_belakang' 	=> $nama_belakang,
+            'username' 			=> $username,
             'password' 			=> MD5($password),
 			'alamat' 			=> $alamat,
+			'no_telpp' 			=> $no_telpp,
 			'kode_kecamatan' 	=> $kode_kecamatan,
 			'kode_wilayah' 		=> $kode_wilayah,
             'email' 			=> $email,
@@ -88,13 +90,14 @@ class M_upload extends CI_Model{
 		return $query;
 	}
 
-	function update($NIK,$nama_depan,$nama_belakang,$username,$password,
-    $alamat,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
+	function update($NIK,$nama_depan,$username,$password,
+    $alamat,$no_telpp,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
 
         $this->db->set('nama_depan'     , $nama_depan);
-        $this->db->set('nama_belakang'     , $nama_belakang);
+        $this->db->set('username'     , $username);
         $this->db->set('password' 	, MD5($password));        
 		$this->db->set('alamat' 		, $alamat);
+		$this->db->set('no_telpp' 		, $no_telpp);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);
         $this->db->set('kode_wilayah' 	    , $kode_wilayah);
         $this->db->set('email' 	, $email);

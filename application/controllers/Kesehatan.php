@@ -11,7 +11,7 @@ class Kesehatan extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
-  }
+  	}
 
     public function index()
 	{

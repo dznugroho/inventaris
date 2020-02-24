@@ -44,7 +44,10 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('usulankec/update_usulankec');?>"  enctype="multipart/form-data">
+                  <div class="card-body" >
+                  <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+                  </div>
+                  <form role="form" method="POST" action="<?php echo site_url('usulankec/update_usulankec/'.$cekid['kode_usulan']);?>"  enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
                   <div class="form-group">
@@ -65,7 +68,7 @@
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
-                      <input type="text" class="form-control" name="tahun_pengusulan">
+                      <input type="number" class="form-control" name="tahun_pengusulan" placeholder="Tahun Pengusulan">
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
@@ -81,7 +84,7 @@
                       </div>
                       <div class="form-group">
                         <label>Anggaran</label>
-                        <input type="text" class="form-control" name="anggaran" placeholder="Anggaran">
+                        <input type="number" class="form-control" name="anggaran" placeholder="Anggaran">
                       </div>
                       <div class="form-group">
                         <label>Lokasi Kegiatan</label>
@@ -108,16 +111,13 @@
                       <div class="section-title mt-0">Data Institusi </div>
                       <div class="form-group">
                         <label>Institusi Pengusul</label>
-                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi">  
+                        <input type="text" class="form-control" name="nama_institusi" placeholder="Nama Institusi" readonly>  
                       </div>
                       <div class="form-group">
                         <label>Alamat Institusi</label>
-                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan">
+                        <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" readonly>
                       </div>
-                      <div class="form-group">
-                      <label>kecamatan Institusi</label>
-                      <input type="text" class="form-control" name="kode_k" id="kode_k" placeholder="Nama Jalan" value="<?= $this->session->userdata('ses_kodekec')?>">  
-                      </div>
+                      <input type="hidden" class="form-control" name="kode_k" id="kode_k" value="<?= $this->session->userdata('ses_kodekec')?>">  
                       <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_w" id="kode_w">
@@ -134,7 +134,7 @@
                       </div>
                       <div class="form-group">
                         <label>CP Pengusul</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="No. Telp">
+                        <input type="number" class="form-control" name="no_telp" placeholder="No. Telp">
                       </div>
                       <div class="form-group">
                         <label>File</label>
@@ -142,7 +142,7 @@
                       </div>
                     
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('usulan'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>

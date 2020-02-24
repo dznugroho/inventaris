@@ -15,15 +15,15 @@
               </li>
               <?php if($this->session->userdata('akses')=='1'):?>
               <li class="menu-header">Master Data</li>
-              <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'pengguna'
+              <li class="nav-item dropdown <?php echo $this->uri->segment(1) == 'admin' || $this->uri->segment(1) == 'kecamatan'
               || $this->uri->segment(1) == 'perusahaan' || $this->uri->segment(1) == 'upload' || 
               $this->uri->segment(1) == 'register' ?'active': '' ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-address-card"></i> <span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'admin'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('admin'); ?>">Admin Utama</a></li>
-                  <li class="nav-item <?php echo $this->uri->segment(1) == 'pengguna'?'active': '' ?>">
-                  <a class="nav-link" href="<?php echo site_url('pengguna'); ?>">Admin Kecamatan</a></li>
+                  <li class="nav-item <?php echo $this->uri->segment(1) == 'kecamatan'?'active': '' ?>">
+                  <a class="nav-link" href="<?php echo site_url('kecamatan'); ?>">Admin Kecamatan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'perusahaan'?'active': '' ?>">
                   <a class="nav-link" href="<?php echo site_url('perusahaan'); ?>">Perusahaan</a></li>
                   <li class="nav-item <?php echo $this->uri->segment(1) == 'upload'?'active': '' ?>">

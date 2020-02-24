@@ -75,7 +75,7 @@
                               </tr>
                           <tr>
                             <th colspan="3">Anggaran</th>
-                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo 'Rp. '.number_format($row->anggaran);?></td>
                               </tr>
                           <tr>
                             <th colspan="3">Alamat Kegiatan</th>
@@ -126,13 +126,17 @@
                               <td><?php echo $row->alamat;?></td>
                           </tr>
                           <tr>
+                            <th colspan="3">No. Telp Perusahaan</th>
+                              <td><?php echo $row->no_telp_perusahaan;?></td>
+                          </tr>
+                          <tr>
                             <th colspan="3">Email Perusahaan</th>
                               <td><?php echo $row->email;?></td>
                           </tr>
                     
                           <tr>
                             <th colspan="3">Dana Perusahaan</th>
-                              <td><?php echo $row->dana;?></td>
+                              <td><?php echo 'Rp. '.number_format($row->dana);?></td>
                           </tr>
                           <tr>
                             <th colspan="3">Status</th>
@@ -156,7 +160,7 @@
                           <?php endforeach;?>
                       </table>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('status_usulankec');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('status_usulan_umum');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

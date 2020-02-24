@@ -48,15 +48,15 @@
                     <div class="card-body">
                       <div class="form-group">
                         <label>NIK</label>
-                        <input type="text" class="form-control" name="NIK" placeholder="Masukkan NIK">
+                        <input type="number" class="form-control" name="NIK" placeholder="Masukkan NIK">
                       </div>
                       <div class="form-group">
                         <label>Nama Depan</label>
                         <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama Depan">
                       </div>
                       <div class="form-group">
-                        <label>Nama Belakang</label>
-                        <input type="text" class="form-control" name="nama_belakang" placeholder="Masukan Nama Belakang">
+                        <label>Username</label>
+                        <input type="text" minlength="6" class="form-control" name="username" placeholder="Masukan Username">
                       </div>
                       
                       <div class="form-group">
@@ -67,6 +67,7 @@
                         <label>Alamat</label>
                         <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
                       </div>
+                      
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
@@ -81,6 +82,10 @@
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
                         </select>
+                      </div>
+                      <div class="form-group">
+                        <label>No. Telp</label>
+                        <input type="text" class="form-control" name="no_telpp" id="no_telpp" placeholder="Masukkan No.telp">  
                       </div>
                       <div class="form-group">
                         <label>Email</label>

@@ -50,20 +50,16 @@
                               <td><?php echo $row->NIK;?></td>
                           </tr>
                           <tr>
-                            <th colspan="3">Nama Depan</th>
+                            <th colspan="3">Nama</th>
                               <td><?php echo $row->nama_depan;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Nama Belakang</th>
-                              <td><?php echo $row->nama_belakang;?></td>
-                          </tr>
-                          <tr>
-                            <th colspan="3">Password</th>
-                              <td><?php echo $row->password;?></td>
                           </tr>
                           <tr>
                             <th colspan="3">Alamat</th>
                               <td><?php echo $row->alamat;?></td>
+                          </tr>
+                          <tr>
+                            <th colspan="3">No Telp</th>
+                              <td><?php echo $row->no_telpp;?></td>
                           </tr>
                           <tr>
                             <th colspan="3">Kecamatan</th>

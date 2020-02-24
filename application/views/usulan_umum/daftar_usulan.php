@@ -71,13 +71,12 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="table-responsive">
-                      <table class="table table-striped" id="mytable">
-                        <thead>
+                      <table class="table table-striped" id="mytable" width="100%">
+                        <thead class="text-center">
                           <tr>
                             <th>No.</th>
-                            <th>Kode Usulan</th>
-                            <th>Nama Bidang</th>
-                            <th>Nama sub bidang</th>
+                            <th>Bidang</th>
+                            <th>Subbidang</th>
                             <th>Tahun pengusulan</th>
                             <th>Nama kegiatan</th>
                             <th>Waktu Mulai</th>
@@ -97,14 +96,14 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
+                              <?php $row->kode_usulan;?>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->tahun_pengusulan;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
+                              <td><?php echo 'Rp.'.number_format($row->anggaran);?></td>
                               <td><?php if($row->file==""){
               $fill = $row->file;
               $aksi = site_url('usulan/add_file');
@@ -119,18 +118,18 @@
 HEREDOCS;
             echo $tampil;
                   }else{?>
-                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
                   <?php } ?>
 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
+                              <a href="<?php echo site_url('usulan_umum/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
+                              <a href="<?php echo site_url('usulan_umum/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
+                              <a href="<?php echo site_url('usulan_umum/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>

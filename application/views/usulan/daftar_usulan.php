@@ -61,10 +61,21 @@
                   <a href="<?php echo site_url('usulan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
             </form>
           </div>
-          <div class="form-group col-3"></div>
+          <div class="form-group col-lg-3"></div>      
+          <div class="dropdown d-inline mr-2">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        EXPORT
+                      </button>
+                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 29px, 0px);">
+                        <a class="dropdown-item" href="<?php echo base_url('usulan/excel')?>">Excel</a>
+                        <a class="dropdown-item" href="#">PDF</a>
+                      </div>
+                    </div>
           <div class="form-group col-3">
               <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
           </div>
+          
+          
        </div>
             <div class="row">
               <div class="col-12">
@@ -75,7 +86,6 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                            <th>Kode Usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Tahun pengusulan</th>
@@ -97,7 +107,6 @@
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
-                              <td><?php echo $row->kode_usulan;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->tahun_pengusulan;?></td>
@@ -119,7 +128,7 @@
 HEREDOCS;
 						echo $tampil;
 			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
 			           	<?php } ?>
 
                               </td>
