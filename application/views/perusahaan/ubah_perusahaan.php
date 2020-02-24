@@ -65,16 +65,6 @@
                         <input type="text" class="form-control" name="alamat" placeholder="Alamat">
                       </div>
                       <div class="form-group">
-                        <label>Akses sebagai</label>
-                        <select class="form-control" name="level" id="level">
-                          <option value="1">Admin</option>
-                          <option value="2">Perorangan</option>
-                          <option value="3">Kecamatan</option>
-                          <option value="4">Perusahaan</option>
-                        </select>
-
-
-                      <div class="form-group">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
                           <option value="">No Selected</option>
@@ -88,6 +78,7 @@
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
                         </select>
+                      </div>
                     
                       <div class="form-group">
                         <label>No. Telp</label>
@@ -97,7 +88,14 @@
                         <label>Email</label>
                         <input type="text" class="form-control" name="email" placeholder="Alamat Email">
                       </div>
+                      <div class="form-group">
+                        <label>Akses sebagai</label>
+                        <select class="form-control" name="level" id="level">
+                          <option value="4">Perusahaan</option>
+                        </select>
                     </div>
+                    </div>
+                    
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('perusahaan'); ?>">Submit</button>
                     </div>
@@ -179,12 +177,11 @@
                         $.each(data, function(i, item){
                             $('[name="nama_perusahaan"]').val(data[i].nama_perusahaan);
                             $('[name="username"]').val(data[i].username);
-                            $('[name="password"]').val(data[i].password);
                             $('[name="level"]').val(data[i].level);
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
                             $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
-                            $('[name="no_telp"]').val(data[i].no_telp);
+                            $('[name="no_telp"]').val(data[i].no_telp_perusahaan);
                             $('[name="email"]').val(data[i].email);
 
                             

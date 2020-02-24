@@ -48,7 +48,7 @@ class Upload extends CI_Controller {
 			$username 			= $this->input->post('username',TRUE);
 			$password 	    	= $this->input->post('password',TRUE);
 			$alamat 	    	= $this->input->post('alamat',TRUE);
-			$no_telpp	    	= $this->input->post('no_telp',TRUE);
+			$no_telpp	    	= $this->input->post('no_telpp',TRUE);
 			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);
 			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
 			$email 				= $this->input->post('email',TRUE);
@@ -96,17 +96,18 @@ class Upload extends CI_Controller {
 
 	        $NIK 	    		= $this->input->post('NIK',TRUE);
 			$nama_depan     	= $this->input->post('nama_depan',TRUE);
-			$nama_belakang 		= $this->input->post('nama_belakang',TRUE);
+			$username 		= $this->input->post('username',TRUE);
 			$password 	    	= $this->input->post('password',TRUE);
 			$alamat 	    	= $this->input->post('alamat',TRUE);
+			$no_telpp 	    	= $this->input->post('no_telpp',TRUE);
 			$kode_kecamatan		= $this->input->post('kode_kecamatan',TRUE);
 			$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
 			$email 				= $this->input->post('email',TRUE);
 			$level 				= $this->input->post('level',TRUE);
 	        $image= $data['upload_data']['file_name']; 
 	        
-	        $this->m_upload->update($NIK,$nama_depan,$nama_belakang,$password,
-			$alamat,$kode_kecamatan,$kode_wilayah,$email,$level,$image);
+	        $this->m_upload->update($NIK,$nama_depan,$username,$password,
+			$alamat,$no_telpp,$kode_kecamatan,$kode_wilayah,$email,$level,$image);
 
         }
 		$this->session->set_flashdata('msg','<div class="alert alert-success">umum Updated</div>');

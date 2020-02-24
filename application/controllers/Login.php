@@ -80,7 +80,7 @@ class Login extends CI_Controller{
                         }else{
 
                             $url=base_url('login');
-                            echo $this->session->set_flashdata('msg','username atau Password Salah');
+                            echo $this->session->set_flashdata('msg','Username atau Password Salah');
                             echo "Gagal";
                             redirect($url);
                         }

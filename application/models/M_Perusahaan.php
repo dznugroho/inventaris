@@ -36,7 +36,7 @@ class M_Perusahaan extends CI_Model{
             'alamat' 		  => $alamat,
             'kode_kecamatan'  => $kode_kecamatan,
             'kode_wilayah' 	  => $kode_wilayah,
-			'no_telp' 		  => $no_telp,
+			'no_telp_perusahaan' 		  => $no_telp,
 			'email' 		  => $email,
 		
 		);
@@ -45,7 +45,7 @@ class M_Perusahaan extends CI_Model{
 
 	function get_perusahaan(){
 		$this->db->select('id,username,password,nama_akses,nama_perusahaan,alamat,
-		,nama_kecamatan,desa,no_telp,email');
+		,nama_kecamatan,desa,no_telp_perusahaan,email');
 		$this->db->from('tb_perusahaan');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_perusahaan.kode_kecamatan','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_perusahaan.kode_wilayah','left');
@@ -61,7 +61,6 @@ class M_Perusahaan extends CI_Model{
 
 	function update_perusahaan($id,$username,$password,$level,$nama_perusahaan,
 	$alamat,$kode_kecamatan,$kode_wilayah,$no_telp,$email){
-        $this->db->set('id' 	    , $id);
         $this->db->set('username'     , $username);
         $this->db->set('password' 	, MD5($password));
 		$this->db->set('level' 	    , $level);            
@@ -69,8 +68,9 @@ class M_Perusahaan extends CI_Model{
 		$this->db->set('alamat' 		, $alamat);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);
         $this->db->set('kode_wilayah' 	    , $kode_wilayah);
-        $this->db->set('no_telp' 	    	, $no_telp);
+        $this->db->set('no_telp_perusahaan' 	    	, $no_telp);
         $this->db->set('email' 	, $email);
+        $this->db->where('id' 	, $id);
        
 		$this->db->update('tb_perusahaan');
 	}

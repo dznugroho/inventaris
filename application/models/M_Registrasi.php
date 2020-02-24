@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Registrasi extends CI_Model{
 	
-
-	
-
 	function get_kecamatan(){
 		$query = $this->db->get('tb_kecamatan');
 		return $query;	

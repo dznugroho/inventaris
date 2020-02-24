@@ -35,39 +35,46 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Pengguna</h1>
+         <h1>Kelola Admin Kecamatan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Tambah Kecamatan</div>
+              <div class="breadcrumb-item">Edit Berkas</div>
             </div>
           </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <form role="form" method="POST" action="<?php echo site_url('pengguna/save_pengguna');?>">
-                    <div class="card-header">
-                      <h4>Tambah Perusahaan</h4>
-                    </div>
-                    <div class="card-body">
-                
-  
+                  <form role="form" method="POST" action="<?php echo site_url('kecamatan/update_kecamatan');?>">
+                  <input type="hidden" class="form-control" name="kode_k" id="kode_k" value="<?=$kode_k?>">
+                  <div class="card-body">
                       <div class="form-group">
-                      <label>Nama Admin</label>
-                      <input type="text" class="form-control" name="nama" placeholder="Nama Admin">
-                      </div>
-                      <div class="form-group">
-                        <label>Username / Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                        <label>Kecamatan</label>
+                        <select class="form-control" name="nama_k" id="nama_k">
                           <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
-                            <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
+                            <option value="<?php echo $row->nama_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
                             <?php endforeach;?>
                         </select>
                       </div>
-                      
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" required class="form-control" name="username" data-validate="required" placeholder="Masukkan Username" />
+                      </div>
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="password" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
+                        <input type="text" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
+                      </div>
+                      <div class="form-group">
+                        <label>Alamat</label>
+                        <input type="text" required class="form-control" name="alamat" data-validate="required" placeholder="Masukkan Alamat" />
+                      </div>
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required class="form-control" name="email_kec" data-validate="required" placeholder="Masukkan Email" />
+                      </div>
+                      <div class="form-group">
+                        <label>No.Telepon</label>
+                        <input type="text" required class="form-control" name="no_telp_kec" data-validate="required" placeholder="Masukkan No.telp" />
                       </div>
                       <div class="form-group">
                         <label>Akses sebagai</label>
@@ -75,10 +82,10 @@
                           <option value="3">Kecamatan</option>
                         </select>
                       </div>
+
                       <div class="form-group">
-							
                     <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('pengguna'); ?>">Submit</button>
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('kecamatan'); ?>">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -117,58 +124,38 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
+  
   <script type="text/javascript">
 		$(document).ready(function(){
-
-			$('#kode_bidang').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
+			//call function get data edit
+			      get_data_edit();
+           
+			//load data for edit
+            function get_data_edit(){
+            	var kode_k = $('[name="kode_k"]').val();
+            	$.ajax({
+            		url : "<?php echo site_url('kecamatan/get_data_edit');?>",
                     method : "POST",
-                    data : {id: id},
+                    data :{kode_k :kode_k},
                     async : true,
                     dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
-                        }
-                        $('#kode_subbidang').html(html);
+                    success : function(data){
+                        $.each(data, function(i, item){
+                            $('[name="nama_k"]').val(data[i].nama_k).trigger('change');
+                            $('[name="username"]').val(data[i].username);
+                            $('[name="password"]').val(data[i].password);
+                            $('[name="alamat"]').val(data[i].alamat);
+                            $('[name="email_kec"]').val(data[i].email_kec);
+                            $('[name="no_telp_kec"]').val(data[i].no_telp_kec);
+                            $('[name="level"]').val(data[i].level);
+                           
 
+                            
+                        });
                     }
-                });
-                return false;
-            }); 
-            
-		});
-	</script>
 
-<script type="text/javascript">
-		$(document).ready(function(){
-
-			$('#kode_kecamatan').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('pengguna/get_desa');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_wilayah+'>'+data[i].desa+'</option>';
-                        }
-                        $('#kode_wilayah').html(html);
-
-                    }
-                });
-                return false;
-            }); 
+            	});
+            }
             
 		});
 	</script>

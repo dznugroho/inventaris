@@ -48,8 +48,6 @@
                         <thead>
                           <tr>
                             <th>No.</th>
-                           
-                            <th>Kode Usulan</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
                             <th>Nama kegiatan</th>
@@ -71,14 +69,14 @@
                               <td><?php echo $no;?></td>
                             
                               
-                              <td><?php echo $row->kode_usulan;?></td>
+                              <?php $row->kode_usulan;?>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
-                              <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php echo number_format($row->dana);?></td>
+                              <td><?php echo 'Rp.'.number_format($row->anggaran);?></td>
+                              <td><?php echo 'Rp.'.number_format($row->dana);?></td>
                               <td><?php
                               if($row->status_perusahaan == '0'){
                                 echo  '<div class="badge badge-warning">On Process</div>';

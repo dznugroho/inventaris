@@ -43,7 +43,7 @@ class Perusahaan extends CI_Controller {
 		$alamat    			= $this->input->post('alamat',TRUE);
 		$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
 		$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
-		$no_telp 	    	= $this->input->post('no_telp',TRUE);
+		$no_telp 			= $this->input->post('no_telp',TRUE);
         $email				= $this->input->post('email',TRUE);
              
         $this->m_perusahaan->save_perusahaan($id,$username,$password,$level,$nama_perusahaan,
@@ -82,7 +82,7 @@ class Perusahaan extends CI_Controller {
 		$alamat    			= $this->input->post('alamat',TRUE);
 		$kode_kecamatan 	= $this->input->post('kode_kecamatan',TRUE);
 		$kode_wilayah 	    = $this->input->post('kode_wilayah',TRUE);
-		$no_telp 	    	= $this->input->post('no_telp',TRUE);
+		$no_telp 			= $this->input->post('no_telp',TRUE);
         $email				= $this->input->post('email',TRUE);
         
 		$this->m_perusahaan->update_perusahaan($id,$username,$password,$level,$nama_perusahaan,
