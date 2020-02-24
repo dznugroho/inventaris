@@ -57,7 +57,6 @@
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="kode_bidang" id="kode_bidang">
                         <option value="">Pilih Bidang</option>
-                        <option><?php echo set_value('kode_bidang'); ?></option>
                           <?php foreach($kode_bidang as $row):?>
                           <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
                           <?php endforeach;?>
@@ -67,7 +66,6 @@
                         <label>Sub Bidang Kegiatan</label>
                         <select class="form-control" name="kode_subbidang" id="kode_subbidang">
                           <option value="">Pilih Sub Bidang</option>
-                          <option><?php echo set_value('kode_subbidang'); ?></option>
                         </select>
                       </div>
                     </div>
