@@ -30,53 +30,45 @@
           <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data usulan</h1>
+            <h1>Laporan</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Data usulan</div>
+              <div class="breadcrumb-item">Laporan</div>
             </div>
-          </div>
-          <div class="row">
-          <div class="card-body" >
-          <?php echo $this->session->flashdata('msg');?>
-          </div>
           </div>
           <div class="row"> 
           <div class="form-group col-3">
-            <select class="form-control" name="kode_bidang" id="kode_bidang">
-              <option value="">Pilih Nama Bidang</option>
-              <?php foreach($kode_bidang as $row):?>
+            <form action="<?php echo site_url('laporan/cari'); ?>" method=POST>
+              <select class="form-control" type="text" name="keyword" id="keyword">
+                <option value="">Pilih Nama Bidang</option>
+                <?php foreach($keyword as $row):?>
               <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
               <?php endforeach;?>
-            </select>
-          </div>
-          <div class="form-group col-3">
-            <form action="<?php echo site_url('usulan/cari'); ?>" method=POST>
-              <select class="form-control" type="text" name="keyword" id="keyword">
-                <option value="">Pilih Nama Sub Bidang</option>
               </select>
               </div> 
               <div class="form-group col-3">
                   <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                  <a href="<?php echo site_url('usulan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+                  <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
             </form>
           </div>
-          <div class="form-group col-lg-3"></div>      
-          <div class="dropdown d-inline mr-2">
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        EXPORT
+       </div>
+       <div class="row">
+            <div class="card-body">
+              <a target="_blank" class="btn btn-success" href="<?php echo base_url('laporan/print')?>"><i class="fa fa-print"></i> Print</a>
+            <div class="dropdown d-inline mr-2">
+               <div class="btn-group dropdown">
+                  <button type="button" class="btn btn-primary">
+                  <i class="fa fa-download"></i>
+                  </button>
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export
                       </button>
                       <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 29px, 0px);">
-                        <a class="dropdown-item" href="<?php echo base_url('usulan/excel')?>">Excel</a>
-                        <a class="dropdown-item" href="#">PDF</a>
+                        <a class="dropdown-item" href="<?php echo base_url('laporan/excel')?>">Excel</a>
                       </div>
                     </div>
-          <div class="form-group col-3">
-              <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
+                  </div>
           </div>
-          
-          
-       </div>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -88,58 +80,30 @@
                             <th>No.</th>
                             <th>Nama Bidang</th>
                             <th>Nama sub bidang</th>
-                            <th>Tahun pengusulan</th>
                             <th>Nama kegiatan</th>
                             <th>Waktu Mulai</th>
                             <th>Waktu Selesai</th>
                             <th>Anggaran</th>
-                            <th>File</th>
-                            <th>&nbsp;</th>
                             <th>Aksi</th>
-                            <th>&nbsp;</th>
                           </tr>
                         </thead>
                         <tbody>
                             <?php
                               $no = 0;
-                              foreach ($usulan->result() as $row):
+                              foreach ($laporan->result() as $row):
                                 $no++;
                             ?>
                             <tr>
                               <td><?php echo $no;?></td>
                               <td><?php echo $row->nama_bidang;?></td>
                               <td><?php echo $row->nama_sub;?></td>
-                              <td><?php echo $row->tahun_pengusulan;?></td>
                               <td><?php echo $row->nama_kegiatan;?></td>
                               <td><?php echo $row->waktu_mulai;?></td>
                               <td><?php echo $row->waktu_selesai;?></td>
                               <td><?php echo number_format($row->anggaran);?></td>
-                              <td><?php if($row->file==""){
-							$fill = $row->file;
-							$aksi = site_url('usulan/add_file');
-							$tampil = 
-<<<HEREDOCS
-			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
-                <input type="file" name="file">             
-								<input type="hidden" name="kode_usulan" value="$row->kode_usulan">
-								<br>
-								<button type="submit" class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
-							</form>
-HEREDOCS;
-						echo $tampil;
-			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
-			           	<?php } ?>
-
-                              </td>
+                              
                               <td>
-                              <a href="<?php echo site_url('usulan/detail_usulan/'.$row->kode_usulan);?>" class="btn btn-success"><i class="fas fa-search-plus"></a></i>
-                              </td>
-                              <td>
-                              <a href="<?php echo site_url('usulan/get_edit/'.$row->kode_usulan);?>" class="btn btn-primary"><i class="far fa-edit"></a></i> 
-                              </td>
-                              <td>
-                              <a href="<?php echo site_url('usulan/delete/'.$row->kode_usulan);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i>
+                              <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
                               </td>
                             </tr>
                             <?php endforeach;?>
@@ -179,33 +143,6 @@ HEREDOCS;
   <script type="text/javascript">
 		$(document).ready(function(){
 			$('#mytable').DataTable();
-		});
-	</script>
-  <script type="text/javascript">
-		$(document).ready(function(){
-
-			$('#kode_bidang').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('usulan/get_sub_bidang');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
-                        }
-                        $('#keyword').html(html);
-
-                    }
-                });
-                return false;
-            }); 
-            
 		});
 	</script>
 </body>
