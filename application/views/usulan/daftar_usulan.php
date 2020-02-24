@@ -62,7 +62,6 @@
             </form>
           </div>
           <div class="form-group col-lg-3"></div>      
-          
           <div class="form-group col-3">
               <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
           </div>

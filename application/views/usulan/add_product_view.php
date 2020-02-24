@@ -52,21 +52,23 @@
                       <h4>Tambah Usulan</h4>
                     </div>
                     <div class="card-body">
-                      <div class="form-group">
+                    <div class="row">
+                      <div class="form-group col-6">
                         <label>Bidang Kegiatan</label>
                         <select class="form-control" name="kode_bidang" id="kode_bidang">
-                        <option value="">No Selected</option>
+                        <option value="">Pilih Bidang</option>
                           <?php foreach($kode_bidang as $row):?>
                           <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
                           <?php endforeach;?>
                         </select>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group col-6">
                         <label>Sub Bidang Kegiatan</label>
                         <select class="form-control" name="kode_subbidang" id="kode_subbidang">
-                        <option value="">No Selected</option>
+                          <option value="">Pilih Sub Bidang</option>
                         </select>
                       </div>
+                    </div>
   
                       <div class="form-group">
                       <label>Tahun Pengusulan</label>
@@ -92,7 +94,8 @@
                         <label>Lokasi Kegiatan</label>
                         <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan" value="<?php echo set_value('alamat_kegiatan'); ?>">  
                       </div>
-                      <div class="form-group">
+                      <div class="row">
+                      <div class="form-group col-6">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
                           <option value="">No Selected</option>
@@ -101,12 +104,13 @@
                             <?php endforeach;?>
                         </select>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group col-6">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
                         <option value="">No Selected</option>
                         </select>
                       </div>
+                   </div>
                       <div class="form-group">
                       <label>Deskripsi Kegiatan</label>
                       <textarea class="form-control" name="deskripsi" placeholder="Deskripsi Kegiatan"><?php echo set_value('deskripsi'); ?></textarea>
@@ -120,7 +124,8 @@
                         <label>Alamat Institusi</label>
                         <input type="text" class="form-control" name="alamat_institusi" placeholder="Nama Jalan" value="<?php echo set_value('alamat_institusi'); ?>">
                       </div>
-                      <div class="form-group">
+                      <div class="row">
+                      <div class="form-group col-6">
                         <label>Kecamatan Institusi</label>
                         <select class="form-control" name="kode_k" id="kode_k">
                         <option value="">No Selected</option>
@@ -129,12 +134,13 @@
                           <?php endforeach;?>
                         </select>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group col-6">
                         <label>Desa Institusi</label>
                         <select class="form-control" name="kode_w" id="kode_w">
                         <option value="">No Selected</option>
                         </select>
                       </div>
+                    </div>
                       <div class="form-group">
                         <label>Nama Pengusul</label>
                         <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul" value="<?php echo set_value('nama_pengusul'); ?>">
