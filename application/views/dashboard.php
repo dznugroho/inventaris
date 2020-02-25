@@ -31,10 +31,10 @@
           <div class="section-header">
           <h1>Dashboard</h1>
           </div>
-          <h1 class="section-title">Wellcome to Si DOKU</h1>
+          <h1 class="section-title">Wellcome to MONCER</h1>
                   <div class="alert alert-primary">
                       <div class="alert-title">Developer</div>
-                      Si Doku Corporation.
+                      MONCER Corporation.
                     </div>
                   <div class="card-body">
                     <ul class="card-card-warning">
