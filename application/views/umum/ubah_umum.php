@@ -58,7 +58,7 @@
                       </div>
                       
                       <div class="form-group">
-                        <label>Password</label>
+                      <strong> <label>Password (Silahkan Mengisi Ulang )</label></strong>
                         <input type="text" class="form-control" name="password" placeholder="Password">
                       </div>
                       <div class="form-group">

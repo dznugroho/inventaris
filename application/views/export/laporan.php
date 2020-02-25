@@ -38,12 +38,31 @@
           </div>
           <div class="row"> 
           <div class="form-group col-3">
-            <form action="<?php echo site_url('laporan/print'); ?>" method=POST>
+            <form action="<?php echo site_url('laporan/cari'); ?>" method=POST>
               <select class="form-control" type="text" name="keyword" id="keyword">
                 <option value="">Pilih Nama Bidang</option>
                 <?php foreach($keyword as $row):?>
               <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
               <?php endforeach;?>
+              </select>
+              </div> 
+              <div class="form-group col-3">
+              <select class="form-control" type="text" name="tahun" id="tahun">
+              <option value="">Please Select</option>
+                <?php
+                $thn_skr = 2019;
+                for ($x = $thn_skr; $x <= 2050; $x++) {
+                ?>
+                    <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                <?php
+                }
+                ?>
+              </select>
+              </div> 
+               <div class="form-group col-3">
+              <select class="form-control" type="text" name="pilihan" id="pilihan">
+                <option value="1">Print</option>
+                <option value="2">Excel</option>
               </select>
               </div> 
               <div class="form-group col-3">
@@ -51,23 +70,9 @@
              </form>
           </div>
          </div>
-         <div class="row"> 
-          <div class="form-group col-3">
-            <form action="<?php echo site_url('laporan/excel'); ?>" method=POST>
-              <select class="form-control" type="text" name="keyword" id="keyword">
-                <option value="">Pilih Nama Bidang</option>
-                <?php foreach($keyword as $row):?>
-              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
-              <?php endforeach;?>
-              </select>
-              </div> 
-              <div class="form-group col-3">
-                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-download"></i> Excel</button>
-             </form>
-          </div>
-         </div>
-          </div>
-       </div>
+  
+     </div>
+  </div>
         </section>
       </div>
     
