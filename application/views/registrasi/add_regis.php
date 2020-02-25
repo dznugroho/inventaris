@@ -86,8 +86,7 @@
                   <div class="row">
                     <div class="form-group col-6">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" >
-                          <option value="">No Selected</option>
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" required >
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
                             <?php endforeach;?>
@@ -95,8 +94,8 @@
                       </div>
                       <div class="form-group col-6">
                         <label>Desa</label>
-                        <select class="form-control" name="kode_wilayah" id="kode_wilayah" >
-                        <option value="">No Selected</option>
+                        <select class="form-control" name="kode_wilayah" id="kode_wilayah" required >
+                      
                         </select>
                       </div> 
                       <div class="form-group col-12">

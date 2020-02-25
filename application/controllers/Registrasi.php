@@ -31,7 +31,7 @@ class Registrasi extends CI_Controller {
 		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('NIK', 'NIK', 'required|min_length[16]');
-		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|is_unique[registrasi.username]',
+		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[15]|is_unique[registrasi.username]',
 		array(
 			'required'      => 'You have not provided %s.',
 			'is_unique'     => 'Username Sudah Digunakan.'
@@ -40,6 +40,8 @@ class Registrasi extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('passconf', 'Password Konfirmasi', 'required|matches[password]');
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[registrasi.email]');
+		$this->form_validation->set_rules('kode_kecamatan', 'kode_Kecamatan','required');
+		$this->form_validation->set_rules('kode_wilayah', 'kode_wilayah','required');
 			if (empty($_FILES['file']['name']))
 				{
 					$this->form_validation->set_rules('file', 'Document', 'required');
