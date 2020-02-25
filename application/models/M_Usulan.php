@@ -7,7 +7,9 @@ class M_Usulan extends CI_Model{
 	function caridata(){
 		
 		$c = $this->input->POST ('keyword');
-		$this->db->like('tb_usulan.kode_subbidang', $c);
+		$tahun = $this->input->POST ('tahun');
+		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
+		waktu_selesai,anggaran,file,status_usulan');
 		$this->db->from('tb_usulan');
 			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
@@ -15,6 +17,8 @@ class M_Usulan extends CI_Model{
 			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->where('tb_usulan.kode_subbidang', $c);
+			$this->db->where('tb_usulan.tahun_pengusulan', $tahun);
 		$query = $this->db->get();
 		return $query; 
 	}
@@ -54,6 +58,14 @@ class M_Usulan extends CI_Model{
 		return $query;
 	}
 
+	function add_file($kode_usulan,$file){
+
+        $this->db->set('file' 	, $file);
+	   
+		$this->db->where('kode_usulan' 	, $kode_usulan);
+		$this->db->update('tb_usulan');
+	}
+
 	function save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,
 				$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,
 				$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
@@ -82,6 +94,35 @@ class M_Usulan extends CI_Model{
 		);
 		$this->db->insert('tb_usulan',$data);
 	}
+
+	function save($kode_bidang,$kode_subbidang,$tahun_pengusulan,$nama_kegiatan,
+				$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,$kode_kecamatan,
+				$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
+				$kode_w,$nama_pengusul,$no_telp){
+		$data = array(
+			
+            'kode_bidang' 	    => $kode_bidang,
+			'kode_subbidang'    => $kode_subbidang,
+			'tahun_pengusulan' 	=> $tahun_pengusulan,
+			'nama_kegiatan' 	=> $nama_kegiatan,
+			'waktu_mulai' 	    => $waktu_mulai,
+			'waktu_selesai'		=> $waktu_selesai,
+			'anggaran' 	        => $anggaran,
+			'alamat_kegiatan'   => $alamat_kegiatan,
+			'kode_kecamatan' 	=> $kode_kecamatan,
+			'kode_wilayah' 	    => $kode_wilayah,
+			'deskripsi' 	   	=> $deskripsi,
+			'nama_institusi' 	=> $nama_institusi,
+			'alamat_institusi' 	=> $alamat_institusi,
+			'kode_k'   			=> $kode_k,
+			'kode_w'	    	=> $kode_w,
+			'nama_pengusul'   	=> $nama_pengusul,
+			'no_telp'         	=> $no_telp
+		
+		);
+		$this->db->insert('tb_usulan',$data);
+	}
+
 
 	function get_usulan(){
 		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
@@ -116,6 +157,12 @@ class M_Usulan extends CI_Model{
 	}
 
 	function update_usulan($data,$kode_usulan){
+		$this->db->where('kode_usulan'      , $kode_usulan);
+		$this->db->update('tb_usulan',$data);
+	}
+
+	function update($data,$kode_usulan){
+		
 		$this->db->where('kode_usulan'      , $kode_usulan);
 		$this->db->update('tb_usulan',$data);
 	}

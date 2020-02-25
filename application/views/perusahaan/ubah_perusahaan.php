@@ -177,6 +177,7 @@
                         $.each(data, function(i, item){
                             $('[name="nama_perusahaan"]').val(data[i].nama_perusahaan);
                             $('[name="username"]').val(data[i].username);
+                            $('[name="password"]').val(data[i].password);
                             $('[name="level"]').val(data[i].level);
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');

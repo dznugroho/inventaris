@@ -106,7 +106,7 @@
                               <td><?php echo 'Rp.'.number_format($row->anggaran);?></td>
                               <td><?php if($row->file==""){
               $fill = $row->file;
-              $aksi = site_url('usulan/add_file');
+              $aksi = site_url('usulan_umum/add_file');
               $tampil = 
 <<<HEREDOCS
                       <form action="$aksi" method="post" enctype="multipart/form-data" >
