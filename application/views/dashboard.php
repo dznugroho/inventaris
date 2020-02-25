@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>General Dashboard &mdash; Stisla</title>
+  <title>General Dashboard &mdash; MONCER</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,10 +31,10 @@
           <div class="section-header">
           <h1>Dashboard</h1>
           </div>
-          <h1 class="section-title">Wellcome to Si DOKU</h1>
+          <h1 class="section-title">Wellcome to MONCER</h1>
                   <div class="alert alert-primary">
                       <div class="alert-title">Developer</div>
-                      Si Doku Corporation.
+                      MONCER Corporation.
                     </div>
                   <div class="card-body">
                     <ul class="card-card-warning">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Login &mdash; Stisla</title>
+  <title>Login &mdash; MONCER</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -29,7 +29,7 @@
             <?php echo $this->session->flashdata('msg');?>
             </div>
             </div>
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">SIDOKU</span></h4>
+            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">MONCER</span></h4>
             <form method="post" action="<?= base_url()?>login/auth">
               <div class="form-group">
                 <label for="username">Username</label>
