@@ -59,7 +59,7 @@
                       <li class="media">
                       <img alt="image" src="assets/img/kup1.jpg" class="rounded-circle mr-1">
                         <div class="media-body">
-                          <h5 class="mt-0 mb-2">Indra Noor Rohman</h5>
+                          <h5 class="mt-0 mb-2">Indra Noorrohman</h5>
                           <blockquote>
                       "If There's Anything worse than failure, it's Regret"
                     </blockquote>
