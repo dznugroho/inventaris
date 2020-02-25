@@ -42,21 +42,27 @@
                         <img class="rounded-circle mr-1" src="assets/img/pp1.jpg" alt="Generic ">
                         <div class="media-body">
                           <h5 class="mt-0 mb-1">M.Faiz Fahmi</h5>
-                          <p></p>
+                          <blockquote>
+                      "Everyday Is Sunday"
+                    </blockquote>
                         </div>
                       </li>
                       <li class="media my-4">
                         <img class="rounded-circle mr-2" src="assets/img/dd.jpg" alt="Generic">
                         <div class="media-body">
                           <h5 class="mt-0 mb-1">Dimas Adi Nugroho</h5>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus oringilla. Donec lacinia congue felis in faucibus.</p>
+                          <blockquote>
+                      "The Biggest Risk is Not Taking Any Risk "
+                    </blockquote>
                         </div>
                       </li>
                       <li class="media">
-                      <img alt="image" src="assets/img/adit1.png" class="rounded-circle mr-1">
+                      <img alt="image" src="assets/img/kup1.jpg" class="rounded-circle mr-1">
                         <div class="media-body">
-                          <h5 class="mt-0 mb-1">Indra Noor Rohman</h5>
-                          <p class="mb-0">if there  something worse than failure its regret</p>
+                          <h5 class="mt-0 mb-2">Indra Noor Rohman</h5>
+                          <blockquote>
+                      "People Don’t Care About What You Say They Care About What You Build"
+                    </blockquote>
                         </div>
                       </li>
                     </ul>

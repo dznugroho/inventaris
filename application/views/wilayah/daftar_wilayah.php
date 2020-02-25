@@ -73,7 +73,6 @@
                               <td><?php echo $row->provinsi;?></td>
                               <td>
                                 <a href="<?php echo site_url('wilayah/get_edit/'.$row->kode_wilayah);?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i>
-                                <a href="<?php echo site_url('wilayah/delete/'.$row->kode_wilayah);?>" class="btn btn-icon btn-danger"><i class="fas fa-trash"></a></i>
                               </td>
                             </tr>
                             <?php endforeach;?>
