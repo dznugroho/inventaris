@@ -14,9 +14,7 @@ class Riwayat_pilihan extends CI_Controller {
 
 	function index(){
 		if($this->session->userdata('akses')!='1') redirect('dashboard');
-		$data['riwayat'] = $this->m_status_usulan->get_riwayat();
-		$data['riwayat_perusahaan'] = $this->m_status_usulan->get_riwayat_perusahaan();
-	
+		$data['riwayat'] = $this->m_status_usulan->get_riwayat();	
 		$this->load->view('usulan/riwayat',$data);
 	}
 
@@ -38,7 +36,7 @@ class Riwayat_pilihan extends CI_Controller {
 
     public function print(){
 		
-		$data['riwayat'] = $this->m_status_usulan->get_excel_accept()->result(); 
+		$data['riwayat'] = $this->m_status_usulan->get_detail_riwayat();
 		$data['riwayat_perusahaan'] = $this->m_status_usulan->get_print_riwayat()->result();
         
         $this->load->view('laporan/print_datariwayat',$data);
@@ -86,8 +84,8 @@ class Riwayat_pilihan extends CI_Controller {
 			)
 		);
 
-		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA SEMUA USULAN DAN PERUSAHAAN YANG DITERIMA");
-		$excel->getActiveSheet()->mergeCells('A1:V1');
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA USULAN DAN PERUSAHAAN PENGAMBIL");
+		$excel->getActiveSheet()->mergeCells('A1:Q1');
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE);
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15);
 		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
@@ -110,11 +108,22 @@ class Riwayat_pilihan extends CI_Controller {
 		$excel->setActiveSheetIndex(0)->setCellValue('O3', "Desa");
 		$excel->setActiveSheetIndex(0)->setCellValue('P3', "Nama Pengusul");
 		$excel->setActiveSheetIndex(0)->setCellValue('Q3', "No_Telp Pengusul");
-		$excel->setActiveSheetIndex(0)->setCellValue('R3', "Perusahaan Pengambil");
-		$excel->setActiveSheetIndex(0)->setCellValue('S3', "Alamat");
-		$excel->setActiveSheetIndex(0)->setCellValue('T3', "No_Telp Perusahaan");
-		$excel->setActiveSheetIndex(0)->setCellValue('U3', "Email");
-		$excel->setActiveSheetIndex(0)->setCellValue('V3', "Dana");
+
+		$excel->setActiveSheetIndex(0)->setCellValue('A6', "DATA PERUSAHAAN PENGAMBIL");
+		$excel->getActiveSheet()->mergeCells('A6:I6');
+		$excel->getActiveSheet()->getStyle('A6')->getFont()->setBold(TRUE);
+		$excel->getActiveSheet()->getStyle('A6')->getFont()->setSize(15);
+		$excel->getActiveSheet()->getStyle('A6')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+		$excel->setActiveSheetIndex(0)->setCellValue('A8', "No.");
+		$excel->setActiveSheetIndex(0)->setCellValue('B8', "Nama Perusahaan");
+		$excel->setActiveSheetIndex(0)->setCellValue('C8', "Alamat");
+		$excel->setActiveSheetIndex(0)->setCellValue('D8', "Kecamatan");
+		$excel->setActiveSheetIndex(0)->setCellValue('E8', "Desa");
+		$excel->setActiveSheetIndex(0)->setCellValue('F8', "No. Telepon");
+		$excel->setActiveSheetIndex(0)->setCellValue('G8', "Email");
+		$excel->setActiveSheetIndex(0)->setCellValue('H8', "Dana Perusahaan");
+		$excel->setActiveSheetIndex(0)->setCellValue('I8', "Status Perusahaan");
 
 		// Apply style header yang telah kita buat tadi ke masing-masing kolom header
 		$excel->getActiveSheet()->getStyle('A3')->applyFromArray($style_col);
@@ -134,15 +143,19 @@ class Riwayat_pilihan extends CI_Controller {
 		$excel->getActiveSheet()->getStyle('O3')->applyFromArray($style_col);
 		$excel->getActiveSheet()->getStyle('P3')->applyFromArray($style_col);
 		$excel->getActiveSheet()->getStyle('Q3')->applyFromArray($style_col);
-		$excel->getActiveSheet()->getStyle('R3')->applyFromArray($style_col);
-		$excel->getActiveSheet()->getStyle('S3')->applyFromArray($style_col);
-		$excel->getActiveSheet()->getStyle('T3')->applyFromArray($style_col);
-		$excel->getActiveSheet()->getStyle('U3')->applyFromArray($style_col);
-		$excel->getActiveSheet()->getStyle('V3')->applyFromArray($style_col);
 
+		$excel->getActiveSheet()->getStyle('A8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('B8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('C8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('D8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('E8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('F8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('G8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('H8')->applyFromArray($style_col);
+		$excel->getActiveSheet()->getStyle('I8')->applyFromArray($style_col);
 		// Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
 		
-		$accepted = $this->m_status_usulan->get_excel_accept();
+		$accepted = $this->m_status_usulan->get_detail_riwayat();
 
 		$no = 1; // Untuk penomoran tabel, di awal set dengan 1
 		$numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
@@ -163,12 +176,6 @@ class Riwayat_pilihan extends CI_Controller {
             $nama_d=$row['nama_d'];
             $nama_pengusul=$row['nama_pengusul'];
             $no_telp=$row['no_telp'];
-            $nama_perusahaan=$row['nama_perusahaan'];
-            $alamat=$row['alamat'];
-            $no_telp_perusahaan=$row['no_telp_perusahaan'];
-            $email=$row['email'];
-            $dana=$row['dana'];
-            $status_perusahaan=$row['status_perusahaan'];
 
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $nama_bidang);
@@ -176,7 +183,7 @@ class Riwayat_pilihan extends CI_Controller {
 			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $tahun_pengusulan);
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $waktu_mulai);
 			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $waktu_selesai);
-			$excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $anggaran);
+			$excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, 'Rp.'.$anggaran);
 			$excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $alamat_kegiatan);
 			$excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $nama_kecamatan);
 			$excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $desa);
@@ -187,12 +194,7 @@ class Riwayat_pilihan extends CI_Controller {
 			$excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $nama_d);
 			$excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow, $nama_pengusul);
 			$excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $no_telp);
-			$excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $nama_perusahaan);
-			$excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow, $alamat);
-			$excel->setActiveSheetIndex(0)->setCellValue('T'.$numrow, $no_telp_perusahaan);
-			$excel->setActiveSheetIndex(0)->setCellValue('U'.$numrow, $email);
-			$excel->setActiveSheetIndex(0)->setCellValue('V'.$numrow, $dana);
-			
+
 			// Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
 			$excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
 			$excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
@@ -211,15 +213,57 @@ class Riwayat_pilihan extends CI_Controller {
 			$excel->getActiveSheet()->getStyle('O'.$numrow)->applyFromArray($style_row);
 			$excel->getActiveSheet()->getStyle('P'.$numrow)->applyFromArray($style_row);
 			$excel->getActiveSheet()->getStyle('Q'.$numrow)->applyFromArray($style_row);
-			$excel->getActiveSheet()->getStyle('R'.$numrow)->applyFromArray($style_row);
-			$excel->getActiveSheet()->getStyle('S'.$numrow)->applyFromArray($style_row);
-			$excel->getActiveSheet()->getStyle('T'.$numrow)->applyFromArray($style_row);
-			$excel->getActiveSheet()->getStyle('U'.$numrow)->applyFromArray($style_row);
-			$excel->getActiveSheet()->getStyle('V'.$numrow)->applyFromArray($style_row);
-			
 			$no++; // Tambah 1 setiap kali looping
-			$numrow++; // Tambah 1 setiap kali looping
+			$numrow++;
 		}
+
+			$riwayat_perusahaan = $this->m_status_usulan->get_print_riwayat();
+ 			
+             	$no = 1;
+             	$numrow = 9;
+                foreach ($riwayat_perusahaan->result_array() as $row){
+	                $nama_perusahaan=$row['nama_perusahaan'];
+	                $alamat=$row['alamat'];
+	                $nama_kecamatan=$row['nama_kecamatan'];
+	                $desa=$row['desa'];
+	                $no_telp_perusahaan=$row['no_telp_perusahaan'];
+	                $email=$row['email'];
+	                $dana=$row['dana'];
+	                $status_perusahaan=$row['status_perusahaan'];
+	                
+
+	                 
+                  
+			 // Tambah 1 setiap kali looping
+			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
+			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $nama_perusahaan);
+			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $alamat);
+			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $nama_kecamatan);
+			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $desa);
+			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $no_telp_perusahaan);
+			$excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $email);
+			$excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, 'Rp.'.number_format($dana));
+			if($status_perusahaan == '0'){
+				$excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, 'Diproses');
+                    }else if ($status_perusahaan == '1'){
+				$excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, 'Diterima');
+                    }else{
+				$excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, 'Ditolak');
+
+                };
+			
+			$excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('C'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('D'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('G'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('H'.$numrow)->applyFromArray($style_row);
+			$excel->getActiveSheet()->getStyle('I'.$numrow)->applyFromArray($style_row)->getFont()->setBold(TRUE);
+                $no++;
+                $numrow++;
+}
 
 		// Set width kolom
 		$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
@@ -239,11 +283,6 @@ class Riwayat_pilihan extends CI_Controller {
 		$excel->getActiveSheet()->getColumnDimension('O')->setWidth(15); // Set width kolom E
 		$excel->getActiveSheet()->getColumnDimension('P')->setWidth(15); // Set width kolom E
 		$excel->getActiveSheet()->getColumnDimension('Q')->setWidth(15); // Set width kolom E
-		$excel->getActiveSheet()->getColumnDimension('R')->setWidth(15); // Set width kolom E
-		$excel->getActiveSheet()->getColumnDimension('S')->setWidth(15); // Set width kolom E
-		$excel->getActiveSheet()->getColumnDimension('T')->setWidth(15); // Set width kolom E
-		$excel->getActiveSheet()->getColumnDimension('U')->setWidth(15); // Set width kolom E
-		$excel->getActiveSheet()->getColumnDimension('V')->setWidth(15); // Set width kolom E
 		
 		// Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
 		$excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
@@ -257,7 +296,7 @@ class Riwayat_pilihan extends CI_Controller {
 
 		// Proses file excel
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment; filename="Data perusahaan diterima.xlsx"'); // Set nama file excel nya
+		header('Content-Disposition: attachment; filename="Data Perusahaan Pengambil.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');

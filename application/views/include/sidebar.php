@@ -2,11 +2,11 @@
     <aside id="sidebar-wrapper">
     <div class="sidebar-brand ">
 				<a href="<?php echo site_url('dashboard'); ?>">
-				<img src="http://localhost/inventaris/assets/img/avatar/sidoku.svg" height="60" width="120" alt="">
+        MONCER
 				</a>
 			</div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">SD</a>
+            <a href="index.html">MN</a>
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>

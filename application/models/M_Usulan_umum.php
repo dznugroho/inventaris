@@ -79,6 +79,34 @@ class M_Usulan_umum extends CI_Model{
 		$this->db->insert('tb_usulan',$data);
 	}
 
+	function save($kode_bidang,$kode_subbidang,$tahun_pengusulan,
+				$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
+				$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
+				$kode_w,$nama_pengusul,$no_telp,$NIK){
+		$data = array(
+			
+            'kode_bidang' 	    => $kode_bidang,
+			'kode_subbidang'    => $kode_subbidang,
+			'tahun_pengusulan' 	=> $tahun_pengusulan,
+			'nama_kegiatan' 	=> $nama_kegiatan,
+			'waktu_mulai' 	    => $waktu_mulai,
+			'waktu_selesai'		=> $waktu_selesai,
+			'anggaran' 	        => $anggaran,
+			'alamat_kegiatan'   => $alamat_kegiatan,
+			'kode_kecamatan' 	=> $kode_kecamatan,
+			'kode_wilayah' 	    => $kode_wilayah,
+			'deskripsi' 	   	=> $deskripsi,
+			'nama_institusi' 	=> $nama_institusi,
+			'alamat_institusi' 	=> $alamat_institusi,
+			'kode_k'   			=> $kode_k,
+			'kode_w'	    	=> $kode_w,
+			'nama_pengusul'   	=> $nama_pengusul,
+			'no_telp'         	=> $no_telp,
+			'NIK'				=> $NIK
+		
+		);
+		$this->db->insert('tb_usulan',$data);
+	}
 	function add_file($kode_usulan,$file){
 
         $this->db->set('file' 	, $file);
@@ -156,6 +184,10 @@ class M_Usulan_umum extends CI_Model{
 		$this->db->update('tb_usulan',$data);
 	}
 
+	function update($data,$kode_usulan){
+		$this->db->where('kode_usulan'      , $kode_usulan);
+		$this->db->update('tb_usulan',$data);
+	}
 	//Delete usulan
 	function delete_usulan($kode_usulan){
 		$this->db->delete('tb_usulan', array('kode_usulan' => $kode_usulan));

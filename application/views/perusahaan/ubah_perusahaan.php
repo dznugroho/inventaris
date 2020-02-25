@@ -57,7 +57,7 @@
                         <input type="text" class="form-control" name="username" placeholder="Masukan Username">
                       </div>
                       <div class="form-group">
-                        <label>Password</label>
+                      <strong> <label>Password (Silahkan Mengisi Ulang )</label></strong>
                         <input type="text" class="form-control" name="password" placeholder="password">
                       </div>
                       <div class="form-group">
@@ -177,6 +177,7 @@
                         $.each(data, function(i, item){
                             $('[name="nama_perusahaan"]').val(data[i].nama_perusahaan);
                             $('[name="username"]').val(data[i].username);
+                            $('[name="password"]').val(data[i].password);
                             $('[name="level"]').val(data[i].level);
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');

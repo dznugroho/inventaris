@@ -61,7 +61,7 @@
                         <input type="text" required class="form-control" name="username" data-validate="required" placeholder="Masukkan Username" />
                       </div>
                       <div class="form-group">
-                        <label>Password</label>
+                      <strong> <label>Password (Silahkan Mengisi Ulang )</label></strong>
                         <input type="text" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
                       </div>
                       <div class="form-group">

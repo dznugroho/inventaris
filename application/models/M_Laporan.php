@@ -22,6 +22,7 @@ class M_Laporan extends CI_Model{
     function caridata(){
 		
 		$c = $this->input->POST ('keyword');
+		$th = $this->input->POST ('tahun');
 		$this->db->like('tb_usulan.kode_bidang', $c);
 		$this->db->from('tb_pilihan');
 			$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
@@ -33,6 +34,8 @@ class M_Laporan extends CI_Model{
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
 			$this->db->join('tb_perusahaan','tb_perusahaan.id = tb_pilihan.kode_perusahaan','left');
 			$this->db->where('status_perusahaan',1 );
+			$this->db->where('tb_usulan.kode_bidang',$c);
+			$this->db->where('tb_usulan.tahun_pengusulan',$th);
 		$query = $this->db->get();
 		return $query; 
 	}
@@ -40,7 +43,8 @@ class M_Laporan extends CI_Model{
 	function print(){
 		
 		$c = $this->input->POST ('key');
-		$this->db->like('tb_usulan.kode_bidang', $c);
+		$th = $this->input->POST ('tahun');
+		
 		$this->db->from('tb_pilihan');
 			$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
 			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
@@ -51,6 +55,9 @@ class M_Laporan extends CI_Model{
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
 			$this->db->join('tb_perusahaan','tb_perusahaan.id = tb_pilihan.kode_perusahaan','left');
 			$this->db->where('status_perusahaan',1 );
+			$this->db->where('kode_bidang',$c);
+			$this->db->where('tahun_pengusulan',$th);
+		
 		$query = $this->db->get();
 		return $query; 
 	}
