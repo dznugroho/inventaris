@@ -59,10 +59,11 @@
               <a class="nav-link" href="<?php echo site_url('status_accepted'); ?>"><i class="fas fa-file-import"></i> <span>Usulan Diterima</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'status_declined'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('status_declined'); ?>"><i class="fas fa-file-excel"></i> <span>Usulan Ditolak</span></a></li>
-              <li class="nav-item <?php echo $this->uri->segment(1) == 'laporan'?'active': '' ?>">
-              <a class="nav-link" href="<?php echo site_url('laporan'); ?>"><i class="fas fa-print"></i> <span>Laporan</span></a></li>
               <li class="nav-item <?php echo $this->uri->segment(1) == 'riwayat_pilihan'?'active': '' ?>">
               <a class="nav-link" href="<?php echo site_url('riwayat_pilihan'); ?>"><i class="fas fa-list-alt"></i> <span>Riwayat Pilihan</span></a></li>
+              <li class="nav-item <?php echo $this->uri->segment(1) == 'laporan'?'active': '' ?>">
+              <a class="nav-link" href="<?php echo site_url('laporan'); ?>"><i class="fas fa-print"></i> <span>Laporan</span></a></li>
+              <li class="menu-header">&nbsp;</li>
               <li class="menu-header">&nbsp;</li>
               
               <?php elseif($this->session->userdata('akses')=='2'):?>
