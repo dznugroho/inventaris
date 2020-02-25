@@ -38,10 +38,10 @@
 
               <tbody>
               <?php
-                    $no = 0;
-                foreach ($laporan as $row):
-                    $no++;
-                ?> 
+                $no = 0;
+                foreach ($laporan->result() as $row):
+                  $no++;
+              ?>
                   <tr>
                     <td class="text-center"><?php echo $no;?></td>
                     <td width="150">

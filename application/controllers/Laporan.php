@@ -30,16 +30,14 @@ class Laporan extends CI_Controller {
 		  
 	   }
 	public function print(){
-		
-		$data['laporan'] = $this->m_laporan->caridata()->result(); 
-       
-
+		$data['laporan']=$this->m_laporan->caridata();
+	
         $this->load->view('laporan/print_laporan',$data);
     }
 
 
 	public function excel(){
-
+		$data['laporan']=$this->m_laporan->caridata();
 		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
 		
 		// Panggil class PHPExcel nya
@@ -80,7 +78,7 @@ class Laporan extends CI_Controller {
 			)
 		);
 
-		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA SEMUA USULAN DAN PERUSAHAAN YANG DITERIMA");
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA  USULAN DAN PERUSAHAAN YANG DITERIMA");
 		$excel->getActiveSheet()->mergeCells('A1:V1');
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE);
 		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15);
@@ -136,7 +134,7 @@ class Laporan extends CI_Controller {
 
 		// Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
 		
-		$accepted = $this->m_status_usulan->get_excel_accept();
+		$laporan = $this->m_laporan->caridata();
 
 		$no = 1; // Untuk penomoran tabel, di awal set dengan 1
 		$numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
@@ -251,7 +249,7 @@ class Laporan extends CI_Controller {
 
 		// Proses file excel
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment; filename="Data perusahaan diterima.xlsx"'); // Set nama file excel nya
+		header('Content-Disposition: attachment; filename="Data Usulan diterima Berdasarkan Bidang.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
