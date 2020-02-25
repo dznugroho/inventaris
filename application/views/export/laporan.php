@@ -61,7 +61,7 @@
               </div> 
                <div class="form-group col-3">
               <select class="form-control" type="text" name="pilihan" id="pilihan">
-                <option value="1">Print</option>
+                <option target="_blank" value="1">Print</option>
                 <option value="2">Excel</option>
               </select>
               </div> 
