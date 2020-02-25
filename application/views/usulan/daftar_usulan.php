@@ -55,13 +55,15 @@
               <select class="form-control" type="text" name="keyword" id="keyword">
                 <option value="">Pilih Nama Sub Bidang</option>
               </select>
-              </div> 
+              </div>
+            <div class="form-group col-3">
+              <input type="text" class="form-control" name="tahun" id="tahun" placeholder="Masukkan Tahun Usulan"> 
+            </div>
               <div class="form-group col-3">
                   <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
                   <a href="<?php echo site_url('usulan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
             </form>
-          </div>
-          <div class="form-group col-lg-3"></div>      
+          </div>      
           <div class="form-group col-3">
               <a href="<?php echo site_url('usulan/add_new'); ?>" class="btn btn-icon icon-left btn-primary" ><i class="fas fa-plus"></i> Tambah</a>
           </div>

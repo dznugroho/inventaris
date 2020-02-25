@@ -151,7 +151,7 @@
                       </div>
                       <div class="form-group">
                         <label>File</label> <span class="text-danger mb-1">*file harus PDF</span>
-                        <input type="file" class="form-control" name="file" required>
+                        <input type="file" class="form-control" name="file">
                       </div>
                     </div>
                     <div class="card-footer text-right">

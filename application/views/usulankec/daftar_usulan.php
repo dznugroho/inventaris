@@ -109,7 +109,7 @@
                               <td><?php echo number_format($row->anggaran);?></td>
                               <td><?php if($row->file==""){
 							$fill = $row->file;
-							$aksi = site_url('usulan/add_file');
+							$aksi = site_url('usulankec/add_file');
 							$tampil = 
 <<<HEREDOCS
 			              	<form action="$aksi" method="post" enctype="multipart/form-data" >
@@ -121,7 +121,7 @@
 HEREDOCS;
 						echo $tampil;
 			            }else{?>
-			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
+			              <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
 			           	<?php } ?>
 
                               </td>

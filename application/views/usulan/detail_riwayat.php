@@ -191,7 +191,20 @@
                       </table>
                     </div>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('riwayat_pilihan');?>" class="btn btn-primary">Kembali</a>
+
+                <?php
+                              foreach ($detail_riwayat->result_array() as $row):
+                                $kode_usulan =$row['kode_usulan'];
+                            ?>
+
+                            <?php endforeach;?>
+
+              <a target="_blank" class="btn btn-success" href="<?php echo base_url('riwayat_pilihan/print/'.$kode_usulan);?>"><i class="fa fa-print"></i> Print</a>
+            <a class="btn btn-icon icon-left btn-primary" href="<?php echo base_url('riwayat_pilihan/excel/'.$kode_usulan);?>"><i class="fa fa-download"></i> Excel</a>
+
+                  
+
+                      <a href="<?php echo site_url('riwayat_pilihan');?>" class="btn btn-danger">Kembali</a>
                     </div>
                   </div>
                 </div>
@@ -206,6 +219,7 @@
             $nama_perusahaan=$i['nama_perusahaan'];
 
         ?>
+
         <div class="modal fade" id="modal_edit<?php echo $kode_pilih;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
