@@ -38,7 +38,7 @@
           </div>
           <div class="row"> 
           <div class="form-group col-3">
-            <form action="<?php echo site_url('laporan/cari'); ?>" method=POST>
+            <form action="<?php echo site_url('laporan/print'); ?>" method=POST>
               <select class="form-control" type="text" name="keyword" id="keyword">
                 <option value="">Pilih Nama Bidang</option>
                 <?php foreach($keyword as $row):?>
@@ -47,85 +47,27 @@
               </select>
               </div> 
               <div class="form-group col-3">
-                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                  <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
-            </form>
+                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-print"></i> Print</button>
+             </form>
+          </div>
+         </div>
+         <div class="row"> 
+          <div class="form-group col-3">
+            <form action="<?php echo site_url('laporan/excel'); ?>" method=POST>
+              <select class="form-control" type="text" name="keyword" id="keyword">
+                <option value="">Pilih Nama Bidang</option>
+                <?php foreach($keyword as $row):?>
+              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+              <?php endforeach;?>
+              </select>
+              </div> 
+              <div class="form-group col-3">
+                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-download"></i> Excel</button>
+             </form>
+          </div>
+         </div>
           </div>
        </div>
-       <div class="row">
-            <div class="card-body">
-              <a target="_blank" class="btn btn-success" href="<?php echo base_url('laporan/print')?>"><i class="fa fa-print"></i> Print</a>
-            <div class="dropdown d-inline mr-2">
-               <div class="btn-group dropdown">
-                  <button type="button" class="btn btn-primary">
-                  <i class="fa fa-download"></i>
-                  </button>
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export
-                      </button>
-                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 29px, 0px);">
-                        <a class="dropdown-item" href="<?php echo base_url('laporan/excel')?>">Excel</a>
-                      </div>
-                    </div>
-                  </div>
-          </div>
-            </div>
-            <div class="row">
-
-<div class="col-12">
-  <div class="card">
-    <div class="card-body">
-
-      <div class="table-responsive">
-        <table class="table table-striped" id="mytable">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Nama Bidang</th>
-              <th>Nama sub bidang</th>
-              <th>Nama kegiatan</th>
-              <th>Anggaran Dibutuhkan</th>
-              <th>Perusahaan Pengambil</th>
-              <th>Dana Perusahaan</th>
-              <th>Status</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-              <?php
-                $no = 0;
-                foreach ($laporan->result() as $row):
-                  $no++;
-              ?>
-              <tr>
-                <td><?php echo $no;?></td>
-                <?php $row->kode_usulan;?>
-                <td><?php echo $row->nama_bidang;?></td>
-                <td><?php echo $row->nama_sub;?></td>
-                <td><?php echo $row->nama_kegiatan;?></td>
-                <td><?php echo number_format($row->anggaran);?></td>
-                <td><?php echo $row->nama_perusahaan;?></td>
-                <td><?php echo number_format($row->dana);?></td>
-                <td><?php
-                if($row->status_perusahaan == '0'){
-                  echo  '<div class="badge badge-warning">On Process</div>';
-                }else if ($row->status_perusahaan == '1'){
-                  echo '<div class="badge badge-success">Accepted</div>';
-                }else{
-                  echo '<div class="badge badge-danger">Declined</div>';
-                }
-                  ;?></td>
-                <td>
-                <a href="<?php echo site_url('riwayat_pilihan/detail_riwayat/'.$row->kode_usulan);?>" class="btn btn-sm btn-primary" >Detail</a>
-                </td>
-              </tr>
-              <?php endforeach;?>
-            </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
         </section>
       </div>
     

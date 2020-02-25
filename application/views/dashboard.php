@@ -56,7 +56,7 @@
                       <img alt="image" src="assets/img/adit1.png" class="rounded-circle mr-1">
                         <div class="media-body">
                           <h5 class="mt-0 mb-1">Indra Noor Rohman</h5>
-                          <p class="mb-0">if there  something worse than failure its regret</p>
+                          <p class="mb-0">If there  something worse than failure its regret @indradav_93</p>
                         </div>
                       </li>
                     </ul>
