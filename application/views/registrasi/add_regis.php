@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Register &mdash; <?php echo SITE_NAME .": ". ucfirst($this->uri->segment(1)) ." - ". ucfirst($this->uri->segment(2)) ?></title>
+  <title><?php echo SITE_NAME .": ". ucfirst($this->uri->segment(1)) ." - ". ucfirst($this->uri->segment(2)) ?></title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 <body>
   <div id="app">
     <section class="section">
-      <div class="container mt-5" style="background" >
+      <div class="container mt-5" style="background">
         <div class="row">
           <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="login-brand">
@@ -87,6 +87,7 @@
                     <div class="form-group col-6">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan" required >
+                        <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
                             <?php endforeach;?>
@@ -95,7 +96,7 @@
                       <div class="form-group col-6">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah" required >
-                      
+                        <option value="">No Selected</option>
                         </select>
                       </div> 
                       <div class="form-group col-12">
@@ -113,9 +114,7 @@
                 </form>
             </div>
             </div>
-            <div class="simple-footer">
-              Copyright &copy; Stisla 2018
-            </div>
+            
             
           </div>
         </div>
