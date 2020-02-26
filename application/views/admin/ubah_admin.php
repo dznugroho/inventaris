@@ -56,10 +56,6 @@
                         <input type="text" class="form-control" name="username" placeholder="Username">
                       </div>
                       <div class="form-group">
-                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
-                        <input type="text" class="form-control" name="password" placeholder="Password">
-                      </div>
-                      <div class="form-group">
                         <label>Akses sebagai</label>
                         <select class="form-control" name="level" id="level">
                           <option value="1">Admin</option>
@@ -75,6 +71,25 @@
                 </div>
               </div>
             </div>
+              <div class="col-12">
+                <div class="card">
+                  <form role="form" method="POST" action="<?php echo site_url('admin/update_pass');?>">
+                  <input type="hidden" class="form-control" name="id" id="id" value="<?=$id?>">
+                  <div class="card-body">
+                     
+                      <div class="form-group">
+                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                      </div>
+                      
+                    <div class="card-footer text-right">
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('admin'); ?>">Edit Password</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+           
          </section>
         </div>
     
@@ -127,7 +142,7 @@
                         $.each(data, function(i, item){
                             $('[name="nama"]').val(data[i].nama);
                             $('[name="username"]').val(data[i].username);
-                            $('[name="password"]').val(data[i].password);
+                            
                             $('[name="level"]').val(data[i].level);
                             
                         });

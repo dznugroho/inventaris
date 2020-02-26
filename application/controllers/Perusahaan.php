@@ -76,7 +76,6 @@ class Perusahaan extends CI_Controller {
 	function update_perusahaan(){
 		$id 				= $this->input->post('id',TRUE);
 		$username	    	= $this->input->post('username',TRUE);
-		$password	   	 	= $this->input->post('password',TRUE);
 		$level	  		    = $this->input->post('level',TRUE);
 		$nama_perusahaan 	= $this->input->post('nama_perusahaan',TRUE);
 		$alamat    			= $this->input->post('alamat',TRUE);
@@ -85,12 +84,18 @@ class Perusahaan extends CI_Controller {
 		$no_telp 			= $this->input->post('no_telp',TRUE);
         $email				= $this->input->post('email',TRUE);
         
-		$this->m_perusahaan->update_perusahaan($id,$username,$password,$level,$nama_perusahaan,
+		$this->m_perusahaan->update_perusahaan($id,$username,$level,$nama_perusahaan,
 		$alamat,$kode_kecamatan,$kode_wilayah,$no_telp,$email);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Updated</div>');
 		redirect('perusahaan');
 	}
-
+	function update_pass(){
+		$id 				= $this->input->post('id',TRUE);
+		$password	   	 	= $this->input->post('password',TRUE);
+		$this->m_perusahaan->changepass($id,$password);
+		$this->session->set_flashdata('msg','<div class="alert alert-success">password Updated</div>');
+		redirect('perusahaan');
+	}
 	//Delete usulan from Database
 	function delete(){
 		$id = $this->uri->segment(3);

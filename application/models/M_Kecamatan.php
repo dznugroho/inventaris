@@ -42,15 +42,19 @@ class M_Kecamatan extends CI_Model{
 		return $query;
 	}
 
-	function update_kecamatan($kode_k,$nama_k,$username,$password,$alamat,$email_kec,$no_telp_kec,$level){
+	function update_kecamatan($kode_k,$nama_k,$username,$alamat,$email_kec,$no_telp_kec,$level){
 
 		$this->db->set('nama_k' 		, $nama_k);
         $this->db->set('username'		,$username);
-        $this->db->set('password'		, MD5($password));
         $this->db->set('alamat'			,$alamat);
         $this->db->set('email_kec'		,$email_kec);
         $this->db->set('no_telp_kec'	,$no_telp_kec);
 		$this->db->set('level' 	    	, $level);
+		$this->db->where('kode_k' 	    , $kode_k);            
+		$this->db->update('tb_k');
+	}
+	function changepass($kode_k,$password){
+        $this->db->set('password'		, MD5($password));
 		$this->db->where('kode_k' 	    , $kode_k);            
 		$this->db->update('tb_k');
 	}

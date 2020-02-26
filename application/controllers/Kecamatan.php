@@ -75,7 +75,6 @@ class Kecamatan extends CI_Controller {
 		$kode_k 			= $this->input->post('kode_k',TRUE);
 		$nama_k				= $this->input->post('nama_k',TRUE);
 		$username	    	= $this->input->post('username',TRUE);
-		$password	   	 	= $this->input->post('password',TRUE);
 		$alamat	   	 		= $this->input->post('alamat',TRUE);
 		$email_kec	   	 	= $this->input->post('email_kec',TRUE);
 		$no_telp_kec	   	= $this->input->post('no_telp_kec',TRUE);
@@ -83,6 +82,14 @@ class Kecamatan extends CI_Controller {
         
 		$this->m_kecamatan->update_kecamatan($kode_k,$nama_k,$username,$password,$alamat,$email_kec,
         	$no_telp_kec,$level);
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Kecamatan Updated</div>');
+		redirect('kecamatan');
+	}
+	function update_pass(){
+
+		$kode_k 			= $this->input->post('kode_k',TRUE);
+		$password	   	 	= $this->input->post('password',TRUE);       
+		$this->m_kecamatan->changepass($kode_k,$password);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Kecamatan Updated</div>');
 		redirect('kecamatan');
 	}

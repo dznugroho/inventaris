@@ -63,11 +63,19 @@ class Admin extends CI_Controller {
 		$id 	    		= $this->input->post('id',TRUE);
 		$nama 	    = $this->input->post('nama',TRUE);
 		$username     = $this->input->post('username',TRUE);
-        $password 	= $this->input->post('password',TRUE);
+        
 		$level 	    = $this->input->post('level',TRUE);
         
 		$this->m_admin->update_admin($id,$nama,$username,$password,$level);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">admin Updated</div>');
+		redirect('admin');
+	}
+	function update_pass(){
+		$id 	    = $this->input->post('id',TRUE);
+        $password 	= $this->input->post('password',TRUE);
+        
+		$this->m_admin->changepass($id,$password);
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Password Updated</div>');
 		redirect('admin');
 	}
 

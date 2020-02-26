@@ -55,7 +55,7 @@
                             <th>Kecamatan</th>
                             <th>Kabupaten</th>
                             <th>Provinsi</th>
-                            <th>Aksi</th>
+                           
                           </tr>
                         </thead>
                         <tbody>
@@ -71,9 +71,7 @@
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->kabupaten;?></td>
                               <td><?php echo $row->provinsi;?></td>
-                              <td>
-                                <a href="<?php echo site_url('wilayah/get_edit/'.$row->kode_wilayah);?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></a></i>
-                              </td>
+
                             </tr>
                             <?php endforeach;?>
                           </tbody>

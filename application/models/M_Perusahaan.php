@@ -59,19 +59,23 @@ class M_Perusahaan extends CI_Model{
 		return $query;
 	}
 
-	function update_perusahaan($id,$username,$password,$level,$nama_perusahaan,
+	function update_perusahaan($id,$username,$level,$nama_perusahaan,
 	$alamat,$kode_kecamatan,$kode_wilayah,$no_telp,$email){
         $this->db->set('username'     , $username);
-        $this->db->set('password' 	, MD5($password));
 		$this->db->set('level' 	    , $level);            
 		$this->db->set('nama_perusahaan' , $nama_perusahaan);
 		$this->db->set('alamat' 		, $alamat);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);
         $this->db->set('kode_wilayah' 	    , $kode_wilayah);
-        $this->db->set('no_telp_perusahaan' 	    	, $no_telp);
+        $this->db->set('no_telp_perusahaan' , $no_telp);
         $this->db->set('email' 	, $email);
         $this->db->where('id' 	, $id);
        
+		$this->db->update('tb_perusahaan');
+	}
+	function changepass($id,$password){
+        $this->db->set('password' 	, MD5($password));
+        $this->db->where('id' 	, $id);
 		$this->db->update('tb_perusahaan');
 	}
 

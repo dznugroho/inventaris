@@ -61,10 +61,6 @@
                         <input type="text" required class="form-control" name="username" data-validate="required" placeholder="Masukkan Username" />
                       </div>
                       <div class="form-group">
-                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
-                        <input type="text" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
-                      </div>
-                      <div class="form-group">
                         <label>Alamat</label>
                         <input type="text" required class="form-control" name="alamat" data-validate="required" placeholder="Masukkan Alamat" />
                       </div>
@@ -86,6 +82,24 @@
                       <div class="form-group">
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('kecamatan'); ?>">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <form role="form" method="POST" action="<?php echo site_url('kecamatan/update_pass');?>">
+                  <input type="hidden" class="form-control" name="kode_k" id="kode_k" value="<?=$kode_k?>">
+                  <div class="card-body">
+                      <div class="form-group">
+                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
+                        <input type="text" required class="form-control" name="password" data-validate="required" placeholder="Masukkan Password" />
+                      </div>
+                      <div class="form-group">
+                    <div class="card-footer text-right">
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('kecamatan'); ?>">Edit Password</button>
                     </div>
                   </form>
                 </div>
@@ -143,7 +157,6 @@
                         $.each(data, function(i, item){
                             $('[name="nama_k"]').val(data[i].nama_k).trigger('change');
                             $('[name="username"]').val(data[i].username);
-                            $('[name="password"]').val(data[i].password);
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="email_kec"]').val(data[i].email_kec);
                             $('[name="no_telp_kec"]').val(data[i].no_telp_kec);

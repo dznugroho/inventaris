@@ -57,10 +57,6 @@
                         <input type="text" class="form-control" name="username" placeholder="Masukan Username">
                       </div>
                       <div class="form-group">
-                      <strong> <label>Password (Silahkan Mengisi Ulang )</label></strong>
-                        <input type="text" class="form-control" name="password" placeholder="password">
-                      </div>
-                      <div class="form-group">
                         <label>Alamat</label>
                         <input type="text" class="form-control" name="alamat" placeholder="Alamat">
                       </div>
@@ -95,7 +91,6 @@
                         </select>
                     </div>
                     </div>
-                    
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary" href="<?php echo site_url('perusahaan'); ?>">Submit</button>
                     </div>
@@ -103,6 +98,24 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <form role="form" method="POST" action="<?php echo site_url('perusahaan/update_pass');?>" enctype="multipart/form-data">
+                  <input type="hidden" class="form-control" name="id" id="id" value="<?=$id?>">
+                    <div class="card-body">
+                      <div class="form-group ">
+                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                      </div>
+                      <div class="card-footer text-right">
+                      <button type="submit" class="btn btn-primary" href="<?php echo site_url('perusahaan'); ?>">Ganti Password</button>
+                      </div>
+    
+                  </form>
+                  </div>
+                </div>
+              </div>
          </section>
         </div>
     
@@ -177,7 +190,7 @@
                         $.each(data, function(i, item){
                             $('[name="nama_perusahaan"]').val(data[i].nama_perusahaan);
                             $('[name="username"]').val(data[i].username);
-                            $('[name="password"]').val(data[i].password);
+                          
                             $('[name="level"]').val(data[i].level);
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');

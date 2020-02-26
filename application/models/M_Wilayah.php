@@ -40,11 +40,11 @@ class M_Wilayah extends CI_Model{
 		return $query;
     }
 
-	function update_wilayah($kode_wilayah,$desa,$kabupaten,$provinsi,$kode_kecamatan_wilayah){
+	function update_wilayah($kode_wilayah,$desa,$kabupaten,$provinsi,$kode_kecamatan){
         $this->db->set('desa' 	    			, $desa);
         $this->db->set('kabupaten'     			, $kabupaten);
         $this->db->set('provinsi' 				, $provinsi);
-		$this->db->set('kode_lecamatan_wilayah'	, $kode_kecamatan_wilayah);
+		$this->db->set('kode_kecamatan_wilayah'	, $kode_kecamatan);
 		$this->db->where('kode_wilayah'      	, $kode_wilayah);
 		$this->db->update('tb_wilayah');
 	}
