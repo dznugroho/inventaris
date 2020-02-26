@@ -31,7 +31,7 @@ class M_Admin extends CI_Model{
 		return $query;
 	}
 
-	function update_admin($id,$nama,$username,$password,$level){
+	function update_admin($id,$nama,$username,$level){
         $this->db->set('nama' 	    		, $nama);
         $this->db->set('username'     		, $username);
 		$this->db->set('level' 	    		, $level);

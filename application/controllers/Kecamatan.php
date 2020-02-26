@@ -81,7 +81,7 @@ class Kecamatan extends CI_Controller {
 		$no_telp_kec	   	= $this->input->post('no_telp_kec',TRUE);
 		$level	  		    = $this->input->post('level',TRUE);
         
-		$this->m_kecamatan->update_kecamatan($kode_k,$nama_k,$username,$password,$alamat,$email_kec,
+		$this->m_kecamatan->update_kecamatan($kode_k,$nama_k,$username,$alamat,$email_kec,
         	$no_telp_kec,$level);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Kecamatan Updated</div>');
 		redirect('kecamatan');

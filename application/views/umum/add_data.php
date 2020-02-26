@@ -41,6 +41,11 @@
               <div class="breadcrumb-item">Tambah User Umum</div>
             </div>
           </div>
+           <div class="row">
+          <div class="card-body" >
+          <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
+          </div>
+          </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -48,30 +53,30 @@
                     <div class="card-body">
                       <div class="form-group">
                         <label>NIK</label>
-                        <input type="number" class="form-control" name="NIK" placeholder="Masukkan NIK">
+                        <input type="number" class="form-control" name="NIK" placeholder="Masukkan NIK" value="<?php echo set_value('NIK'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Nama Depan</label>
-                        <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama Depan">
+                        <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama Depan" value="<?php echo set_value('nama_depan'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Username</label>
-                        <input type="text" minlength="6" class="form-control" name="username" placeholder="Masukan Username">
+                        <input type="text" minlength="6" class="form-control" name="username" placeholder="Masukan Username" value="<?php echo set_value('username'); ?>">
                       </div>
                       
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo set_value('password'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan" value="<?php echo set_value('alamat'); ?>">  
                       </div>
                       
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
-                          <option value="">No Selected</option>
+                          <option  disabled selected>No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
                             <?php endforeach;?>
@@ -80,16 +85,16 @@
                       <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
-                        <option value="">No Selected</option>
+                        <option  disabled selected>No Selected</option>
                         </select>
                       </div>
                       <div class="form-group">
                         <label>No. Telp</label>
-                        <input type="text" class="form-control" name="no_telpp" id="no_telpp" placeholder="Masukkan No.telp">  
+                        <input type="text" class="form-control" name="no_telpp" id="no_telpp" placeholder="Masukkan No.telp" value="<?php echo set_value('no_telpp'); ?>">  
                       </div>
                       <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Akses Sebagai</label>

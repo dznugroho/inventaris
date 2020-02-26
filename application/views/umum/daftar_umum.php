@@ -84,13 +84,13 @@
                               <img src='".base_url("images/".$row->foto)."' width='100' height='70'>
                              </td>" ;?>
                               <td>
-                                <a href="<?php echo site_url('upload/get_detail/'.$row->NIK);?>" class="btn btn-success" ><i class="fas fa-search-plus"></a></i>  
+                                <a href="<?php echo site_url('upload/get_detail/'.$row->id_umum);?>" class="btn btn-success" ><i class="fas fa-search-plus"></a></i>  
                               </td>
                               <td>
-                                <a href="<?php echo site_url('upload/get_edit/'.$row->NIK);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
+                                <a href="<?php echo site_url('upload/get_edit/'.$row->id_umum);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
                               </td>
                               <td>
-                              <a href="<?php echo site_url('upload/delete/'.$row->NIK);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
+                              <a href="<?php echo site_url('upload/delete/'.$row->id_umum);?>" class="btn btn-danger"><i class="fas fa-trash"></a></i> 
                               </td>
                             </tr>
                             <?php endforeach;?>
