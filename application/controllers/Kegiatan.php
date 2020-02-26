@@ -8,11 +8,11 @@ class Kegiatan extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='4') redirect('dashboard');
+		
 	}
 
 	function index(){
-
-		if($this->session->userdata('akses')!='4') redirect('dashboard');
 		
 		$data['usulan'] = $this->m_pilihanps->get_pilihan();
 	

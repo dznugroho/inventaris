@@ -11,10 +11,10 @@ class Laporan extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['laporan'] = $this->m_laporan->get_accepted();
         $data['keyword'] = $this->m_laporan->get_bidang()->result();
 		$this->load->view('export/laporan',$data);
@@ -241,7 +241,7 @@ class Laporan extends CI_Controller {
 			$excel->setActiveSheetIndex(0);
 	
 			// Proses file excel
-			header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+			header('Content-Type: application/vnd.ms-excel');
 			header('Content-Disposition: attachment; filename="Data Usulan diterima Berdasarkan Bidang.xlsx"'); // Set nama file excel nya
 			header('Cache-Control: max-age=0');
 	

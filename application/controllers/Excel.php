@@ -6,6 +6,13 @@ class Siswa extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->model('SiswaModel');
+		$this->load->library('session');
+		if($this->session->userdata('masuk') != TRUE){
+			$url=base_url('login');
+			redirect($url);
+		}
+		
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 	}
 	
 	public function index(){

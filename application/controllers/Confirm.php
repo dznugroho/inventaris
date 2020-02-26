@@ -10,11 +10,12 @@ class Confirm extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+		
 	}
 
 	function index(){
 		
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['usulan'] = $this->m_confirm->get_pilihan();
 	
 		$this->load->view('usulan/confirm_usulan',$data);

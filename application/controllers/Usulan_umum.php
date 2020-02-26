@@ -11,10 +11,10 @@ class Usulan_umum extends CI_Controller {
 			redirect($url);
 		}
 		
+		if($this->session->userdata('akses')!='2') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='2') redirect('dashboard');
 		$data['usulan'] = $this->m_usulan_umum->get_usulan();
 		$data['kode_bidang'] = $this->m_usulan_umum->get_bidang()->result();
 		$this->load->view('usulan_umum/daftar_usulan',$data);

@@ -11,11 +11,11 @@ class Pilihan_PS extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='4') redirect('dashboard');
 	}
 
 	function index(){
 
-		if($this->session->userdata('akses')!='4') redirect('dashboard');
 
 		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
 		$data['usulan'] = $this->m_pilihanps->get_usulan();

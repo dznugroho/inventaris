@@ -10,10 +10,10 @@ class Status_usulan_umum extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='2') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='2') redirect('dashboard');
 		$data['accepted'] = $this->m_status_usulan->get_umum_accepted();
 	
 		$this->load->view('usulan_umum/usulan_accepted',$data);

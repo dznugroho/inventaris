@@ -10,6 +10,8 @@ class Admin extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+		
 	}
 
 	function index(){

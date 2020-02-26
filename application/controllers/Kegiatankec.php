@@ -10,11 +10,12 @@ class Kegiatankec extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='3') redirect('dashboard');
+		
 	}
 
 	function index(){
 		
-		if($this->session->userdata('akses')!='3') redirect('dashboard');
 
 		$data['usulan'] = $this->m_pilihanps->get_pilihankec();
 	

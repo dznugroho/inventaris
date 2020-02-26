@@ -10,10 +10,10 @@ class Status_usulankec extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='3') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='3') redirect('dashboard');
 		$data['accepted'] = $this->m_status_usulan->get_kec_accepted();
 	
 		$this->load->view('usulankec/usulan_accepted',$data);

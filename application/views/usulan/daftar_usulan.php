@@ -57,7 +57,7 @@
               </select>
               </div>
             <div class="form-group col-3">
-              <input type="text" class="form-control" name="tahun" id="tahun" placeholder="Masukkan Tahun Usulan"> 
+              <input type="text" class="form-control" name="tahun" id="tahun" placeholder="Masukkan Tahun Usulan" required> 
             </div>
               <div class="form-group col-3">
                   <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>

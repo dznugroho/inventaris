@@ -10,8 +10,7 @@ class Usulan extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
-		
-		
+				
 	}
 
 	function index(){
@@ -22,6 +21,7 @@ class Usulan extends CI_Controller {
 		
 	}
 	function cari() {
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['usulan']=$this->m_usulan->caridata();
 		//jika data yang dicari tidak ada maka akan keluar informasi 
 		//bahwa data yang dicari tidak ada
@@ -35,6 +35,7 @@ class Usulan extends CI_Controller {
 	// add new usulan
 	function add_new(){
 	
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['kode_bidang'] = $this->m_usulan->get_bidang()->result();
 		$data['kode_kecamatan'] = $this->m_usulan->get_kecamatan()->result();
 		$data['kode_k'] = $this->m_usulan->get_k()->result();

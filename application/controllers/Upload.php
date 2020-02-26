@@ -10,10 +10,10 @@ class Upload extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['umum'] = $this->m_upload->get_umum();
 		$this->load->view('umum/daftar_umum',$data);
 	}

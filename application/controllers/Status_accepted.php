@@ -11,10 +11,10 @@ class Status_accepted extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['accepted'] = $this->m_status_usulan->get_accepted();
 	
 		$this->load->view('usulan/usulan_accepted',$data);
@@ -245,7 +245,7 @@ class Status_accepted extends CI_Controller {
 		$excel->setActiveSheetIndex(0);
 
 		// Proses file excel
-		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment; filename="Data perusahaan diterima.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 

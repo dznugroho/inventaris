@@ -10,10 +10,10 @@ class Status_declined extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['declined'] = $this->m_status_usulan->get_declined();
 	
 		$this->load->view('usulan/usulan_declined',$data);
@@ -245,7 +245,7 @@ class Status_declined extends CI_Controller {
 		$excel->setActiveSheetIndex(0);
 
 		// Proses file excel
-		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Type: application/vnd.ms-excel');
 		header('Content-Disposition: attachment; filename="Data perusahaan ditolak.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 
