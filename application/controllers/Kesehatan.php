@@ -11,11 +11,11 @@ class Kesehatan extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
   	}
 
     public function index()
 	{
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 
 		$this->load->view('bidang/kesehatan');
     }

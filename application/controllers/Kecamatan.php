@@ -10,10 +10,11 @@ class Kecamatan extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
+		
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['kecamatan'] = $this->m_kecamatan->get_datakecamatan();
 		$this->load->view('kecamatan/daftar_kecamatan',$data);
 	}

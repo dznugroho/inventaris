@@ -57,7 +57,7 @@
               </select>
               </div>
             <div class="form-group col-3">
-              <input type="text" class="form-control" name="tahun" id="tahun" placeholder="Masukkan Tahun Usulan"> 
+              <input type="text" class="form-control" name="tahun" id="tahun" placeholder="Masukkan Tahun Usulan" required> 
             </div> 
               <div class="form-group col-3">
                   <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
@@ -111,9 +111,12 @@
                               <td><?php echo $waktu_mulai;?></td>
                               <td><?php echo $waktu_selesai;?></td>
                               <td><?php echo 'Rp.'.number_format($anggaran);?></td>
-                              <td><?php ?>
-                                  <button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
-                                <?php ;?> 
+                              <td><?php if($file==""){
+                                    echo "File Tidak Tersedia";
+                                  
+                  }else{?>
+                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
+                  <?php } ?>
 
                               </td>
                               <td>

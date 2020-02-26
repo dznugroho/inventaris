@@ -10,10 +10,10 @@ class Register extends CI_Controller {
 			$url=base_url('login');
 			redirect($url);
 		}
+		if($this->session->userdata('akses')!='1') redirect('dashboard');
 	}
 
 	function index(){
-		if($this->session->userdata('akses')!='1') redirect('dashboard');
 		$data['register'] = $this->m_upload->get_regist();
 		$this->load->view('umum/confirm_pendaftar',$data);
 	}
