@@ -51,21 +51,27 @@
                         <input type="text" class="form-control" name="kode_wilayah"  placeholder="Kode Wilayah" readonly value="<?=$kode_wilayah?>" >
                       </div>
                       <div class="form-group">
-                        <label>Desa/Kelurahan</label>
-                        <input type="text" class="form-control" name="desa" placeholder="Desa/Kelurahan" >
+                        <label>Provinsi</label>
+                        <input type="text" class="form-control" name="provinsi" placeholder="Provinsi" >
                       </div>
-                      <div class="form-group">
-                        <label>Kecamatan</label>
-                        <input type="text" class="form-control" name="kode_kecamatan" id="kode_kecamatan" placeholder="Kecamatan" >
-                      </div>
-
                       <div class="form-group">
                         <label>Kabupaten</label>
                         <input type="text" class="form-control" name="kabupaten" placeholder="Kabupaten">
                       </div>
                       <div class="form-group">
-                        <label>Provinsi</label>
-                        <input type="text" class="form-control" name="provinsi" placeholder="Provinsi" >
+                        <label>Kecamatan</label>
+                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                          <option value="">No Selected</option>
+                            <?php foreach($kode_kecamatan as $row):?>
+                            <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
+                            <?php endforeach;?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Desa</label>
+                        <select class="form-control" name="desa" id="desa">
+                        <option value="">No Selected</option>
+                        </select>
                       </div>
                     </div>
                     <div class="card-footer text-right">
@@ -73,7 +79,6 @@
                     </div>
                   </form>
                 </div>
-              </div>
             </div>
          </section>
         </div>
@@ -108,7 +113,29 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
   <script src="<?= base_url()?>assets/js/page/modules-sweetalert.js"></script>
+<script type="text/javascript">
+	$('#kode_kecamatan').change(function(){ 
+                var id=$(this).val();
+                $.ajax({
+                    url : "<?php echo site_url('usulan/get_desa');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                        
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            html += '<option value='+data[i].desa+'>'+data[i].desa+'</option>';
+                        }
+                        $('#desa').html(html);
 
+                    }
+                });
+                return false;
+            });  
+</script>
   <script type="text/javascript">
 		$(document).ready(function(){
 			//call function get data edit

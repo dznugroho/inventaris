@@ -113,6 +113,19 @@ class Upload extends CI_Controller {
 		$this->session->set_flashdata('msg','<div class="alert alert-success">umum Updated</div>');
 		redirect('upload');
 	}
+	function change(){
+
+	        $NIK 	    		= $this->input->post('NIK',TRUE);
+			$password 	    	= $this->input->post('password',TRUE);
+		
+	        
+	        $this->m_upload->changepass($NIK,$password);
+
+        
+		$this->session->set_flashdata('msg','<div class="alert alert-success">Password Updated</div>');
+		redirect('upload');
+	}
+
 
 	public function get_detail(){
 		$data['detail_umum'] = $this->m_upload->get_detail();

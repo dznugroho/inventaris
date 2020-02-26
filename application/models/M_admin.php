@@ -34,8 +34,12 @@ class M_Admin extends CI_Model{
 	function update_admin($id,$nama,$username,$password,$level){
         $this->db->set('nama' 	    		, $nama);
         $this->db->set('username'     		, $username);
-        $this->db->set('password' 			, MD5($password));
 		$this->db->set('level' 	    		, $level);
+		$this->db->where('id'				, $id);
+		$this->db->update('tb_user');
+	}
+	function changepass($id,$password){
+        $this->db->set('password' 			, MD5($password));
 		$this->db->where('id'				, $id);
 		$this->db->update('tb_user');
 	}

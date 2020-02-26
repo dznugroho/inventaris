@@ -71,9 +71,9 @@ class Wilayah extends CI_Controller {
 		$desa                   = $this->input->post('desa',TRUE);
         $kabupaten 	            = $this->input->post('kabupaten',TRUE);
 		$provinsi 	            = $this->input->post('provinsi',TRUE);
-		$kode_kecamatan_wilayah = $this->input->post('kode_kecamatan_wilayah',TRUE);
+		$kode_kecamatan = $this->input->post('kode_kecamatan',TRUE);
         
-		$this->m_wilayah->update_wilayah($kode_wilayah,$desa,$kabupaten,$provinsi,$kode_kecamatan_wilayah);
+		$this->m_wilayah->update_wilayah($kode_wilayah,$desa,$kabupaten,$provinsi,$kode_kecamatan);
 		$this->session->set_flashdata('msg','<div class="alert alert-success">Wilayah Updated</div>');
 		redirect('wilayah');
 	}

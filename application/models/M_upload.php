@@ -90,12 +90,11 @@ class M_upload extends CI_Model{
 		return $query;
 	}
 
-	function update($NIK,$nama_depan,$username,$password,
+	function update($NIK,$nama_depan,$username,
     $alamat,$no_telpp,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
 
         $this->db->set('nama_depan'     , $nama_depan);
         $this->db->set('username'     , $username);
-        $this->db->set('password' 	, MD5($password));        
 		$this->db->set('alamat' 		, $alamat);
 		$this->db->set('no_telpp' 		, $no_telpp);
 		$this->db->set('kode_kecamatan'		, $kode_kecamatan);
@@ -103,7 +102,12 @@ class M_upload extends CI_Model{
         $this->db->set('email' 	, $email);
         $this->db->set('level' 	, $level);
         $this->db->set('foto' 	, $image);
-	   
+		$this->db->where('NIK' 	, $NIK);
+		$this->db->update('registrasi');
+	}
+
+	function changepass($NIK,$password){
+		$this->db->set('password' , MD5($password));
 		$this->db->where('NIK' 	, $NIK);
 		$this->db->update('registrasi');
 	}

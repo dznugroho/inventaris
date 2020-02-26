@@ -35,10 +35,10 @@
         <div class="main-content">
          <section class="section">
          <div class="section-header">
-         <h1>Tambah User Umum</h1>
+         <h1>Edit User Umum</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></div>
-              <div class="breadcrumb-item">Tambah User Umum</div>
+              <div class="breadcrumb-item">Edit User Umum</div>
             </div>
           </div>
             <div class="row">
@@ -55,11 +55,6 @@
                       <div class="form-group">
                         <label>Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Masukan Username">
-                      </div>
-                      
-                      <div class="form-group">
-                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
-                        <input type="text" class="form-control" name="password" placeholder="Password">
                       </div>
                       <div class="form-group">
                         <label>Alamat</label>
@@ -98,12 +93,35 @@
                         <label>Foto</label>
                         <input type="file" class="form-control" name="file">
                       </div>
-                      <div class="card-footer text-right">
+                      <div class="row ">
+                      <div class="card-footer text-left">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                      </div>
+                  </div>
                   </form>
+                  </div>
                 </div>
               </div>
+              <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <form role="form" method="POST" action="<?php echo site_url('upload/change');?>" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="NIK" id="NIK" value="<?= $NIK?>">
+                    <div class="card-body">
+                      
+                      <div class="form-group">
+                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                      </div>
+                      <div class="row ">
+                      <div class="card-footer text-left">
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+
+                  </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+              
             </div>
          </section>
         </div>
@@ -184,12 +202,12 @@
                         $.each(data, function(i, item){
                             $('[name="nama_depan"]').val(data[i].nama_depan);
                             $('[name="username"]').val(data[i].username);
-                            $('[name="passord"]').val(data[i].password);
+                           
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="no_telpp"]').val(data[i].no_telpp);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
                             $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
-                            $('[name="password"]').val(data[i].password);
+                          
                             $('[name="email"]').val(data[i].email);
                             $('[name="level"]').val(data[i].level);
   
