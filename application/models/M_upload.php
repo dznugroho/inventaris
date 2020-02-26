@@ -25,7 +25,7 @@ class M_upload extends CI_Model{
 	}
 	
 	function get_umum(){
-		$this->db->select('NIK,nama_depan,username,password,alamat,no_telpp,
+		$this->db->select('id_umum,NIK,nama_depan,username,password,alamat,no_telpp,
 		nama_kecamatan,desa,email,nama_akses,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -33,26 +33,26 @@ class M_upload extends CI_Model{
 		$this->db->join('akses','akses.id_akses = registrasi.level','left');
 		$array = array('level' => 2);
 		$this->db->where($array);
-		$this->db->order_by('NIK','ASC');
+		$this->db->order_by('id_umum','ASC');
 		$query = $this->db->get();
 		return $query;
 	}
 	function get_detail(){
-		$NIK = $this->uri->segment(3);
-		$this->db->select('NIK,nama_depan,username,password,alamat,no_telpp,
+		$id_umum = $this->uri->segment(3);
+		$this->db->select('id_umum,NIK,nama_depan,username,password,alamat,no_telpp,
 		nama_kecamatan,desa,email,nama_akses,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = registrasi.kode_wilayah','left');
 		$this->db->join('akses','akses.id_akses = registrasi.level','left');
-		$this->db->where('registrasi.NIK',$NIK);
-		$this->db->order_by('registrasi.NIK','ASC');
+		$this->db->where('registrasi.id_umum',$id_umum);
+		$this->db->order_by('registrasi.id_umum','ASC');
 		$query = $this->db->get();
 		return $query;
 	}
 
 	function get_regist(){
-		$this->db->select('NIK,nama_depan,username,password,alamat,no_telpp,
+		$this->db->select('id_umum,NIK,nama_depan,username,password,alamat,no_telpp,
 		nama_kecamatan,desa,email,level,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
@@ -85,14 +85,15 @@ class M_upload extends CI_Model{
 	}
 
 
-	function get_umum_by_id($NIK){
-		$query = $this->db->get_where('registrasi', array('NIK' =>  $NIK));
+	function get_umum_by_id($id_umum){
+		$query = $this->db->get_where('registrasi', array('id_umum' =>  $id_umum));
 		return $query;
 	}
 
-	function update($NIK,$nama_depan,$username,
+	function update($id_umum,$NIK,$nama_depan,$username,
     $alamat,$no_telpp,$kode_kecamatan,$kode_wilayah,$email,$level,$image){
 
+        $this->db->set('NIK'     , $NIK);
         $this->db->set('nama_depan'     , $nama_depan);
         $this->db->set('username'     , $username);
 		$this->db->set('alamat' 		, $alamat);
@@ -102,36 +103,36 @@ class M_upload extends CI_Model{
         $this->db->set('email' 	, $email);
         $this->db->set('level' 	, $level);
         $this->db->set('foto' 	, $image);
-		$this->db->where('NIK' 	, $NIK);
+		$this->db->where('id_umum' 	, $id_umum);
 		$this->db->update('registrasi');
 	}
 
-	function changepass($NIK,$password){
+	function changepass($id_umum,$password){
 		$this->db->set('password' , MD5($password));
-		$this->db->where('NIK' 	, $NIK);
+		$this->db->where('id_umum' 	, $id_umum);
 		$this->db->update('registrasi');
 	}
 
-	function cancel($data,$NIK){
-		$pilihan=$this->db->select("NIK")->from('registrasi')->where("NIK",$NIK)->get()->row();
+	function cancel($data,$id_umum){
+		$pilihan=$this->db->select("id_umum")->from('registrasi')->where("id_umum",$id_umum)->get()->row();
 		
-		$this->db->where("NIK",$NIK);
+		$this->db->where("id_umum",$id_umum);
         $this->db->update('registrasi',$data);
-        return $pilihan->NIK;  
+        return $pilihan->id_umum;  
     }
 
-    function confirm($data,$NIK){
-		$pilihan=$this->db->select("NIK")->from('registrasi')->where("NIK",$NIK)->get()->row();
+    function confirm($data,$id_umum){
+		$pilihan=$this->db->select("id_umum")->from('registrasi')->where("id_umum",$id_umum)->get()->row();
 		
-		$this->db->where("NIK",$NIK);
+		$this->db->where("id_umum",$id_umum);
         $this->db->update('registrasi',$data);
-        return $pilihan->NIK;  		
+        return $pilihan->id_umum;  		
     }
 
 
 	//Delete usulan
-	function delete_umum($NIK){
-		$this->db->delete('registrasi', array('NIK' => $NIK));
+	function delete_umum($id_umum){
+		$this->db->delete('registrasi', array('id_umum' => $id_umum));
 	}
 
 	

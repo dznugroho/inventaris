@@ -45,9 +45,12 @@
               <div class="col-12">
                 <div class="card">
                   <form role="form" method="POST" action="<?php echo site_url('upload/update');?>" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="NIK" id="NIK" value="<?= $NIK?>">
+                    <input type="hidden" class="form-control" name="id_umum" id="id_umum" value="<?= $id_umum;?>">
                     <div class="card-body">
-                     
+                     <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" class="form-control" name="NIK" placeholder="Masukan NIK">
+                      </div>
                       <div class="form-group">
                         <label>Nama Depan</label>
                         <input type="text" class="form-control" name="nama_depan" placeholder="Masukan Nama Depan">
@@ -67,7 +70,7 @@
                       <div class="form-group">
                         <label>Kecamatan</label>
                         <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
-                          <option value="">No Selected</option>
+                          <option  disabled selected>No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
                             <?php endforeach;?>
@@ -76,7 +79,7 @@
                       <div class="form-group">
                         <label>Desa</label>
                         <select class="form-control" name="kode_wilayah" id="kode_wilayah">
-                        <option value="">No Selected</option>
+                        <option  disabled selected>No Selected</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -105,11 +108,11 @@
               <div class="col-12">
                 <div class="card">
                   <form role="form" method="POST" action="<?php echo site_url('upload/change');?>" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="NIK" id="NIK" value="<?= $NIK?>">
+                    <input type="hidden" class="form-control" name="id_umum" id="id_umum" value="<?= $id_umum;?>">
                     <div class="card-body">
                       
                       <div class="form-group">
-                      <label >Password</label> <span class="text-danger mb-1">*Mohon isi Kembali</span>
+                      <label >Password</label>
                         <input type="text" class="form-control" name="password" placeholder="Password">
                       </div>
                       <div class="row ">
@@ -191,23 +194,22 @@
            
 			//load data for edit
             function get_data_edit(){
-            	var NIK = $('[name="NIK"]').val();
+            	var id_umum = $('[name="id_umum"]').val();
             	$.ajax({
             		url : "<?php echo site_url('upload/get_data_edit');?>",
                     method : "POST",
-                    data :{NIK :NIK},
+                    data :{id_umum :id_umum},
                     async : true,
                     dataType : 'json',
                     success : function(data){
                         $.each(data, function(i, item){
+                            $('[name="NIK"]').val(data[i].NIK);
                             $('[name="nama_depan"]').val(data[i].nama_depan);
                             $('[name="username"]').val(data[i].username);
-                           
                             $('[name="alamat"]').val(data[i].alamat);
                             $('[name="no_telpp"]').val(data[i].no_telpp);
                             $('[name="kode_kecamatan"]').val(data[i].kode_kecamatan).trigger('change');
                             $('[name="kode_wilayah"]').val(data[i].kode_wilayah).trigger('change');
-                          
                             $('[name="email"]').val(data[i].email);
                             $('[name="level"]').val(data[i].level);
   

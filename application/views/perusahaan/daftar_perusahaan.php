@@ -52,7 +52,6 @@
                           <tr>
                             <th>No.</th>
                             <th>Nama Perusahaan</th>
-                            <th>Username</th>
                             <th>Akses Sebagai</th>
                             <th width="150">Alamat</th>
                             <th>Kecamatan</th>
@@ -73,7 +72,6 @@
                             <tr>
                               <td><?php echo $no;?></td>
                               <td><?php echo $row->nama_perusahaan;?></td>
-                              <td><?php echo $row->username;?></td>
                               <td><?php echo $row->nama_akses;?></td>
                               <td width="150"><?php echo $row->alamat;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>

@@ -18,16 +18,16 @@ class Register extends CI_Controller {
 		$this->load->view('umum/confirm_pendaftar',$data);
 	}
 
-    public function confirm($NIK){
+    public function confirm($id_umum){
         $data["level"]=2;
-        $kode=$this->m_upload->confirm($data,$NIK);
+        $kode=$this->m_upload->confirm($data,$id_umum);
         redirect(site_url('upload'));
     }
 
 
-	public function cancel($NIK){
+	public function cancel($id_umum){
         $data["level"]=1;
-        $kode=$this->m_upload->cancel($data,$NIK);
+        $kode=$this->m_upload->cancel($data,$id_umum);
         redirect(site_url('upload'));
     }
 

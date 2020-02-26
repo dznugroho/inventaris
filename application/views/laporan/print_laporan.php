@@ -26,7 +26,6 @@
                     <th rowspan="3">Alamat Kegiatan</th>
                     <th>Kecamatan Kegiatan</th>
                     <th rowspan="3">Desa Kegiatan</th>
-                    <th>Institusi Pengusul</th>
                     <th rowspan="3">Nama Pengusul</th>
                     <th rowspan="3">No.Telp Pengusul</th>
                     <th rowspan="3">Perusahaan Pengambil</th>
@@ -56,7 +55,6 @@
                     <td><?php echo $row->alamat_kegiatan;?></td>
                     <td><?php echo $row->nama_kecamatan;?></td>
                     <td><?php echo $row->desa;?></td>
-                    <td><?php echo $row->nama_institusi;?></td>
                     <td><?php echo $row->nama_pengusul;?></td>
                     <td><?php echo $row->no_telp;?></td>
                     <td><?php echo $row->nama_perusahaan;?></td>

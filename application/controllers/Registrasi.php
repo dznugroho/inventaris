@@ -30,7 +30,7 @@ class Registrasi extends CI_Controller {
 	function regist(){
 		
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('NIK', 'NIK', 'required|min_length[16]');
+		$this->form_validation->set_rules('NIK', 'NIK', 'required|min_length[16]|max_length[16]|is_unique[registrasi.NIK]');
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[15]|is_unique[registrasi.username]',
 		array(
 			'required'      => 'You have not provided %s.',
