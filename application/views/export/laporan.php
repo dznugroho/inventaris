@@ -48,7 +48,7 @@
               </div> 
               <div class="form-group col-3">
               <select class="form-control" type="text" name="tahun" id="tahun">
-              <option value="">Please Select</option>
+              <option value="">Pilih Tahun</option>
                 <?php
                 $thn_skr = 2019;
                 for ($x = $thn_skr; $x <= 2050; $x++) {
@@ -57,6 +57,15 @@
                 <?php
                 }
                 ?>
+              </select>
+              </div> 
+              <div class="form-group col-3">
+            <form action="<?php echo site_url('laporan/cari'); ?>" method=POST>
+              <select class="form-control" type="text" name="keyword" id="keyword">
+                <option value="">Pilih Nama Bidang</option>
+                <?php foreach($keyword as $row):?>
+              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
+              <?php endforeach;?>
               </select>
               </div> 
                <div class="form-group col-3">
