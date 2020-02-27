@@ -40,7 +40,7 @@ class M_upload extends CI_Model{
 	function get_detail(){
 		$id_umum = $this->uri->segment(3);
 		$this->db->select('id_umum,NIK,nama_depan,username,password,alamat,no_telpp,
-		nama_kecamatan,desa,email,nama_akses,foto');
+		nama_kecamatan,desa,email,nama_akses,level,foto');
 		$this->db->from('registrasi');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = registrasi.kode_kecamatan','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = registrasi.kode_wilayah','left');
