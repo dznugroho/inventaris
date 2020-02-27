@@ -65,7 +65,6 @@ class Admin extends CI_Controller {
 		$id 	    		= $this->input->post('id',TRUE);
 		$nama 	    = $this->input->post('nama',TRUE);
 		$username     = $this->input->post('username',TRUE);
-        
 		$level 	    = $this->input->post('level',TRUE);
         
 		$this->m_admin->update_admin($id,$nama,$username,$level);
