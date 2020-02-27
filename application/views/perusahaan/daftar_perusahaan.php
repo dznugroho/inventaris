@@ -52,12 +52,12 @@
                           <tr>
                             <th>No.</th>
                             <th>Nama Perusahaan</th>
-                            <th>Akses Sebagai</th>
                             <th width="150">Alamat</th>
                             <th>Kecamatan</th>
                             <th>Desa</th>
                             <th>No. Telp</th>
                             <th>Email</th>
+                            <th>Akses Sebagai</th>
                             <th>Aksi</th>
                             <th>&nbsp;</th>
 
@@ -72,12 +72,12 @@
                             <tr>
                               <td><?php echo $no;?></td>
                               <td><?php echo $row->nama_perusahaan;?></td>
-                              <td><?php echo $row->nama_akses;?></td>
                               <td width="150"><?php echo $row->alamat;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->desa;?></td>
                               <td><?php echo $row->no_telp_perusahaan;?></td>
                               <td><?php echo $row->email;?></td>
+                              <td><?php echo $row->nama_akses;?></td>
                               <td>
                                 <a href="<?php echo site_url('perusahaan/get_edit/'.$row->id);?>" class="btn btn-primary" ><i class="far fa-edit"></a></i>  
                               </td>

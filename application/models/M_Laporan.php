@@ -23,7 +23,38 @@ class M_Laporan extends CI_Model{
 		
 		$c = $this->input->POST ('keyword');
 		$th = $this->input->POST ('tahun');
-		$this->db->like('tb_usulan.kode_bidang', $c);
+		if ($th == "") {
+			$this->db->from('tb_pilihan');
+			$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
+			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+			$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->join('tb_perusahaan','tb_perusahaan.id = tb_pilihan.kode_perusahaan','left');
+			$this->db->where('status_perusahaan',1 );
+			$this->db->where('tb_usulan.kode_bidang',$c);
+		$query = $this->db->get();
+		return $query; 
+		
+	}else if ($c == "") {
+		$this->db->from('tb_pilihan');
+			$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
+			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
+			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
+			$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_usulan.kode_kecamatan','left');
+			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
+			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
+			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->join('tb_perusahaan','tb_perusahaan.id = tb_pilihan.kode_perusahaan','left');
+			$this->db->where('status_perusahaan',1 );
+			$this->db->where('tb_usulan.tahun_pengusulan',$th);
+		$query = $this->db->get();
+		return $query; 
+
+	}else{
+		
 		$this->db->from('tb_pilihan');
 			$this->db->join('tb_usulan','tb_usulan.kode_usulan = tb_pilihan.kode_usulan','left');
 			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
@@ -38,6 +69,7 @@ class M_Laporan extends CI_Model{
 			$this->db->where('tb_usulan.tahun_pengusulan',$th);
 		$query = $this->db->get();
 		return $query; 
+		}
 	}
 
 	function print(){

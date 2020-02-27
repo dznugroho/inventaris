@@ -127,7 +127,7 @@
                           <?php endforeach;?>
                       </table>
                     <div class="card-footer text-right">
-                      <a href="<?php echo site_url('pilihan_ps');?>" class="btn btn-primary">Kembali</a>
+                      <a href="<?php echo site_url('pilih_usulan');?>" class="btn btn-primary">Kembali</a>
                     </div>
                   </div>
                 </div>

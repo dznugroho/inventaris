@@ -119,9 +119,22 @@
                               </tr>
                           <tr>
                             <th colspan="3">File</th>
-                              <td><?php ?>
-			                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">Lihat File</button>
-			           	        <?php   ;?>
+                              <td><?php if($row->file==""){
+              $fill = $row->file;
+              $aksi = site_url('usulan_umum/add_file');
+              $tampil = 
+<<<HEREDOCS
+                      <form action="$aksi" method="post" enctype="multipart/form-data" >
+                <input type="file" name="file">             
+                <input type="hidden" name="kode_usulan" value="$row->kode_usulan">
+                <br>
+                <button type="submit" class="btn btn-info btn-sm tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tambah Data"> Tambah File</button>
+              </form>
+HEREDOCS;
+            echo $tampil;
+                  }else{?>
+                    <button onclick='open("<?php echo site_url('Usulan/embed/'.$row->file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
+                  <?php } ?>
                               </td>
                             </tr>
                           <?php endforeach;?>

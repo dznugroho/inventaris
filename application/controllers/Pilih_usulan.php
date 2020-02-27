@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pilihan_PS extends CI_Controller {
+class Pilih_usulan extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('M_Pilihanps','m_pilihanps');
@@ -15,7 +15,6 @@ class Pilihan_PS extends CI_Controller {
 	}
 
 	function index(){
-
 
 		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
 		$data['usulan'] = $this->m_pilihanps->get_usulan();
@@ -47,7 +46,7 @@ class Pilihan_PS extends CI_Controller {
 		$dana	   	 		= $this->input->post('dana',TRUE);
 
 		$this->m_pilihanps->save_pilihan($kode_usulan,$kode_perusahaan,$dana);
-		redirect('pilihan_ps');
+		redirect('pilih_usulan');
 	}
 	function get_sub_bidang(){
 		$kode_bidang = $this->input->post('id',TRUE);

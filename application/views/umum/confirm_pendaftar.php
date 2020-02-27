@@ -80,7 +80,11 @@
                               <td><?php echo $row->no_telpp;?></td>
                               <td><?php echo $row->nama_kecamatan;?></td>
                               <td><?php echo $row->desa;?></td>
-                              <td><?php echo $row->level;?></td>
+                              <td><?php if($row->level == 0){
+                                echo '<div class="badge badge-warning">Belum Terdaftar</div>';
+                                };?>
+                                  
+                                </td>
                               <?php echo "<td> 
                               <img src='".base_url("images/".$row->foto)."' width='100' height='70'>
                              </td>" ;?>
