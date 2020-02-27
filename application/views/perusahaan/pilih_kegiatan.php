@@ -51,7 +51,7 @@
             </select>
           </div>
           <div class="form-group col-3">
-            <form action="<?php echo site_url('pilihan_ps/cari'); ?>" method=POST>
+            <form action="<?php echo site_url('pilih_usulan/cari'); ?>" method=POST>
               <select class="form-control" type="text" name="keyword" id="keyword">
                 <option value="">Pilih Nama Sub Bidang</option>
               </select>
@@ -61,7 +61,7 @@
             </div> 
               <div class="form-group col-3">
                   <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                  <a href="<?php echo site_url('pilihan_ps'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+                  <a href="<?php echo site_url('pilih_usulan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
             </form>
           </div>
        </div>
@@ -120,7 +120,7 @@
 
                               </td>
                               <td>
-                              <a href="<?php echo site_url('pilihan_ps/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
+                              <a href="<?php echo site_url('pilih_usulan/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
                               </td>
                               <td>
                               <button data-toggle="modal" data-target="#modal_tambah<?php echo $kode_usulan;?>"  class="btn btn-primary">Pilih</button>
@@ -158,7 +158,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="form-horizontal" method="post" action="<?php echo base_url().'pilihan_ps/save_pilihan'?>">
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'pilih_usulan/save_pilihan'?>">
                 <div class="modal-body">
 
                     
@@ -247,7 +247,7 @@ $(document).ready(function() {
 			$('#kode_bidang').change(function(){ 
                 var id=$(this).val();
                 $.ajax({
-                    url : "<?php echo site_url('pilihan_ps/get_sub_bidang');?>",
+                    url : "<?php echo site_url('pilih_usulan/get_sub_bidang');?>",
                     method : "POST",
                     data : {id: id},
                     async : true,

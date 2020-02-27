@@ -38,9 +38,9 @@
           </div>
           <div class="row"> 
           <div class="form-group col-3">
-            <form action="<?php echo site_url('laporan/cari'); ?>" method=POST>
+            <form action="<?php echo site_url('laporan/export'); ?>" method=POST>
               <select class="form-control" type="text" name="keyword" id="keyword">
-                <option value="">Pilih Nama Bidang</option>
+                <option disabled selected>Pilih Nama Bidang</option>
                 <?php foreach($keyword as $row):?>
               <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
               <?php endforeach;?>
@@ -48,7 +48,7 @@
               </div> 
               <div class="form-group col-3">
               <select class="form-control" type="text" name="tahun" id="tahun">
-              <option value="">Please Select</option>
+              <option disabled selected>Pilih Tahun</option>
                 <?php
                 $thn_skr = 2019;
                 for ($x = $thn_skr; $x <= 2050; $x++) {
@@ -60,13 +60,16 @@
               </select>
               </div> 
                <div class="form-group col-3">
-              <select class="form-control" type="text" name="pilihan" id="pilihan">
-                <option target="_blank" value="1">Print</option>
+              <select class="form-control" type="text" name="pilihan" id="pilihan" target="_blank">
+                <option value="1">Print</option>
                 <option value="2">Excel</option>
               </select>
               </div> 
+
               <div class="form-group col-3">
-                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fa fa-print"></i> Print</button>
+                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fas fa-download"></i> Export</button>
+                      <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+                      </div>
              </form>
           </div>
          </div>
