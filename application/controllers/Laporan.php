@@ -32,7 +32,8 @@ class Laporan extends CI_Controller {
 		}else{
 			$data['laporan']=$this->m_laporan->caridata();
         	$this->load->view('laporan/excel_laporan',$data);
-    }
+    	}
+	}
 
  //    function cari() {
 		

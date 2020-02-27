@@ -38,7 +38,7 @@
           </div>
           <div class="row"> 
           <div class="form-group col-3">
-            <form action="<?php echo site_url('laporan/export'); ?>" method=POST>
+            <form target="_blank" action="<?php echo site_url('laporan/export'); ?>" method=POST>
               <select class="form-control" type="text" name="keyword" id="keyword">
                 <option disabled selected>Pilih Nama Bidang</option>
                 <?php foreach($keyword as $row):?>
@@ -60,15 +60,15 @@
               </select>
               </div> 
                <div class="form-group col-3">
-              <select class="form-control" type="text" name="pilihan" id="pilihan" target="_blank">
+              <select class="form-control" type="text" name="pilihan" id="pilihan">
                 <option value="1">Print</option>
                 <option value="2">Excel</option>
               </select>
               </div> 
 
               <div class="form-group col-3">
-                  <button class="btn btn-icon icon-left btn-primary" type="submit"><i class="fas fa-download"></i> Export</button>
-                      <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+                <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-download"></i> Export</button>
+                <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
                       </div>
              </form>
           </div>
@@ -107,5 +107,6 @@
 			$('#mytable').DataTable();
 		});
 	</script>
+
 </body>
 </html>
