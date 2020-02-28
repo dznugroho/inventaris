@@ -52,7 +52,7 @@ class M_Usulan_umum extends CI_Model{
 	function save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 				$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
 				$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
-				$kode_w,$nama_pengusul,$no_telp,$file,$NIK){
+				$kode_w,$nama_pengusul,$no_telp,$file,$id_pengusul){
 		$data = array(
 			
             'kode_bidang' 	    => $kode_bidang,
@@ -73,7 +73,7 @@ class M_Usulan_umum extends CI_Model{
 			'nama_pengusul'   	=> $nama_pengusul,
 			'no_telp'         	=> $no_telp,
 			'file'				=> $file,
-			'NIK'				=> $NIK
+			'id_pengusul'		=> $id_pengusul
 		
 		);
 		$this->db->insert('tb_usulan',$data);
@@ -82,7 +82,7 @@ class M_Usulan_umum extends CI_Model{
 	function save($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 				$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
 				$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,$kode_k,
-				$kode_w,$nama_pengusul,$no_telp,$NIK){
+				$kode_w,$nama_pengusul,$no_telp,$id_pengusul){
 		$data = array(
 			
             'kode_bidang' 	    => $kode_bidang,
@@ -102,7 +102,7 @@ class M_Usulan_umum extends CI_Model{
 			'kode_w'	    	=> $kode_w,
 			'nama_pengusul'   	=> $nama_pengusul,
 			'no_telp'         	=> $no_telp,
-			'NIK'				=> $NIK
+			'id_pengusul'		=> $id_pengusul
 		
 		);
 		$this->db->insert('tb_usulan',$data);
@@ -137,8 +137,8 @@ class M_Usulan_umum extends CI_Model{
 		from tb_usulan
 		JOIN tb_bidang ON tb_bidang.kode_bidang = tb_usulan.kode_bidang
 		JOIN tb_subbidang ON tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang 
-		JOIN registrasi ON registrasi.NIK = tb_usulan.NIK
-		WHERE tb_usulan.NIK =  $NIK AND status_usulan=0
+		JOIN registrasi ON registrasi.NIK = tb_usulan.id_pengusul
+		WHERE tb_usulan.id_pengusul = $NIK AND status_usulan=0
 		ORDER BY kode_usulan DESC");
 	
 	}
@@ -153,7 +153,7 @@ class M_Usulan_umum extends CI_Model{
 			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
-			$this->db->where('tb_usulan.NIK',$NIK);
+			$this->db->where('tb_usulan.id_pengusul',$NIK);
 			$this->db->where('status_usulan',0);
 
 		$query = $this->db->get();

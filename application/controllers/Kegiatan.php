@@ -24,23 +24,5 @@ class Kegiatan extends CI_Controller {
 		$this->load->view('perusahaan/detail_perusahaan',$data);
 	}
 
-	function input(){
-		$kode_usulan = $this->uri->segment(3);
-		$data['kode_usulan'] = $kode_usulan;
-		$data['kode_perusahaan'] = $this->session->userdata('ses_id');
-		$this->load->view('perusahaan/input_dana',$data);
-	}
-	//save usulan to database
-	function save_pilihan(){
-
-		$kode_usulan 		= $this->input->post('kode_usulan',TRUE);
-		$kode_perusahaan	= $this->input->post('kode_perusahaan',TRUE);
-		$dana	   	 		= $this->input->post('dana',TRUE);
-
-		$this->m_pilihanps->save_pilihan($kode_usulan,$kode_perusahaan,$dana);
-		$this->session->set_flashdata('msg','<div class="alert alert-success">Perusahaan Saved</div>');
-		redirect('pilihan_ps');
-	}
-
 	
 }

@@ -134,11 +134,12 @@ class Usulankec extends CI_Controller {
 				$kode_w				= $this->input->post('kode_w',TRUE);
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
+				$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 
 				$this->m_usulankec->save($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 					$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
 					$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,
-					$kode_k,$kode_w,$nama_pengusul,$no_telp);
+					$kode_k,$kode_w,$nama_pengusul,$no_telp,$id_pengusul);
 			}else{
 
 			$config['upload_path']="./files";
@@ -168,11 +169,12 @@ class Usulankec extends CI_Controller {
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
 				$file 				= $data['upload_data']['file_name'];
+				$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 
 				$this->m_usulankec->save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 					$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
 					$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,
-					$kode_k,$kode_w,$nama_pengusul,$no_telp,$file);
+					$kode_k,$kode_w,$nama_pengusul,$no_telp,$file,$id_pengusul);
 
 				}
 			}
@@ -298,6 +300,7 @@ class Usulankec extends CI_Controller {
 				$kode_w 	  	    = $this->input->post('kode_w',TRUE);
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
+				$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 				
 				$data=array(
 					'kode_usulan'		=>$kode_usulan,
@@ -317,7 +320,8 @@ class Usulankec extends CI_Controller {
 					'kode_k'   			=> $kode_k,
 					'kode_w'	    	=> $kode_w,
 					'nama_pengusul'   	=> $nama_pengusul,
-					'no_telp'         	=> $no_telp
+					'no_telp'         	=> $no_telp,
+					'id_pengusul'   	=> $id_pengusul
 				);
 
 				$this->m_usulankec->update($data,$kode_usulan);
@@ -337,10 +341,11 @@ class Usulankec extends CI_Controller {
 			$deskripsi 	    	= $this->input->post('deskripsi',TRUE);
 	        $nama_institusi 	= $this->input->post('nama_institusi',TRUE);
 			$alamat_institusi 	= $this->input->post('alamat_institusi',TRUE);
-			$kode_k        = $this->input->post('kode_k',TRUE);
-			$kode_w	    = $this->input->post('kode_w',TRUE);
+			$kode_k        		= $this->input->post('kode_k',TRUE);
+			$kode_w	    		= $this->input->post('kode_w',TRUE);
 			$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 			$no_telp         	= $this->input->post('no_telp',TRUE);
+			$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 	        
 	        if($_FILES['file']['name'] == ""){
 	            $file_name=$this->input->post('file_lama', TRUE);
@@ -360,9 +365,9 @@ class Usulankec extends CI_Controller {
 	            rename($dirs.$file_name);
 	        }
 	            $data=array(
-					'kode_usulan'=>$kode_usulan,
+				'kode_usulan'		=> $kode_usulan,
 				'kode_bidang' 	    => $kode_bidang,
-				'kode_subbidang'     => $kode_subbidang,
+				'kode_subbidang'    => $kode_subbidang,
 				'tahun_pengusulan' 	=> $tahun_pengusulan,
 				'nama_kegiatan' 	=> $nama_kegiatan,
 				'waktu_mulai' 	    => $waktu_mulai,
@@ -374,11 +379,12 @@ class Usulankec extends CI_Controller {
 				'deskripsi' 	   	=> $deskripsi,
 				'nama_institusi' 	=> $nama_institusi,
 				'alamat_institusi' 	=> $alamat_institusi,
-				'kode_k'   => $kode_k,
-				'kode_w'	    => $kode_w,
+				'kode_k'   			=> $kode_k,
+				'kode_w'	    	=> $kode_w,
 				'nama_pengusul'   	=> $nama_pengusul,
 				'no_telp'         	=> $no_telp,
-				'file'=>$file_name
+				'id_pengusul'   	=> $id_pengusul,
+				'file'				=> $file_name
 
 			);
 			$this->m_usulankec->update_usulankec($data,$kode_usulan);

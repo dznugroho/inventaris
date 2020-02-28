@@ -144,7 +144,7 @@
                       </div>
                       <div class="form-group">
                      
-                        <input type="hidden" class="form-control" name="NIK" id="NIK" placeholder="NIK" value="<?= $this->session->userdata('ses_id')?>">  
+                        <input type="hidden" class="form-control" name="id_pengusul" value="<?= $this->session->userdata('ses_id')?>">  
                       </div>
                       <div class="form-group">
                         <label>CP Pengusul</label>

@@ -48,11 +48,11 @@
                   <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
                   </div>
                   <form role="form" method="POST" action="<?php echo site_url('usulan_umum/update_usulan/'.$cekid['kode_usulan']);?>" enctype="multipart/form-data">
-                  <input type="hidden" class="form-control" name="kode_usulan" id="kode_usulan" value="<?=$kode_usulan?>">
+                  <input type="hidden" class="form-control" name="kode_usulan" value="<?=$kode_usulan?>">
                   <div class="card-body">
                       <div class="form-group">
                         <label>Bidang Kegiatan</label>
-                        <select class="form-control" name="kode_bidang" id="kode_bidang">
+                        <select class="form-control kode_bidang" name="kode_bidang">
                         <option value="">No Selected</option>
                           <?php foreach($kode_bidang as $row):?>
                           <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
@@ -61,7 +61,7 @@
                       </div>
                       <div class="form-group">
                         <label>Sub Bidang Kegiatan</label>
-                        <select class="form-control" name="kode_subbidang" id="kode_subbidang">
+                        <select class="form-control kode_subbidang" name="kode_subbidang">
                           <option value="">No Selected</option>
                         </select>
                       </div>
@@ -72,7 +72,7 @@
                       </div>
                       <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan"  value="<?php echo set_value('nama_kegiatan'); ?>">
+                        <input type="text" class="form-control" name="nama_kegiatan" placeholder="Nama Kegiatan" value="<?php echo set_value('nama_kegiatan'); ?>">
                       </div>
                       <div class="form-group">
                         <label>Waktu Mulai Pelaksanaan</label>
@@ -88,11 +88,11 @@
                       </div>
                       <div class="form-group">
                         <label>Lokasi Kegiatan</label>
-                        <input type="text" class="form-control" name="alamat_kegiatan" id="alamat_kegiatan" placeholder="Nama Jalan"  value="<?php echo set_value('alamat_kegiatan'); ?>">  
+                        <input type="text" class="form-control" name="alamat_kegiatan" placeholder="Nama Jalan"  value="<?php echo set_value('alamat_kegiatan'); ?>">  
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                        <select class="form-control kode_kecamatan" name="kode_kecamatan">
                           <option value="">No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
@@ -101,7 +101,7 @@
                       </div>
                       <div class="form-group">
                         <label>Desa</label>
-                        <select class="form-control" name="kode_wilayah" id="kode_wilayah">
+                        <select class="form-control kode_wilayah" name="kode_wilayah">
                         <option value="">No Selected</option>
                         </select>
                       </div>
@@ -120,7 +120,7 @@
                       </div>
                       <div class="form-group">
                         <label>Kecamatan Pengusul</label>
-                        <select class="form-control" name="kode_k" id="kode_k" readonly>
+                        <select class="form-control kode_k" name="kode_k" readonly>
                           <?php foreach($kode_k as $row):?>
                           <option value="<?php echo $row->kode_k;?>"><?php echo $row->nama_k;?></option>
                           <?php endforeach;?>
@@ -128,7 +128,7 @@
                       </div>
                       <div class="form-group">
                         <label>Desa Pengusul</label>
-                        <select class="form-control" name="kode_w" id="kode_w" readonly>
+                        <select class="form-control kode_w" name="kode_w" readonly>
                         <?php foreach($kode_w as $row):?>
                           <option value="<?echo $row->kode_w ;?>"><?php echo $row->nama_d;?></option>
                           <?php endforeach;?>
@@ -139,7 +139,7 @@
                         <input type="text" class="form-control" name="nama_pengusul" placeholder="Nama Pengusul" readonly>
                       </div>
                       <div class="form-group">
-                     <input type="hidden" class="form-control" name="NIK" id="NIK" placeholder="NIK" value="<?= $this->session->userdata('ses_id')?>">  
+                     <input type="hidden" class="form-control" name="id_pengusul" value="<?= $this->session->userdata('ses_id')?>">  
                    </div>
                       <div class="form-group">
                         <label>CP Pengusul</label>
@@ -196,8 +196,9 @@
 			//call function get data edit
 			      get_data_edit();
 
-            $('#kode_bidang').change(function(){ 
+             $('.kode_bidang').change(function(){ 
                 var id=$(this).val();
+                var kode_subbidang = "<?php echo $kode_subbidang;?>";
                 $.ajax({
                     url : "<?php echo site_url('usulan/get_sub_bidang');?>",
                     method : "POST",
@@ -205,21 +206,25 @@
                     async : true,
                     dataType : 'json',
                     success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_subbidang+'>'+data[i].nama_sub+'</option>';
-                        }
-                        $('#kode_subbidang').html(html);
-
+ 
+                        $('select[name="kode_subbidang"]').empty();
+ 
+                        $.each(data, function(key, value) {
+                            if(kode_subbidang==value.kode_subbidang){
+                                $('select[name="kode_subbidang"]').append('<option value="'+ value.kode_subbidang +'" selected>'+ value.nama_sub +'</option>').trigger('change');
+                            }else{
+                                $('select[name="kode_subbidang"]').append('<option value="'+ value.kode_subbidang +'">'+ value.nama_sub +'</option>');
+                            }
+                        });
+ 
                     }
                 });
                 return false;
-            });
+            }); 
 
-            	$('#kode_kecamatan').change(function(){ 
+            $('.kode_kecamatan').change(function(){ 
                 var id=$(this).val();
+                var kode_wilayah = "<?php echo $kode_wilayah;?>";
                 $.ajax({
                     url : "<?php echo site_url('usulan/get_desa');?>",
                     method : "POST",
@@ -227,19 +232,21 @@
                     async : true,
                     dataType : 'json',
                     success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_wilayah+'>'+data[i].desa+'</option>';
-                        }
-                        $('#kode_wilayah').html(html);
-
+ 
+                        $('select[name="kode_wilayah"]').empty();
+ 
+                        $.each(data, function(key, value) {
+                            if(kode_wilayah==value.kode_wilayah){
+                                $('select[name="kode_wilayah"]').append('<option value="'+ value.kode_wilayah +'" selected>'+ value.desa +'</option>').trigger('change');
+                            }else{
+                                $('select[name="kode_wilayah"]').append('<option value="'+ value.kode_wilayah +'">'+ value.desa +'</option>');
+                            }
+                        });
+ 
                     }
                 });
                 return false;
-            });  
-
+            }); 
             
 			//load data for edit
             function get_data_edit(){

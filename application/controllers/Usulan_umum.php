@@ -126,12 +126,12 @@ class Usulan_umum extends CI_Controller {
 				$kode_w				= $this->input->post('kode_w',TRUE);
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
-				$NIK   				= $this->input->post('NIK',TRUE);
+				$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 
 				$this->m_usulan_umum->save($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 					$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
 					$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,
-					$kode_k,$kode_w,$nama_pengusul,$no_telp,$NIK);
+					$kode_k,$kode_w,$nama_pengusul,$no_telp,$id_pengusul);
 			}else{
 
 			$config['upload_path']="./files";
@@ -161,12 +161,12 @@ class Usulan_umum extends CI_Controller {
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
 				$file 				= $data['upload_data']['file_name'];
-				$NIK   				= $this->input->post('NIK',TRUE);
+				$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 
 				$this->m_usulan_umum->save_usulan($kode_bidang,$kode_subbidang,$tahun_pengusulan,
 					$nama_kegiatan,$waktu_mulai,$waktu_selesai,$anggaran,$alamat_kegiatan,
 					$kode_kecamatan,$kode_wilayah,$deskripsi,$nama_institusi,$alamat_institusi,
-					$kode_k,$kode_w,$nama_pengusul,$no_telp,$file,$NIK);
+					$kode_k,$kode_w,$nama_pengusul,$no_telp,$file,$id_pengusul);
 
 			}
 		}
@@ -288,7 +288,7 @@ class Usulan_umum extends CI_Controller {
 				$kode_w				= $this->input->post('kode_w',TRUE);
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
-				$NIK   				= $this->input->post('NIK',TRUE);
+				$id_pengusul   		= $this->input->post('id_pengusul',TRUE);
 
 				$data=array(
 					'kode_usulan'		=>$kode_usulan,
@@ -308,8 +308,8 @@ class Usulan_umum extends CI_Controller {
 					'kode_k'   			=> $kode_k,
 					'kode_w'	   		=> $kode_w,
 					'nama_pengusul'   	=> $nama_pengusul,
-					'NIK'   			=> $NIK,
-					'no_telp'         	=> $no_telp
+					'no_telp'         	=> $no_telp,
+					'id_pengusul'   	=> $id_pengusul
 
 				);
 
@@ -333,8 +333,8 @@ class Usulan_umum extends CI_Controller {
 				$kode_k        		= $this->input->post('kode_k',TRUE);
 				$kode_w 	  	    = $this->input->post('kode_w',TRUE);
 				$nama_pengusul   	= $this->input->post('nama_pengusul',TRUE);
-				$NIK  				= $this->input->post('NIK',TRUE);
 				$no_telp         	= $this->input->post('no_telp',TRUE);
+				$id_pengusul  		= $this->input->post('id_pengusul',TRUE);
 		        
 		        if($_FILES['file']['name'] == ""){
 		            $file_name=$this->input->post('file_lama', TRUE);
@@ -371,8 +371,8 @@ class Usulan_umum extends CI_Controller {
 					'kode_k'   			=> $kode_k,
 					'kode_w'	   		=> $kode_w,
 					'nama_pengusul'   	=> $nama_pengusul,
-					'NIK'   			=> $NIK,
 					'no_telp'         	=> $no_telp,
+					'id_pengusul'   	=> $id_pengusul,
 					'file'=>$file_name
 
 				);

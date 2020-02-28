@@ -45,7 +45,7 @@
               <div class="col-12">
                 <div class="card">
                   <form role="form" method="POST" action="<?php echo site_url('upload/update');?>" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="id_umum" id="id_umum" value="<?= $id_umum;?>">
+                    <input type="hidden" class="form-control" name="id_umum" value="<?= $id_umum;?>">
                     <div class="card-body">
                      <div class="form-group">
                         <label>NIK</label>
@@ -61,15 +61,15 @@
                       </div>
                       <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Nama Jalan">  
+                        <input type="text" class="form-control" name="alamat" placeholder="Nama Jalan">  
                       </div>
                       <div class="form-group">
                         <label>No Telp</label>
-                        <input type="text" class="form-control" name="no_telpp" id="no_telpp" placeholder="No Telp">  
+                        <input type="text" class="form-control" name="no_telpp" placeholder="No Telp">  
                       </div>
                       <div class="form-group">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kode_kecamatan" id="kode_kecamatan">
+                        <select class="form-control kode_kecamatan" name="kode_kecamatan">
                           <option  disabled selected>No Selected</option>
                             <?php foreach($kode_kecamatan as $row):?>
                             <option value="<?php echo $row->kode_kecamatan;?>"><?php echo $row->nama_kecamatan;?></option>
@@ -78,7 +78,7 @@
                       </div>
                       <div class="form-group">
                         <label>Desa</label>
-                        <select class="form-control" name="kode_wilayah" id="kode_wilayah">
+                        <select class="form-control kode_wilayah" name="kode_wilayah">
                         <option  disabled selected>No Selected</option>
                         </select>
                       </div>
@@ -108,7 +108,7 @@
               <div class="col-12">
                 <div class="card">
                   <form role="form" method="POST" action="<?php echo site_url('upload/change');?>" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="id_umum" id="id_umum" value="<?= $id_umum;?>">
+                    <input type="hidden" class="form-control" name="id_umum" value="<?= $id_umum;?>">
                     <div class="card-body">
                       
                       <div class="form-group">
@@ -160,38 +160,36 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url()?>assets/js/page/forms-advanced-forms.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-
-      $('#kode_kecamatan').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('perusahaan/get_desa');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                        
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].kode_wilayah+'>'+data[i].desa+'</option>';
-                        }
-                        $('#kode_wilayah').html(html);
-
-                    }
-                });
-                return false;
-            }); 
-            
-    });
-  </script>
     <script type="text/javascript">
 		$(document).ready(function(){
 			//call function get data edit
 			      get_data_edit();
            
+           $('.kode_kecamatan').change(function(){ 
+                var id=$(this).val();
+                var kode_wilayah = "<?php echo $kode_wilayah;?>";
+                $.ajax({
+                    url : "<?php echo site_url('upload/get_desa');?>",
+                    method : "POST",
+                    data : {id: id},
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+ 
+                        $('select[name="kode_wilayah"]').empty();
+ 
+                        $.each(data, function(key, value) {
+                            if(kode_wilayah==value.kode_wilayah){
+                                $('select[name="kode_wilayah"]').append('<option value="'+ value.kode_wilayah +'" selected>'+ value.desa +'</option>').trigger('change');
+                            }else{
+                                $('select[name="kode_wilayah"]').append('<option value="'+ value.kode_wilayah +'">'+ value.desa +'</option>');
+                            }
+                        });
+ 
+                    }
+                });
+                return false;
+            }); 
 			//load data for edit
             function get_data_edit(){
             	var id_umum = $('[name="id_umum"]').val();

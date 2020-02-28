@@ -145,6 +145,7 @@
                         <label>File</label> <span class="text-danger mb-1">*file harus PDF</span>
                         <input type="file" class="form-control" name="file">
                       </div>
+                      <input type="hidden" class="form-control" name="id_pengusul" value="<?= $this->session->userdata('ses_id')?>">  
                     </div>
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary">Submit</button>

@@ -13,10 +13,11 @@ class M_Pilihanps extends CI_Model{
 		return $query;
 	}
 	function caridata(){
+		$this->db->distinct();
 		$c = $this->input->POST ('keyword');
 		$tahun = $this->input->POST ('tahun');
 		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
-		waktu_selesai,anggaran,file,status_usulan');
+		waktu_selesai,anggaran,file,status_usulan,status');
 		$this->db->from('tb_usulan');
 			$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 			$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
@@ -24,26 +25,31 @@ class M_Pilihanps extends CI_Model{
 			$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 			$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 			$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
+			$this->db->join('tb_pilihan','tb_pilihan.kode_usulan = tb_usulan.kode_usulan','left');
 			$this->db->where('tb_usulan.kode_subbidang', $c);
 			$this->db->where('tb_usulan.tahun_pengusulan', $tahun);
+			$this->db->where("status_usulan", 0);
+			$this->db->order_by("tb_usulan.kode_usulan", "DESC");
 		$query = $this->db->get();
 		return $query; 
 	}
-	function save_pilihan($kode_usulan,$kode_perusahaan,$dana){
+	function save_pilihan($kode_usulan,$kode_perusahaan,$dana,$status){
 		$data = array(
 			
 			'kode_usulan'		=> $kode_usulan,
 			'kode_perusahaan'	=> $kode_perusahaan,
-			'dana' 				=> $dana
+			'dana' 				=> $dana,
+			'status' 			=> $status
 			
 		);
 		$this->db->insert('tb_pilihan',$data);
 	}
 
 	function get_usulan(){
-		$this->db->select('kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
+		$this->db->distinct();
+		$this->db->select('tb_usulan.kode_usulan,nama_bidang,nama_sub,tahun_pengusulan,nama_kegiatan,waktu_mulai,
 		waktu_selesai,anggaran,alamat_kegiatan,nama_kecamatan,desa,deskripsi,
-		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,no_telp,file');
+		nama_institusi,alamat_institusi,nama_k,nama_d,nama_pengusul,no_telp,file,status');
 		$this->db->from('tb_usulan');
 		$this->db->join('tb_bidang','tb_bidang.kode_bidang = tb_usulan.kode_bidang','left');
 		$this->db->join('tb_subbidang','tb_subbidang.kode_subbidang = tb_usulan.kode_subbidang','left');
@@ -51,7 +57,8 @@ class M_Pilihanps extends CI_Model{
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_usulan.kode_wilayah','left');
 		$this->db->join('tb_k','tb_k.kode_k = tb_usulan.kode_k','left');
 		$this->db->join('tb_w','tb_w.kode_w = tb_usulan.kode_w','left');
-		$this->db->order_by("kode_usulan", "DESC");
+		$this->db->join('tb_pilihan','tb_pilihan.kode_usulan = tb_usulan.kode_usulan','left');
+		$this->db->order_by("tb_usulan.kode_usulan", "DESC");
 		$this->db->where("status_usulan", 0);
 		$query = $this->db->get();
 		return $query;

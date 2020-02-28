@@ -100,6 +100,7 @@
                                 $waktu_selesai=$row['waktu_selesai'];
                                 $anggaran=$row['anggaran'];
                                 $file=$row['file'];
+                                $status=$row['status'];
                                 $no++;
                             ?>
                             <tr>
@@ -119,12 +120,19 @@
                   <?php } ?>
 
                               </td>
-                              <td>
-                              <a href="<?php echo site_url('pilih_usulan/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
-                              </td>
-                              <td>
-                              <button data-toggle="modal" data-target="#modal_tambah<?php echo $kode_usulan;?>"  class="btn btn-primary">Pilih</button>
-                              </td>
+                               <?php if($status == 0){ ?>
+                                <td>
+                                  <a href="<?php echo site_url('pilih_usulan/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
+                                </td>
+                                <td>
+                              <button data-toggle="modal" data-target="#modal_tambah<?php echo $kode_usulan;?>" class="btn btn-primary">Pilih</button>
+                                </td>
+
+                                 <? }else{
+                                    echo '<td><div class="badge badge-danger">Sudah Dipilih</div></td>';
+                                    echo '<td>&nbsp;</td>';
+                                  }?>
+                            
                             </tr>
                             <?php endforeach;?>
                           </tbody>
@@ -162,16 +170,16 @@
                 <div class="modal-body">
 
                     
-                    <input name="kode_usulan" value="<?php echo $kode_usulan;?>" class="form-control" type="hidden" placeholder="Kode Barang..." readonly>
+                    <input name="kode_usulan" value="<?php echo $kode_usulan;?>" class="form-control" type="hidden" readonly>
                         
                     <div class="form-group">
-                        <label class="control-label col-xs-3">Nama Bidang</label>
+                        <label class="control-label col-xs-3">Bidang</label>
                         <div class="col-xs-8">
-                            <input name="nama_bidang" value="<?php echo $nama_bidang;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+                            <input name="nama_bidang" value="<?php echo $nama_bidang;?>" class="form-control" type="text" readonly>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-3">Nama Sub Bidang</label>
+                        <label class="control-label col-xs-3">Subbidang</label>
                         <div class="col-xs-8">
                             <input name="nama_sub" value="<?php echo $nama_sub;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
                         </div>
@@ -185,7 +193,7 @@
                         </div>
                     </div>
                 </div>
-
+                <input name="status" class="form-control" type="hidden" value="1">
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Tutup</button>

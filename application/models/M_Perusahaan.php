@@ -45,7 +45,7 @@ class M_Perusahaan extends CI_Model{
 
 	function get_perusahaan(){
 		$this->db->select('id,username,password,nama_akses,nama_perusahaan,alamat,
-		,nama_kecamatan,desa,no_telp_perusahaan,email');
+		nama_kecamatan,desa,no_telp_perusahaan,email');
 		$this->db->from('tb_perusahaan');
 		$this->db->join('tb_kecamatan','tb_kecamatan.kode_kecamatan = tb_perusahaan.kode_kecamatan','left');
 		$this->db->join('tb_wilayah','tb_wilayah.kode_wilayah = tb_perusahaan.kode_wilayah','left');

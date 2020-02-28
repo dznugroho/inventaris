@@ -44,8 +44,9 @@ class Pilih_usulan extends CI_Controller {
 		$kode_usulan 		= $this->input->post('kode_usulan',TRUE);
 		$kode_perusahaan	= $this->input->post('kode_perusahaan',TRUE);
 		$dana	   	 		= $this->input->post('dana',TRUE);
+		$status				= $this->input->post('status',TRUE);
 
-		$this->m_pilihanps->save_pilihan($kode_usulan,$kode_perusahaan,$dana);
+		$this->m_pilihanps->save_pilihan($kode_usulan,$kode_perusahaan,$dana,$status);
 		redirect('pilih_usulan');
 	}
 	function get_sub_bidang(){
