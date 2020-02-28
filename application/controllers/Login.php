@@ -44,6 +44,11 @@ class Login extends CI_Controller{
                             $this->session->set_userdata('ses_kecamatan',$data['kode_kecamatan']);
                             $this->session->set_userdata('ses_desa',$data['kode_wilayah']);
                             redirect('dashboard'); 
+                        }else{
+                            $url=base_url('login');
+                            echo $this->session->set_flashdata('msg','Akun Belum Dikonfirmasi ');
+                            echo "Gagal";
+                            redirect($url);
                         }
                     
                      
