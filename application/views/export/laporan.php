@@ -45,8 +45,8 @@
                   <div class="card-body">
                   <div class="form-group col-12">
             <form target="_blank" action="<?php echo site_url('laporan/export'); ?>" method=POST>
-              <select class="form-control" type="text" name="keyword" id="keyword">
-                <option disabled selected>Pilih Nama Bidang</option>
+              <select class="form-control" type="text" name="keyword" id="keyword" required>
+                <option value="">Pilih Nama Bidang</option>
                 <?php foreach($keyword as $row):?>
               <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
               <?php endforeach;?>
@@ -87,9 +87,9 @@
                   </div>
                   <div class="card-body">
                   <div class="form-group col-12">
-            <form action="<?php echo site_url('laporan/print'); ?>" method=POST>
+            <form target="_blank" action="<?php echo site_url('laporan/print'); ?>" method=POST>
               <select class="form-control" type="text" name="nama_perusahaan" id="nama_perusahaan"  required>
-                <option value="">Semua Perusahan</option>
+                <option value="">Pilih Perusahan</option>
                 <?php foreach($nama_perusahaan as $row):?>
               <option value="<?php echo $row->id;?>"><?php echo $row->nama_perusahaan;?></option>
               <?php endforeach;?>
