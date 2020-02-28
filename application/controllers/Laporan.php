@@ -16,7 +16,8 @@ class Laporan extends CI_Controller {
 
 	function index(){
 		$data['laporan'] = $this->m_laporan->get_accepted();
-        $data['keyword'] = $this->m_laporan->get_bidang()->result();
+		$data['keyword'] = $this->m_laporan->get_bidang()->result();
+		$data['nama_perusahaan'] = $this->m_laporan->get_perusahaan()->result();
 		$this->load->view('export/laporan',$data);
     }
 
@@ -31,6 +32,34 @@ class Laporan extends CI_Controller {
 		
 		}else{
 			$data['laporan']=$this->m_laporan->caridata();
+        	$this->load->view('laporan/excel_laporan',$data);
+    	}
+	}
+	function print(){
+    	$data['laporan']=$this->m_laporan->print();
+		$pilihan = $this->input->post('pilihan',TRUE);
+		
+		if($pilihan==1){
+			$data['laporan']=$this->m_laporan->print();
+	
+        	$this->load->view('laporan/print_laporan',$data);
+		
+		}else{
+			$data['laporan']=$this->m_laporan->print();
+        	$this->load->view('laporan/excel_laporan',$data);
+    	}
+	}
+	function all(){
+    	$data['laporan']=$this->m_laporan->all();
+		$pilihan = $this->input->post('pilihan',TRUE);
+		
+		if($pilihan==1){
+			$data['laporan']=$this->m_laporan->all();
+	
+        	
+		
+		}else{
+			$data['laporan']=$this->m_laporan->all();
         	$this->load->view('laporan/excel_laporan',$data);
     	}
 	}

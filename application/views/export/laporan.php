@@ -36,8 +36,14 @@
               <div class="breadcrumb-item">Laporan</div>
             </div>
           </div>
-          <div class="row"> 
-          <div class="form-group col-3">
+          <div class="row">
+          <div class="col-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Berdasarkan Bidang</h4>
+                  </div>
+                  <div class="card-body">
+                  <div class="form-group col-12">
             <form target="_blank" action="<?php echo site_url('laporan/export'); ?>" method=POST>
               <select class="form-control" type="text" name="keyword" id="keyword">
                 <option disabled selected>Pilih Nama Bidang</option>
@@ -46,7 +52,7 @@
               <?php endforeach;?>
               </select>
               </div> 
-              <div class="form-group col-3">
+              <div class="form-group col-12">
               <select class="form-control" type="text" name="tahun" id="tahun">
               <option disabled selected>Pilih Tahun</option>
                 <?php
@@ -59,31 +65,64 @@
                 ?>
               </select>
               </div> 
-              <div class="form-group col-3">
-            <form action="<?php echo site_url('laporan/cari'); ?>" method=POST>
-              <select class="form-control" type="text" name="keyword" id="keyword">
-                <option value="">Pilih Nama Bidang</option>
-                <?php foreach($keyword as $row):?>
-              <option value="<?php echo $row->kode_bidang;?>"><?php echo $row->nama_bidang;?></option>
-              <?php endforeach;?>
-              </select>
-              </div> 
-               <div class="form-group col-3">
+               <div class="form-group col-12">
               <select class="form-control" type="text" name="pilihan" id="pilihan">
                 <option value="1">Print</option>
                 <option value="2">Excel</option>
               </select>
               </div> 
-
-              <div class="form-group col-3">
+           </div>
+                  <div class="card-footer  text-right">   
                 <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-download"></i> Export</button>
                 <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
-                      </div>
              </form>
+                  </div>
+                </div>
+              </div>
+              <!--Perusahaan -->
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Berdasarkan Perusahaan</h4>
+                  </div>
+                  <div class="card-body">
+                  <div class="form-group col-12">
+            <form action="<?php echo site_url('laporan/print'); ?>" method=POST>
+              <select class="form-control" type="text" name="nama_perusahaan" id="nama_perusahaan"  required>
+                <option value="">Semua Perusahan</option>
+                <?php foreach($nama_perusahaan as $row):?>
+              <option value="<?php echo $row->id;?>"><?php echo $row->nama_perusahaan;?></option>
+              <?php endforeach;?>
+              </select>
+              </div> 
+              <div class="form-group col-12">
+              <select class="form-control" type="text" name="tahun" id="tahun">
+              <option value="">Semua Tahun</option>
+                <?php
+                $thn_skr = 2019;
+                for ($x = $thn_skr; $x <= 2050; $x++) {
+                ?>
+                    <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                <?php
+                }
+                ?>
+              </select>
+              </div>
+              <div class="form-group col-12">
+              <select class="form-control" type="text" name="pilihan" id="pilihan">
+                <option value="1">Print</option>
+                <option value="2">Excel</option>
+              </select>
+              </div> 
+                  </div>
+                  <div class="card-footer text-right">
+                  <button type="submit" class="btn btn-icon icon-left btn-primary"><i class="fas fa-download"></i> Export</button>
+                <a href="<?php echo site_url('laporan'); ?>" class="btn btn-icon icon-left btn-danger" ><i class="fas fa-sync"></i> Reset</a>
+             </form>
+             </div>
+             </div>
           </div>
-         </div>
-  
-     </div>
+          </div>     
   </div>
         </section>
       </div>
