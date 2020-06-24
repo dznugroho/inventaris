@@ -233,7 +233,7 @@
                 <div class="modal-body">
 
                     
-                  <input name="kode_pilih" value="<?php echo $kode_pilih;?>" class="form-control" type="text" placeholder="Kode Barang..." readonly>
+                  <input name="kode_pilih" value="<?php echo $kode_pilih;?>" class="form-control" type="hidden" placeholder="Kode Barang..." readonly>
   
                     <div class="form-group">
                         <label class="control-label col-xs-3">Nama Perusahaan</label>

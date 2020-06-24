@@ -36,44 +36,7 @@
                       <div class="alert-title">Developer</div>
                       MONCER Corporation.
                     </div>
-                  <div class="card-body">
-                    <ul class="card-card-warning">
-                      <li class="media">
-                        <img class="rounded-circle mr-1" src="assets/img/pp1.jpg" alt="Generic ">
-                        <div class="media-body">
-                          <h5 class="mt-0 mb-1">M.Faiz Fahmi</h5>
-                          <blockquote>
-                      "Everyday Is Sunday"
-                    </blockquote>
-                        </div>
-                      </li>
-                      <li class="media my-4">
-                        <img class="rounded-circle mr-2" src="assets/img/dd.jpg" alt="Generic">
-                        <div class="media-body">
-                          <h5 class="mt-0 mb-1">Dimas Adi Nugroho</h5>
-                          <blockquote>
-                      "The Biggest Risk is Not Taking Any Risk "
-                    </blockquote>
-                        </div>
-                      </li>
-                      <li class="media">
-                      <img alt="image" src="assets/img/kup1.jpg" class="rounded-circle mr-1">
-                        <div class="media-body">
-                          <h5 class="mt-0 mb-2">Indra Noorrohman</h5>
-                          <blockquote>
-                      "If There's Anything worse than failure, it's Regret"
-                    </blockquote>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                </div>
-                  </div>
-                  <div class="card-body">
-                    <h5> </h5>
-                  </div>
-                </div>  
+
                     </div>
                   </div>
                 </div>
