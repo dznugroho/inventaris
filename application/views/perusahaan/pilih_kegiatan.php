@@ -112,26 +112,26 @@
                               <td><?php echo $waktu_selesai;?></td>
                               <td><?php echo 'Rp.'.number_format($anggaran);?></td>
                               <td><?php if($file==""){
-																		echo "File Tidak Tersedia";
-																		
-														}else{?>
-															<button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
-														<?php } ?>
+																	echo "File Tidak Tersedia";
+																					
+																	}else{?>
+																			<button onclick='open("<?php echo site_url('Usulan/embed/'.$file);?>","displayWindow","width=700,height=600,status=no,toolbar=no,menubar=no,left=355");' class="btn btn-info btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Lihat Data">LihatFile</button>
+																	<?php } ?>
 
-                              </td>
-                               <?php if($status == 0){ ?>
-                                <td>
-                                  <a href="<?php echo site_url('pilih_usulan/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
-                                </td>
-                                <td>
-                              <button data-toggle="modal" data-target="#modal_tambah<?php echo $kode_usulan;?>" class="btn btn-primary">Pilih</button>
-                                </td>
+															</td>
+																	<?php if($status == 0){ ?>
+															<td>
+																	<a href="<?php echo site_url('pilih_usulan/detail_ps/'.$kode_usulan);?>" class="btn btn-success">Detail</a>
+															</td>
+															<td>
+															<button data-toggle="modal" data-target="#modal_tambah<?php echo $kode_usulan;?>" class="btn btn-primary">Pilih</button>
+															</td>
 
-															 <? }else{
-                                    echo '<td><div class="badge badge-danger">Sudah Dipilih</div></td>';
-                                    echo '<td>&nbsp;</td>';
-                                  };?>
-                            
+															<?php }else{ ;?>
+																	echo '<td><div class="badge badge-danger">Sudah Dipilih</div></td>';
+																	echo '<td>&nbsp;</td>';
+															<?php };?>
+                            	
                             </tr>
                             <?php endforeach ;?>
                           </tbody>

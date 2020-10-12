@@ -30,7 +30,7 @@
             </div>
             </div>
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">MONCER</span></h4>
-            <form method="post" action="<?= base_url()?>login/auth">
+						<form method="post" action="<?= base_url()?>login/auth">
               <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" type="text" class="form-control" name="username" tabindex="1" placeholder="Masukan Username" required autofocus>
@@ -59,7 +59,7 @@
                 </button>
               </div>
               <div class="mt-5 text-center">
-                Don't have an account? <a href="<?php echo site_url('Registrasi'); ?>">Create new one</a>
+                Don't have an account? <a href="<?php echo site_url('registrasi'); ?>">Create new one</a>
               </div>
             </form>
           </div>
